@@ -1,0 +1,40 @@
+{
+	"schemaVersion": 1,
+	"id": "uniquescythe",
+	"version": "${version}",
+	"name": "UniqueScythe",
+	"description": "This is an example description! Tell everyone what your mod is about!",
+	"authors": [
+		"Me!"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/uniquescythe/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"nikita.uniquescythe.UniqueScythe"
+		],
+		"client": [
+			"nikita.uniquescythe.UniqueScytheClient"
+		],
+		"fabric-datagen": [
+			"nikita.uniquescythe.UniqueScytheDataGenerator"
+		]
+	},
+	"mixins": [
+		"uniquescythe.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.15.3",
+		"minecraft": "~1.20.1",
+		"java": ">=17",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
