@@ -22,4 +22,20 @@ public abstract class ItemRendererMixin {
         }//rendering big model if it should be displayed not in gui AND not on the ground
         return value;
     }
+
+	@ModifyVariable(method = "renderItem", at = @At(value = "HEAD"), argsOnly = true)
+	public BakedModel useBigWardenersSword(BakedModel value, ItemStack stack, ModelTransformationMode renderMode, boolean leftHanded, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
+		if ((stack.isOf(ModItems.WARDENERS_SWORD) && renderMode != (ModelTransformationMode.GUI)) && (stack.isOf(ModItems.WARDENERS_SWORD) && renderMode != (ModelTransformationMode.GROUND)) && (stack.isOf(ModItems.WARDENERS_SWORD) && !leftHanded)) {
+			return ((ItemRendererAccessor) this).mccourse$getModels().getModelManager().getModel(new ModelIdentifier(UniqueScythe.MOD_ID, "wardeners_sword_big", "inventory"));
+		}//rendering big model if it should be displayed not in gui AND not on the ground
+		return value;
+	}
+
+	@ModifyVariable(method = "renderItem", at = @At(value = "HEAD"), argsOnly = true)
+	public BakedModel useBigWardenersClosed(BakedModel value, ItemStack stack, ModelTransformationMode renderMode, boolean leftHanded, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
+		if ((stack.isOf(ModItems.WARDENERS_SWORD) && renderMode != (ModelTransformationMode.GUI)) && (stack.isOf(ModItems.WARDENERS_SWORD) && renderMode != (ModelTransformationMode.GROUND)) && (stack.isOf(ModItems.WARDENERS_SWORD) && leftHanded)) {
+			return ((ItemRendererAccessor) this).mccourse$getModels().getModelManager().getModel(new ModelIdentifier(UniqueScythe.MOD_ID, "wardeners_sword_closed", "inventory"));
+		}//rendering big model if it should be displayed not in gui AND not on the ground
+		return value;
+	}
 }

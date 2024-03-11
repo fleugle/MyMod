@@ -3,6 +3,7 @@ package nikita.uniquescythe.items;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.minecraft.item.AxeItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
 import net.minecraft.item.SwordItem;
@@ -26,7 +27,7 @@ public class ModItems {
 
 
     //FROSTY_DAGGER registry
-    //public static final Item FROSTY_DAGGER = registerItem("frosty_dagger", new SwordItem(ModToolMaterial.FROSTY_STEEL,7, 100f, new FabricItemSettings())); //The dagger
+    public static final Item WARDENERS_SWORD = registerItem("wardeners_sword", new AxeItem(ModToolMaterial.FROSTY_STEEL,1, 100f, new FabricItemSettings())); //The dagger
 
 
     // *end of the registering items section*
@@ -44,7 +45,7 @@ public class ModItems {
     private static void addItemsToCombatItemGroup(FabricItemGroupEntries entries) {
         //place to add items to the ingredient item tab
         entries.addItem(FROSTY_SCYTHE);
-        //entries.add(FROSTY_DAGGER);
+        entries.addItem(WARDENERS_SWORD);
     }//adding items to ingredient tab *method*
 
     //helper method to register items
