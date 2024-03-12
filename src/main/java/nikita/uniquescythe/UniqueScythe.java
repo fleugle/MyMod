@@ -3,6 +3,7 @@ package nikita.uniquescythe;
 import net.fabricmc.api.ModInitializer;
 
 import nikita.uniquescythe.items.ModItems;
+import nikita.uniquescythe.particles.ModParticles;
 import nikita.uniquescythe.sounds.ModSounds;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,6 +28,9 @@ public class UniqueScythe implements ModInitializer {
 
 		//calling for sound registry method in mod sounds
 		ModSounds.initializeSounds();
+
+		//calling for particles registry method in mod particles
+		ModParticles.registerParticles();
 	}
 }
 

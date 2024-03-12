@@ -16,8 +16,10 @@ public class EasterEggItem extends Item {
 	}
 
 	public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
-		user.getWorld().playSound(null, user.getBlockPos(), ModSounds.EASTER_EGG, SoundCategory.AMBIENT, 20f, 1f);
-
+		//uhahaha hahahahaha hahaha ha ha ha ha ha haha
+		if (user.getWorld() != null) {
+			user.getWorld().playSound(null, user.getBlockPos(), ModSounds.EASTER_EGG, SoundCategory.AMBIENT, 20f, 1f);
+		}
 
 		return TypedActionResult.pass(user.getStackInHand(hand));
 	}
