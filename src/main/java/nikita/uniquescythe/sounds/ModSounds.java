@@ -14,6 +14,8 @@ public class ModSounds {
     public static SoundEvent SCYTHE_CHARGED = registerSound("sc_ch");
     public static SoundEvent SCYTHE_HIT = registerSound("sc_ht");
 
+	public static SoundEvent EASTER_EGG = registerSound("e_g");
+
     // actual registration of all the custom SoundEvents
     static SoundEvent registerSound(String id) {
         SoundEvent sound = SoundEvent.createVariableRangeEvent(new Identifier(UniqueScythe.MOD_ID, id));

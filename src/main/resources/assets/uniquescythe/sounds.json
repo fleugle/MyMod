@@ -10,5 +10,11 @@
     "sounds": [
       "uniquescythe:sc_ht"
     ]
+  },
+  "e_g": {
+    "subtitle": "sounds.uniquescythe.e_g",
+    "sounds": [
+      "uniquescythe:e_g"
+    ]
   }
 }
