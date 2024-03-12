@@ -12,6 +12,7 @@ import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import nikita.uniquescythe.UniqueScythe;
 import nikita.uniquescythe.items.custom.FrostyScytheItem;
+import nikita.uniquescythe.items.custom.WardenersSwordItem;
 
 //some sort of helper class that will register our custom items
 public class ModItems {
@@ -27,7 +28,7 @@ public class ModItems {
 
 
     //FROSTY_DAGGER registry
-    public static final Item WARDENERS_SWORD = registerItem("wardeners_sword", new AxeItem(ModToolMaterial.FROSTY_STEEL,1, 100f, new FabricItemSettings())); //The dagger
+    public static final Item WARDENERS_SWORD = registerItem("wardeners_sword", new WardenersSwordItem(ModToolMaterial.FROSTY_STEEL,1, 100f, new FabricItemSettings())); //The dagger
 
 
     // *end of the registering items section*
@@ -55,7 +56,7 @@ public class ModItems {
 
     public static void registerModItems(){
         //logger output to see if mod actually registers items
-        UniqueScythe.LOGGER.info("Registering Mod Items for " +UniqueScythe.MOD_ID);
+
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(ModItems::addItemsToIngredientItemGroup);//calling for the private method in order to  add item to the ingridient tab
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT).register(ModItems::addItemsToCombatItemGroup);//calling for the private method in order to  add item to the ingridient tab
