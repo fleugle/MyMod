@@ -1,11 +1,11 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "uniquescythe:item/b_cover",
+		"0": "uniquescythe:item/b_cover_w",
 		"1": "uniquescythe:item/pg",
 		"2": "uniquescythe:item/b_finder",
 		"3": "uniquescythe:item/gp_und",
-		"particle": "uniquescythe:item/b_cover"
+		"particle": "uniquescythe:item/b_cover_w"
 	},
 	"elements": [
 		{
@@ -162,8 +162,8 @@
 	],
 	"display": {
 		"thirdperson_righthand": {
-			"rotation": [-76.43, 0, 157],
-			"translation": [0, 3.75, 2.75],
+			"rotation": [-56, 1, 180],
+			"translation": [0, 3.25, 3.5],
 			"scale": [1.1, 1.1, 1.1]
 		},
 		"thirdperson_lefthand": {

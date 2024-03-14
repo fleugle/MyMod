@@ -7,4 +7,8 @@ public class WardenersSwordItem extends AxeItem {
 	public WardenersSwordItem(ToolMaterial material, float attackDamage, float attackSpeed, Settings settings) {
 		super(material, attackDamage, attackSpeed, settings);
 	}
+
+
+
+
 }

@@ -50,8 +50,19 @@ public abstract class ItemRendererMixin {
 	@ModifyVariable(method = "renderItem", at = @At(value = "HEAD"), argsOnly = true)
 	public BakedModel useBigBook(BakedModel value, ItemStack stack, ModelTransformationMode renderMode, boolean leftHanded, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
 		if ((stack.isOf(Items.BOOK) && renderMode != (ModelTransformationMode.GUI))
-			&& (stack.isOf(Items.BOOK) && renderMode != (ModelTransformationMode.GROUND))){
+			&& (stack.isOf(Items.BOOK) && renderMode != (ModelTransformationMode.GROUND)
+		&& !leftHanded)){
 			return ((ItemRendererAccessor) this).mccourse$getModels().getModelManager().getModel(new ModelIdentifier(UniqueScythe.MOD_ID, "book_big", "inventory"));
+		}//rendering big model if it should be displayed not in gui AND not on the ground
+		return value;
+	}
+
+	@ModifyVariable(method = "renderItem", at = @At(value = "HEAD"), argsOnly = true)
+	public BakedModel useClosedBook(BakedModel value, ItemStack stack, ModelTransformationMode renderMode, boolean leftHanded, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
+		if ((stack.isOf(Items.BOOK) && renderMode != (ModelTransformationMode.GUI))
+			&& (stack.isOf(Items.BOOK) && renderMode != (ModelTransformationMode.GROUND)
+			&& leftHanded)){
+			return ((ItemRendererAccessor) this).mccourse$getModels().getModelManager().getModel(new ModelIdentifier(UniqueScythe.MOD_ID, "book_big_closed", "inventory"));
 		}//rendering big model if it should be displayed not in gui AND not on the ground
 		return value;
 	}
@@ -59,8 +70,18 @@ public abstract class ItemRendererMixin {
 	@ModifyVariable(method = "renderItem", at = @At(value = "HEAD"), argsOnly = true)
 	public BakedModel useBigBookWritable(BakedModel value, ItemStack stack, ModelTransformationMode renderMode, boolean leftHanded, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
 		if ((stack.isOf(Items.WRITABLE_BOOK) && renderMode != (ModelTransformationMode.GUI))
-			&& (stack.isOf(Items.WRITABLE_BOOK) && renderMode != (ModelTransformationMode.GROUND))) {
-			return ((ItemRendererAccessor) this).mccourse$getModels().getModelManager().getModel(new ModelIdentifier(UniqueScythe.MOD_ID, "book_big", "inventory"));
+			&& (stack.isOf(Items.WRITABLE_BOOK) && renderMode != (ModelTransformationMode.GROUND)
+		&& !leftHanded)) {
+			return ((ItemRendererAccessor) this).mccourse$getModels().getModelManager().getModel(new ModelIdentifier(UniqueScythe.MOD_ID, "w_book_big", "inventory"));
+		}//rendering big model if it should be displayed not in gui AND not on the ground
+		return value;
+	}
+	@ModifyVariable(method = "renderItem", at = @At(value = "HEAD"), argsOnly = true)
+	public BakedModel useClosedBigBookWritable(BakedModel value, ItemStack stack, ModelTransformationMode renderMode, boolean leftHanded, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
+		if ((stack.isOf(Items.WRITABLE_BOOK) && renderMode != (ModelTransformationMode.GUI))
+			&& (stack.isOf(Items.WRITABLE_BOOK) && renderMode != (ModelTransformationMode.GROUND)
+			&& leftHanded)) {
+			return ((ItemRendererAccessor) this).mccourse$getModels().getModelManager().getModel(new ModelIdentifier(UniqueScythe.MOD_ID, "w_book_big_closed", "inventory"));
 		}//rendering big model if it should be displayed not in gui AND not on the ground
 		return value;
 	}
@@ -68,8 +89,39 @@ public abstract class ItemRendererMixin {
 	@ModifyVariable(method = "renderItem", at = @At(value = "HEAD"), argsOnly = true)
 	public BakedModel useBigBookWritten(BakedModel value, ItemStack stack, ModelTransformationMode renderMode, boolean leftHanded, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
 		if ((stack.isOf(Items.WRITTEN_BOOK) && renderMode != (ModelTransformationMode.GUI))
-			&& (stack.isOf(Items.WRITTEN_BOOK) && renderMode != (ModelTransformationMode.GROUND))) {
-			return ((ItemRendererAccessor) this).mccourse$getModels().getModelManager().getModel(new ModelIdentifier(UniqueScythe.MOD_ID, "book_big", "inventory"));
+			&& (stack.isOf(Items.WRITTEN_BOOK) && renderMode != (ModelTransformationMode.GROUND)
+		&& !leftHanded)) {
+			return ((ItemRendererAccessor) this).mccourse$getModels().getModelManager().getModel(new ModelIdentifier(UniqueScythe.MOD_ID, "w_book_big", "inventory"));
+		}//rendering big model if it should be displayed not in gui AND not on the ground
+		return value;
+	}
+
+	@ModifyVariable(method = "renderItem", at = @At(value = "HEAD"), argsOnly = true)
+	public BakedModel useClosedBigBookWritten(BakedModel value, ItemStack stack, ModelTransformationMode renderMode, boolean leftHanded, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
+		if ((stack.isOf(Items.WRITTEN_BOOK) && renderMode != (ModelTransformationMode.GUI))
+			&& (stack.isOf(Items.WRITTEN_BOOK) && renderMode != (ModelTransformationMode.GROUND)
+			&& leftHanded)) {
+			return ((ItemRendererAccessor) this).mccourse$getModels().getModelManager().getModel(new ModelIdentifier(UniqueScythe.MOD_ID, "w_book_big_closed", "inventory"));
+		}//rendering big model if it should be displayed not in gui AND not on the ground
+		return value;
+	}
+
+	@ModifyVariable(method = "renderItem", at = @At(value = "HEAD"), argsOnly = true)
+	public BakedModel useBigBookEnchanced(BakedModel value, ItemStack stack, ModelTransformationMode renderMode, boolean leftHanded, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
+		if ((stack.isOf(Items.ENCHANTED_BOOK) && renderMode != (ModelTransformationMode.GUI))
+			&& (stack.isOf(Items.ENCHANTED_BOOK) && renderMode != (ModelTransformationMode.GROUND)
+			&& !leftHanded)) {
+			return ((ItemRendererAccessor) this).mccourse$getModels().getModelManager().getModel(new ModelIdentifier(UniqueScythe.MOD_ID, "e_book_big", "inventory"));
+		}//rendering big model if it should be displayed not in gui AND not on the ground
+		return value;
+	}
+
+	@ModifyVariable(method = "renderItem", at = @At(value = "HEAD"), argsOnly = true)
+	public BakedModel useCloseduseBigBookEnchanced(BakedModel value, ItemStack stack, ModelTransformationMode renderMode, boolean leftHanded, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
+		if ((stack.isOf(Items.ENCHANTED_BOOK) && renderMode != (ModelTransformationMode.GUI))
+			&& (stack.isOf(Items.ENCHANTED_BOOK) && renderMode != (ModelTransformationMode.GROUND)
+			&& leftHanded)) {
+			return ((ItemRendererAccessor) this).mccourse$getModels().getModelManager().getModel(new ModelIdentifier(UniqueScythe.MOD_ID, "e_book_big_closed", "inventory"));
 		}//rendering big model if it should be displayed not in gui AND not on the ground
 		return value;
 	}
