@@ -10,6 +10,7 @@ import net.minecraft.item.SwordItem;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.Rarity;
 import nikita.uniquescythe.UniqueScythe;
 import nikita.uniquescythe.items.custom.EasterEggItem;
 import nikita.uniquescythe.items.custom.FrostyScytheItem;
@@ -24,7 +25,7 @@ public class ModItems {
     public static final Item FROSTY_STEEL = registerItem("frosty_steel", new Item(new FabricItemSettings())); //ingridient needed to create the scythe
 
 	//Flugel's immortality declaration
-	public static final Item FLUGELS_IMMORTALITY_DECLARATION = registerItem("flugels_immortality_declaration", new Item(new FabricItemSettings())); //ingridient needed to create the scythe
+	public static final Item FLUGELS_IMMORTALITY_DECLARATION = registerItem("flugels_immortality_declaration", new Item(new FabricItemSettings().maxCount(1).rarity(Rarity.EPIC))); //ingridient needed to create the scythe
 
 
     //FROSTY_SCYTHE registry
@@ -47,8 +48,13 @@ public class ModItems {
     private static void addItemsToIngredientItemGroup(FabricItemGroupEntries entries) {
         //place to add items to the ingredient item tab
         entries.addItem(FROSTY_STEEL);
-		entries.addItem(FLUGELS_IMMORTALITY_DECLARATION);
+
     }//adding items to ingredient tab *method*
+
+	private static void addItemsToToolsAndUtilitiesItemGroup(FabricItemGroupEntries entries) {
+		//place to add items to the ingredient item tab
+		entries.addItem(FLUGELS_IMMORTALITY_DECLARATION);
+	}//adding items to ingredient tab *method*
 
     private static void addItemsToCombatItemGroup(FabricItemGroupEntries entries) {
         //place to add items to the ingredient item tab
@@ -65,7 +71,9 @@ public class ModItems {
         //logger output to see if mod actually registers items
 
 
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(ModItems::addItemsToIngredientItemGroup);//calling for the private method in order to  add item to the ingridient tab
+		ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS_AND_UTILITIES).register(ModItems::addItemsToToolsAndUtilitiesItemGroup);//calling for the private method in order to  add item to the ingridient tab
+
+		ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(ModItems::addItemsToIngredientItemGroup);//calling for the private method in order to  add item to the ingridient tab
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT).register(ModItems::addItemsToCombatItemGroup);//calling for the private method in order to  add item to the ingridient tab
     }
 }

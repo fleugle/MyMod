@@ -1,4 +1,4 @@
-package nikita.uniquescythe.mixin;;
+package nikita.uniquescythe.mixin;
 
 
 import net.minecraft.entity.*;
@@ -21,6 +21,7 @@ import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.math.ChunkSectionPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+import nikita.uniquescythe.items.ModItems;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -74,7 +75,7 @@ public abstract class LivingEntityMixin  extends Entity{
 		ItemStack mainhand_stack = ((LivingEntityMixin) entity).getStackInHand(Hand.MAIN_HAND);
 
 		//Executes if the item in offhand_stack is equal to the explosive totem of Undying
-		if ((offhand_stack.getItem() == MoreTotemsMod.EXPLOSIVE_TOTEM_OF_UNDYING) || (mainhand_stack.getItem() == MoreTotemsMod.EXPLOSIVE_TOTEM_OF_UNDYING) ) {
+		if ((offhand_stack.getItem() == ModItems.FLUGELS_IMMORTALITY_DECLARATION) || (mainhand_stack.getItem() == ModItems.FLUGELS_IMMORTALITY_DECLARATION) ) {
 
 			/*If the damagesource is something that could kill a player in creative mode, the totem does not work*/
 			if (damageSource_1.getType().equals(DamageTypes.OUT_OF_WORLD)) {
@@ -85,12 +86,12 @@ public abstract class LivingEntityMixin  extends Entity{
 				/*sets copy to offhand_stack*/
 				/*deletes explosive totem from offhand*/
 
-				if((offhand_stack.getItem() == MoreTotemsMod.EXPLOSIVE_TOTEM_OF_UNDYING)) {
-					offhand_stack.decrement(1);
-				}
-				else if((mainhand_stack.getItem() == MoreTotemsMod.EXPLOSIVE_TOTEM_OF_UNDYING)){
+				if((offhand_stack.getItem() == ModItems.FLUGELS_IMMORTALITY_DECLARATION)) {
 
-					mainhand_stack.decrement(1);
+				}
+				else if((mainhand_stack.getItem() == ModItems.FLUGELS_IMMORTALITY_DECLARATION)){
+
+
 
 				}
 
@@ -106,10 +107,7 @@ public abstract class LivingEntityMixin  extends Entity{
 
 				/*Spawns a tntEntity on the player upon use of Explosive Totem*/
 
-				TntEntity tntEntity = EntityType.TNT.create(getWorld());
-				tntEntity.setFuse(5);
-				tntEntity.refreshPositionAndAngles(this.getX() , this.getY() , this.getZ(), 0, 0);
-				getWorld().spawnEntity(tntEntity);
+
 
 				callback.setReturnValue(true);
 
@@ -123,59 +121,5 @@ public abstract class LivingEntityMixin  extends Entity{
 
 	}
 
-
-
-	@Inject(at = @At("HEAD"), method = "tryUseTotem", cancellable = true)
-	public void useGhastlyTotem(DamageSource damageSource_1, CallbackInfoReturnable<Boolean> callback) {
-		/*inits PlayerEntity entity, which is a copy of this casted to Living Entity and then PlayerEntity*/
-		Entity entity =  this;
-
-		/*ItemStack object that is set to the offhand item that entity is carrying*/
-		ItemStack offhand_stack = ((LivingEntityMixin) entity).getStackInHand(Hand.OFF_HAND);
-
-		ItemStack mainhand_stack = ((LivingEntityMixin) entity).getStackInHand(Hand.MAIN_HAND);
-
-		//Executes if the item in offhand_stack is equal to the ghastly totem of Undying
-		if ((offhand_stack.getItem() == MoreTotemsMod.GHASTLY_TOTEM_OF_UNDYING) || (mainhand_stack.getItem() == MoreTotemsMod.GHASTLY_TOTEM_OF_UNDYING)) {
-
-			/*If the damagesource is something that could kill a player in creative mode, the totem does not work*/
-			if (damageSource_1.getType().equals(DamageTypes.OUT_OF_WORLD)) {
-
-				callback.setReturnValue(false);
-			}
-			else {
-				/*sets copy to offhand_stack*/
-
-				if((offhand_stack.getItem() == MoreTotemsMod.GHASTLY_TOTEM_OF_UNDYING)) {
-					offhand_stack.decrement(1);
-				}
-				else if((mainhand_stack.getItem() == MoreTotemsMod.GHASTLY_TOTEM_OF_UNDYING)){
-
-					mainhand_stack.decrement(1);
-
-				}
-
-
-				/*if the offhand_stack_copy is not empty, then execute*/
-
-
-				/*totem saves player from an untimely death*/
-				this.setHealth(1.0F);
-				this.clearStatusEffects();
-				this.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 1325, 1));
-				this.addStatusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 1525, 2));
-				this.addStatusEffect(new StatusEffectInstance(StatusEffects.LEVITATION, 1000, 1));
-				this.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOW_FALLING, 1750, 1));
-
-
-				this.getWorld().sendEntityStatus(this, (byte)35);
-
-				callback.setReturnValue(true);
-
-			}
-
-		}
-
-	}
 
 }
