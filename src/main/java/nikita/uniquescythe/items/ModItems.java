@@ -32,7 +32,7 @@ public class ModItems {
     public static final Item FROSTY_SCYTHE = registerItem("frosty_scythe", new FrostyScytheItem(ModToolMaterial.FROSTY_STEEL,12, -3f, new FabricItemSettings())); //The scythe
 
 	//EASTEREGG
-	public static final Item EASTER_EGG = registerItem("easter_egg", new EasterEggItem(new FabricItemSettings()));
+	public static final Item EASTER_EGG = registerItem("easter_egg", new EasterEggItem(new FabricItemSettings().rarity(Rarity.UNCOMMON)));
 
     //WANDERERS_SWORD registry
     public static final Item WANDERERS_SWORD = registerItem("wanderers_sword", new WanderersSwordItem(ModToolMaterial.FROSTY_STEEL,1, 100f, new FabricItemSettings())); //The dagger

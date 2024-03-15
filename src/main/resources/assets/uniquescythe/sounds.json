@@ -16,5 +16,11 @@
     "sounds": [
       "uniquescythe:e_g"
     ]
+  },
+  "muflon": {
+    "subtitle": "sounds.uniquescythe.muflon",
+    "sounds": [
+      "uniquescythe:muflon"
+    ]
   }
 }
