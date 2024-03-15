@@ -2,7 +2,7 @@
 	"credit": "Made with Blockbench",
 	"parent": "item/generated",
 	"textures": {
-		"layer0": "uniquescythe:item/wardeners_sword"
+		"layer0": "uniquescythe:item/wanderers_sword"
 	},
 	"display": {
 		"thirdperson_righthand": {

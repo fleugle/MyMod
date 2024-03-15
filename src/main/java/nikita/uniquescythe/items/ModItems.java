@@ -13,7 +13,7 @@ import net.minecraft.util.Identifier;
 import nikita.uniquescythe.UniqueScythe;
 import nikita.uniquescythe.items.custom.EasterEggItem;
 import nikita.uniquescythe.items.custom.FrostyScytheItem;
-import nikita.uniquescythe.items.custom.WardenersSwordItem;
+import nikita.uniquescythe.items.custom.WanderersSwordItem;
 
 //some sort of helper class that will register our custom items
 public class ModItems {
@@ -23,6 +23,9 @@ public class ModItems {
     //     FROSTY_STEAL registry
     public static final Item FROSTY_STEEL = registerItem("frosty_steel", new Item(new FabricItemSettings())); //ingridient needed to create the scythe
 
+	//Flugel's immortality declaration
+	public static final Item FLUGELS_IMMORTALITY_DECLARATION = registerItem("flugels_immortality_declaration", new Item(new FabricItemSettings())); //ingridient needed to create the scythe
+
 
     //FROSTY_SCYTHE registry
     public static final Item FROSTY_SCYTHE = registerItem("frosty_scythe", new FrostyScytheItem(ModToolMaterial.FROSTY_STEEL,12, -3f, new FabricItemSettings())); //The scythe
@@ -30,8 +33,8 @@ public class ModItems {
 	//EASTEREGG
 	public static final Item EASTER_EGG = registerItem("easter_egg", new EasterEggItem(new FabricItemSettings()));
 
-    //WARDENERS_SWORD registry
-    public static final Item WARDENERS_SWORD = registerItem("wardeners_sword", new WardenersSwordItem(ModToolMaterial.FROSTY_STEEL,1, 100f, new FabricItemSettings())); //The dagger
+    //WANDERERS_SWORD registry
+    public static final Item WANDERERS_SWORD = registerItem("wanderers_sword", new WanderersSwordItem(ModToolMaterial.FROSTY_STEEL,1, 100f, new FabricItemSettings())); //The dagger
 
 
     // *end of the registering items section*
@@ -44,12 +47,13 @@ public class ModItems {
     private static void addItemsToIngredientItemGroup(FabricItemGroupEntries entries) {
         //place to add items to the ingredient item tab
         entries.addItem(FROSTY_STEEL);
+		entries.addItem(FLUGELS_IMMORTALITY_DECLARATION);
     }//adding items to ingredient tab *method*
 
     private static void addItemsToCombatItemGroup(FabricItemGroupEntries entries) {
         //place to add items to the ingredient item tab
         entries.addItem(FROSTY_SCYTHE);
-        entries.addItem(WARDENERS_SWORD);
+        entries.addItem(WANDERERS_SWORD);
     }//adding items to ingredient tab *method*
 
     //helper method to register items
