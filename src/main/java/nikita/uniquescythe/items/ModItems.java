@@ -36,7 +36,7 @@ public class ModItems {
 	public static final Item EASTER_EGG = registerItem("easter_egg", new EasterEggItem(new FabricItemSettings().rarity(Rarity.UNCOMMON)));
 
 	//WIND CHARGE PROTOTYPE
-	public static final Item WIND_CHARGE = registerItem("wind_charge", new WindChargeItem(new FabricItemSettings()));
+	public static final Item WIND_CHARGE = registerItem("wind_charge", new WindChargeItem(new FabricItemSettings().maxCount(32)));
 
     //WANDERERS_SWORD registry
     public static final Item WANDERERS_SWORD = registerItem("wanderers_sword", new WanderersSwordItem(ModToolMaterial.FROSTY_STEEL,1, 100f, new FabricItemSettings())); //The dagger
@@ -58,6 +58,7 @@ public class ModItems {
 	private static void addItemsToToolsAndUtilitiesItemGroup(FabricItemGroupEntries entries) {
 		//place to add items to the ingredient item tab
 		entries.addItem(FLUGELS_IMMORTALITY_DECLARATION);
+		entries.addItem(WIND_CHARGE);
 	}//adding items to ingredient tab *method*
 
     private static void addItemsToCombatItemGroup(FabricItemGroupEntries entries) {

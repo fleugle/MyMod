@@ -16,6 +16,8 @@ public class ModSounds {
 
 	public static SoundEvent EASTER_EGG = registerSound("e_g");
 
+	public static SoundEvent WIND_CHARGE_HIT = registerSound("w_ch_h");
+
 	public static SoundEvent MUFLON = registerSound("muflon");
 
     // actual registration of all the custom SoundEvents

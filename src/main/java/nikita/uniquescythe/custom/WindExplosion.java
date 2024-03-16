@@ -6,8 +6,12 @@ import net.minecraft.enchantment.ProtectionEnchantment;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.TntEntity;
+import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.damage.DamageType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.MathHelper;
@@ -39,7 +43,7 @@ public class WindExplosion extends Explosion {
 		double z,
 		float radius
 	) {
-		super(world, entity, x, y, z, 1, false, DestructionType.KEEP);
+		super(world, entity, x, y, z, 3, false, DestructionType.KEEP);
 
 		this.world = world;
 		this.x = x;
@@ -48,6 +52,8 @@ public class WindExplosion extends Explosion {
 		this.radius = radius;
 
     }
+
+
 
 
 
@@ -111,9 +117,28 @@ public class WindExplosion extends Explosion {
 		List<Entity> list = this.world.getOtherEntities(this.getEntity(), new Box((double)k, (double)r, (double)t, (double)l, (double)s, (double)u));
 		Vec3d vec3d = new Vec3d(this.x, this.y, this.z);
 
+		// Calculate the center of the explosion
+		Vec3d explosionCenter = new Vec3d(this.x, this.y, this.z);
+
 		for(int v = 0; v < list.size(); ++v) {
 			Entity entity = (Entity)list.get(v);
 			if (!entity.isImmuneToExplosion()) {
+				double distanceRatio = entity.squaredDistanceTo(explosionCenter) / (double) (this.radius * this.radius);
+
+				// Calculate knockback force
+				double knockbackForce = 1.0 - Math.min(distanceRatio, 1.0);
+
+				// Get the direction of knockback
+				Vec3d knockbackDirection = entity.getPos().subtract(explosionCenter).normalize();
+
+				// Apply knockback force
+				Vec3d knockback = knockbackDirection.multiply(knockbackForce * 1.3); // Adjust the multiplier as needed
+
+				// Apply knockback to the entity
+				entity.setVelocity(entity.getVelocity().add(knockback));
+
+
+
 				double w = Math.sqrt(entity.squaredDistanceTo(vec3d)) / (double)q;
 				if (w <= 1.0) {
 					double x = entity.getX() - this.x;
@@ -126,7 +151,7 @@ public class WindExplosion extends Explosion {
 						z /= aa;
 						double ab = (double)getExposure(vec3d, entity);
 						double ac = (1.0 - w) * ab;
-						entity.damage(this.getDamageSource(), 0.1f);
+						entity.damage(this.getDamageSource(), 0.00001f);
 						double ad;
 						if (entity instanceof LivingEntity livingEntity) {
 							ad = ProtectionEnchantment.transformExplosionKnockback(livingEntity, ac);
@@ -146,7 +171,10 @@ public class WindExplosion extends Explosion {
 				}
 			}
 		}
+
+
 	}
+
 
 
 
