@@ -165,6 +165,8 @@ public class WindExplosion extends Explosion {
 						if (entity instanceof PlayerEntity playerEntity && !playerEntity.isSpectator() && (!playerEntity.isCreative() || !playerEntity.getAbilities().flying)) {
 							this.getAffectedPlayers().put(playerEntity, vec3d2);
 						}
+
+						entity.fallDistance = 0;//makes clutches a lot easier
 					}
 				}
 			}
