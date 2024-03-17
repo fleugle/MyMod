@@ -47,6 +47,7 @@ public class WindChargeItem extends Item {
 			windChargeProjectileEntity.setItem(itemStack);
 			windChargeProjectileEntity.setWindProjectyleProperties(user, user.getPitch(), user.getYaw(), 1.0F, 1.5F, 0F);
 			world.spawnEntity(windChargeProjectileEntity);
+			user.getItemCooldownManager().set(this, 7);
 		}
 
 		user.incrementStat(Stats.USED.getOrCreateStat(this));
@@ -55,6 +56,8 @@ public class WindChargeItem extends Item {
 		}
 
 		return TypedActionResult.success(itemStack, world.isClient());
+
+
 	}
 
 

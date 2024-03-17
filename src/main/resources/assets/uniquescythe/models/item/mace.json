@@ -1,0 +1,27 @@
+{
+	"credit": "Made with Blockbench",
+	"parent": "item/generated",
+	"textures": {
+		"layer0": "uniquescythe:item/mace"
+	},
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [49, 90, 0],
+			"translation": [0, 3, 2],
+			"scale": [0.9, 0.9, 1]
+		},
+		"thirdperson_lefthand": {
+			"rotation": [-50, 90, 0],
+			"translation": [0, 3, 2],
+			"scale": [0.9, 0.9, 1]
+		},
+		"firstperson_righthand": {
+			"rotation": [-147, 74, -180],
+			"translation": [4, 2, -4]
+		},
+		"firstperson_lefthand": {
+			"rotation": [33, -56, 0],
+			"translation": [4, 2, -4]
+		}
+	}
+}

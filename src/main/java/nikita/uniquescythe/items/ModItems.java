@@ -3,19 +3,13 @@ package nikita.uniquescythe.items;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
-import net.minecraft.item.AxeItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroups;
-import net.minecraft.item.SwordItem;
+import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 import nikita.uniquescythe.UniqueScythe;
-import nikita.uniquescythe.items.custom.EasterEggItem;
-import nikita.uniquescythe.items.custom.FrostyScytheItem;
-import nikita.uniquescythe.items.custom.WanderersSwordItem;
-import nikita.uniquescythe.items.custom.WindChargeItem;
+import nikita.uniquescythe.items.custom.*;
 
 //some sort of helper class that will register our custom items
 public class ModItems {
@@ -39,10 +33,15 @@ public class ModItems {
 	public static final Item WIND_CHARGE = registerItem("wind_charge", new WindChargeItem(new FabricItemSettings().maxCount(32)));
 
     //WANDERERS_SWORD registry
-    public static final Item WANDERERS_SWORD = registerItem("wanderers_sword", new WanderersSwordItem(ModToolMaterial.FROSTY_STEEL,1, 100f, new FabricItemSettings())); //The dagger
+    public static final Item WANDERERS_SWORD = registerItem("wanderers_sword", new WanderersSwordItem(ModToolMaterial.FROSTY_STEEL,1, 100f, new FabricItemSettings()));
 
+	//BREEZE_ROD registry
+	public static final Item BREEZE_ROD = registerItem("breeze_rod", new Item(new FabricItemSettings().maxCount(16)));
 
-    // *end of the registering items section*
+	//MACE registry
+	public static final Item MACE = registerItem("mace", new MaceItem(ToolMaterials.NETHERITE,1, -3f, new FabricItemSettings())); //The scythe
+
+	// *end of the registering items section*
 
 
 
@@ -52,20 +51,22 @@ public class ModItems {
     private static void addItemsToIngredientItemGroup(FabricItemGroupEntries entries) {
         //place to add items to the ingredient item tab
         entries.addItem(FROSTY_STEEL);
+		entries.addItem(BREEZE_ROD);
 
     }//adding items to ingredient tab *method*
 
 	private static void addItemsToToolsAndUtilitiesItemGroup(FabricItemGroupEntries entries) {
 		//place to add items to the ingredient item tab
-		entries.addItem(FLUGELS_IMMORTALITY_DECLARATION);
 		entries.addItem(WIND_CHARGE);
-	}//adding items to ingredient tab *method*
+	}//adding items to tools and utilities tab *method*
 
     private static void addItemsToCombatItemGroup(FabricItemGroupEntries entries) {
         //place to add items to the ingredient item tab
+		entries.addItem(FLUGELS_IMMORTALITY_DECLARATION);
         entries.addItem(FROSTY_SCYTHE);
         entries.addItem(WANDERERS_SWORD);
-    }//adding items to ingredient tab *method*
+		entries.addItem(MACE);
+    }//adding items to combat tab *method*
 
     //helper method to register items
     private static Item registerItem(String name, Item item){
