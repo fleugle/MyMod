@@ -38,7 +38,7 @@ public class WindChargeItem extends Item {
 			user.getZ(),
 			SoundEvents.ENTITY_SNOWBALL_THROW,
 			SoundCategory.NEUTRAL,
-			0.5F,
+			0.3F,
 			0.4F / (world.getRandom().nextFloat() * 0.4F + 0.8F)
 		);
 		if (!world.isClient) {

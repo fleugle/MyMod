@@ -22,5 +22,11 @@
     "sounds": [
       "uniquescythe:muflon"
     ]
+  },
+  "w_b": {
+    "subtitle": "sounds.uniquescythe.w_b",
+    "sounds": [
+      "uniquescythe:w_b"
+    ]
   }
 }

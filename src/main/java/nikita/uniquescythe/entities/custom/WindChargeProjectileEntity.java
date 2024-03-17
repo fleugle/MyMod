@@ -8,6 +8,8 @@ import net.minecraft.item.Item;
 import net.minecraft.network.listener.ClientPlayPacketListener;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.s2c.play.EntitySpawnS2CPacket;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
@@ -15,6 +17,7 @@ import net.minecraft.world.World;
 import nikita.uniquescythe.custom.WindExplosion;
 import nikita.uniquescythe.entities.ModEntities;
 import nikita.uniquescythe.items.ModItems;
+import nikita.uniquescythe.sounds.ModSounds;
 
 
 import java.util.List;
@@ -82,9 +85,25 @@ public class WindChargeProjectileEntity extends ThrownItemEntity {
 			}
 
 			 */
+
+
+			//sound on block collision
+			getWorld().playSound(
+				null,
+				getPos().getX(),
+				getPos().getY(),
+				getPos().getZ(),
+				ModSounds.WIND_CHARGE_BURST,
+				SoundCategory.AMBIENT,
+				1F,
+				0.4F / (getWorld().getRandom().nextFloat() * 0.4F + 0.8F)
+			);
+
 		}
 
 		this.discard();
 		super.onBlockHit(blockHitResult);
 	}
+
+
 }
