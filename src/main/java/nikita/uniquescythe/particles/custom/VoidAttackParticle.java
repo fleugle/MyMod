@@ -7,40 +7,52 @@ import net.minecraft.client.world.ClientWorld;
 import net.minecraft.particle.DefaultParticleType;
 
 public class VoidAttackParticle extends SpriteBillboardParticle {
-	protected VoidAttackParticle(ClientWorld level, double xCoord, double yCoord, double zCoord,
-								 SpriteProvider spriteSet, double xd, double yd, double zd) {
-		super(level, xCoord, yCoord, zCoord, xd, yd, zd);
+	private final SpriteProvider spriteProvider;
 
+	VoidAttackParticle(ClientWorld world, double x, double y, double z, double scale, SpriteProvider spriteProvider) {
+		super(world, x, y, z, 0.0, 0.0, 0.0);
+		this.spriteProvider = spriteProvider;
+		this.maxAge = 4;
+		float f = this.random.nextFloat() * 0.6F + 0.4F;
+		this.colorRed = f;
+		this.colorGreen = f;
+		this.colorBlue = f;
+		this.scale = 1.0F - (float)scale * 0.5F;
+		this.setSpriteForAge(spriteProvider);
+	}
 
-		this.velocityMultiplier = 0.6F;
-		this.x = xd;
-		this.y = yd;
-		this.z = zd;
-		this.scale *= 3F;
-		this.maxAge = 20;
-		this.setSpriteForAge(spriteSet);
+	@Override
+	public int getBrightness(float tint) {
+		return 15728880;
+	}
 
-
+	@Override
+	public void tick() {
+		this.prevPosX = this.x;
+		this.prevPosY = this.y;
+		this.prevPosZ = this.z;
+		if (this.age++ >= this.maxAge) {
+			this.markDead();
+		} else {
+			this.setSpriteForAge(this.spriteProvider);
+		}
 	}
 
 	@Override
 	public ParticleTextureSheet getType() {
-		return ParticleTextureSheet.PARTICLE_SHEET_TRANSLUCENT;
+		return ParticleTextureSheet.PARTICLE_SHEET_LIT;
 	}
-
-
 
 	@Environment(EnvType.CLIENT)
 	public static class Factory implements ParticleFactory<DefaultParticleType> {
-		private final SpriteProvider sprites;
+		private final SpriteProvider spriteProvider;
 
-		public Factory(SpriteProvider spriteSet) {
-			this.sprites = spriteSet;
+		public Factory(SpriteProvider spriteProvider) {
+			this.spriteProvider = spriteProvider;
 		}
 
-		public Particle createParticle(DefaultParticleType particleType, ClientWorld level, double x, double y, double z,
-									   double dx, double dy, double dz) {
-			return new VoidAttackParticle(level, x, y, z, this.sprites, dx, dy, dz);
+		public Particle createParticle(DefaultParticleType defaultParticleType, ClientWorld clientWorld, double d, double e, double f, double g, double h, double i) {
+			return new VoidAttackParticle(clientWorld, d, e, f, g, this.spriteProvider);
 		}
 	}
 }

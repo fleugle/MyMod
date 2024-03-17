@@ -1,7 +1,13 @@
 package nikita.uniquescythe.custom;
 
 import com.google.common.collect.Sets;
+import com.mojang.datafixers.util.Pair;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import net.minecraft.block.AbstractFireBlock;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
+import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.enchantment.ProtectionEnchantment;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
@@ -10,8 +16,14 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.damage.DamageType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
+import net.minecraft.item.ItemStack;
+import net.minecraft.loot.context.LootContextParameterSet;
+import net.minecraft.loot.context.LootContextParameters;
+import net.minecraft.particle.ParticleTypes;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.util.Util;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.MathHelper;
@@ -107,7 +119,7 @@ public class WindExplosion extends Explosion {
 		}
 
 		this.getAffectedBlocks().addAll(set);
-		float q = this.radius * 2.0F;
+		float q = this.radius;
 		int k = MathHelper.floor(this.x - (double)q - 1.0);
 		int l = MathHelper.floor(this.x + (double)q + 1.0);
 		int r = MathHelper.floor(this.y - (double)q - 1.0);
@@ -116,6 +128,8 @@ public class WindExplosion extends Explosion {
 		int u = MathHelper.floor(this.z + (double)q + 1.0);
 		List<Entity> list = this.world.getOtherEntities(this.getEntity(), new Box((double)k, (double)r, (double)t, (double)l, (double)s, (double)u));
 		Vec3d vec3d = new Vec3d(this.x, this.y, this.z);
+
+
 
 		// Calculate the center of the explosion
 		Vec3d explosionCenter = new Vec3d(this.x, this.y, this.z);
@@ -174,6 +188,7 @@ public class WindExplosion extends Explosion {
 
 
 	}
+
 
 
 

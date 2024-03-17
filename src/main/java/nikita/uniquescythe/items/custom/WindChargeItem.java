@@ -17,6 +17,7 @@ import net.minecraft.util.math.Box;
 import net.minecraft.world.World;
 import nikita.uniquescythe.custom.WindExplosion;
 import nikita.uniquescythe.entities.custom.WindChargeProjectileEntity;
+import nikita.uniquescythe.sounds.ModSounds;
 
 
 import java.util.List;
@@ -36,9 +37,9 @@ public class WindChargeItem extends Item {
 			user.getX(),
 			user.getY(),
 			user.getZ(),
-			SoundEvents.ENTITY_SNOWBALL_THROW,
+			ModSounds.WIND_CHARGE_THROW,
 			SoundCategory.NEUTRAL,
-			0.3F,
+			2F,
 			0.4F / (world.getRandom().nextFloat() * 0.4F + 0.8F)
 		);
 		if (!world.isClient) {

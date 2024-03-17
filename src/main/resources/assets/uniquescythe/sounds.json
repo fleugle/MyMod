@@ -28,5 +28,11 @@
     "sounds": [
       "uniquescythe:w_b"
     ]
+  },
+  "w_th": {
+    "subtitle": "sounds.uniquescythe.w_th",
+    "sounds": [
+      "uniquescythe:w_th"
+    ]
   }
 }

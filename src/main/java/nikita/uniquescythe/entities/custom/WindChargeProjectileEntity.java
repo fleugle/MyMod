@@ -8,6 +8,8 @@ import net.minecraft.item.Item;
 import net.minecraft.network.listener.ClientPlayPacketListener;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.s2c.play.EntitySpawnS2CPacket;
+import net.minecraft.particle.ParticleTypes;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.hit.BlockHitResult;
@@ -57,6 +59,8 @@ public class WindChargeProjectileEntity extends ThrownItemEntity {
 		return ModItems.WIND_CHARGE;
 	}
 
+
+
 	@Override
 	public Packet<ClientPlayPacketListener> createSpawnPacket() {
 		return new EntitySpawnS2CPacket(this);
@@ -66,6 +70,21 @@ public class WindChargeProjectileEntity extends ThrownItemEntity {
 	protected void onBlockHit(BlockHitResult blockHitResult) {
 
 		if(!this.getWorld().isClient()){
+			World world = this.getWorld();
+			if (world instanceof ServerWorld) {
+				ServerWorld serverWorld = (ServerWorld) world;
+
+				// Spawn smoke particles in a radius of 2 blocks
+				serverWorld.spawnParticles(ParticleTypes.EXPLOSION,
+					getPos().getX()  + 0.5,
+					getPos().getY()  + 0.5,
+					getPos().getZ()  + 0.5,
+					30, 2, 2, 2, 0.1);
+			}
+
+
+
+
 			float explosionSize = 3f;
 			this.getWorld().sendEntityStatus(this, (byte) 3);
 			WindExplosion explosion = new WindExplosion(getWorld(), null, getPos().getX(), getPos().getY(), getPos().getZ(), explosionSize);
@@ -81,10 +100,17 @@ public class WindChargeProjectileEntity extends ThrownItemEntity {
 
 
 
-				livingEntity.addVelocity(1.3, 1.3,1.3);//boost to the sky
+				livingEntity.addVelocity(0, 1.3,0);//boost to the sky
 			}
 
 			 */
+
+			// Spawn smoke particles in a radius of 2 blocks
+
+
+
+
+
 
 
 			//sound on block collision
@@ -94,12 +120,14 @@ public class WindChargeProjectileEntity extends ThrownItemEntity {
 				getPos().getY(),
 				getPos().getZ(),
 				ModSounds.WIND_CHARGE_BURST,
-				SoundCategory.AMBIENT,
+				SoundCategory.NEUTRAL,
 				1F,
 				0.4F / (getWorld().getRandom().nextFloat() * 0.4F + 0.8F)
 			);
 
 		}
+
+
 
 		this.discard();
 		super.onBlockHit(blockHitResult);
