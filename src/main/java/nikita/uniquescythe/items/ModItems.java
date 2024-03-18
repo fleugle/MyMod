@@ -39,7 +39,7 @@ public class ModItems {
 	public static final Item BREEZE_ROD = registerItem("breeze_rod", new Item(new FabricItemSettings().maxCount(16)));
 
 	//MACE registry
-	public static final Item MACE = registerItem("mace", new MaceItem(ToolMaterials.NETHERITE,1, -3f, new FabricItemSettings())); //The scythe
+	public static final Item MACE = registerItem("mace", new MaceItem(ModToolMaterial.BREEZE_ROD,1, -3f, new FabricItemSettings())); //The scythe
 
 	// *end of the registering items section*
 

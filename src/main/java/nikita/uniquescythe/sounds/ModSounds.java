@@ -20,6 +20,8 @@ public class ModSounds {
 
 	public static SoundEvent WIND_CHARGE_THROW = registerSound("w_th");
 
+	public static SoundEvent MACE_BONK = registerSound("mace_b");
+
 	public static SoundEvent MUFLON = registerSound("muflon");
 
     // actual registration of all the custom SoundEvents
