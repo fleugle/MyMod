@@ -125,4 +125,14 @@ public abstract class ItemRendererMixin {
 		}//rendering big model if it should be displayed not in gui AND not on the ground
 		return value;
 	}
+
+
+	@ModifyVariable(method = "renderItem", at = @At(value = "HEAD"), argsOnly = true)
+	public BakedModel useBigMace(BakedModel value, ItemStack stack, ModelTransformationMode renderMode, boolean leftHanded, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
+		if ((stack.isOf(ModItems.MACE) && renderMode != (ModelTransformationMode.GUI))
+			&& (stack.isOf(ModItems.MACE) && renderMode != (ModelTransformationMode.GROUND))) {
+			return ((ItemRendererAccessor) this).mccourse$getModels().getModelManager().getModel(new ModelIdentifier(UniqueScythe.MOD_ID, "mace_big", "inventory"));
+		}//rendering big model if it should be displayed not in gui AND not on the ground
+		return value;
+	}
 }
