@@ -34,5 +34,11 @@
     "sounds": [
       "uniquescythe:w_th"
     ]
+  },
+  "mace_b": {
+    "subtitle": "sounds.uniquescythe.mace_b",
+    "sounds": [
+      "uniquescythe:mace_b"
+    ]
   }
 }

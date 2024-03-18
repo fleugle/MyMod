@@ -15,5 +15,5 @@ public class ModEntities {
 	public static final EntityType<WindChargeProjectileEntity> WIND_CHARGE_PROJECTILE = Registry.register(Registries.ENTITY_TYPE,
 		new Identifier(UniqueScythe.MOD_ID, "wind_charge_projectile"),
 		FabricEntityTypeBuilder.<WindChargeProjectileEntity>create(SpawnGroup.MISC, WindChargeProjectileEntity :: new)
-			.dimensions(EntityDimensions.fixed(0.35f, 0.35f)).build());
+			.dimensions(EntityDimensions.fixed(1f, 1f)).build());
 }

@@ -45,6 +45,8 @@ public class WindChargeProjectileEntity extends ThrownItemEntity {
 
 
 
+
+
 	public void setWindProjectyleProperties(Entity user, float pitch, float yaw, float roll, float modifierZ, float modifierXYZ) {
 		float f = -MathHelper.sin(yaw * (float) (Math.PI / 180.0)) * MathHelper.cos(pitch * (float) (Math.PI / 180.0));
 		float g = -MathHelper.sin((pitch + roll) * (float) (Math.PI / 180.0));
@@ -82,36 +84,10 @@ public class WindChargeProjectileEntity extends ThrownItemEntity {
 					30, 2, 2, 2, 0.1);
 			}
 
-
-
-
 			float explosionSize = 3f;
 			this.getWorld().sendEntityStatus(this, (byte) 3);
 			WindExplosion explosion = new WindExplosion(getWorld(), null, getPos().getX(), getPos().getY(), getPos().getZ(), explosionSize);
 			explosion.collectBlocksAndDamageEntities();
-
-
-
-			/*
-			// Apply knockback to nearby living entities
-			List<? extends Entity> nearbyEntities = getWorld().getOtherEntities(null, new Box(getBlockPos()).expand(explosionSize), entity -> entity instanceof LivingEntity);
-			for (Entity entity : nearbyEntities) {
-				LivingEntity livingEntity = (LivingEntity) entity;
-
-
-
-				livingEntity.addVelocity(0, 1.3,0);//boost to the sky
-			}
-
-			 */
-
-			// Spawn smoke particles in a radius of 2 blocks
-
-
-
-
-
-
 
 			//sound on block collision
 			getWorld().playSound(
@@ -127,11 +103,17 @@ public class WindChargeProjectileEntity extends ThrownItemEntity {
 
 		}
 
+		//add something to do wuth water, so that it explodes as soon as touches it
 
 
 		this.discard();
 		super.onBlockHit(blockHitResult);
 	}
 
+
+	@Override
+	public boolean collides() {
+		return true;
+	}
 
 }

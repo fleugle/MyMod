@@ -1,29 +1,14 @@
 package nikita.uniquescythe.items.custom;
 
-import com.google.common.collect.BiMap;
+
 import net.fabricmc.fabric.api.event.player.AttackEntityCallback;
 import net.fabricmc.fabric.api.item.v1.FabricItem;
-import net.minecraft.advancement.criterion.Criteria;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Oxidizable;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.damage.DamageSource;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.*;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.nbt.NbtCompound;
-import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundCategory;
-import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
-import net.minecraft.util.Hand;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
-import net.minecraft.world.WorldEvents;
-import net.minecraft.world.event.GameEvent;
-
-import java.util.Optional;
+import nikita.uniquescythe.custom.WindExplosion;
+import nikita.uniquescythe.sounds.ModSounds;
 
 
 public class MaceItem extends AxeItem implements FabricItem {
@@ -56,8 +41,12 @@ public class MaceItem extends AxeItem implements FabricItem {
 	@Override
 	public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
 		if (attacker.fallDistance > 5) {
-			// Calculate additional damage based on fall distance
-
+			float explosionSize = 3f;
+			attacker.getWorld().sendEntityStatus(target, (byte) 3);
+			WindExplosion explosion = new WindExplosion(target.getWorld(), null, target.getPos().getX(), target.getPos().getY(), target.getPos().getZ(), explosionSize);
+			explosion.collectBlocksAndDamageEntities();
+			// sound
+			attacker.getWorld().playSound(null, attacker.getBlockPos(), ModSounds.MACE_BONK, SoundCategory.NEUTRAL, 5f, 1f);
 		}
 
 
