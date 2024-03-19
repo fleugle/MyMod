@@ -7,7 +7,7 @@ import nikita.uniquescythe.particles.ModParticles;
 import nikita.uniquescythe.sounds.ModSounds;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
+//I've rolled back. good.
 public class UniqueScythe implements ModInitializer {
 	// This logger is used to write text to the console and the log file.
 	// It is considered best practice to use your mod id as the logger's name.
