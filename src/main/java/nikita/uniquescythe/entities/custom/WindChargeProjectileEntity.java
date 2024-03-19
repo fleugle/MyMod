@@ -30,68 +30,13 @@ import nikita.uniquescythe.sounds.ModSounds;
 
 public class WindChargeProjectileEntity extends ThrownItemEntity {
 
-	public final AnimationState idleState = new AnimationState();
-	private int idleAnimationTimeout = 0;
-
-
-	private void setupAnimationStates() {
-		if (this.idleAnimationTimeout <= 0) {
-			this.idleAnimationTimeout = this.random.nextInt(40) + 80;
-			this.idleState.restart(this.age);
-		} else {
-			--this.idleAnimationTimeout;
-		}
-	}
 
 
 
 
-	@Override
-	public void tick() {
-		super.tick();
-		HitResult hitResult = ProjectileUtil.getCollision(this, this::canHit);
-		boolean bl = false;
 
-		if (this.getWorld().isClient()){
-			//setupAnimationStates();
-		}
 
-		if (hitResult.getType() == HitResult.Type.BLOCK) {
-			BlockPos blockPos = ((BlockHitResult)hitResult).getBlockPos();
-			BlockState blockState = this.getWorld().getBlockState(blockPos);
-			if (blockState.isOf(Blocks.NETHER_PORTAL)) {
-				this.setInNetherPortal(blockPos);
-				bl = true;
-			} else if (blockState.isOf(Blocks.END_GATEWAY)) {
-				BlockEntity blockEntity = this.getWorld().getBlockEntity(blockPos);
-				if (blockEntity instanceof EndGatewayBlockEntity && EndGatewayBlockEntity.canTeleport(this)) {
-					EndGatewayBlockEntity.tryTeleportingEntity(this.getWorld(), blockPos, blockState, this, (EndGatewayBlockEntity)blockEntity);
-				}
 
-				bl = true;
-			}
-		}
-
-		if (hitResult.getType() != HitResult.Type.MISS && !bl) {
-			this.onCollision(hitResult);
-		}
-
-		this.checkBlockCollision();
-		Vec3d vec3d = this.getVelocity();
-		double d = this.getX() + vec3d.x;
-		double e = this.getY() + vec3d.y;
-		double f = this.getZ() + vec3d.z;
-		this.updateRotation();
-		float h = 0.99F;;
-
-		this.setVelocity(vec3d.multiply((double)h));
-		if (!this.hasNoGravity()) {
-			Vec3d vec3d2 = this.getVelocity();
-			this.setVelocity(vec3d2.x, vec3d2.y - (double)this.getGravity(), vec3d2.z);
-		}
-
-		this.setPosition(d, e, f);
-	}
 
 
 
@@ -114,7 +59,6 @@ public class WindChargeProjectileEntity extends ThrownItemEntity {
 
 
 	public void setWindProjectyleProperties(Entity user, float pitch, float yaw, float roll, float modifierZ, float modifierXYZ) {
-		this.idleState.start(this.age);
 		float f = -MathHelper.sin(yaw * (float) (Math.PI / 180.0)) * MathHelper.cos(pitch * (float) (Math.PI / 180.0));
 		float g = -MathHelper.sin((pitch + roll) * (float) (Math.PI / 180.0));
 		float h = MathHelper.cos(yaw * (float) (Math.PI / 180.0)) * MathHelper.cos(pitch * (float) (Math.PI / 180.0));
@@ -176,5 +120,7 @@ public class WindChargeProjectileEntity extends ThrownItemEntity {
 		this.discard();
 		super.onBlockHit(blockHitResult);
 	}
+
+
 
 }
