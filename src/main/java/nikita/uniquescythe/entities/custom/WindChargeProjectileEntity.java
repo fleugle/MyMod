@@ -123,4 +123,8 @@ public class WindChargeProjectileEntity extends ThrownItemEntity {
 
 
 
+	@Override
+	public boolean collides() {
+		return true;
+	}
 }
