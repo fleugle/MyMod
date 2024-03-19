@@ -25,11 +25,11 @@ public class WindChargeProjectileEntityModel<T extends WindChargeProjectileEntit
 		ModelPartData modelPartData = modelData.getRoot();
 		ModelPartData wind_charge = modelPartData.addChild("wind_charge", ModelPartBuilder.create(), ModelTransform.pivot(0.0F, 24.0F, 0.0F));
 
-		ModelPartData charge = wind_charge.addChild("charge", ModelPartBuilder.create().uv(21, 18).cuboid(-2.0F, -4.0F, -2.0F, 4.0F, 4.0F, 4.0F, new Dilation(0.0F)), ModelTransform.pivot(0.0F, 0.0F, 0.0F));
+		ModelPartData charge = wind_charge.addChild("charge", ModelPartBuilder.create().uv(21, 18).cuboid(-2.0F, -25.0F, -2.0F, 4.0F, 4.0F, 4.0F, new Dilation(0.0F)), ModelTransform.pivot(0.0F, 0.0F, 0.0F));
 
-		ModelPartData wind_inner = wind_charge.addChild("wind_inner", ModelPartBuilder.create().uv(0, 11).cuboid(-3.0F, -4.0F, -3.0F, 6.0F, 4.0F, 6.0F, new Dilation(0.0F)), ModelTransform.pivot(0.0F, 0.0F, 0.0F));
+		ModelPartData wind_inner = wind_charge.addChild("wind_inner", ModelPartBuilder.create().uv(0, 11).cuboid(-3.0F, -25.0F, -3.0F, 6.0F, 4.0F, 6.0F, new Dilation(0.0F)), ModelTransform.pivot(0.0F, 0.0F, 0.0F));
 
-		ModelPartData wind_outer = wind_charge.addChild("wind_outer", ModelPartBuilder.create().uv(0, 54).cuboid(-4.0F, -3.0F, -4.0F, 8.0F, 2.0F, 8.0F, new Dilation(0.0F)), ModelTransform.pivot(0.0F, 0.0F, 0.0F));
+		ModelPartData wind_outer = wind_charge.addChild("wind_outer", ModelPartBuilder.create().uv(0, 54).cuboid(-4.0F, -24.0F, -4.0F, 8.0F, 2.0F, 8.0F, new Dilation(0.0F)), ModelTransform.pivot(0.0F, 0.0F, 0.0F));
 		return TexturedModelData.of(modelData, 64, 64);
 	}
 	@Override
