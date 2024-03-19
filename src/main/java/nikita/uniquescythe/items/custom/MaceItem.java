@@ -41,10 +41,6 @@ public class MaceItem extends AxeItem implements FabricItem {
 	@Override
 	public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
 		if (attacker.fallDistance > 5) {
-			float explosionSize = 3f;
-			attacker.getWorld().sendEntityStatus(target, (byte) 3);
-			WindExplosion explosion = new WindExplosion(target.getWorld(), null, target.getPos().getX(), target.getPos().getY(), target.getPos().getZ(), explosionSize);
-			explosion.collectBlocksAndDamageEntities();
 			// sound
 			attacker.getWorld().playSound(null, attacker.getBlockPos(), ModSounds.MACE_BONK, SoundCategory.NEUTRAL, 5f, 1f);
 		}
