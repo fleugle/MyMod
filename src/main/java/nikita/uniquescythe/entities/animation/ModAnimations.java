@@ -32,9 +32,4 @@ public class ModAnimations {
 					PartAnimation.Interpolations.LINEAR),
 				new AnimationKeyframe(6f, Animator.rotate(0f, -360f, 0f),
 					PartAnimation.Interpolations.LINEAR))).build();
-
-
-
-
-
 }

@@ -57,7 +57,6 @@ public class WindChargeProjectileEntity extends ThrownItemEntity {
 
 
 
-
 	public void setWindProjectyleProperties(Entity user, float pitch, float yaw, float roll, float modifierZ, float modifierXYZ) {
 		float f = -MathHelper.sin(yaw * (float) (Math.PI / 180.0)) * MathHelper.cos(pitch * (float) (Math.PI / 180.0));
 		float g = -MathHelper.sin((pitch + roll) * (float) (Math.PI / 180.0));
@@ -72,6 +71,8 @@ public class WindChargeProjectileEntity extends ThrownItemEntity {
 		super.tick();
 		this.idleState.restart(this.age);
 	}
+
+
 
 	@Override
 	protected Item getDefaultItem() {
