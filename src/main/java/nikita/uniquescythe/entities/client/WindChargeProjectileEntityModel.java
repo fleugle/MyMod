@@ -40,7 +40,7 @@ public class WindChargeProjectileEntityModel<T extends WindChargeProjectileEntit
 	@Override
 	public void setAngles(T windChargeProjectileEntity , float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
 		this.getPart().traverse().forEach(ModelPart::resetTransform);
-		this.animate(windChargeProjectileEntity.idleState, ModAnimations.WIND_CHARGE, ageInTicks, 1.5F);
+		this.animate(windChargeProjectileEntity.idleState, ModAnimations.WIND_CHARGE, ageInTicks, 2.5F);
 	}
 	@Override
 	public void render(MatrixStack matrices, VertexConsumer vertexConsumer, int light, int overlay, float red, float green, float blue, float alpha) {
