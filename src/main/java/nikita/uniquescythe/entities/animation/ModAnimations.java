@@ -16,7 +16,7 @@ public class ModAnimations {
 			new PartAnimation(PartAnimation.AnimationTargets.ROTATE,
 				new AnimationKeyframe(0f, Animator.rotate(0f, 0f, 0f),
 					PartAnimation.Interpolations.LINEAR),
-				new AnimationKeyframe(6f, Animator.rotate(0f, 0, 0f),
+				new AnimationKeyframe(6f, Animator.rotate(0f, -1080.0F, 0f),
 					PartAnimation.Interpolations.LINEAR)))
 		.addPartAnimation("wind_inner",
 			new PartAnimation(PartAnimation.AnimationTargets.ROTATE,
@@ -24,7 +24,7 @@ public class ModAnimations {
 					PartAnimation.Interpolations.LINEAR),
 				new AnimationKeyframe(3f, Animator.rotate(0f, -360f, 0f),
 					PartAnimation.Interpolations.LINEAR),
-				new AnimationKeyframe(6f, Animator.rotate(0f, 0, 0f),
+				new AnimationKeyframe(6f, Animator.rotate(0f, -720, 0f),
 					PartAnimation.Interpolations.LINEAR)))
 		.addPartAnimation("wind_outer",
 			new PartAnimation(PartAnimation.AnimationTargets.ROTATE,
