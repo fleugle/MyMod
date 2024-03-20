@@ -23,6 +23,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+import net.minecraft.world.event.GameEvent;
 import nikita.uniquescythe.custom.WindExplosion;
 import nikita.uniquescythe.entities.ModEntities;
 import nikita.uniquescythe.entities.animation.ModAnimations;
@@ -66,10 +67,66 @@ public class WindChargeProjectileEntity extends ThrownItemEntity {
 		this.setVelocity(this.getVelocity().add(vec3d.x, user.isOnGround() ? 0.0 : vec3d.y, vec3d.z));
 	}
 
+
+
+
+	@Override
+	protected boolean canHit(Entity entity) {
+		return super.canHit(entity) && !entity.noClip;
+	}
+
+	@Override
+	public float getTargetingMargin() {
+		return 1.0F;
+	}
+
+
+	//this.idleState.restart(this.age);
 	@Override
 	public void tick() {
-		super.tick();
+		this.baseTick();
+
+
 		this.idleState.restart(this.age);
+
+
+		HitResult hitResult = ProjectileUtil.getCollision(this, this::canHit);
+		boolean bl = false;
+		if (hitResult.getType() == HitResult.Type.BLOCK) {
+			BlockPos blockPos = ((BlockHitResult)hitResult).getBlockPos();
+			BlockState blockState = this.getWorld().getBlockState(blockPos);
+			if (blockState.isOf(Blocks.NETHER_PORTAL)) {
+				this.setInNetherPortal(blockPos);
+				bl = true;
+			} else if (blockState.isOf(Blocks.END_GATEWAY)) {
+				BlockEntity blockEntity = this.getWorld().getBlockEntity(blockPos);
+				if (blockEntity instanceof EndGatewayBlockEntity && EndGatewayBlockEntity.canTeleport(this)) {
+					EndGatewayBlockEntity.tryTeleportingEntity(this.getWorld(), blockPos, blockState, this, (EndGatewayBlockEntity)blockEntity);
+				}
+
+				bl = true;
+			}
+		}
+
+		if (hitResult.getType() != HitResult.Type.MISS && !bl) {
+			this.onCollision(hitResult);
+		}
+
+		this.checkBlockCollision();
+		Vec3d vec3d = this.getVelocity();
+		double d = this.getX() + vec3d.x;
+		double e = this.getY() + vec3d.y;
+		double f = this.getZ() + vec3d.z;
+		this.updateRotation();
+		float h = 1;
+
+		this.setVelocity(vec3d.multiply((double)h));
+		if (!this.hasNoGravity()) {
+			Vec3d vec3d2 = this.getVelocity();
+			this.setVelocity(vec3d2.x, vec3d2.y - (double)this.getGravity(), vec3d2.z);
+		}
+
+		this.setPosition(d, e, f);
 	}
 
 

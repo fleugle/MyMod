@@ -30,7 +30,7 @@ public class ModItems {
 	public static final Item EASTER_EGG = registerItem("easter_egg", new EasterEggItem(new FabricItemSettings().rarity(Rarity.UNCOMMON)));
 
 	//WIND CHARGE PROTOTYPE
-	public static final Item WIND_CHARGE = registerItem("wind_charge", new WindChargeItem(new FabricItemSettings().maxCount(32)));
+	public static final Item WIND_CHARGE = registerItem("wind_charge", new WindChargeItem(new FabricItemSettings().maxCount(64)));
 
     //WANDERERS_SWORD registry
     public static final Item WANDERERS_SWORD = registerItem("wanderers_sword", new WanderersSwordItem(ModToolMaterial.FROSTY_STEEL,1, 100f, new FabricItemSettings()));

@@ -40,10 +40,9 @@ public class MaceItem extends AxeItem implements FabricItem {
 
 	@Override
 	public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-		if (attacker.fallDistance > 5) {
-			// sound
-			attacker.getWorld().playSound(null, attacker.getBlockPos(), ModSounds.MACE_BONK, SoundCategory.NEUTRAL, 5f, 1f);
-		}
+		// sound
+		attacker.getWorld().playSound(null, attacker.getBlockPos(), ModSounds.MACE_BONK, SoundCategory.PLAYERS, 7f, 1f);
+
 
 
 		return super.postHit(stack, target, attacker);
