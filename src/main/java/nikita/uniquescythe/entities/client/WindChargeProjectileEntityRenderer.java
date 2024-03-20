@@ -10,6 +10,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Axis;
 import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.util.math.BlockPos;
+import nikita.uniquescythe.entities.animation.ModAnimations;
 import nikita.uniquescythe.entities.custom.WindChargeProjectileEntity;
 
 public class WindChargeProjectileEntityRenderer extends EntityRenderer<WindChargeProjectileEntity> {
@@ -23,7 +24,6 @@ public class WindChargeProjectileEntityRenderer extends EntityRenderer<WindCharg
 
 	public WindChargeProjectileEntityRenderer(EntityRendererFactory.Context context) {
 		super(context);
-
 		this.model = new WindChargeProjectileEntityModel<>(context.getPart(ModModelLayers.WIND_CHARGE)); //tells the model to get the part you want
 	}
 
@@ -34,9 +34,16 @@ public class WindChargeProjectileEntityRenderer extends EntityRenderer<WindCharg
 
 	public void render(WindChargeProjectileEntity windChargeProjectileEntity, float f, float g, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i) {
 		matrixStack.push(); //you'll need a push and pop to add the model
+		this.model.setAngles(windChargeProjectileEntity,1,1,2000,1,1);
+
 		VertexConsumer vertexConsumer = vertexConsumerProvider.getBuffer(TRANSLUCENT_TEXTURE); //applies the texture to the model
 		this.model.render(matrixStack, vertexConsumer, i, OverlayTexture.DEFAULT_UV, 1.0F, 1.0F, 1.0F, 1.0F); //actually renders shit
 		matrixStack.pop();
+
+		// Apply animations here
+
+
+
 		super.render(windChargeProjectileEntity, f, g, matrixStack, vertexConsumerProvider, i);
 	}
 

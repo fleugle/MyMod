@@ -3,6 +3,7 @@ package nikita.uniquescythe.entities.client;
 
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.model.*;
+import net.minecraft.client.render.entity.animation.CamelEntityAnimations;
 import net.minecraft.client.render.entity.model.SinglePartEntityModel;
 import net.minecraft.client.util.math.MatrixStack;
 import nikita.uniquescythe.entities.animation.ModAnimations;
@@ -14,11 +15,14 @@ public class WindChargeProjectileEntityModel<T extends WindChargeProjectileEntit
 	private final ModelPart charge;
 	private final ModelPart wind_inner;
 	private final ModelPart wind_outer;
+
 	public WindChargeProjectileEntityModel(ModelPart root) {
 		this.wind_charge = root.getChild("wind_charge");
 		this.charge = wind_charge.getChild("charge");
 		this.wind_inner = wind_charge.getChild("wind_inner");
 		this.wind_outer = wind_charge.getChild("wind_outer");
+
+
 
 	}
 	public static TexturedModelData getTexturedModelData() {
@@ -34,8 +38,9 @@ public class WindChargeProjectileEntityModel<T extends WindChargeProjectileEntit
 		return TexturedModelData.of(modelData, 64, 64);
 	}
 	@Override
-	public void setAngles(WindChargeProjectileEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+	public void setAngles(T windChargeProjectileEntity , float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
 		this.getPart().traverse().forEach(ModelPart::resetTransform);
+		this.animate(windChargeProjectileEntity.idleState, ModAnimations.WIND_CHARGE, ageInTicks, 3.0F);
 	}
 	@Override
 	public void render(MatrixStack matrices, VertexConsumer vertexConsumer, int light, int overlay, float red, float green, float blue, float alpha) {

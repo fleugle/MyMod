@@ -25,6 +25,7 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import nikita.uniquescythe.custom.WindExplosion;
 import nikita.uniquescythe.entities.ModEntities;
+import nikita.uniquescythe.entities.animation.ModAnimations;
 import nikita.uniquescythe.items.ModItems;
 import nikita.uniquescythe.sounds.ModSounds;
 
@@ -32,8 +33,7 @@ public class WindChargeProjectileEntity extends ThrownItemEntity {
 
 
 
-
-
+	public final AnimationState idleState = new AnimationState();
 
 
 
@@ -65,6 +65,12 @@ public class WindChargeProjectileEntity extends ThrownItemEntity {
 		this.setVelocity((double)f, (double)g, (double)h, modifierZ, modifierXYZ);
 		Vec3d vec3d = user.getVelocity();
 		this.setVelocity(this.getVelocity().add(vec3d.x, user.isOnGround() ? 0.0 : vec3d.y, vec3d.z));
+	}
+
+	@Override
+	public void tick() {
+		super.tick();
+		this.idleState.restart(this.age);
 	}
 
 	@Override
