@@ -7,9 +7,7 @@ import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
 import nikita.uniquescythe.entities.ModEntities;
-import nikita.uniquescythe.entities.client.ModModelLayers;
-import nikita.uniquescythe.entities.client.WindChargeProjectileEntityModel;
-import nikita.uniquescythe.entities.client.WindChargeProjectileEntityRenderer;
+import nikita.uniquescythe.entities.client.*;
 import nikita.uniquescythe.particles.ModParticles;
 import nikita.uniquescythe.particles.custom.VoidAttackParticle;
 
@@ -19,12 +17,20 @@ public class UniqueScytheClient implements ClientModInitializer {
 		//wtf is that
 		ParticleFactoryRegistry.getInstance().register(ModParticles.VOID_ATTACK_PARTICLE, VoidAttackParticle.Factory::new);
 
-		//EntityRendererRegistry.register(ModEntities.WIND_CHARGE_PROJECTILE, FlyingItemEntityRenderer::new); //FlyingItemEntityRenderer::new needs to be changed in  advance
 
-		EntityRendererRegistry.register(ModEntities.WIND_CHARGE_PROJECTILE, WindChargeProjectileEntityRenderer::new); //FlyingItemEntityRenderer::new needs to be changed in  advance
+		//mod model layers
+		EntityModelLayerRegistry.registerModelLayer(ModModelLayers.WIND_CHARGE, WindChargeProjectileEntityModel::getTexturedModelData);//wind charge
+
+		EntityModelLayerRegistry.registerModelLayer(ModModelLayers.BREEZE, BreezeEntityModel::getTexturedModelData);//breeze
 
 
-		EntityModelLayerRegistry.registerModelLayer(ModModelLayers.WIND_CHARGE, WindChargeProjectileEntityModel::getTexturedModelData);
+		EntityRendererRegistry.register(ModEntities.WIND_CHARGE_PROJECTILE, WindChargeProjectileEntityRenderer::new);
+
+		EntityRendererRegistry.register(ModEntities.BREEZE, BreezeEntityRenderer::new);
+
+
+
+
 
 
 
