@@ -34,13 +34,12 @@ public class WindChargeProjectileEntityRenderer extends EntityRenderer<WindCharg
 
 	public void render(WindChargeProjectileEntity windChargeProjectileEntity, float f, float g, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i) {
 		matrixStack.push(); //you'll need a push and pop to add the model
+		// Apply animations here
 		this.model.setAngles(windChargeProjectileEntity,1,1,2000,1,1);
 
 		VertexConsumer vertexConsumer = vertexConsumerProvider.getBuffer(TRANSLUCENT_TEXTURE); //applies the texture to the model
 		this.model.render(matrixStack, vertexConsumer, i, OverlayTexture.DEFAULT_UV, 1.0F, 1.0F, 1.0F, 1.0F); //actually renders shit
 		matrixStack.pop();
-
-		// Apply animations here
 
 
 
