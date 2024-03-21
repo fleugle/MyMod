@@ -3,7 +3,6 @@ package nikita.uniquescythe.entities.client;
 
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.model.*;
-import net.minecraft.client.render.entity.animation.CamelEntityAnimations;
 import net.minecraft.client.render.entity.model.SinglePartEntityModel;
 import net.minecraft.client.util.math.MatrixStack;
 import nikita.uniquescythe.entities.animation.ModAnimations;
