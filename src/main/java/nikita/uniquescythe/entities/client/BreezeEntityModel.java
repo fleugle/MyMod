@@ -60,17 +60,17 @@ public class BreezeEntityModel<T extends BreezeEntity> extends SinglePartEntityM
 	public static TexturedModelData getTexturedModelData() {
 		ModelData modelData = new ModelData();
 		ModelPartData modelPartData = modelData.getRoot();
-		ModelPartData breeze = modelPartData.addChild("breeze", ModelPartBuilder.create(), ModelTransform.pivot(0.0F, 0.0F, 0.0F));
+		ModelPartData breeze = modelPartData.addChild("breeze", ModelPartBuilder.create(), ModelTransform.of(0.0F, 0F, 0.0F, 3.1416F, 0.0F, 0.0F));
 
 		ModelPartData body = breeze.addChild("body", ModelPartBuilder.create(), ModelTransform.pivot(0.0F, 0.0F, 0.0F));
 
-		ModelPartData head = body.addChild("head", ModelPartBuilder.create().uv(0, 0).cuboid(-4.0F, 21.0F, -4.0F, 8.0F, 8.0F, 8.0F, new Dilation(0.0F)), ModelTransform.pivot(0.0F, 0.0F, 0.0F));
+		ModelPartData head = body.addChild("head", ModelPartBuilder.create().uv(0, 0).cuboid(-4.0F, -29.0F, -4.0F, 8.0F, 8.0F, 8.0F, new Dilation(0.0F)), ModelTransform.pivot(0.0F, 0.0F, 0.0F));
 
-		ModelPartData eyes = head.addChild("eyes", ModelPartBuilder.create().uv(16, 16).cuboid(-4.0F, -0.5F, 0.0F, 8.0F, 3.0F, 0.0F, new Dilation(0.0F)), ModelTransform.pivot(0.0F, 22.5F, -4.25F));
+		ModelPartData eyes = head.addChild("eyes", ModelPartBuilder.create().uv(16, 16).cuboid(-4.0F, -2.5F, 0.0F, 8.0F, 3.0F, 0.0F, new Dilation(0.0F)), ModelTransform.pivot(0.0F, -22.5F, -4.25F));
 
-		ModelPartData eyebrows = head.addChild("eyebrows", ModelPartBuilder.create().uv(4, 24).cuboid(-5.0F, -0.75F, -3.5F, 10.0F, 3.0F, 4.0F, new Dilation(0.0F)), ModelTransform.pivot(0.0F, 23.75F, -1.5F));
+		ModelPartData eyebrows = head.addChild("eyebrows", ModelPartBuilder.create().uv(4, 24).cuboid(-5.0F, -2.25F, -3.5F, 10.0F, 3.0F, 4.0F, new Dilation(0.0F)), ModelTransform.pivot(0.0F, -23.75F, -1.5F));
 
-		ModelPartData limbs = body.addChild("limbs", ModelPartBuilder.create(), ModelTransform.pivot(0.0F, 15.0F, 0.0F));
+		ModelPartData limbs = body.addChild("limbs", ModelPartBuilder.create(), ModelTransform.pivot(0.0F, -15.0F, 0.0F));
 
 		ModelPartData leg_r1 = limbs.addChild("leg_r1", ModelPartBuilder.create().uv(0, 17).cuboid(-1.0F, -4.0F, -1.0F, 2.0F, 8.0F, 2.0F, new Dilation(0.0F)), ModelTransform.of(0.0F, 0.0F, -3.0F, 0.2182F, 0.0F, 0.0F));
 
@@ -82,27 +82,27 @@ public class BreezeEntityModel<T extends BreezeEntity> extends SinglePartEntityM
 
 		ModelPartData wind_ar = breeze.addChild("wind_ar", ModelPartBuilder.create(), ModelTransform.pivot(0.0F, 0.0F, 0.0F));
 
-		ModelPartData details = wind_ar.addChild("details", ModelPartBuilder.create(), ModelTransform.pivot(-0.327F, 17.2449F, 0.6996F));
+		ModelPartData details = wind_ar.addChild("details", ModelPartBuilder.create(), ModelTransform.pivot(-0.327F, -17.2449F, 0.6996F));
 
-		ModelPartData cube_r1 = details.addChild("cube_r1", ModelPartBuilder.create().uv(123, 0).cuboid(-5.5F, -8.0F, 3.0F, 11.0F, 8.0F, 0.0F, new Dilation(0.0F)), ModelTransform.of(-8.3841F, -1.4496F, 11.7338F, -2.6616F, 0.6545F, 3.1416F));
+		ModelPartData cube_r1 = details.addChild("cube_r1", ModelPartBuilder.create().uv(123, 0).cuboid(-5.5F, 0.0F, 3.0F, 11.0F, 8.0F, 0.0F, new Dilation(0.0F)), ModelTransform.of(-8.3841F, 1.4496F, 11.7338F, -2.6616F, 0.6545F, 3.1416F));
 
-		ModelPartData cube_r2 = details.addChild("cube_r2", ModelPartBuilder.create().uv(123, 0).cuboid(-5.5F, -4.0F, -1.0F, 11.0F, 8.0F, 0.0F, new Dilation(0.0F)), ModelTransform.of(7.2289F, -3.2449F, -8.6134F, 2.8362F, 0.6545F, 3.1416F));
+		ModelPartData cube_r2 = details.addChild("cube_r2", ModelPartBuilder.create().uv(123, 0).cuboid(-5.5F, -4.0F, -1.0F, 11.0F, 8.0F, 0.0F, new Dilation(0.0F)), ModelTransform.of(7.2289F, 3.2449F, -8.6134F, 2.8362F, 0.6545F, 3.1416F));
 
-		ModelPartData cube_r3 = details.addChild("cube_r3", ModelPartBuilder.create().uv(123, 0).cuboid(-5.5F, -2.0F, 1.0F, 11.0F, 8.0F, 0.0F, new Dilation(0.0F)), ModelTransform.of(7.226F, 1.7551F, 7.6654F, 0.4363F, 0.7418F, 0.0F));
+		ModelPartData cube_r3 = details.addChild("cube_r3", ModelPartBuilder.create().uv(123, 0).cuboid(-5.5F, -6.0F, 1.0F, 11.0F, 8.0F, 0.0F, new Dilation(0.0F)), ModelTransform.of(7.226F, -1.7551F, 7.6654F, 0.4363F, 0.7418F, 0.0F));
 
-		ModelPartData cube_r4 = details.addChild("cube_r4", ModelPartBuilder.create().uv(123, 0).cuboid(-8.0F, -3.0F, 1.0F, 11.0F, 8.0F, 0.0F, new Dilation(0.0F)), ModelTransform.of(-7.673F, 1.7551F, -10.6996F, -0.1745F, 0.9163F, 0.0F));
+		ModelPartData cube_r4 = details.addChild("cube_r4", ModelPartBuilder.create().uv(123, 0).cuboid(-8.0F, -5.0F, 1.0F, 11.0F, 8.0F, 0.0F, new Dilation(0.0F)), ModelTransform.of(-7.673F, -1.7551F, -10.6996F, -0.1745F, 0.9163F, 0.0F));
 
-		ModelPartData w1 = wind_ar.addChild("w1", ModelPartBuilder.create().uv(129, 138).cuboid(-2.0F, -1.5F, -2.0F, 4.0F, 3.0F, 4.0F, new Dilation(0.0F)), ModelTransform.pivot(0.0F, 4.75F, 0.0F));
+		ModelPartData w1 = wind_ar.addChild("w1", ModelPartBuilder.create().uv(129, 138).cuboid(-2.0F, -1.5F, -2.0F, 4.0F, 3.0F, 4.0F, new Dilation(0.0F)), ModelTransform.pivot(0.0F, -4.75F, 0.0F));
 
-		ModelPartData w2 = wind_ar.addChild("w2", ModelPartBuilder.create().uv(113, 123).cuboid(-4.0F, -1.5F, -4.0F, 8.0F, 3.0F, 8.0F, new Dilation(0.0F)), ModelTransform.pivot(0.0F, 7.25F, 0.0F));
+		ModelPartData w2 = wind_ar.addChild("w2", ModelPartBuilder.create().uv(113, 123).cuboid(-4.0F, -1.5F, -4.0F, 8.0F, 3.0F, 8.0F, new Dilation(0.0F)), ModelTransform.pivot(0.0F, -7.25F, 0.0F));
 
-		ModelPartData w3 = wind_ar.addChild("w3", ModelPartBuilder.create().uv(0, 129).cuboid(-6.0F, -2.0F, -6.0F, 12.0F, 4.0F, 12.0F, new Dilation(0.0F)), ModelTransform.pivot(0.0F, 10.25F, 0.0F));
+		ModelPartData w3 = wind_ar.addChild("w3", ModelPartBuilder.create().uv(0, 129).cuboid(-6.0F, -2.0F, -6.0F, 12.0F, 4.0F, 12.0F, new Dilation(0.0F)), ModelTransform.pivot(0.0F, -10.25F, 0.0F));
 
-		ModelPartData w4 = wind_ar.addChild("w4", ModelPartBuilder.create().uv(53, 121).cuboid(-9.0F, -3.0F, -9.0F, 18.0F, 6.0F, 18.0F, new Dilation(0.0F)), ModelTransform.pivot(0.0F, 14.75F, 0.0F));
+		ModelPartData w4 = wind_ar.addChild("w4", ModelPartBuilder.create().uv(53, 121).cuboid(-9.0F, -3.0F, -9.0F, 18.0F, 6.0F, 18.0F, new Dilation(0.0F)), ModelTransform.pivot(0.0F, -14.75F, 0.0F));
 
-		ModelPartData w5 = wind_ar.addChild("w5", ModelPartBuilder.create().uv(49, 69).cuboid(-12.0F, -3.5F, -12.0F, 24.0F, 7.0F, 24.0F, new Dilation(0.0F)), ModelTransform.pivot(0.0F, 18.75F, 0.0F));
+		ModelPartData w5 = wind_ar.addChild("w5", ModelPartBuilder.create().uv(49, 69).cuboid(-12.0F, -3.5F, -12.0F, 24.0F, 7.0F, 24.0F, new Dilation(0.0F)), ModelTransform.pivot(0.0F, -18.75F, 0.0F));
 
-		ModelPartData w6 = wind_ar.addChild("w6", ModelPartBuilder.create().uv(53, 121).cuboid(-9.0F, -3.0F, -9.0F, 18.0F, 6.0F, 18.0F, new Dilation(0.0F)), ModelTransform.pivot(0.0F, 22.75F, 0.0F));
+		ModelPartData w6 = wind_ar.addChild("w6", ModelPartBuilder.create().uv(53, 121).cuboid(-9.0F, -3.0F, -9.0F, 18.0F, 6.0F, 18.0F, new Dilation(0.0F)), ModelTransform.pivot(0.0F, -22.75F, 0.0F));
 		return TexturedModelData.of(modelData, 145, 145);
 	}
 	@Override
