@@ -23,10 +23,11 @@ public class UniqueScytheClient implements ClientModInitializer {
 
 		EntityModelLayerRegistry.registerModelLayer(ModModelLayers.BREEZE, BreezeEntityModel::getTexturedModelData);//breeze
 
-
 		EntityRendererRegistry.register(ModEntities.WIND_CHARGE_PROJECTILE, WindChargeProjectileEntityRenderer::new);
 
-		EntityRendererRegistry.register(ModEntities.BREEZE, BreezeEntityRenderer::new);
+		EntityRendererRegistry.register(ModEntities.BREEZE, BreezeEntityRenderer::new );
+
+
 
 
 
