@@ -16,11 +16,11 @@ public class ModEntities {
 	public static final EntityType<WindChargeProjectileEntity> WIND_CHARGE_PROJECTILE = Registry.register(Registries.ENTITY_TYPE,
 		new Identifier(UniqueScythe.MOD_ID, "wind_charge_projectile"),
 		FabricEntityTypeBuilder.<WindChargeProjectileEntity>create(SpawnGroup.MISC, WindChargeProjectileEntity :: new)
-			.dimensions(EntityDimensions.fixed(1f, 1f)).build());
+			.dimensions(EntityDimensions.fixed(0.5f, 0.25f)).build());
 
 
 	public static final EntityType<BreezeEntity> BREEZE = Registry.register(Registries.ENTITY_TYPE,
 		new Identifier(UniqueScythe.MOD_ID, "breeze"),
 		FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, BreezeEntity :: new)
-			.dimensions(EntityDimensions.fixed(1f,1f)).build());
+			.dimensions(EntityDimensions.fixed(1f,2f)).build());
 }

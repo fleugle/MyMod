@@ -18,6 +18,7 @@ import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.util.hit.BlockHitResult;
+import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
@@ -141,6 +142,40 @@ public class WindChargeProjectileEntity extends ThrownItemEntity {
 	@Override
 	public Packet<ClientPlayPacketListener> createSpawnPacket() {
 		return new EntitySpawnS2CPacket(this);
+	}
+
+
+	@Override
+	protected void onEntityHit(EntityHitResult entityHitResult) {
+		if(!getWorld().isClient()){
+			World world = this.getWorld();
+			if (world instanceof ServerWorld) {
+				ServerWorld serverWorld = (ServerWorld) world;
+
+				// Spawn smoke particles in a radius of 2 blocks
+				serverWorld.spawnParticles(ParticleTypes.EXPLOSION,
+					getPos().getX()  + 0.5,
+					getPos().getY()  + 0.5,
+					getPos().getZ()  + 0.5,
+					30, 2, 2, 2, 0.1);
+			}
+			float explosionSize = 3f;
+			this.getWorld().sendEntityStatus(this, (byte) 3);
+			WindExplosion explosion = new WindExplosion(getWorld(), null, getPos().getX(), getPos().getY(), getPos().getZ(), explosionSize);
+			explosion.collectBlocksAndDamageEntities();
+
+			//sound on block collision
+			getWorld().playSound(
+				null,
+				getPos().getX(),
+				getPos().getY(),
+				getPos().getZ(),
+				ModSounds.WIND_CHARGE_BURST,
+				SoundCategory.NEUTRAL,
+				1F,
+				0.4F / (getWorld().getRandom().nextFloat() * 0.4F + 0.8F)
+			);
+		}
 	}
 
 	@Override

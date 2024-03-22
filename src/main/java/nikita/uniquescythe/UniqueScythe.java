@@ -3,6 +3,7 @@ package nikita.uniquescythe;
 import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
+import nikita.uniquescythe.blocks.ModBlocks;
 import nikita.uniquescythe.entities.ModEntities;
 import nikita.uniquescythe.entities.custom.BreezeEntity;
 import nikita.uniquescythe.items.ModItems;
@@ -26,7 +27,7 @@ public class UniqueScythe implements ModInitializer {
 		// Proceed with mild caution.
 
 
-		LOGGER.info("Ghm Ghm, ladies and gentlemen, if you see that message, I declare though, you are either mentally ill little girl, either 30 years stinky man with no social life. ");
+		LOGGER.info("Ghm Ghm, ladies and gentlemen, if you see that message, I declare though, you are either mentally ill little girl, either 30 years stinky man with no social life. (Of coarse if you are not me, because I'm perfect)");
 		//calling for item registry method in ModItems class
 		ModItems.registerModItems();
 
@@ -36,7 +37,13 @@ public class UniqueScythe implements ModInitializer {
 		//calling for particles registry method in mod particles
 		ModParticles.registerParticles();
 
+		//calling for blocks registry method in mod blocks
+		ModBlocks.registerModBlocks();
 
+
+
+		//Attributes
+		//registering for attributes for an entity(Breeze)
 		FabricDefaultAttributeRegistry.register(ModEntities.BREEZE, BreezeEntity.createBreezeAttributes());
 	}
 }

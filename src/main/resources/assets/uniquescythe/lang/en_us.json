@@ -6,5 +6,7 @@
   "item.uniquescythe.easter_egg":"Easter Egg",
   "item.uniquescythe.wind_charge":"Wind charge",
   "item.uniquescythe.breeze_rod":"Breeze rod",
-  "item.uniquescythe.mace":"Mace"
+  "item.uniquescythe.mace":"Mace",
+
+  "block.uniquescythe.tuff_bricks": "Tuff Bricks"
 }

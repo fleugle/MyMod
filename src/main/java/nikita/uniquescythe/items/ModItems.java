@@ -17,29 +17,29 @@ public class ModItems {
     // *start of the registering items section*
 
     //     FROSTY_STEAL registry
-    public static final Item FROSTY_STEEL = registerItem("frosty_steel", new Item(new FabricItemSettings())); //ingridient needed to create the scythe
+    public static final Item FROSTY_STEEL = registerItem("frosty_steel", new Item(new Item.Settings())); //ingridient needed to create the scythe
 
 	//Flugel's immortality declaration
-	public static final Item FLUGELS_IMMORTALITY_DECLARATION = registerItem("flugels_immortality_declaration", new Item(new FabricItemSettings().maxCount(1).rarity(Rarity.EPIC))); //ingridient needed to create the scythe
+	public static final Item FLUGELS_IMMORTALITY_DECLARATION = registerItem("flugels_immortality_declaration", new Item(new Item.Settings().maxCount(1).rarity(Rarity.EPIC))); //ingridient needed to create the scythe
 
 
     //FROSTY_SCYTHE registry
-    public static final Item FROSTY_SCYTHE = registerItem("frosty_scythe", new FrostyScytheItem(ModToolMaterial.FROSTY_STEEL,12, -3f, new FabricItemSettings())); //The scythe
+    public static final Item FROSTY_SCYTHE = registerItem("frosty_scythe", new FrostyScytheItem(ModToolMaterial.FROSTY_STEEL,12, -3f, new Item.Settings())); //The scythe
 
 	//EASTEREGG
-	public static final Item EASTER_EGG = registerItem("easter_egg", new EasterEggItem(new FabricItemSettings().rarity(Rarity.UNCOMMON)));
+	public static final Item EASTER_EGG = registerItem("easter_egg", new EasterEggItem(new Item.Settings().rarity(Rarity.UNCOMMON).maxCount(1)));
 
 	//WIND CHARGE PROTOTYPE
-	public static final Item WIND_CHARGE = registerItem("wind_charge", new WindChargeItem(new FabricItemSettings().maxCount(64)));
+	public static final Item WIND_CHARGE = registerItem("wind_charge", new WindChargeItem(new Item.Settings().maxCount(64)));
 
     //WANDERERS_SWORD registry
-    public static final Item WANDERERS_SWORD = registerItem("wanderers_sword", new WanderersSwordItem(ModToolMaterial.FROSTY_STEEL,1, 100f, new FabricItemSettings()));
+    public static final Item WANDERERS_SWORD = registerItem("wanderers_sword", new WanderersSwordItem(ModToolMaterial.FROSTY_STEEL,1, 100f, new Item.Settings()));
 
 	//BREEZE_ROD registry
-	public static final Item BREEZE_ROD = registerItem("breeze_rod", new Item(new FabricItemSettings().maxCount(16)));
+	public static final Item BREEZE_ROD = registerItem("breeze_rod", new Item(new Item.Settings().maxCount(16)));
 
 	//MACE registry
-	public static final Item MACE = registerItem("mace", new MaceItem(ModToolMaterial.BREEZE_ROD,1, -3f, new FabricItemSettings())); //The scythe
+	public static final Item MACE = registerItem("mace", new MaceItem(ModToolMaterial.BREEZE_ROD,1, -3f, new Item.Settings())); //The scythe
 
 	// *end of the registering items section*
 
