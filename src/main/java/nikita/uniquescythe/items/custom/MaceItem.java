@@ -21,7 +21,7 @@ public class MaceItem extends AxeItem implements FabricItem {
 				// Check if the player is holding this MaceItem
 				if (player.fallDistance > 0) {
 					// Calculate additional damage based on fall distance
-					int additionalDamage = ((int) player.fallDistance) * 2;
+					int additionalDamage = ((int) player.fallDistance) * 5;
 					// Apply additional damage
 					entity.damage(player.getDamageSources().generic(), additionalDamage);
 					// Reset fall distance to prevent fall damage
