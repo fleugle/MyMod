@@ -34,6 +34,7 @@ public class BreezeEntityRenderer extends MobEntityRenderer<BreezeEntity, Breeze
 
 		super(context, new BreezeEntityModel<>(context.getPart(ModModelLayers.BREEZE)), 0.7F);
 		this.addFeature(new BreezeWindFeatureRenderer(this));
+		this.addFeature(new BreezeEyebrowsFeatureRenderer(this));
 
 	}
 
@@ -57,6 +58,7 @@ public class BreezeEntityRenderer extends MobEntityRenderer<BreezeEntity, Breeze
 		model.getHead().visible = false;
 		model.getBody().visible = false;
 		model.getWindBody().visible = false;
+		model.getEyebrows().visible = false;
 		for (ModelPart modelPart : modelParts) {
 			modelPart.visible = true;
 		}
