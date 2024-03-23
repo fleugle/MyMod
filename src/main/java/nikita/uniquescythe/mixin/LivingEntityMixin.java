@@ -74,8 +74,10 @@ public abstract class LivingEntityMixin  extends Entity{
 
 		ItemStack mainhand_stack = ((LivingEntityMixin) entity).getStackInHand(Hand.MAIN_HAND);
 
+		ItemStack offhand_stack = ((LivingEntityMixin) entity).getStackInHand(Hand.OFF_HAND);
+
 		//Executes if the item in offhand_stack is equal to the explosive totem of Undying
-		if ( (mainhand_stack.getItem() == ModItems.FLUGELS_IMMORTALITY_DECLARATION) ) {
+		if ( (mainhand_stack.getItem() == ModItems.FLUGELS_IMMORTALITY_DECLARATION) || (offhand_stack.getItem() == ModItems.FLUGELS_IMMORTALITY_DECLARATION )) {
 
 			/*If the damagesource is something that could kill a player in creative mode, the totem does not work*/
 			if (damageSource_1.getType().equals(DamageTypes.OUT_OF_WORLD)) {
