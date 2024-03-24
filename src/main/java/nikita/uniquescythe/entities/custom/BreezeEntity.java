@@ -17,9 +17,27 @@ import org.lwjgl.system.SharedLibrary;
 public class BreezeEntity extends HostileEntity implements RangedAttackMob {
 
 	public final AnimationState idleState = new AnimationState();
+	public final AnimationState attackState = new AnimationState();
+	public final AnimationState triggerState = new AnimationState();
+	public final AnimationState sprintState = new AnimationState();
+
+
 	private int idleAnimationTimeout = 0;
+	private int attackAnimationTimeout = 0;
+	private int triggerAnimationTimeout = 0;
+	private int sprintAnimationTimeout = 0;
+
+	private boolean isAttacking;
+	private boolean isTriggering;
+	private boolean isSprinting;
 
 	private void setupAnimationStates() {
+
+		if(isAttacking && !isSprinting){
+			idleAnimationTimeout =0;
+
+		}
+
 		if (this.idleAnimationTimeout <= 0) {
 			this.idleAnimationTimeout = 29;
 			this.idleState.restart(this.age);

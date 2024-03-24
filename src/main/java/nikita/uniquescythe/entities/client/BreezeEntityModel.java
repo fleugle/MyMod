@@ -98,7 +98,11 @@ public class BreezeEntityModel<T extends BreezeEntity> extends SinglePartEntityM
 		//animations here
 		this.animate(breezeEntity.idleState, ModAnimations.BREEZE_IDLE, ageInTicks, 1F);
 
+		this.animate(breezeEntity.attackState, ModAnimations.BREEZE_ATTACK, ageInTicks, 1F);
 
+		this.animate(breezeEntity.triggerState, ModAnimations.BREEZE_TRIGGER, ageInTicks, 1F);
+
+		this.animate(breezeEntity.sprintState, ModAnimations.BREEZE_SPRINT, ageInTicks, 1F);
 	}
 	@Override
 	public void render(MatrixStack matrices, VertexConsumer vertexConsumer, int light, int overlay, float red, float green, float blue, float alpha) {
