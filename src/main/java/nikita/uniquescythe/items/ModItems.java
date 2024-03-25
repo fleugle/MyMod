@@ -19,6 +19,9 @@ public class ModItems {
     //     FROSTY_STEAL registry
     public static final Item FROSTY_STEEL = registerItem("frosty_steel", new Item(new Item.Settings())); //ingridient needed to create the scythe
 
+	//AIR_BOTTLE
+	public static final Item AIR_BOTTLE = registerItem("air_bottle", new Item(new Item.Settings().maxCount(16))); //ingridient needed to create the scythe
+
 	//Flugel's immortality declaration
 	public static final Item FLUGELS_IMMORTALITY_DECLARATION = registerItem("flugels_immortality_declaration", new Item(new Item.Settings().maxCount(1).rarity(Rarity.EPIC))); //ingridient needed to create the scythe
 
@@ -36,10 +39,10 @@ public class ModItems {
     public static final Item WANDERERS_SWORD = registerItem("wanderers_sword", new WanderersSwordItem(ModToolMaterial.FROSTY_STEEL,1, 100f, new Item.Settings()));
 
 	//BREEZE_ROD registry
-	public static final Item BREEZE_ROD = registerItem("breeze_rod", new Item(new Item.Settings().maxCount(16)));
+	public static final Item BREEZE_ROD = registerItem("breeze_rod", new Item(new Item.Settings().maxCount(64)));
 
 	//MACE registry
-	public static final Item MACE = registerItem("mace", new MaceItem(ModToolMaterial.BREEZE_ROD,1, -3f, new Item.Settings())); //The scythe
+	public static final Item MACE = registerItem("mace", (Item)new MaceItem(new Item.Settings().maxDamageIfAbsent(250)));
 
 	// *end of the registering items section*
 
@@ -52,6 +55,7 @@ public class ModItems {
         //place to add items to the ingredient item tab
         entries.addItem(FROSTY_STEEL);
 		entries.addItem(BREEZE_ROD);
+		entries.addItem(AIR_BOTTLE);
 
     }//adding items to ingredient tab *method*
 
