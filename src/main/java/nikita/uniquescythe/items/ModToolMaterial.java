@@ -11,7 +11,7 @@ public enum ModToolMaterial implements ToolMaterial {
     //making frosty steel tool material
 
 	FROSTY_STEEL(2, 650,1f, 4f, 26, () -> Ingredient.ofItems(ModItems.FROSTY_STEEL)),
-	BREEZE_ROD(0, 1500,0f, 7, 0, () -> Ingredient.ofItems(ModItems.BREEZE_ROD));//put comma to add new
+	BREEZE_ROD(0, 500,0f, 7, 0, () -> Ingredient.ofItems(ModItems.BREEZE_ROD));//put comma to add new
 
 
 

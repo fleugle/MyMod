@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "1",
+    "2"
+  ],
+  "key": {
+    "1": {
+      "item": "minecraft:blaze_rod"
+
+    },
+    "2": {
+      "item": "minecraft:powder_snow_bucket"
+
+    }
+  },
+  "result": {
+    "item": "uniquescythe:breeze_rod",
+    "count": 1
+  }
+}

@@ -20,119 +20,100 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
 public abstract class ItemRendererMixin {
     @ModifyVariable(method = "renderItem", at = @At(value = "HEAD"), argsOnly = true)
     public BakedModel useBigScytheModel(BakedModel value, ItemStack stack, ModelTransformationMode renderMode, boolean leftHanded, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
-        if ((stack.isOf(ModItems.FROSTY_SCYTHE) && renderMode != (ModelTransformationMode.GUI))
-			&& (stack.isOf(ModItems.FROSTY_SCYTHE) && renderMode != (ModelTransformationMode.GROUND))) {
+        if (((stack.isOf(ModItems.FROSTY_SCYTHE) && renderMode == (ModelTransformationMode.THIRD_PERSON_RIGHT_HAND))
+			|| (stack.isOf(ModItems.FROSTY_SCYTHE) && renderMode == (ModelTransformationMode.THIRD_PERSON_LEFT_HAND)))){
+
             return ((ItemRendererAccessor) this).mccourse$getModels().getModelManager().getModel(new ModelIdentifier(UniqueScythe.MOD_ID, "frosty_scythe_big", "inventory"));
-        }//rendering big model if it should be displayed not in gui AND not on the ground
+        }
         return value;
     }
 
 	@ModifyVariable(method = "renderItem", at = @At(value = "HEAD"), argsOnly = true)
 	public BakedModel useBigWardenersSword(BakedModel value, ItemStack stack, ModelTransformationMode renderMode, boolean leftHanded, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
-		if ((stack.isOf(ModItems.WANDERERS_SWORD) && renderMode != (ModelTransformationMode.GUI))
-			&& (stack.isOf(ModItems.WANDERERS_SWORD) && renderMode != (ModelTransformationMode.GROUND))
-			&& (stack.isOf(ModItems.WANDERERS_SWORD) && !leftHanded)) {
+		if ((stack.isOf(ModItems.WANDERERS_SWORD) && renderMode == (ModelTransformationMode.THIRD_PERSON_RIGHT_HAND))) {
 			return ((ItemRendererAccessor) this).mccourse$getModels().getModelManager().getModel(new ModelIdentifier(UniqueScythe.MOD_ID, "wanderers_sword_big", "inventory"));
-		}//rendering big model if it should be displayed not in gui AND not on the ground
+		}
 		return value;
 	}
 
 	@ModifyVariable(method = "renderItem", at = @At(value = "HEAD"), argsOnly = true)
 	public BakedModel useBigWardenersClosed(BakedModel value, ItemStack stack, ModelTransformationMode renderMode, boolean leftHanded, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
-		if ((stack.isOf(ModItems.WANDERERS_SWORD) && renderMode != (ModelTransformationMode.GUI))
-			&& (stack.isOf(ModItems.WANDERERS_SWORD) && renderMode != (ModelTransformationMode.GROUND))
-			&& (stack.isOf(ModItems.WANDERERS_SWORD) && leftHanded)) {
+		if ((stack.isOf(ModItems.WANDERERS_SWORD) && renderMode == (ModelTransformationMode.THIRD_PERSON_LEFT_HAND))) {
 			return ((ItemRendererAccessor) this).mccourse$getModels().getModelManager().getModel(new ModelIdentifier(UniqueScythe.MOD_ID, "wanderers_sword_closed", "inventory"));
-		}//rendering big model if it should be displayed not in gui AND not on the ground
+		}
 		return value;
 	}
 
 	@ModifyVariable(method = "renderItem", at = @At(value = "HEAD"), argsOnly = true)
 	public BakedModel useBigBook(BakedModel value, ItemStack stack, ModelTransformationMode renderMode, boolean leftHanded, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
-		if ((stack.isOf(Items.BOOK) && renderMode != (ModelTransformationMode.GUI))
-			&& (stack.isOf(Items.BOOK) && renderMode != (ModelTransformationMode.GROUND)
-		&& !leftHanded)){
+		if ((stack.isOf(Items.BOOK) && renderMode == (ModelTransformationMode.THIRD_PERSON_RIGHT_HAND))){
 			return ((ItemRendererAccessor) this).mccourse$getModels().getModelManager().getModel(new ModelIdentifier(UniqueScythe.MOD_ID, "book_big", "inventory"));
-		}//rendering big model if it should be displayed not in gui AND not on the ground
+		}
 		return value;
 	}
 
 	@ModifyVariable(method = "renderItem", at = @At(value = "HEAD"), argsOnly = true)
 	public BakedModel useClosedBook(BakedModel value, ItemStack stack, ModelTransformationMode renderMode, boolean leftHanded, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
-		if ((stack.isOf(Items.BOOK) && renderMode != (ModelTransformationMode.GUI))
-			&& (stack.isOf(Items.BOOK) && renderMode != (ModelTransformationMode.GROUND)
-			&& leftHanded)){
+		if ((stack.isOf(Items.BOOK) && renderMode == (ModelTransformationMode.THIRD_PERSON_LEFT_HAND))){
 			return ((ItemRendererAccessor) this).mccourse$getModels().getModelManager().getModel(new ModelIdentifier(UniqueScythe.MOD_ID, "book_big_closed", "inventory"));
-		}//rendering big model if it should be displayed not in gui AND not on the ground
+		}
 		return value;
 	}
 
 	@ModifyVariable(method = "renderItem", at = @At(value = "HEAD"), argsOnly = true)
 	public BakedModel useBigBookWritable(BakedModel value, ItemStack stack, ModelTransformationMode renderMode, boolean leftHanded, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
-		if ((stack.isOf(Items.WRITABLE_BOOK) && renderMode != (ModelTransformationMode.GUI))
-			&& (stack.isOf(Items.WRITABLE_BOOK) && renderMode != (ModelTransformationMode.GROUND)
-		&& !leftHanded)) {
+		if ((stack.isOf(Items.WRITABLE_BOOK) && renderMode == (ModelTransformationMode.THIRD_PERSON_RIGHT_HAND))) {
 			return ((ItemRendererAccessor) this).mccourse$getModels().getModelManager().getModel(new ModelIdentifier(UniqueScythe.MOD_ID, "w_book_big", "inventory"));
-		}//rendering big model if it should be displayed not in gui AND not on the ground
+		}
 		return value;
 	}
 	@ModifyVariable(method = "renderItem", at = @At(value = "HEAD"), argsOnly = true)
 	public BakedModel useClosedBigBookWritable(BakedModel value, ItemStack stack, ModelTransformationMode renderMode, boolean leftHanded, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
-		if ((stack.isOf(Items.WRITABLE_BOOK) && renderMode != (ModelTransformationMode.GUI))
-			&& (stack.isOf(Items.WRITABLE_BOOK) && renderMode != (ModelTransformationMode.GROUND)
-			&& leftHanded)) {
+		if ((stack.isOf(Items.WRITABLE_BOOK) && renderMode == (ModelTransformationMode.THIRD_PERSON_LEFT_HAND))) {
 			return ((ItemRendererAccessor) this).mccourse$getModels().getModelManager().getModel(new ModelIdentifier(UniqueScythe.MOD_ID, "w_book_big_closed", "inventory"));
-		}//rendering big model if it should be displayed not in gui AND not on the ground
+		}
 		return value;
 	}
 
 	@ModifyVariable(method = "renderItem", at = @At(value = "HEAD"), argsOnly = true)
 	public BakedModel useBigBookWritten(BakedModel value, ItemStack stack, ModelTransformationMode renderMode, boolean leftHanded, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
-		if ((stack.isOf(Items.WRITTEN_BOOK) && renderMode != (ModelTransformationMode.GUI))
-			&& (stack.isOf(Items.WRITTEN_BOOK) && renderMode != (ModelTransformationMode.GROUND)
-		&& !leftHanded)) {
+		if ((stack.isOf(Items.WRITTEN_BOOK) && renderMode == (ModelTransformationMode.THIRD_PERSON_RIGHT_HAND))) {
 			return ((ItemRendererAccessor) this).mccourse$getModels().getModelManager().getModel(new ModelIdentifier(UniqueScythe.MOD_ID, "w_book_big", "inventory"));
-		}//rendering big model if it should be displayed not in gui AND not on the ground
+		}
 		return value;
 	}
 
 	@ModifyVariable(method = "renderItem", at = @At(value = "HEAD"), argsOnly = true)
 	public BakedModel useClosedBigBookWritten(BakedModel value, ItemStack stack, ModelTransformationMode renderMode, boolean leftHanded, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
-		if ((stack.isOf(Items.WRITTEN_BOOK) && renderMode != (ModelTransformationMode.GUI))
-			&& (stack.isOf(Items.WRITTEN_BOOK) && renderMode != (ModelTransformationMode.GROUND)
-			&& leftHanded)) {
+		if ((stack.isOf(Items.WRITTEN_BOOK) && renderMode == (ModelTransformationMode.THIRD_PERSON_LEFT_HAND))) {
 			return ((ItemRendererAccessor) this).mccourse$getModels().getModelManager().getModel(new ModelIdentifier(UniqueScythe.MOD_ID, "w_book_big_closed", "inventory"));
-		}//rendering big model if it should be displayed not in gui AND not on the ground
+		}
 		return value;
 	}
 
 	@ModifyVariable(method = "renderItem", at = @At(value = "HEAD"), argsOnly = true)
 	public BakedModel useBigBookEnchanced(BakedModel value, ItemStack stack, ModelTransformationMode renderMode, boolean leftHanded, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
-		if ((stack.isOf(Items.ENCHANTED_BOOK) && renderMode != (ModelTransformationMode.GUI))
-			&& (stack.isOf(Items.ENCHANTED_BOOK) && renderMode != (ModelTransformationMode.GROUND)
-			&& !leftHanded)) {
+		if ((stack.isOf(Items.ENCHANTED_BOOK) && renderMode != (ModelTransformationMode.THIRD_PERSON_RIGHT_HAND))) {
 			return ((ItemRendererAccessor) this).mccourse$getModels().getModelManager().getModel(new ModelIdentifier(UniqueScythe.MOD_ID, "e_book_big", "inventory"));
-		}//rendering big model if it should be displayed not in gui AND not on the ground
+		}
 		return value;
 	}
 
 	@ModifyVariable(method = "renderItem", at = @At(value = "HEAD"), argsOnly = true)
 	public BakedModel useCloseduseBigBookEnchanced(BakedModel value, ItemStack stack, ModelTransformationMode renderMode, boolean leftHanded, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
-		if ((stack.isOf(Items.ENCHANTED_BOOK) && renderMode != (ModelTransformationMode.GUI))
-			&& (stack.isOf(Items.ENCHANTED_BOOK) && renderMode != (ModelTransformationMode.GROUND)
-			&& leftHanded)) {
+		if ((stack.isOf(Items.ENCHANTED_BOOK) && renderMode != (ModelTransformationMode.THIRD_PERSON_LEFT_HAND))) {
 			return ((ItemRendererAccessor) this).mccourse$getModels().getModelManager().getModel(new ModelIdentifier(UniqueScythe.MOD_ID, "e_book_big_closed", "inventory"));
-		}//rendering big model if it should be displayed not in gui AND not on the ground
+		}
 		return value;
 	}
 
 
 	@ModifyVariable(method = "renderItem", at = @At(value = "HEAD"), argsOnly = true)
 	public BakedModel useBigMace(BakedModel value, ItemStack stack, ModelTransformationMode renderMode, boolean leftHanded, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
-		if ((stack.isOf(ModItems.MACE) && renderMode != (ModelTransformationMode.GUI))
-			&& (stack.isOf(ModItems.MACE) && renderMode != (ModelTransformationMode.GROUND))) {
+		if ((stack.isOf(ModItems.MACE) && renderMode == (ModelTransformationMode.THIRD_PERSON_RIGHT_HAND))
+		|| (stack.isOf(ModItems.MACE) && renderMode == (ModelTransformationMode.THIRD_PERSON_LEFT_HAND))) {
 			return ((ItemRendererAccessor) this).mccourse$getModels().getModelManager().getModel(new ModelIdentifier(UniqueScythe.MOD_ID, "mace_big", "inventory"));
-		}//rendering big model if it should be displayed not in gui AND not on the ground
+		}
 		return value;
 	}
 }

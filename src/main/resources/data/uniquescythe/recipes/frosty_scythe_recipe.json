@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "112",
+    " 2 ",
+    "3  "
+  ],
+  "key": {
+    "1": {
+      "item": "uniquescythe:frosty_steel"
+
+    },
+    "2": {
+      "item": "minecraft:stick"
+
+    },
+    "3": {
+      "item": "minecraft:netherite_ingot"
+
+    }
+  },
+  "result": {
+    "item": "uniquescythe:frosty_scythe",
+    "count": 1
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "1",
+    "2",
+    "3"
+  ],
+  "key": {
+    "1": {
+      "item": "uniquescythe:breeze_rod"
+
+    },
+    "2": {
+      "item": "minecraft:gunpowder"
+
+    },
+    "3": {
+      "item": "minecraft:glass_bottle"
+
+    }
+  },
+  "result": {
+    "item": "uniquescythe:air_bottle",
+    "count": 1
+  }
+}

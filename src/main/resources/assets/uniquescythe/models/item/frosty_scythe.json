@@ -1,6 +1,17 @@
 {
-  "parent": "item/generated",
-  "textures": {
-    "layer0":"uniquescythe:item/frosty_scythe"
-  }
+	"credit": "Made with Blockbench",
+	"parent": "item/generated",
+	"textures": {
+		"layer0": "uniquescythe:item/frosty_scythe"
+	},
+	"display": {
+		"firstperson_righthand": {
+			"rotation": [0, -90, 0],
+			"translation": [0, 3.25, 2]
+		},
+		"firstperson_lefthand": {
+			"rotation": [0, 90, 0],
+			"translation": [0, 3.25, 2]
+		}
+	}
 }
