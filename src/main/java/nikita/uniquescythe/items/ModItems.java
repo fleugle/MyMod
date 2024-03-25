@@ -23,7 +23,7 @@ public class ModItems {
 	public static final Item AIR_BOTTLE = registerItem("air_bottle", new Item(new Item.Settings().maxCount(16))); //ingridient needed to create the scythe
 
 	//Flugel's immortality declaration
-	public static final Item FLUGELS_IMMORTALITY_DECLARATION = registerItem("flugels_immortality_declaration", new Item(new Item.Settings().maxCount(1).rarity(Rarity.EPIC))); //ingridient needed to create the scythe
+	public static final Item FLUGELS_IMMORTALITY_DECLARATION = registerItem("flugels_immortality_declaration", new Item(new Item.Settings().maxCount(1).rarity(Rarity.EPIC)));
 
 
     //FROSTY_SCYTHE registry
@@ -42,7 +42,7 @@ public class ModItems {
 	public static final Item BREEZE_ROD = registerItem("breeze_rod", new Item(new Item.Settings().maxCount(64)));
 
 	//MACE registry
-	public static final Item MACE = registerItem("mace", (Item)new MaceItem(new Item.Settings().maxDamageIfAbsent(250)));
+	public static final Item MACE = registerItem("mace", (Item)new MaceItem(new Item.Settings().maxCount(1).maxDamage(250)));
 
 	// *end of the registering items section*
 
