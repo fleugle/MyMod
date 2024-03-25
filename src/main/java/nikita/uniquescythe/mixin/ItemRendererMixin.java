@@ -21,7 +21,9 @@ public abstract class ItemRendererMixin {
     @ModifyVariable(method = "renderItem", at = @At(value = "HEAD"), argsOnly = true)
     public BakedModel useBigScytheModel(BakedModel value, ItemStack stack, ModelTransformationMode renderMode, boolean leftHanded, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
         if (((stack.isOf(ModItems.FROSTY_SCYTHE) && renderMode == (ModelTransformationMode.THIRD_PERSON_RIGHT_HAND))
-			|| (stack.isOf(ModItems.FROSTY_SCYTHE) && renderMode == (ModelTransformationMode.THIRD_PERSON_LEFT_HAND)))){
+			|| (stack.isOf(ModItems.FROSTY_SCYTHE) && renderMode == (ModelTransformationMode.THIRD_PERSON_LEFT_HAND))
+			|| (stack.isOf(ModItems.FROSTY_SCYTHE) && renderMode == (ModelTransformationMode.FIRST_PERSON_LEFT_HAND))
+			|| (stack.isOf(ModItems.FROSTY_SCYTHE) && renderMode == (ModelTransformationMode.FIRST_PERSON_RIGHT_HAND)))){
 
             return ((ItemRendererAccessor) this).mccourse$getModels().getModelManager().getModel(new ModelIdentifier(UniqueScythe.MOD_ID, "frosty_scythe_big", "inventory"));
         }
@@ -38,7 +40,8 @@ public abstract class ItemRendererMixin {
 
 	@ModifyVariable(method = "renderItem", at = @At(value = "HEAD"), argsOnly = true)
 	public BakedModel useBigWardenersClosed(BakedModel value, ItemStack stack, ModelTransformationMode renderMode, boolean leftHanded, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
-		if ((stack.isOf(ModItems.WANDERERS_SWORD) && renderMode == (ModelTransformationMode.THIRD_PERSON_LEFT_HAND))) {
+		if ((stack.isOf(ModItems.WANDERERS_SWORD) && renderMode == (ModelTransformationMode.THIRD_PERSON_LEFT_HAND))
+		|| (stack.isOf(ModItems.WANDERERS_SWORD) && renderMode == (ModelTransformationMode.FIRST_PERSON_LEFT_HAND)) ) {
 			return ((ItemRendererAccessor) this).mccourse$getModels().getModelManager().getModel(new ModelIdentifier(UniqueScythe.MOD_ID, "wanderers_sword_closed", "inventory"));
 		}
 		return value;
