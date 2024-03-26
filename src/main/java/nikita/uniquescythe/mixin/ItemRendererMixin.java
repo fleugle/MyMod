@@ -96,7 +96,7 @@ public abstract class ItemRendererMixin {
 
 	@ModifyVariable(method = "renderItem", at = @At(value = "HEAD"), argsOnly = true)
 	public BakedModel useBigBookEnchanced(BakedModel value, ItemStack stack, ModelTransformationMode renderMode, boolean leftHanded, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
-		if ((stack.isOf(Items.ENCHANTED_BOOK) && renderMode != (ModelTransformationMode.THIRD_PERSON_RIGHT_HAND))) {
+		if ((stack.isOf(Items.ENCHANTED_BOOK) && renderMode == (ModelTransformationMode.THIRD_PERSON_RIGHT_HAND))) {
 			return ((ItemRendererAccessor) this).mccourse$getModels().getModelManager().getModel(new ModelIdentifier(UniqueScythe.MOD_ID, "e_book_big", "inventory"));
 		}
 		return value;
@@ -104,7 +104,7 @@ public abstract class ItemRendererMixin {
 
 	@ModifyVariable(method = "renderItem", at = @At(value = "HEAD"), argsOnly = true)
 	public BakedModel useCloseduseBigBookEnchanced(BakedModel value, ItemStack stack, ModelTransformationMode renderMode, boolean leftHanded, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
-		if ((stack.isOf(Items.ENCHANTED_BOOK) && renderMode != (ModelTransformationMode.THIRD_PERSON_LEFT_HAND))) {
+		if ((stack.isOf(Items.ENCHANTED_BOOK) && renderMode == (ModelTransformationMode.THIRD_PERSON_LEFT_HAND))) {
 			return ((ItemRendererAccessor) this).mccourse$getModels().getModelManager().getModel(new ModelIdentifier(UniqueScythe.MOD_ID, "e_book_big_closed", "inventory"));
 		}
 		return value;
