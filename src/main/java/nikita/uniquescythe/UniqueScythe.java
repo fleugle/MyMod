@@ -3,6 +3,7 @@ package nikita.uniquescythe;
 import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
+import net.fabricmc.fabric.api.registry.OxidizableBlocksRegistry;
 import nikita.uniquescythe.blocks.ModBlocks;
 import nikita.uniquescythe.entities.ModEntities;
 import nikita.uniquescythe.entities.custom.BreezeEntity;
@@ -39,6 +40,9 @@ public class UniqueScythe implements ModInitializer {
 
 		//calling for blocks registry method in mod blocks
 		ModBlocks.registerModBlocks();
+
+		OxidizableBlocksRegistry.registerOxidizableBlockPair(ModBlocks.COPPER_GRATE,ModBlocks.EXPOSED_COPPER_GRATE);
+		OxidizableBlocksRegistry.registerOxidizableBlockPair(ModBlocks.EXPOSED_COPPER_GRATE,ModBlocks.OXIDIZED_COPPER_GRATE);
 
 
 
