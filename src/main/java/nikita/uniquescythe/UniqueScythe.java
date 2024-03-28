@@ -10,6 +10,9 @@ import nikita.uniquescythe.entities.custom.BreezeEntity;
 import nikita.uniquescythe.items.ModItems;
 import nikita.uniquescythe.particles.ModParticles;
 import nikita.uniquescythe.sounds.ModSounds;
+import org.quiltmc.qsl.block.content.registry.api.BlockContentRegistries;
+import org.quiltmc.qsl.block.content.registry.api.ReversibleBlockEntry;
+import org.quiltmc.qsl.registry.attachment.api.RegistryEntryAttachment;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 //I've rolled back. good.
@@ -41,8 +44,18 @@ public class UniqueScythe implements ModInitializer {
 		//calling for blocks registry method in mod blocks
 		ModBlocks.registerModBlocks();
 
-		OxidizableBlocksRegistry.registerOxidizableBlockPair(ModBlocks.COPPER_GRATE,ModBlocks.EXPOSED_COPPER_GRATE);
-		OxidizableBlocksRegistry.registerOxidizableBlockPair(ModBlocks.EXPOSED_COPPER_GRATE,ModBlocks.OXIDIZED_COPPER_GRATE);
+		//OxidizableBlocksRegistry.registerOxidizableBlockPair(ModBlocks.COPPER_GRATE,ModBlocks.EXPOSED_COPPER_GRATE);
+		//OxidizableBlocksRegistry.registerOxidizableBlockPair(ModBlocks.EXPOSED_COPPER_GRATE,ModBlocks.OXIDIZED_COPPER_GRATE);
+
+
+
+		ReversibleBlockEntry copperToExposed = new ReversibleBlockEntry(ModBlocks.EXPOSED_COPPER_GRATE, true);
+		ReversibleBlockEntry exposedToOxidized = new ReversibleBlockEntry(ModBlocks.OXIDIZED_COPPER_GRATE, true);
+
+
+		BlockContentRegistries.OXIDIZABLE.put(ModBlocks.COPPER_GRATE,copperToExposed);
+		BlockContentRegistries.OXIDIZABLE.put(ModBlocks.EXPOSED_COPPER_GRATE,exposedToOxidized);
+
 
 
 

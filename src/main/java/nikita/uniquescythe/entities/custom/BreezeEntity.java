@@ -11,8 +11,10 @@ import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
+import net.minecraft.entity.mob.BlazeEntity;
 import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.mob.MobEntity;
+import net.minecraft.entity.passive.IronGolemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.world.World;
 import nikita.uniquescythe.entities.ai.BreezeAttackGoal;
@@ -89,13 +91,15 @@ public class BreezeEntity extends HostileEntity implements RangedAttackMob {
 	@Override
 	protected void initGoals(){
 		this.goalSelector.add(0, new SwimGoal(this));
-		this.goalSelector.add(3, new BreezeAttackGoal(this, 0.3f,15,6));
-		this.goalSelector.add(5, new GoToWalkTargetGoal(this, 0.3f));
+		this.goalSelector.add(5, new BreezeAttackGoal(this, 0.3f,15,6));
+		this.goalSelector.add(6, new GoToWalkTargetGoal(this, 0.3f));
 		this.goalSelector.add(7, new WanderAroundFarGoal(this, 0.3f, 0.0F));
 		this.goalSelector.add(8, new LookAtEntityGoal(this, PlayerEntity.class, 8.0F));
 		this.goalSelector.add(8, new LookAroundGoal(this));
 		this.targetSelector.add(1, new RevengeGoal(this).setGroupRevenge());
 		this.targetSelector.add(2, new TargetGoal(this, PlayerEntity.class, true));
+		this.targetSelector.add(3, new TargetGoal(this, IronGolemEntity.class, true));
+		this.targetSelector.add(3, new TargetGoal(this, BlazeEntity.class, true));
 	}
 
 
