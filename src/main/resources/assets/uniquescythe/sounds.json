@@ -40,5 +40,11 @@
     "sounds": [
       "uniquescythe:mace_b"
     ]
+  },
+  "l-ning_th": {
+    "subtitle": "sounds.uniquescythe.l-ning_th",
+    "sounds": [
+      "uniquescythe:l-ning_th"
+    ]
   }
 }
