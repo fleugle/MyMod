@@ -19,15 +19,23 @@ public class ModItems {
     //     FROSTY_STEAL registry
     public static final Item FROSTY_STEEL = registerItem("frosty_steel", new Item(new Item.Settings())); //ingridient needed to create the scythe
 
+
+	//     CHAOS_WILL registry
+	public static final Item CHAOS_WILL = registerItem("chaos_will", new Item(new Item.Settings()));
+
 	//AIR_BOTTLE
-	public static final Item AIR_BOTTLE = registerItem("air_bottle", new Item(new Item.Settings().maxCount(16))); //ingridient needed to create the scythe
+	public static final Item AIR_BOTTLE = registerItem("air_bottle", new Item(new Item.Settings().maxCount(16)));
 
 	//Flugel's immortality declaration
 	public static final Item FLUGELS_IMMORTALITY_DECLARATION = registerItem("flugels_immortality_declaration", new Item(new Item.Settings().maxCount(1).rarity(Rarity.EPIC)));
 
 
     //FROSTY_SCYTHE registry
-    public static final Item FROSTY_SCYTHE = registerItem("frosty_scythe", new FrostyScytheItem(ModToolMaterial.FROSTY_STEEL,12, -3f, new Item.Settings())); //The scythe
+    public static final Item FROSTY_SCYTHE = registerItem("frosty_scythe", new FrostyScytheItem(ModToolMaterial.FROSTY_STEEL,12, -3f, new Item.Settings().rarity(Rarity.RARE))); //The scythe
+
+	//JEVIL_SCYTHE registry
+	public static final Item JEVIL_SCYTHE = registerItem("jevil_scythe", new JevilScytheItem(ModToolMaterial.CHAOS_WILL,12, -3f, new Item.Settings().rarity(Rarity.EPIC)));
+
 
 	//EASTEREGG
 	public static final Item EASTER_EGG = registerItem("easter_egg", new EasterEggItem(new Item.Settings().rarity(Rarity.UNCOMMON).maxCount(1)));
@@ -54,6 +62,7 @@ public class ModItems {
     private static void addItemsToIngredientItemGroup(FabricItemGroupEntries entries) {
         //place to add items to the ingredient item tab
         entries.addItem(FROSTY_STEEL);
+		entries.addItem(CHAOS_WILL);
 		entries.addItem(BREEZE_ROD);
 		entries.addItem(AIR_BOTTLE);
 
@@ -68,6 +77,7 @@ public class ModItems {
         //place to add items to the ingredient item tab
 		entries.addItem(FLUGELS_IMMORTALITY_DECLARATION);
         entries.addItem(FROSTY_SCYTHE);
+		entries.addItem(JEVIL_SCYTHE);
         entries.addItem(WANDERERS_SWORD);
 		entries.addItem(MACE);
     }//adding items to combat tab *method*

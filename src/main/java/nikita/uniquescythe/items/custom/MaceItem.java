@@ -14,6 +14,7 @@ import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.*;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.registry.DynamicRegistryManager;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
@@ -115,8 +116,47 @@ public class MaceItem
 					target.damage(attacker.getDamageSources().generic(), additionalDamage);
 					// Reset fall distance to prevent fall damage
 					attacker.fallDistance = 0;
+
+
+
+					World world = attacker.getWorld();
+					if (world instanceof ServerWorld) {
+
+							// Spawn smoke particles in a radius of 2 blocks
+							serverWorld.spawnParticles(ParticleTypes.EXPLOSION,
+								target.getPos().getX()  + 0.5,
+								target.getPos().getY()  + 0.5,
+								target.getPos().getZ()  + 0.5,
+								30, soundVol*2, soundVol*2, soundVol*2, 0.1);
+
+							serverWorld.spawnParticles(ParticleTypes.SMOKE,
+								target.getPos().getX()  + 0.5,
+								target.getPos().getY()  + 0.5,
+								target.getPos().getZ()  + 0.5,
+								30, soundVol*2, soundVol*2, soundVol*2, 0.1);
+					}
+					float explosionSize = soundVol;
+					attacker.getWorld().sendEntityStatus(attacker, (byte) 3);
+					WindExplosion explosion = new WindExplosion(target.getWorld(), null, target.getPos().getX(), target.getPos().getY(), target.getPos().getZ(), explosionSize);
+					explosion.collectBlocksAndDamageEntities();
+
+					//sound on block collision
+					attacker.getWorld().playSound(
+						null,
+						attacker.getPos().getX(),
+						attacker.getPos().getY(),
+						attacker.getPos().getZ(),
+						ModSounds.WIND_CHARGE_BURST,
+						SoundCategory.NEUTRAL,
+						1F,
+						0.4F / (attacker.getWorld().getRandom().nextFloat() * 0.4F + 0.8F)
+					);
+
+
 				}
 			}
+
+
 
 
 		}

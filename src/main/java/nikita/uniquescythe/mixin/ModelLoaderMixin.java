@@ -71,4 +71,9 @@ public abstract class ModelLoaderMixin {
 	public void addBigMace(BlockColors blockColors, Profiler profiler, Map<Identifier, JsonUnbakedModel> jsonUnbakedModels, Map<Identifier, List<ModelLoader.LoadedJson>> blockStateResources, CallbackInfo ci) {
 		this.addModel(new ModelIdentifier(UniqueScythe.MOD_ID, "mace_big", "inventory"));
 	}
+
+	@Inject(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/model/ModelLoader;addModel(Lnet/minecraft/client/util/ModelIdentifier;)V", ordinal = 3, shift = At.Shift.AFTER))
+	public void addBigJevilScythe(BlockColors blockColors, Profiler profiler, Map<Identifier, JsonUnbakedModel> jsonUnbakedModels, Map<Identifier, List<ModelLoader.LoadedJson>> blockStateResources, CallbackInfo ci) {
+		this.addModel(new ModelIdentifier(UniqueScythe.MOD_ID, "jevil_scythe_big", "inventory"));
+	}
 }
