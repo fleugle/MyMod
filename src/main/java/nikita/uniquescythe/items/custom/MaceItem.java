@@ -113,6 +113,42 @@ public class MaceItem
 
 
 
+					World world = attacker.getWorld();
+					if (world instanceof ServerWorld) {
+
+						// Spawn smoke particles in a radius of 2 blocks
+						serverWorld.spawnParticles(ParticleTypes.EXPLOSION,
+							attacker.getPos().getX()  + 0.5,
+							attacker.getPos().getY()  + 0.5,
+							attacker.getPos().getZ()  + 0.5,
+							30, soundVol*2, soundVol*2, soundVol*2, 0.1);
+
+						serverWorld.spawnParticles(ParticleTypes.SMOKE,
+							attacker.getPos().getX()  + 0.5,
+							attacker.getPos().getY()  + 0.5,
+							attacker.getPos().getZ()  + 0.5,
+							30, soundVol*2, soundVol*2, soundVol*2, 0.1);
+					}
+
+
+
+					attacker.getWorld().sendEntityStatus(attacker, (byte) 3);
+					WindExplosion explosion = new WindExplosion(attacker.getWorld(), null, attacker.getPos().getX(), attacker.getPos().getY() - 1, attacker.getPos().getZ(), soundVol);
+					explosion.collectBlocksAndDamageEntities();
+					//attacker.setVelocity(0, 2.5f,0);//boost to the sky
+					attacker.addVelocity(0, 2 ,0);//boost to the sky
+
+					//sound on block collision
+					attacker.getWorld().playSound(
+						null,
+						attacker.getPos().getX(),
+						attacker.getPos().getY(),
+						attacker.getPos().getZ(),
+						ModSounds.WIND_CHARGE_BURST,
+						SoundCategory.NEUTRAL,
+						1F,
+						0.4F / (attacker.getWorld().getRandom().nextFloat() * 0.4F + 0.8F)
+					);
 
 
 
@@ -123,42 +159,7 @@ public class MaceItem
 
 
 
-				World world = attacker.getWorld();
-				if (world instanceof ServerWorld) {
 
-					// Spawn smoke particles in a radius of 2 blocks
-					serverWorld.spawnParticles(ParticleTypes.EXPLOSION,
-						attacker.getPos().getX()  + 0.5,
-						attacker.getPos().getY()  + 0.5,
-						attacker.getPos().getZ()  + 0.5,
-						30, soundVol*2, soundVol*2, soundVol*2, 0.1);
-
-					serverWorld.spawnParticles(ParticleTypes.SMOKE,
-						attacker.getPos().getX()  + 0.5,
-						attacker.getPos().getY()  + 0.5,
-						attacker.getPos().getZ()  + 0.5,
-						30, soundVol*2, soundVol*2, soundVol*2, 0.1);
-				}
-
-
-
-				attacker.getWorld().sendEntityStatus(attacker, (byte) 3);
-				WindExplosion explosion = new WindExplosion(attacker.getWorld(), null, attacker.getPos().getX(), attacker.getPos().getY() - 1, attacker.getPos().getZ(), soundVol);
-				explosion.collectBlocksAndDamageEntities();
-				//attacker.setVelocity(0, 2.5f,0);//boost to the sky
-				attacker.addVelocity(0, 2 ,0);//boost to the sky
-
-				//sound on block collision
-				attacker.getWorld().playSound(
-					null,
-					attacker.getPos().getX(),
-					attacker.getPos().getY(),
-					attacker.getPos().getZ(),
-					ModSounds.WIND_CHARGE_BURST,
-					SoundCategory.NEUTRAL,
-					1F,
-					0.4F / (attacker.getWorld().getRandom().nextFloat() * 0.4F + 0.8F)
-				);
 			}
 
 
