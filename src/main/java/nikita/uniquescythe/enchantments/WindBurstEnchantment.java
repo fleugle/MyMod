@@ -7,6 +7,6 @@ import net.minecraft.entity.EquipmentSlot;
 public class WindBurstEnchantment extends Enchantment {
 
 	protected WindBurstEnchantment() {
-		super(Rarity.UNCOMMON, EnchantmentTarget.MACE,new EquipmentSlot[] {EquipmentSlot.MAINHAND});
+		super(Rarity.UNCOMMON, EnchantmentTarget.WEAPON,new EquipmentSlot[] {EquipmentSlot.MAINHAND});
 	}
 }
