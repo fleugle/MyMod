@@ -6,13 +6,16 @@ import net.minecraft.item.*;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
+import nikita.uniquescythe.UniqueScythe;
 
 public class ChaosMultiToolItem extends MiningToolItem {
 
 
 
+
+
 	public ChaosMultiToolItem(ToolMaterial material, int attackDamage, float attackSpeed, Settings settings) {
-		super((float)attackDamage, attackSpeed, material, , settings);
+		super((float)attackDamage, attackSpeed, material, BlockTags.PICKAXE_MINEABLE, settings);
 	}
 
 

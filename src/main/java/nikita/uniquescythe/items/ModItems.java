@@ -37,6 +37,8 @@ public class ModItems {
 	public static final Item JEVIL_SCYTHE = registerItem("jevil_scythe", new JevilScytheItem(ModToolMaterial.CHAOS_WILL,12, -3f, new Item.Settings().rarity(Rarity.EPIC)));
 
 
+	public static final Item CHAOS_MULTITOOL = registerItem("chaos_multitool", new ChaosMultiToolItem(ModToolMaterial.CHAOS_WILL, 7, -3f, new Item.Settings().rarity(Rarity.EPIC)));
+
 	//EASTEREGG
 	public static final Item EASTER_EGG = registerItem("easter_egg", new EasterEggItem(new Item.Settings().rarity(Rarity.UNCOMMON).maxCount(1)));
 
@@ -71,6 +73,7 @@ public class ModItems {
 	private static void addItemsToToolsAndUtilitiesItemGroup(FabricItemGroupEntries entries) {
 		//place to add items to the ingredient item tab
 		entries.addItem(WIND_CHARGE);
+		entries.addItem(CHAOS_MULTITOOL);
 	}//adding items to tools and utilities tab *method*
 
     private static void addItemsToCombatItemGroup(FabricItemGroupEntries entries) {

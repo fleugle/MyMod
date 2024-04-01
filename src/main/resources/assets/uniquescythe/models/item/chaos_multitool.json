@@ -1,0 +1,17 @@
+{
+	"credit": "Made with Blockbench",
+	"parent": "item/generated",
+	"textures": {
+		"layer0": "uniquescythe:item/chaos_multitool"
+	},
+	"display": {
+		"firstperson_righthand": {
+			"rotation": [-15, -90, 0],
+			"translation": [0, 3.25, 2]
+		},
+		"firstperson_lefthand": {
+			"rotation": [-15, 90, 0],
+			"translation": [0, 3.25, 2]
+		}
+	}
+}

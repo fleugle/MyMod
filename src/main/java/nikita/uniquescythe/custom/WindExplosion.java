@@ -120,57 +120,54 @@ public class WindExplosion extends Explosion {
 
 		for(int v = 0; v < list.size(); ++v) {
 			Entity entity = (Entity)list.get(v);
-			if (!entity.isImmuneToExplosion()) {
-				double distanceRatio = entity.squaredDistanceTo(explosionCenter) / (double) (this.radius * this.radius);
+            double distanceRatio = entity.squaredDistanceTo(explosionCenter) / (double) (this.radius * this.radius);
 
-				// Calculate knockback force
-				double knockbackForce = 1.0 - Math.min(distanceRatio, 1.0);
+            // Calculate knockback force
+            double knockbackForce = 1.0 - Math.min(distanceRatio, 1.0);
 
-				// Get the direction of knockback
-				Vec3d knockbackDirection = entity.getPos().subtract(explosionCenter).normalize();
+            // Get the direction of knockback
+            Vec3d knockbackDirection = entity.getPos().subtract(explosionCenter).normalize();
 
-				// Apply knockback force
-				Vec3d knockback = knockbackDirection.multiply(knockbackForce * 1.3); // Adjust the multiplier as needed
+            // Apply knockback force
+            Vec3d knockback = knockbackDirection.multiply(knockbackForce * 1.3); // Adjust the multiplier as needed
 
-				// Apply knockback to the entity
-				entity.setVelocity(entity.getVelocity().add(knockback));
-
+            // Apply knockback to the entity
+            entity.setVelocity(entity.getVelocity().add(knockback));
 
 
-				double w = Math.sqrt(entity.squaredDistanceTo(vec3d)) / (double)q;
-				if (w <= 1.0) {
-					double x = entity.getX() - this.x;
-					double y = (entity instanceof TntEntity ? entity.getY() : entity.getEyeY()) - this.y;
-					double z = entity.getZ() - this.z;
-					double aa = Math.sqrt(x * x + y * y + z * z);
-					if (aa != 0.0) {
-						x /= aa;
-						y /= aa;
-						z /= aa;
-						double ab = (double)getExposure(vec3d, entity);
-						double ac = (1.0 - w) * ab;
-						entity.damage(this.getDamageSource(), 0.00001f);
-						double ad;
-						if (entity instanceof LivingEntity livingEntity) {
-							ad = ProtectionEnchantment.transformExplosionKnockback(livingEntity, ac);
-						} else {
-							ad = ac;
-						}
+            double w = Math.sqrt(entity.squaredDistanceTo(vec3d)) / (double)q;
+            if (w <= 1.0) {
+                double x = entity.getX() - this.x;
+                double y = (entity instanceof TntEntity ? entity.getY() : entity.getEyeY()) - this.y;
+                double z = entity.getZ() - this.z;
+                double aa = Math.sqrt(x * x + y * y + z * z);
+                if (aa != 0.0) {
+                    x /= aa;
+                    y /= aa;
+                    z /= aa;
+                    double ab = (double)getExposure(vec3d, entity);
+                    double ac = (1.0 - w) * ab;
+                    entity.damage(this.getDamageSource(), 0.00001f);
+                    double ad;
+                    if (entity instanceof LivingEntity livingEntity) {
+                        ad = ProtectionEnchantment.transformExplosionKnockback(livingEntity, ac);
+                    } else {
+                        ad = ac;
+                    }
 
-						x *= ad;
-						y *= ad;
-						z *= ad;
-						Vec3d vec3d2 = new Vec3d(x, y, z);
-						entity.setVelocity(entity.getVelocity().add(vec3d2));
-						if (entity instanceof PlayerEntity playerEntity && !playerEntity.isSpectator() && (!playerEntity.isCreative() || !playerEntity.getAbilities().flying)) {
-							this.getAffectedPlayers().put(playerEntity, vec3d2);
-						}
+                    x *= ad;
+                    y *= ad;
+                    z *= ad;
+                    Vec3d vec3d2 = new Vec3d(x, y, z);
+                    entity.setVelocity(entity.getVelocity().add(vec3d2));
+                    if (entity instanceof PlayerEntity playerEntity && !playerEntity.isSpectator() && (!playerEntity.isCreative() || !playerEntity.getAbilities().flying)) {
+                        this.getAffectedPlayers().put(playerEntity, vec3d2);
+                    }
 
-						entity.fallDistance = 0;//makes clutches a lot easier
-					}
-				}
-			}
-		}
+                    entity.fallDistance = 0;//makes clutches a lot easier
+                }
+            }
+        }
 
 
 	}

@@ -130,4 +130,14 @@ public abstract class ItemRendererMixin {
 		}
 		return value;
 	}
+
+	@ModifyVariable(method = "renderItem", at = @At(value = "HEAD"), argsOnly = true)
+	public BakedModel useBigChaosMultiToolModel(BakedModel value, ItemStack stack, ModelTransformationMode renderMode, boolean leftHanded, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
+		if (((stack.isOf(ModItems.CHAOS_MULTITOOL) && renderMode == (ModelTransformationMode.THIRD_PERSON_RIGHT_HAND))
+			|| (stack.isOf(ModItems.CHAOS_MULTITOOL) && renderMode == (ModelTransformationMode.THIRD_PERSON_LEFT_HAND)))){
+
+			return ((ItemRendererAccessor) this).customModels$getModels().getModelManager().getModel(new ModelIdentifier(UniqueScythe.MOD_ID, "chaos_multitool_big", "inventory"));
+		}
+		return value;
+	}
 }

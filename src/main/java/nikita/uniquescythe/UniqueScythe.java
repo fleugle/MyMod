@@ -7,6 +7,7 @@ import net.fabricmc.fabric.api.registry.OxidizableBlocksRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
 import nikita.uniquescythe.blocks.ModBlocks;
@@ -29,6 +30,10 @@ public class UniqueScythe implements ModInitializer {
 	// That way, it's clear which mod wrote info, warnings, and errors.
 
 
+	private static TagKey<Block> create(String id) {
+		return TagKey.of(RegistryKeys.BLOCK, new Identifier(id));
+	}
+	public static final TagKey<Block> ULTIMATE_MINEABLE = create("mineable/ultimate");
 
 
 	public static final String MOD_ID = "uniquescythe";//mod id for further usage
