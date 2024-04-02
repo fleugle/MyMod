@@ -1,10 +1,12 @@
 package nikita.uniquescythe;
 
+import com.chocohead.mm.api.ClassTinkerers;
 import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.fabricmc.fabric.api.registry.OxidizableBlocksRegistry;
 import net.minecraft.block.Block;
+import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
@@ -80,6 +82,16 @@ public class UniqueScythe implements ModInitializer {
 		//Attributes
 		//registering for attributes for an entity(Breeze)
 		FabricDefaultAttributeRegistry.register(ModEntities.BREEZE, BreezeEntity.createBreezeAttributes());
+
+
+
+
+
+
+
+
+		EnchantmentTarget target = ClassTinkerers.getEnum(EnchantmentTarget.class, "MACE");
+		LOGGER.info("Can enchant cake? " + target.isAcceptableItem(ModItems.MACE));
 	}
 }
 
