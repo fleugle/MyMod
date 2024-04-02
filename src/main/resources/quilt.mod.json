@@ -22,6 +22,9 @@
 			"main": [
 				"nikita.uniquescythe.UniqueScythe"
 			],
+			"mm:early_risers":[
+				"nikita.uniquescythe.early_risers.MaceEnumAdder"
+			],
 			"client": [
 				"nikita.uniquescythe.UniqueScytheClient"
 			]
@@ -29,7 +32,8 @@
 		"depends": [
 			{
 				"id": "quilt_loader",
-				"versions": ">=0.19.1"
+				"versions": ">=0.19.1",
+				"mm": ">=2.3"
 			},
 			{
 				"id": "quilted_fabric_api",
