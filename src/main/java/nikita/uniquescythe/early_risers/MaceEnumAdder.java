@@ -1,9 +1,6 @@
 package nikita.uniquescythe.early_risers;
 
 import com.chocohead.mm.api.ClassTinkerers;
-import net.minecraft.enchantment.EnchantmentTarget;
-import nikita.uniquescythe.UniqueScythe;
-import nikita.uniquescythe.items.custom.MaceItem;
 import org.quiltmc.loader.api.MappingResolver;
 import org.quiltmc.loader.api.QuiltLoader;
 
