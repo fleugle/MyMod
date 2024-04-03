@@ -90,8 +90,8 @@ public class UniqueScythe implements ModInitializer {
 
 
 
-		EnchantmentTarget target = ClassTinkerers.getEnum(EnchantmentTarget.class, "MACE");
-		LOGGER.info("Can enchant cake? " + target.isAcceptableItem(ModItems.MACE));
+		//EnchantmentTarget target = ClassTinkerers.getEnum(EnchantmentTarget.class, "MACE");
+		//LOGGER.info("Can enchant cake? " + target.isAcceptableItem(ModItems.MACE));
 	}
 }
 

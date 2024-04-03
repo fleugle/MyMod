@@ -22,9 +22,7 @@
 			"main": [
 				"nikita.uniquescythe.UniqueScythe"
 			],
-			"mm:early_risers":[
-				"nikita.uniquescythe.early_risers.MaceEnumAdder"
-			],
+
 			"client": [
 				"nikita.uniquescythe.UniqueScytheClient"
 			]
