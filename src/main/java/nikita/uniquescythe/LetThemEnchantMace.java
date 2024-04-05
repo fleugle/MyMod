@@ -19,3 +19,5 @@ abstract class EnchantmentTargetMixin {
 	@Shadow
 	abstract boolean isAcceptableItem(Item item);
 }
+
+//I guess just needs to be out of the mixin package while being mixin, idk why
