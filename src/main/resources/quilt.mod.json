@@ -45,5 +45,8 @@
 			}
 		]
 	},
-	"mixin": "uniquescythe.mixins.json"
+	"mixin": "uniquescythe.mixins.json",
+	"access_widener": [
+		"uniquescythe.accesswidener"
+	]
 }

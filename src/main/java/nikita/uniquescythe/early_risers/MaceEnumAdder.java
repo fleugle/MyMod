@@ -10,6 +10,6 @@ public class MaceEnumAdder implements Runnable{
 
 		MappingResolver remapper = QuiltLoader.getMappingResolver();
 		String enchantmentTarget = remapper.mapClassName("intermediary", "net.minecraft.class_1886");
-		ClassTinkerers.enumBuilder(enchantmentTarget).addEnumSubclass("MACE", "nikita.uniquescythe.mixin.LetThemEnchantMace").build();
+		ClassTinkerers.enumBuilder(enchantmentTarget).addEnumSubclass("MACE", "nikita.uniquescythe.LetThemEnchantMace").build();
 	}
 }
