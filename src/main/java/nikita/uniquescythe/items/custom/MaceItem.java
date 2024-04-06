@@ -105,7 +105,7 @@ public class MaceItem
 					// Reset fall distance to prevent fall damage
 					attacker.fallDistance = 0;
 
-
+					/*
 					//enchantment func
 					World world = attacker.getWorld();
 					if (world instanceof ServerWorld) {
@@ -152,20 +152,12 @@ public class MaceItem
 					);
 
 
+					 */
 
 				}
 
-
-
-
-
-
-
 			}
-
-
-
-
+			
 		}
 		return super.postHit(stack, target, attacker);
 	}

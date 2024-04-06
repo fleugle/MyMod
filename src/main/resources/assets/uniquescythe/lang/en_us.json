@@ -10,5 +10,8 @@
   "item.uniquescythe.air_bottle":"Bottle With Air",
 
   "block.uniquescythe.tuff_bricks": "Tuff Bricks",
-  "block.uniquescythe.copper_grate": "Copper Grate"
+  "block.uniquescythe.copper_grate": "Copper Grate",
+
+
+  "enchantment.uniquescythe.wind_burst": "Wind Burst"
 }
