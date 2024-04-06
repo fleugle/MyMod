@@ -13,6 +13,7 @@ import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
 import nikita.uniquescythe.blocks.ModBlocks;
+import nikita.uniquescythe.enchantments.ModEnchantments;
 import nikita.uniquescythe.entities.ModEntities;
 import nikita.uniquescythe.entities.custom.BreezeEntity;
 import nikita.uniquescythe.items.ModItems;
@@ -84,11 +85,7 @@ public class UniqueScythe implements ModInitializer {
 		FabricDefaultAttributeRegistry.register(ModEntities.BREEZE, BreezeEntity.createBreezeAttributes());
 
 
-
-
-
-
-
+		ModEnchantments.initialiseModEnchantments();
 
 		//EnchantmentTarget target = ClassTinkerers.getEnum(EnchantmentTarget.class, "MACE");
 		//LOGGER.info("Can enchant cake? " + target.isAcceptableItem(ModItems.MACE));
