@@ -52,7 +52,7 @@ public class ModItems {
 	public static final Item BREEZE_ROD = registerItem("breeze_rod", new Item(new Item.Settings().maxCount(64)));
 
 	//MACE registry
-	public static final Item MACE = registerItem("mace", (Item)new MaceItem(new Item.Settings().maxCount(1).maxDamage(250)));
+	public static final Item MACE = registerItem("mace", new MaceItem(ModToolMaterial.BREEZE_ROD,6,20, new Item.Settings().maxCount(1)));
 
 	// *end of the registering items section*
 
