@@ -4,11 +4,8 @@ import com.chocohead.mm.api.ClassTinkerers;
 import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
-import net.fabricmc.fabric.api.registry.OxidizableBlocksRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.EnchantmentTarget;
-import net.minecraft.registry.Registry;
-import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
@@ -17,11 +14,10 @@ import nikita.uniquescythe.enchantments.ModEnchantments;
 import nikita.uniquescythe.entities.ModEntities;
 import nikita.uniquescythe.entities.custom.BreezeEntity;
 import nikita.uniquescythe.items.ModItems;
-import nikita.uniquescythe.particles.ModParticles;
+import nikita.uniquescythe.particles.ModParticleTypes;
 import nikita.uniquescythe.sounds.ModSounds;
 import org.quiltmc.qsl.block.content.registry.api.BlockContentRegistries;
 import org.quiltmc.qsl.block.content.registry.api.ReversibleBlockEntry;
-import org.quiltmc.qsl.registry.attachment.api.RegistryEntryAttachment;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -59,23 +55,22 @@ public class UniqueScythe implements ModInitializer {
 		//calling for sound registry method in mod sounds
 		ModSounds.initializeSounds();
 
-		//calling for particles registry method in mod particles
-
+		//particles
+		ModParticleTypes.initialiseModParticleTypes();
 
 		//calling for blocks registry method in mod blocks
 		ModBlocks.registerModBlocks();
 
-		//OxidizableBlocksRegistry.registerOxidizableBlockPair(ModBlocks.COPPER_GRATE,ModBlocks.EXPOSED_COPPER_GRATE);
-		//OxidizableBlocksRegistry.registerOxidizableBlockPair(ModBlocks.EXPOSED_COPPER_GRATE,ModBlocks.OXIDIZED_COPPER_GRATE);
 
-
-
+		/*
 		ReversibleBlockEntry copperToExposed = new ReversibleBlockEntry(ModBlocks.EXPOSED_COPPER_GRATE, true);
 		ReversibleBlockEntry exposedToOxidized = new ReversibleBlockEntry(ModBlocks.OXIDIZED_COPPER_GRATE, true);
 
 
 		BlockContentRegistries.OXIDIZABLE.put(ModBlocks.COPPER_GRATE,copperToExposed);
 		BlockContentRegistries.OXIDIZABLE.put(ModBlocks.EXPOSED_COPPER_GRATE,exposedToOxidized);
+
+		 */
 
 
 
@@ -85,13 +80,13 @@ public class UniqueScythe implements ModInitializer {
 		FabricDefaultAttributeRegistry.register(ModEntities.BREEZE, BreezeEntity.createBreezeAttributes());
 
 
+		//enchantments & stuff
 		ModEnchantments.initialiseModEnchantments();
 
-		//EnchantmentTarget target = ClassTinkerers.getEnum(EnchantmentTarget.class, "MACE");
-		//LOGGER.info("Can enchant cake? " + target.isAcceptableItem(ModItems.MACE));
+		EnchantmentTarget target = ClassTinkerers.getEnum(EnchantmentTarget.class, "MACE");
+		LOGGER.info("Can enchant mace? " + target.isAcceptableItem(ModItems.MACE));
 	}
 }
 
 
 
-//just to check where i do commit my work i add this though.

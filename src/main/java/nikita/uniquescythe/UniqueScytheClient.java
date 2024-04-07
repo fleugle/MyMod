@@ -5,22 +5,34 @@ import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
-import net.minecraft.block.Block;
+import net.minecraft.client.particle.ExplosionEmitterParticle;
+import net.minecraft.client.particle.ExplosionLargeParticle;
 import net.minecraft.client.render.RenderLayer;
-import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
-import net.minecraft.client.render.entity.model.EntityModelLayer;
 import nikita.uniquescythe.blocks.ModBlocks;
 import nikita.uniquescythe.entities.ModEntities;
 import nikita.uniquescythe.entities.client.*;
-import nikita.uniquescythe.particles.ModParticles;
-import nikita.uniquescythe.particles.custom.VoidAttackParticle;
-import org.quiltmc.qsl.block.content.registry.api.BlockContentRegistries;
+import nikita.uniquescythe.particles.ModParticleTypes;
+
 
 public class UniqueScytheClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
 		//wtf is that
-		ParticleFactoryRegistry.getInstance().register(ModParticles.VOID_ATTACK_PARTICLE, VoidAttackParticle.Factory::new);
+		/* Adds our particle textures to vanilla's Texture Atlas so it can be shown properly.
+		 * Modify the namespace and particle id accordingly.
+		 *
+		 * This is only used if you plan to add your own textures for the particle. Otherwise, remove  this.
+		ClientSpriteRegistryCallback.event(PlayerScreenHandler.BLOCK_ATLAS_TEXTURE).register(((atlasTexture, registry) -> {
+			registry.register(new Identifier("modid", "particle/green_flame"));
+		}));
+		*/
+
+
+		ParticleFactoryRegistry.getInstance().register(ModParticleTypes.WIND_EXPLOSION, ExplosionLargeParticle.Factory::new);
+
+
+
+
 
 
 		//mod model layers
