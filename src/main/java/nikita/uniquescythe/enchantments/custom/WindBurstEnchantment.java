@@ -13,6 +13,7 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.world.World;
 import nikita.uniquescythe.custom.WindExplosion;
+import nikita.uniquescythe.particles.ModParticleTypes;
 import nikita.uniquescythe.sounds.ModSounds;
 
 public class WindBurstEnchantment extends Enchantment {
@@ -47,7 +48,7 @@ public class WindBurstEnchantment extends Enchantment {
 
 
 
-  		if (attacker.fallDistance > 1.5f){
+
 
 			int additionalDamage = ((int) attacker.fallDistance) * 5;
 
@@ -59,18 +60,20 @@ public class WindBurstEnchantment extends Enchantment {
 
 			if (world instanceof ServerWorld) {
 
-				// Spawn smoke particles in a radius of 2 blocks
-				serverWorld.spawnParticles(ParticleTypes.EXPLOSION,
+
+					// Spawn smoke particles in a radius of 2 blocks
+				serverWorld.spawnParticles(ModParticleTypes.WIND_EXPLOSION,
 					attacker.getPos().getX()  + 0.5,
 					attacker.getPos().getY()  + 0.5,
 					attacker.getPos().getZ()  + 0.5,
-					30, soundVol*2, soundVol*2, soundVol*2, 0.1);
+					8, 1.5, 1.5, 1.5, 1);
+
 
 				serverWorld.spawnParticles(ParticleTypes.SMOKE,
 					attacker.getPos().getX()  + 0.5,
 					attacker.getPos().getY()  + 0.5,
 					attacker.getPos().getZ()  + 0.5,
-					30, soundVol*2, soundVol*2, soundVol*2, 0.1);
+					8, 1.5, 1.5, 1.5, 1);
 			}
 
 
@@ -81,7 +84,7 @@ public class WindBurstEnchantment extends Enchantment {
 
 			DamageSource damageSource = attacker.getRecentDamageSource();
 			attacker.setVelocity(0, 0f,0);//reset velocity
-			attacker.addVelocity(0, 2f ,0);//boost to the sky
+			attacker.addVelocity(0, 1.5f ,0);//boost to the sky
 			attacker.damage(damageSource, 0.00001f);
 
 			//sound on block collision
@@ -95,7 +98,7 @@ public class WindBurstEnchantment extends Enchantment {
 				1F,
 				0.4F / (attacker.getWorld().getRandom().nextFloat() * 0.4F + 0.8F)
 			);
-		}
+
 
 		super.onTargetDamaged(attacker, target, level);
 	}

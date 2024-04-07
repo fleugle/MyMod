@@ -29,6 +29,7 @@ import nikita.uniquescythe.custom.WindExplosion;
 import nikita.uniquescythe.entities.ModEntities;
 import nikita.uniquescythe.entities.animation.ModAnimations;
 import nikita.uniquescythe.items.ModItems;
+import nikita.uniquescythe.particles.ModParticleTypes;
 import nikita.uniquescythe.sounds.ModSounds;
 
 public class WindChargeProjectileEntity extends ThrownItemEntity {
@@ -153,11 +154,11 @@ public class WindChargeProjectileEntity extends ThrownItemEntity {
 				ServerWorld serverWorld = (ServerWorld) world;
 
 				// Spawn smoke particles in a radius of 2 blocks
-				serverWorld.spawnParticles(ParticleTypes.EXPLOSION,
+				serverWorld.spawnParticles(ModParticleTypes.WIND_EXPLOSION,
 					getPos().getX()  + 0.5,
 					getPos().getY()  + 0.5,
 					getPos().getZ()  + 0.5,
-					30, 2, 2, 2, 0.1);
+					8, 1.5, 1.5, 1.5, 1);
 			}
 			float explosionSize = 3f;
 			this.getWorld().sendEntityStatus(this, (byte) 3);
@@ -176,6 +177,8 @@ public class WindChargeProjectileEntity extends ThrownItemEntity {
 				0.4F / (getWorld().getRandom().nextFloat() * 0.4F + 0.8F)
 			);
 		}
+
+		this.discard();
 	}
 
 	@Override
@@ -187,11 +190,11 @@ public class WindChargeProjectileEntity extends ThrownItemEntity {
 				ServerWorld serverWorld = (ServerWorld) world;
 
 				// Spawn smoke particles in a radius of 2 blocks
-				serverWorld.spawnParticles(ParticleTypes.EXPLOSION,
+				serverWorld.spawnParticles(ModParticleTypes.WIND_EXPLOSION,
 					getPos().getX()  + 0.5,
 					getPos().getY()  + 0.5,
 					getPos().getZ()  + 0.5,
-					30, 2, 2, 2, 0.1);
+					8, 1.5, 1.5, 1.5, 1);
 			}
 
 			float explosionSize = 3f;
