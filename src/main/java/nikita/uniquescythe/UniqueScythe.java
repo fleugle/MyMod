@@ -60,7 +60,7 @@ public class UniqueScythe implements ModInitializer {
 		ModSounds.initializeSounds();
 
 		//calling for particles registry method in mod particles
-		ModParticles.registerParticles();
+
 
 		//calling for blocks registry method in mod blocks
 		ModBlocks.registerModBlocks();
