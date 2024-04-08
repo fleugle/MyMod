@@ -7,6 +7,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
@@ -78,16 +79,16 @@ public class WindBurstEnchantment extends Enchantment {
 
 
 
-			attacker.getWorld().sendEntityStatus(attacker, (byte) 3);
-			WindExplosion explosion = new WindExplosion(attacker.getWorld(), null, attacker.getPos().getX(), attacker.getPos().getY() - 1, attacker.getPos().getZ(), soundVol);
-			explosion.collectBlocksAndDamageEntities();
 
+			((LivingEntity) attacker).removeStatusEffect(StatusEffects.WITHER);// 'cause without it, it can be laggy and super inconsistent
+			attacker.getWorld().sendEntityStatus(attacker, (byte) 3);
 			DamageSource damageSource = attacker.getDamageSources().generic();
 			attacker.setVelocity(0, 0f,0);//reset velocity
+			attacker.damage(damageSource, 0.00001f);
 			attacker.addVelocity(0, 1.5f ,0);//boost to the sky
 			attacker.damage(damageSource, 0.00001f);
 
-			//sound on block collision
+			//sound
 			attacker.getWorld().playSound(
 				null,
 				attacker.getPos().getX(),
