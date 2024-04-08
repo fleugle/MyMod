@@ -9,8 +9,6 @@ import nikita.uniquescythe.UniqueScythe;
 
 
 public class ModSounds {
-    // ITEM_METAL_WHISTLE is the name of the custom sound event
-    // and is called in the mod to use the custom sound
     public static SoundEvent SCYTHE_CHARGED = registerSound("sc_ch");
     public static SoundEvent SCYTHE_HIT = registerSound("sc_ht");
 

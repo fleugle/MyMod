@@ -2,22 +2,48 @@ package nikita.uniquescythe.enchantments.custom;
 
 import com.chocohead.mm.api.ClassTinkerers;
 import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NbtType;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.world.World;
 import nikita.uniquescythe.custom.WindExplosion;
+import nikita.uniquescythe.enchantments.ModEnchantments;
 import nikita.uniquescythe.particles.ModParticleTypes;
 import nikita.uniquescythe.sounds.ModSounds;
 
 public class WindBurstEnchantment extends Enchantment {
+
+	//attempting to be cool here and code something without help and given by some-one else methods
+	private ItemStack itemStack;
+
+    private int ifHasDensityEnchantment = EnchantmentHelper.getLevel(ModEnchantments.DENSITY, itemStack);
+
+	private int getDamageMultiplier(){
+
+        int damageMultiplier;//var that I pass in the end as a multiplier for dmg
+
+        if (ifHasDensityEnchantment >= 1){
+			damageMultiplier = 15;
+		} else {
+			damageMultiplier = 5;
+		}
+
+		return damageMultiplier;
+	}
+
+	//to be honest, I don't believe that's gonna work. Smthing like 'no dmg multiplier' 'cause idk if item stack is received properly here(if received at all of coarse🤠👍).
+
+
 
 	public WindBurstEnchantment() {
 		super(Rarity.UNCOMMON,
@@ -51,7 +77,7 @@ public class WindBurstEnchantment extends Enchantment {
 
 
 
-			int additionalDamage = ((int) attacker.fallDistance) * 5;
+			int additionalDamage = ((int) attacker.fallDistance) * getDamageMultiplier();
 
 			// Apply additional damage
 			target.getWorld().playSound(null, target.getBlockPos(), ModSounds.MACE_BONK, SoundCategory.NEUTRAL, soundVol, 1f);
