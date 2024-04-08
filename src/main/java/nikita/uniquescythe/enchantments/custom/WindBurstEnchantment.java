@@ -24,22 +24,10 @@ import nikita.uniquescythe.sounds.ModSounds;
 public class WindBurstEnchantment extends Enchantment {
 
 	//attempting to be cool here and code something without help and given by some-one else methods
-	private ItemStack itemStack;
 
-    private int ifHasDensityEnchantment = EnchantmentHelper.getLevel(ModEnchantments.DENSITY, itemStack);
 
-	private int getDamageMultiplier(){
 
-        int damageMultiplier;//var that I pass in the end as a multiplier for dmg
 
-        if (ifHasDensityEnchantment >= 1){
-			damageMultiplier = 15;
-		} else {
-			damageMultiplier = 5;
-		}
-
-		return damageMultiplier;
-	}
 
 	//to be honest, I don't believe that's gonna work. Smthing like 'no dmg multiplier' 'cause idk if item stack is received properly here(if received at all of coarse🤠👍).
 
@@ -67,6 +55,20 @@ public class WindBurstEnchantment extends Enchantment {
 	@Override
 	public void onTargetDamaged(LivingEntity attacker, Entity target, int level) {
 
+		ItemStack itemStack = attacker.getMainHandStack();
+		int ifHasDensityEnchantment = EnchantmentHelper.getLevel(ModEnchantments.DENSITY, itemStack);
+
+		int damageMultiplier;//var that I pass in the end as a multiplier for dmg
+
+		if (ifHasDensityEnchantment >= 1){
+			damageMultiplier = 15;
+		} else {
+			damageMultiplier = 5;
+		}
+
+
+
+
 		ServerWorld serverWorld = (ServerWorld)attacker.getWorld();
 		ServerPlayerEntity serverPlayerEntity = (ServerPlayerEntity)attacker;
 		float soundVol = (attacker.fallDistance) / 10;
@@ -77,7 +79,7 @@ public class WindBurstEnchantment extends Enchantment {
 
 
 
-			int additionalDamage = ((int) attacker.fallDistance) * getDamageMultiplier();
+			int additionalDamage = ((int) attacker.fallDistance) * damageMultiplier;
 
 			// Apply additional damage
 			target.getWorld().playSound(null, target.getBlockPos(), ModSounds.MACE_BONK, SoundCategory.NEUTRAL, soundVol, 1f);
