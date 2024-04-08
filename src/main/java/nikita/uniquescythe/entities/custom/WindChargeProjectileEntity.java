@@ -158,7 +158,7 @@ public class WindChargeProjectileEntity extends ThrownItemEntity {
 					getPos().getX()  + 0.5,
 					getPos().getY()  + 0.5,
 					getPos().getZ()  + 0.5,
-					8, 1.5, 1.5, 1.5, 1);
+					8, 1, 1, 1, 1);
 			}
 			float explosionSize = 3f;
 			this.getWorld().sendEntityStatus(this, (byte) 3);
@@ -194,7 +194,7 @@ public class WindChargeProjectileEntity extends ThrownItemEntity {
 					getPos().getX()  + 0.5,
 					getPos().getY()  + 0.5,
 					getPos().getZ()  + 0.5,
-					8, 1.5, 1.5, 1.5, 1);
+					8, 1, 1, 1, 1);
 			}
 
 			float explosionSize = 3f;

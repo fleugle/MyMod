@@ -11,7 +11,12 @@
 
   "block.uniquescythe.tuff_bricks": "Tuff Bricks",
   "block.uniquescythe.copper_grate": "Copper Grate",
+  "block.uniquescythe.oxidized_copper_grate": "Oxidized Copper Grate",
+  "block.uniquescythe.exposed_copper_grate": "Exposed Copper Grate",
 
 
-  "enchantment.uniquescythe.wind_burst": "Wind Burst"
+
+
+  "enchantment.uniquescythe.wind_burst": "Wind Burst",
+  "enchantment.uniquescythe.density": "Density"
 }
