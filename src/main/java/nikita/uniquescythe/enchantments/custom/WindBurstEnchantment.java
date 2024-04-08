@@ -82,7 +82,7 @@ public class WindBurstEnchantment extends Enchantment {
 			WindExplosion explosion = new WindExplosion(attacker.getWorld(), null, attacker.getPos().getX(), attacker.getPos().getY() - 1, attacker.getPos().getZ(), soundVol);
 			explosion.collectBlocksAndDamageEntities();
 
-			DamageSource damageSource = attacker.getRecentDamageSource();
+			DamageSource damageSource = attacker.getDamageSources().generic();
 			attacker.setVelocity(0, 0f,0);//reset velocity
 			attacker.addVelocity(0, 1.5f ,0);//boost to the sky
 			attacker.damage(damageSource, 0.00001f);

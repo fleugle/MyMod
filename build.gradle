@@ -37,6 +37,7 @@ loom {
 			// configuration("exampleShadedConfigurationName")
 		}
 	}
+	accessWidenerPath = file("src/main/resources/uniquescythe.accesswidener")
 }
 
 // All the dependencies are declared at gradle/libs.version.toml and referenced with "libs.<id>"
