@@ -8,11 +8,13 @@ import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.item.ItemStack;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.world.World;
+import nikita.uniquescythe.items.custom.MaceItem;
 import nikita.uniquescythe.particles.ModParticleTypes;
 import nikita.uniquescythe.sounds.ModSounds;
 
@@ -40,27 +42,8 @@ public class DensityEnchantment extends Enchantment {
 	@Override
 	public void onTargetDamaged(LivingEntity attacker, Entity target, int level) {
 
-		ServerWorld serverWorld = (ServerWorld)attacker.getWorld();
-		ServerPlayerEntity serverPlayerEntity = (ServerPlayerEntity)attacker;
-		float soundVol = (attacker.fallDistance) / 10;
-		//enchantment func
-		World world = attacker.getWorld();
-
-
-
-
-
-			int additionalDamage = ((int) attacker.fallDistance) * 15;
-
-			// Apply additional damage
-			target.getWorld().playSound(null, target.getBlockPos(), ModSounds.MACE_BONK, SoundCategory.NEUTRAL, soundVol, 1f);
-			target.damage(attacker.getDamageSources().generic(), additionalDamage);
-			// Reset fall distance to prevent fall damage
-			attacker.fallDistance = 0;
-
-
-
-
+		ItemStack stack = attacker.getMainHandStack();
+		MaceItem.applyAdditionalDamage(stack,target,attacker);
 		super.onTargetDamaged(attacker, target, level);
 	}
 }

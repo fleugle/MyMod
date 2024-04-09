@@ -5,6 +5,8 @@ import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
@@ -22,6 +24,7 @@ import net.minecraft.sound.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import nikita.uniquescythe.custom.WindExplosion;
+import nikita.uniquescythe.enchantments.ModEnchantments;
 import nikita.uniquescythe.items.ModItems;
 import nikita.uniquescythe.sounds.ModSounds;
 
@@ -83,6 +86,28 @@ public class MaceItem
 	}
 
 
+	public static void applyAdditionalDamage(ItemStack itemStack, Entity target, LivingEntity attacker){
+		int ifHasDensityEnchantment = EnchantmentHelper.getLevel(ModEnchantments.DENSITY, itemStack);
+
+		int damageMultiplier;//var that I pass in the end as a multiplier for dmg
+
+		if (ifHasDensityEnchantment >= 1){
+			damageMultiplier = 15;
+		} else {
+			damageMultiplier = 5;
+		}
+
+		int additionalDamage = ((int) attacker.fallDistance) * damageMultiplier;
+
+		// Apply additional damage
+		target.getWorld().playSound(null, target.getBlockPos(), ModSounds.MACE_BONK, SoundCategory.NEUTRAL, 1f, 1f);
+		target.damage(attacker.getDamageSources().generic(), additionalDamage);
+		// Reset fall distance to prevent fall damage
+		attacker.fallDistance = 0;
+	}
+
+
+
 	@Override
 	public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
 		stack.damage(1, attacker, e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
@@ -97,13 +122,11 @@ public class MaceItem
 				if (serverPlayerEntity.fallDistance > 1.5f) {
 
 
-					int additionalDamage = ((int) attacker.fallDistance) * 5;
+					applyAdditionalDamage(stack, target, attacker);//func to apply additional dmg
 
-					// Apply additional damage
-					target.getWorld().playSound(null, target.getBlockPos(), ModSounds.MACE_BONK, SoundCategory.NEUTRAL, soundVol, 1f);
-					target.damage(attacker.getDamageSources().generic(), additionalDamage);
-					// Reset fall distance to prevent fall damage
-					attacker.fallDistance = 0;
+
+
+
 
 					/*
 					//enchantment func
@@ -157,7 +180,7 @@ public class MaceItem
 				}
 
 			}
-			
+
 		}
 		return super.postHit(stack, target, attacker);
 	}

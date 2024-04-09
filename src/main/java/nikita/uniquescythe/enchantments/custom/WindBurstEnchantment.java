@@ -18,18 +18,12 @@ import net.minecraft.sound.SoundCategory;
 import net.minecraft.world.World;
 import nikita.uniquescythe.custom.WindExplosion;
 import nikita.uniquescythe.enchantments.ModEnchantments;
+import nikita.uniquescythe.items.custom.MaceItem;
 import nikita.uniquescythe.particles.ModParticleTypes;
 import nikita.uniquescythe.sounds.ModSounds;
 
 public class WindBurstEnchantment extends Enchantment {
 
-	//attempting to be cool here and code something without help and given by some-one else methods
-
-
-
-
-
-	//to be honest, I don't believe that's gonna work. Smthing like 'no dmg multiplier' 'cause idk if item stack is received properly here(if received at all of coarse🤠👍).
 
 
 
@@ -55,37 +49,22 @@ public class WindBurstEnchantment extends Enchantment {
 	@Override
 	public void onTargetDamaged(LivingEntity attacker, Entity target, int level) {
 
-		ItemStack itemStack = attacker.getMainHandStack();
-		int ifHasDensityEnchantment = EnchantmentHelper.getLevel(ModEnchantments.DENSITY, itemStack);
-
-		int damageMultiplier;//var that I pass in the end as a multiplier for dmg
-
-		if (ifHasDensityEnchantment >= 1){
-			damageMultiplier = 15;
-		} else {
-			damageMultiplier = 5;
-		}
 
 
+
+		ItemStack stack = attacker.getMainHandStack();
 
 
 		ServerWorld serverWorld = (ServerWorld)attacker.getWorld();
-		ServerPlayerEntity serverPlayerEntity = (ServerPlayerEntity)attacker;
-		float soundVol = (attacker.fallDistance) / 10;
+
+
+		MaceItem.applyAdditionalDamage(stack,target,attacker);
+
+
+
+
 		//enchantment func
 		World world = attacker.getWorld();
-
-
-
-
-
-			int additionalDamage = ((int) attacker.fallDistance) * damageMultiplier;
-
-			// Apply additional damage
-			target.getWorld().playSound(null, target.getBlockPos(), ModSounds.MACE_BONK, SoundCategory.NEUTRAL, soundVol, 1f);
-			target.damage(attacker.getDamageSources().generic(), additionalDamage);
-			// Reset fall distance to prevent fall damage
-			attacker.fallDistance = 0;
 
 			if (world instanceof ServerWorld) {
 
