@@ -46,5 +46,48 @@
     "sounds": [
       "uniquescythe:l-ning_th"
     ]
+  },
+
+
+
+  "block.heavy_core.break": {
+    "sounds": [
+      "uniquescythe:block/heavy_core_break1",
+      "uniquescythe:block/heavy_core/break2",
+      "uniquescythe:block/heavy_core/break3",
+      "uniquescythe:block/heavy_core/break4"
+    ]
+  },
+  "block.heavy_core.fall": {
+    "sounds": [
+      "uniquescythe:block/heavy_core/step1",
+      "uniquescythe:block/heavy_core/step2",
+      "uniquescythe:block/heavy_core/step3",
+      "uniquescythe:block/heavy_core/step4"
+    ]
+  },
+  "block.heavy_core.hit": {
+    "sounds": [
+      "uniquescythe:block/heavy_core/step1",
+      "uniquescythe:block/heavy_core/step2",
+      "uniquescythe:block/heavy_core/step3",
+      "uniquescythe:block/heavy_core/step4"
+    ]
+  },
+  "block.heavy_core.place": {
+    "sounds": [
+      "uniquescythe:block/heavy_core/break1",
+      "uniquescythe:block/heavy_core/break2",
+      "uniquescythe:block/heavy_core/break3",
+      "uniquescythe:block/heavy_core/break4"
+    ]
+  },
+  "block.heavy_core.step": {
+    "sounds": [
+      "uniquescythe:block/heavy_core/step1",
+      "uniquescythe:block/heavy_core/step2",
+      "uniquescythe:block/heavy_core/step3",
+      "uniquescythe:block/heavy_core/step4"
+    ]
   }
 }

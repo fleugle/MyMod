@@ -25,7 +25,24 @@ public class ModSounds {
 
 	public static SoundEvent MUFLON = registerSound("muflon");
 
-    // actual registration of all the custom SoundEvents
+	public static SoundEvent SAD2_OGG = registerSound("sad2");
+
+
+
+	public static SoundEvent BLOCK_HEAVY_CORE_BREAK = registerSound("block.heavy_core.break");
+
+	public static SoundEvent BLOCK_HEAVY_CORE_STEP = registerSound("block.heavy_core.step");
+
+	public static SoundEvent BLOCK_HEAVY_CORE_PLACE = registerSound("block.heavy_core.place");
+
+	public static SoundEvent BLOCK_HEAVY_CORE_HIT = registerSound("block.heavy_core.hit");
+
+	public static SoundEvent BLOCK_HEAVY_CORE_FALL = registerSound("block.heavy_core.fall");
+
+
+
+
+	// actual registration of all the custom SoundEvents
     static SoundEvent registerSound(String id) {
         SoundEvent sound = SoundEvent.createVariableRangeEvent(new Identifier(UniqueScythe.MOD_ID, id));
         return Registry.register(Registries.SOUND_EVENT, new Identifier(UniqueScythe.MOD_ID, id), sound);

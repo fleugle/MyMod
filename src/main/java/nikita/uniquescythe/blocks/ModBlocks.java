@@ -14,7 +14,9 @@ import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import nikita.uniquescythe.UniqueScythe;
 import nikita.uniquescythe.blocks.custom.AbstractCopperGrateBlock;
+import nikita.uniquescythe.blocks.custom.AbstractHeavyCoreBlock;
 import nikita.uniquescythe.items.ModItems;
+import nikita.uniquescythe.sounds.ModBlockSoundGroup;
 
 public class ModBlocks {
 
@@ -23,6 +25,11 @@ public class ModBlocks {
 	//
 	public static final Block  TUFF_BRICKS = registerBlock("tuff_bricks",
 		new Block(AbstractBlock.Settings.copy(Blocks.BRICKS)));//tuff bricks
+
+
+	public static final Block  HEAVY_CORE = registerBlock("heavy_core",
+		new AbstractHeavyCoreBlock(AbstractBlock.Settings.copy(Blocks.OBSIDIAN).mapColor(MapColor.DEEPSLATE).sounds(ModBlockSoundGroup.HEAVY_CORE)));//heavy core
+
 
 
 	public static final Block  COPPER_GRATE = registerBlock("copper_grate",
@@ -59,6 +66,7 @@ public class ModBlocks {
 		entries.addItem(COPPER_GRATE);
 		entries.addItem(EXPOSED_COPPER_GRATE);
 		entries.addItem(OXIDIZED_COPPER_GRATE);
+		entries.addItem(HEAVY_CORE);
 
 	}//adding items to combat tab *method*
 
