@@ -23,7 +23,8 @@
   },
   "texture_size": [16, 16],
   "textures": {
-    "all": "uniquescythe:block/heavy_core"
+    "all": "uniquescythe:block/heavy_core",
+    "particle": "uniquescythe:block/heavy_core"
   },
   "elements": [
     {
