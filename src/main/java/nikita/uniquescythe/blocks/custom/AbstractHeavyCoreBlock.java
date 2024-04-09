@@ -1,11 +1,13 @@
 package nikita.uniquescythe.blocks.custom;
 
 import net.minecraft.block.*;
+import net.minecraft.block.enums.JigsawOrientation;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
+import net.minecraft.state.property.EnumProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -16,6 +18,11 @@ import net.minecraft.world.WorldAccess;
 import org.jetbrains.annotations.Nullable;
 
 public class AbstractHeavyCoreBlock extends Block implements Waterloggable {
+	private static final VoxelShape OUTLINE_SHAPE = Block.createCuboidShape(4.0, 0.0, 4.0, 12.0, 8.0, 12.0);
+	public static final EnumProperty<JigsawOrientation> ORIENTATION = Properties.ORIENTATION;
+
+
+
 	public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
 	public AbstractHeavyCoreBlock( Settings settings) {
 		super(settings);
@@ -67,6 +74,6 @@ public class AbstractHeavyCoreBlock extends Block implements Waterloggable {
 	//thing to make a shape.
 	@Override
 	public VoxelShape getOutlineShape(BlockState state, BlockView view, BlockPos pos, ShapeContext context) {
-		return VoxelShapes.cuboid(4.0, 0.0, 4.0, 12.0, 8.0, 12.0);
+		return OUTLINE_SHAPE;
 	}
 }
