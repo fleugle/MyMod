@@ -56,7 +56,7 @@ public class UniqueScytheClient implements ClientModInitializer {
 		BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.EXPOSED_COPPER_GRATE, RenderLayer.getCutout());
 		BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.OXIDIZED_COPPER_GRATE, RenderLayer.getCutout());
 
-		BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.HEAVY_CORE, RenderLayer.getCutout());
+
 
 
 
