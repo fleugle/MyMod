@@ -12,32 +12,39 @@ public class ModAnimations {
 
 	//wind charge entity animation
 	public static final Animation WIND_CHARGE = Animation.Builder.withLength(6f).looping()
-		.addPartAnimation("charge",
-			new PartAnimation(PartAnimation.AnimationTargets.ROTATE,
-				new AnimationKeyframe(0f, Animator.rotate(0f, 0f, 0f),
-					PartAnimation.Interpolations.LINEAR),
-				new AnimationKeyframe(6f, Animator.rotate(0f, -1080.0F, 0f),
-					PartAnimation.Interpolations.LINEAR)))
-		.addPartAnimation("wind_inner",
-			new PartAnimation(PartAnimation.AnimationTargets.ROTATE,
-				new AnimationKeyframe(0f, Animator.rotate(0f, 0f, 0f),
-					PartAnimation.Interpolations.LINEAR),
-				new AnimationKeyframe(3f, Animator.rotate(0f, -360f, 0f),
-					PartAnimation.Interpolations.LINEAR),
-				new AnimationKeyframe(6f, Animator.rotate(0f, -720, 0f),
-					PartAnimation.Interpolations.LINEAR)))
-		.addPartAnimation("wind_outer",
-			new PartAnimation(PartAnimation.AnimationTargets.ROTATE,
-				new AnimationKeyframe(0f, Animator.rotate(0f, 0f, 0f),
-					PartAnimation.Interpolations.LINEAR),
-				new AnimationKeyframe(6f, Animator.rotate(0f, -360f, 0f),
-					PartAnimation.Interpolations.LINEAR))).build();
+		.addPartAnimation("charge", new PartAnimation(PartAnimation.AnimationTargets.ROTATE,
+			new AnimationKeyframe(0.0F, Animator.rotate(0.0F, 0.0F, 0.0F), PartAnimation.Interpolations.LINEAR),
+			new AnimationKeyframe(6.0F, Animator.rotate(0.0F, 720.0F, 0.0F), PartAnimation.Interpolations.LINEAR)
+		))
+		.addPartAnimation("wind_inner", new PartAnimation(PartAnimation.AnimationTargets.ROTATE,
+			new AnimationKeyframe(0.0F, Animator.rotate(0.0F, 0.0F, 0.0F), PartAnimation.Interpolations.LINEAR),
+			new AnimationKeyframe(6.0F, Animator.rotate(0.0F, -720.0F, 0.0F), PartAnimation.Interpolations.LINEAR)
+		))
+		.addPartAnimation("wind_inner", new PartAnimation(PartAnimation.AnimationTargets.SCALE,
+			new AnimationKeyframe(0.0F, Animator.scale(1.15F, 1.0F, 1.15F), PartAnimation.Interpolations.LINEAR)
+		))
+		.addPartAnimation("wind_outer", new PartAnimation(PartAnimation.AnimationTargets.ROTATE,
+			new AnimationKeyframe(0.0F, Animator.rotate(0.0F, 0.0F, 0.0F), PartAnimation.Interpolations.LINEAR),
+			new AnimationKeyframe(6.0F, Animator.rotate(0.0F, -720.0F, 0.0F), PartAnimation.Interpolations.LINEAR)
+		))
+		.addPartAnimation("wind_outer", new PartAnimation(PartAnimation.AnimationTargets.SCALE,
+			new AnimationKeyframe(0.0F, Animator.scale(1.125F, 1.125F, 1.125F), PartAnimation.Interpolations.LINEAR)
+		))
+		.addPartAnimation("wind_charge", new PartAnimation(PartAnimation.AnimationTargets.TRANSLATE,
+			new AnimationKeyframe(0.0F, Animator.translate(0.0F, -2.0F, 0.0F), PartAnimation.Interpolations.LINEAR)
+		))
+		.addPartAnimation("wind_charge", new PartAnimation(PartAnimation.AnimationTargets.SCALE,
+			new AnimationKeyframe(0.0F, Animator.scale(1.0F, 1.0F, 1.0F), PartAnimation.Interpolations.LINEAR),
+			new AnimationKeyframe(3.0F, Animator.scale(1.0F, 1.3F, 1.0F), PartAnimation.Interpolations.SPLINE),
+			new AnimationKeyframe(6.0F, Animator.scale(1.0F, 1.0F, 1.0F), PartAnimation.Interpolations.LINEAR)
+		))
+		.build();
 
 
 
 	public static final Animation BREEZE_IDLE = Animation.Builder.withLength(6f).looping()
 		.addPartAnimation("head", new PartAnimation(PartAnimation.AnimationTargets.ROTATE,
-			new AnimationKeyframe(0.0F, Animator.rotate(5.0F, 0.0F, 0.0F), PartAnimation.Interpolations.LINEAR),
+				new AnimationKeyframe(0.0F, Animator.rotate(5.0F, 0.0F, 0.0F), PartAnimation.Interpolations.LINEAR),
 			new AnimationKeyframe(0.75F, Animator.rotate(0.0F, 0.0F, 0.0F),PartAnimation.Interpolations.SPLINE),
 			new AnimationKeyframe(1.5F, Animator.rotate(5.0F, 0.0F, 0.0F), PartAnimation.Interpolations.LINEAR)
 		))

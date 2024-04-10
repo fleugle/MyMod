@@ -32,15 +32,33 @@ import nikita.uniquescythe.items.ModItems;
 import nikita.uniquescythe.particles.ModParticleTypes;
 import nikita.uniquescythe.sounds.ModSounds;
 
+
+
 public class WindChargeProjectileEntity extends ThrownItemEntity {
 
 
 
 	public final AnimationState idleState = new AnimationState();
+	private int idleAnimationTimeout = 0;
 
 
+	private void setupAnimationStates() {
 
+		/*
+		if(isAttacking && !isSprinting){
+			idleAnimationTimeout =0;
 
+		}
+		*/
+
+		if (this.idleAnimationTimeout <= 0) {
+			this.idleAnimationTimeout = 119;
+			this.idleState.restart(this.age);
+		} else {
+			--this.idleAnimationTimeout;
+		}
+
+	}
 
 
 
@@ -89,7 +107,7 @@ public class WindChargeProjectileEntity extends ThrownItemEntity {
 		this.baseTick();
 
 
-		this.idleState.restart(this.age);
+		setupAnimationStates();
 
 
 		HitResult hitResult = ProjectileUtil.getCollision(this, this::canHit);
@@ -178,7 +196,8 @@ public class WindChargeProjectileEntity extends ThrownItemEntity {
 			);
 		}
 
-		this.discard();
+
+		this.kill();
 	}
 
 	@Override
@@ -216,7 +235,6 @@ public class WindChargeProjectileEntity extends ThrownItemEntity {
 
 		}
 
-		//add something to do wuth water, so that it explodes as soon as touches it
 
 
 		this.discard();
@@ -230,3 +248,6 @@ public class WindChargeProjectileEntity extends ThrownItemEntity {
 		return true;
 	}
 }
+
+
+

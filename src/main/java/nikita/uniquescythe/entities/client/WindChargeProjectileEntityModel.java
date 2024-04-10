@@ -27,19 +27,19 @@ public class WindChargeProjectileEntityModel<T extends WindChargeProjectileEntit
 	public static TexturedModelData getTexturedModelData() {
 		ModelData modelData = new ModelData();
 		ModelPartData modelPartData = modelData.getRoot();
-		ModelPartData wind_charge = modelPartData.addChild("wind_charge", ModelPartBuilder.create(), ModelTransform.pivot(0.0F, 24.0F, 0.0F));
+		ModelPartData wind_charge = modelPartData.addChild("wind_charge", ModelPartBuilder.create(), ModelTransform.pivot(0.0F, 0F, 0.0F));
 
-		ModelPartData charge = wind_charge.addChild("charge", ModelPartBuilder.create().uv(21, 18).cuboid(-2.0F, -25.0F, -2.0F, 4.0F, 4.0F, 4.0F, new Dilation(0.0F)), ModelTransform.pivot(0.0F, 0.0F, 0.0F));
+		ModelPartData charge = wind_charge.addChild("charge", ModelPartBuilder.create().uv(51, 43).cuboid(-2.0F, -4.0F, -2.0F, 4.0F, 4.0F, 4.0F, new Dilation(0.0F)), ModelTransform.pivot(0.0F, 2.0F, 0.0F));
 
-		ModelPartData wind_inner = wind_charge.addChild("wind_inner", ModelPartBuilder.create().uv(0, 11).cuboid(-3.0F, -25.0F, -3.0F, 6.0F, 4.0F, 6.0F, new Dilation(0.0F)), ModelTransform.pivot(0.0F, 0.0F, 0.0F));
+		ModelPartData wind_inner = wind_charge.addChild("wind_inner", ModelPartBuilder.create().uv(104, 97).cuboid(-3.0F, -2.0F, -3.0F, 6.0F, 4.0F, 6.0F, new Dilation(0.0F)), ModelTransform.pivot(0.0F, 0.0F, 0.0F));
 
-		ModelPartData wind_outer = wind_charge.addChild("wind_outer", ModelPartBuilder.create().uv(0, 54).cuboid(-4.0F, -24.0F, -4.0F, 8.0F, 2.0F, 8.0F, new Dilation(0.0F)), ModelTransform.pivot(0.0F, 0.0F, 0.0F));
-		return TexturedModelData.of(modelData, 64, 64);
+		ModelPartData wind_outer = wind_charge.addChild("wind_outer", ModelPartBuilder.create().uv(96, 118).cuboid(-4.0F, -1.4F, -4.0F, 8.0F, 2.0F, 8.0F, new Dilation(0.0F)), ModelTransform.pivot(0.0F, 0.4F, 0.0F));
+		return TexturedModelData.of(modelData, 128, 128);
 	}
 	@Override
 	public void setAngles(T windChargeProjectileEntity , float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
 		this.getPart().traverse().forEach(ModelPart::resetTransform);
-		this.animate(windChargeProjectileEntity.idleState, ModAnimations.WIND_CHARGE, ageInTicks, 5F);
+		this.animate(windChargeProjectileEntity.idleState, ModAnimations.WIND_CHARGE, ageInTicks, 3.2F);
 	}
 	@Override
 	public void render(MatrixStack matrices, VertexConsumer vertexConsumer, int light, int overlay, float red, float green, float blue, float alpha) {

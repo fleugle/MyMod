@@ -19,17 +19,11 @@ import nikita.uniquescythe.particles.custom.WindExplosionParticle;
 public class UniqueScytheClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
-		//wtf is that
-		/* Adds our particle textures to vanilla's Texture Atlas so it can be shown properly.
-		 * Modify the namespace and particle id accordingly.
-		 *
-		 * This is only used if you plan to add your own textures for the particle. Otherwise, remove  this.
-		ClientSpriteRegistryCallback.event(PlayerScreenHandler.BLOCK_ATLAS_TEXTURE).register(((atlasTexture, registry) -> {
-			registry.register(new Identifier("modid", "particle/green_flame"));
-		}));
-		*/
 
 
+
+
+		//Particle factory registry
 		ParticleFactoryRegistry.getInstance().register(ModParticleTypes.WIND_EXPLOSION, WindExplosionParticle.Factory::new);
 
 		ParticleFactoryRegistry.getInstance().register(ModParticleTypes.FROSTY_SWEEP_ATTACK, FrostySweepAttackParticle.Factory::new);
@@ -53,16 +47,9 @@ public class UniqueScytheClient implements ClientModInitializer {
 
 
 
-
-
+		//Blocks render layer maps
 		BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.COPPER_GRATE, RenderLayer.getCutout());
 		BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.EXPOSED_COPPER_GRATE, RenderLayer.getCutout());
 		BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.OXIDIZED_COPPER_GRATE, RenderLayer.getCutout());
-
-
-
-
-
-
 	}
 }
