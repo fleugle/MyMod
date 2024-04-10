@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "uniquescythe:heavy_core",
+    "uniquescythe:exposed_copper_grate",
+    "uniquescythe:oxidized_copper_grate",
+    "uniquescythe:copper_grate",
+    "uniquescythe:tuff_bricks"
+  ]
+}

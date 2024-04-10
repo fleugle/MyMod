@@ -1,9 +1,8 @@
 package nikita.uniquescythe.blocks;
 
-import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
-import net.fabricmc.fabric.api.registry.OxidizableBlocksRegistry;
 import net.minecraft.block.*;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -15,7 +14,6 @@ import net.minecraft.util.Identifier;
 import nikita.uniquescythe.UniqueScythe;
 import nikita.uniquescythe.blocks.custom.AbstractCopperGrateBlock;
 import nikita.uniquescythe.blocks.custom.AbstractHeavyCoreBlock;
-import nikita.uniquescythe.items.ModItems;
 import nikita.uniquescythe.sounds.ModBlockSoundGroup;
 
 public class ModBlocks {

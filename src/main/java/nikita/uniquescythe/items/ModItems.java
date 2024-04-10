@@ -11,6 +11,8 @@ import net.minecraft.util.Rarity;
 import nikita.uniquescythe.UniqueScythe;
 import nikita.uniquescythe.items.custom.*;
 
+import static nikita.uniquescythe.blocks.ModBlocks.HEAVY_CORE;
+
 //some sort of helper class that will register our custom items
 public class ModItems {
 
@@ -63,6 +65,7 @@ public class ModItems {
 
     private static void addItemsToIngredientItemGroup(FabricItemGroupEntries entries) {
         //place to add items to the ingredient item tab
+		entries.addItem(HEAVY_CORE);
         entries.addItem(FROSTY_STEEL);
 		entries.addItem(CHAOS_WILL);
 		entries.addItem(BREEZE_ROD);
