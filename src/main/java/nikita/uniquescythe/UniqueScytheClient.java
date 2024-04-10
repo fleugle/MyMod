@@ -12,6 +12,7 @@ import nikita.uniquescythe.blocks.ModBlocks;
 import nikita.uniquescythe.entities.ModEntities;
 import nikita.uniquescythe.entities.client.*;
 import nikita.uniquescythe.particles.ModParticleTypes;
+import nikita.uniquescythe.particles.custom.FrostySweepAttackParticle;
 import nikita.uniquescythe.particles.custom.WindExplosionParticle;
 
 
@@ -30,6 +31,8 @@ public class UniqueScytheClient implements ClientModInitializer {
 
 
 		ParticleFactoryRegistry.getInstance().register(ModParticleTypes.WIND_EXPLOSION, WindExplosionParticle.Factory::new);
+
+		ParticleFactoryRegistry.getInstance().register(ModParticleTypes.FROSTY_SWEEP_ATTACK, FrostySweepAttackParticle.Factory::new);
 
 
 

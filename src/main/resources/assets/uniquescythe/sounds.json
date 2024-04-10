@@ -52,7 +52,7 @@
 
   "block.heavy_core.break": {
     "sounds": [
-      "uniquescythe:block/heavy_core_break1",
+      "uniquescythe:block/heavy_core/break1",
       "uniquescythe:block/heavy_core/break2",
       "uniquescythe:block/heavy_core/break3",
       "uniquescythe:block/heavy_core/break4"
