@@ -5,8 +5,10 @@ import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
+import net.minecraft.client.particle.DamageParticle;
 import net.minecraft.client.particle.ExplosionEmitterParticle;
 import net.minecraft.client.particle.ExplosionLargeParticle;
+import net.minecraft.client.particle.ParticleFactory;
 import net.minecraft.client.render.RenderLayer;
 import nikita.uniquescythe.blocks.ModBlocks;
 import nikita.uniquescythe.entities.ModEntities;
@@ -31,6 +33,7 @@ public class UniqueScytheClient implements ClientModInitializer {
 
 		ParticleFactoryRegistry.getInstance().register(ModParticleTypes.VOID_SWEEP_ATTACK, VoidSweepAttackParticle.Factory::new);
 
+		ParticleFactoryRegistry.getInstance().register(ModParticleTypes.VOID_CRIT, DamageParticle.Factory ::new);
 
 
 
