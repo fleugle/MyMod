@@ -3,6 +3,7 @@
 	"textures": {
 		"1": "uniquescythe:item/e_cover",
 		"4": "uniquescythe:item/e_books",
+		"6": "uniquescythe:item/book_marks",
 		"particle": "uniquescythe:item/e_cover"
 	},
 	"elements": [
@@ -35,6 +36,20 @@
 		},
 		{
 			"name": "pg_s",
+			"from": [5, 7.98161, 3.5],
+			"to": [11.5, 7.98161, 13.5],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8.25, 7.21418, 8.5]},
+			"faces": {
+				"north": {"uv": [9.25, 11, 11.75, 11.5], "rotation": 180, "texture": "#6"},
+				"east": {"uv": [9.25, 11, 11.75, 11.5], "rotation": 180, "texture": "#6"},
+				"south": {"uv": [9.25, 11, 11.5, 11.5], "rotation": 180, "texture": "#6"},
+				"west": {"uv": [9.25, 11, 11.75, 11.5], "rotation": 180, "texture": "#6"},
+				"up": {"uv": [6, 0, 0, 10], "rotation": 180, "texture": "#6"},
+				"down": {"uv": [6, 10, 0, 0], "rotation": 180, "texture": "#6"}
+			}
+		},
+		{
+			"name": "pg_s",
 			"from": [5, 7.00675, 4.5],
 			"to": [10.5, 7.69675, 12.5],
 			"rotation": {"angle": 0, "axis": "z", "origin": [8.25, 7.21418, 8.5]},
@@ -45,6 +60,20 @@
 				"west": {"uv": [3, 5.5, 3.25, 9.5], "rotation": 90, "texture": "#4"},
 				"up": {"uv": [0.25, 9.5, 1.5, 5.5], "texture": "#4"},
 				"down": {"uv": [4.5, 5.5, 3.25, 9.5], "texture": "#4"}
+			}
+		},
+		{
+			"name": "pg_s",
+			"from": [5, 7.25675, 3.5],
+			"to": [11.5, 7.25675, 13.5],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8.25, 7.21418, 8.5]},
+			"faces": {
+				"north": {"uv": [3.25, 13, 5.75, 13.5], "texture": "#6"},
+				"east": {"uv": [3.25, 14, 5.75, 14.5], "texture": "#6"},
+				"south": {"uv": [3.25, 15, 5.75, 15.5], "texture": "#6"},
+				"west": {"uv": [7, 10.5, 7.25, 14.5], "rotation": 90, "texture": "#6"},
+				"up": {"uv": [0, 10, 6, 0], "texture": "#6"},
+				"down": {"uv": [0, 0, 6, 10], "texture": "#6"}
 			}
 		},
 		{
