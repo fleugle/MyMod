@@ -24,6 +24,8 @@ public abstract class ModifySweepingParticle {
 		if (player.getMainHandStack().isOf(ModItems.FROSTY_SCYTHE)) return (T) ModParticleTypes.FROSTY_SWEEP_ATTACK;
 
 
+		if (player.getMainHandStack().isOf(ModItems.WANDERERS_SWORD)) return (T) ModParticleTypes.VOID_SWEEP_ATTACK;
+
 
 
 		return particle;

@@ -13,8 +13,8 @@ import nikita.uniquescythe.particles.custom.WindExplosionParticle;
 public class ModParticleTypes {
 
 	public static final DefaultParticleType WIND_EXPLOSION = FabricParticleTypes.simple();//simple particle for wind explosion I guess
-
-	public static final DefaultParticleType FROSTY_SWEEP_ATTACK = FabricParticleTypes.simple();//simple particle for wind explosion I guess
+	public static final DefaultParticleType FROSTY_SWEEP_ATTACK = FabricParticleTypes.simple();
+	public static final DefaultParticleType VOID_SWEEP_ATTACK = FabricParticleTypes.simple();
 
 
 	static DefaultParticleType modParticleTypesRegistry(String name, DefaultParticleType particleType){
@@ -30,6 +30,7 @@ public class ModParticleTypes {
 		//modParticleTypesRegistry("name", FabricParticleTypes.simple()); -> for simple particles
 		modParticleTypesRegistry("wind_explosion", WIND_EXPLOSION);//simple particle for wind explosion I guess
 		modParticleTypesRegistry("frosty_sweep_attack", FROSTY_SWEEP_ATTACK);
+		modParticleTypesRegistry("void_sweep_attack", VOID_SWEEP_ATTACK);
 
 	}
 }

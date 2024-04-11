@@ -8,20 +8,20 @@ import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.*;
-import net.minecraft.sound.SoundCategory;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import nikita.uniquescythe.sounds.ModSounds;
 
 
-public class WanderersSwordItem extends AxeItem {
-	private static final int COOLDOWN_TICKS = 20 * 5; // 5 seconds cooldown
-	public WanderersSwordItem(ToolMaterial material, float attackDamage, float attackSpeed, Settings settings) {
-		super(material, attackDamage, attackSpeed, settings);
+public class WanderersSwordItem extends SwordItem {
+
+
+	public WanderersSwordItem(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Settings settings) {
+		super(toolMaterial, attackDamage, attackSpeed, settings);
 	}
+
 
 	@Override
 	public ActionResult useOnBlock(ItemUsageContext context) {
