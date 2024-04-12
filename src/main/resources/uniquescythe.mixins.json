@@ -6,7 +6,8 @@
   "mixins": [
     "LivingEntityMixin",
     "ExampleMixin",
-    "ModifySweepingParticle"
+    "ModifySweepingParticle",
+    "ModifyClientCritParticle"
   ],
   "client": [
     "ItemRendererAccessor",
