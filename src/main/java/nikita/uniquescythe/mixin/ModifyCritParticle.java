@@ -10,6 +10,8 @@ import net.minecraft.client.world.ClientWorld;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 import nikita.uniquescythe.UniqueScythe;
 import nikita.uniquescythe.items.ModItems;
 import nikita.uniquescythe.particles.ModParticleTypes;
@@ -33,7 +35,7 @@ public abstract class ModifyCritParticle extends AbstractClientPlayerEntity {
 			target = "Lnet/minecraft/client/particle/ParticleManager;addEmitter(Lnet/minecraft/entity/Entity;Lnet/minecraft/particle/ParticleEffect;)V"),
 		index = 1)
 	private <T extends ParticleEffect> T changeCritAttackParticle(T particle) {//idk how to name it properly for now
-		PlayerEntity player = (PlayerEntity)(Object)this;
+		ClientPlayerEntity player = (ClientPlayerEntity)(Object)this;
 
 		//System.out.println("Changing crit particle to VOID_CRIT"); // Logging for debugging
 
@@ -47,3 +49,6 @@ public abstract class ModifyCritParticle extends AbstractClientPlayerEntity {
 	//for some reason just doesn't work
 	//I need help with that.
 }
+
+
+

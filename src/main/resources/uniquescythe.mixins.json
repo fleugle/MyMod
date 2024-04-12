@@ -12,7 +12,8 @@
     "ItemRendererAccessor",
     "ItemRendererMixin",
     "ModelLoaderMixin",
-    "ClientPlayNetworkHandlerMixin"
+    "ClientPlayNetworkHandlerMixin",
+    "ModifyCritParticle"
   ],
   "injectors": {
     "defaultRequire": 1

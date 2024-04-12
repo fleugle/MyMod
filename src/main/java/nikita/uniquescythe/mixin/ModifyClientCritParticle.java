@@ -2,9 +2,12 @@ package nikita.uniquescythe.mixin;
 
 
 
+import com.mojang.authlib.GameProfile;
 import net.minecraft.client.network.ClientPlayNetworkHandler;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.particle.ParticleEffect;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 import nikita.uniquescythe.UniqueScythe;
 import nikita.uniquescythe.items.ModItems;
 import nikita.uniquescythe.particles.ModParticleTypes;
@@ -25,14 +28,14 @@ public abstract class ModifyClientCritParticle {
 			target = "Lnet/minecraft/client/particle/ParticleManager;addEmitter(Lnet/minecraft/entity/Entity;Lnet/minecraft/particle/ParticleEffect;)V"),
 		index = 1)
 	private <T extends ParticleEffect> T changeCritAttackParticle(T particle) {//idk how to name it properly for now
-		PlayerEntity player = (PlayerEntity)(Object)this;
+		ClientPlayNetworkHandler player = (ClientPlayNetworkHandler)(Object)this;
 
 
 		UniqueScythe.LOGGER.info("Changing crit particle ");
-		if (player.getMainHandStack().isOf(ModItems.WANDERERS_SWORD)) return (T) ModParticleTypes.VOID_CRIT;
-
-
+		if (true) return (T) ModParticleTypes.VOID_CRIT;
 		return particle;
+
+
 	}
 
 	// I've learned how to do modify arg by myself, but it seems it is not what we are looking for
@@ -63,3 +66,4 @@ public abstract class ModifyClientCritParticle {
 	at net.fabricmc.devlaunchinjector.Main.main(Main.java:86) ~[dev-launch-injector-0.2.1+build.8.jar:?]
 	 */
 }
+
