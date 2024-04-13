@@ -20,7 +20,7 @@ public class VoidDamageParticle extends SpriteBillboardParticle {
 		this.velocityX += g * 0.4;
 		this.velocityY += h * 0.4;
 		this.velocityZ += i * 0.4;
-		float j = (float)(Math.random() * 0.3F + 0.6F);
+		float j = 1F;
 		this.colorRed = j;
 		this.colorGreen = j;
 		this.colorBlue = j;
@@ -38,8 +38,8 @@ public class VoidDamageParticle extends SpriteBillboardParticle {
 	@Override
 	public void tick() {
 		super.tick();
-		this.colorGreen *= 0.96F;
-		this.colorBlue *= 0.9F;
+		this.colorGreen *= 1F;
+		this.colorBlue *= 1F;
 	}
 
 	@Override
@@ -73,8 +73,8 @@ public class VoidDamageParticle extends SpriteBillboardParticle {
 
 		public Particle createParticle(DefaultParticleType defaultParticleType, ClientWorld clientWorld, double d, double e, double f, double g, double h, double i) {
 			VoidDamageParticle damageParticle = new VoidDamageParticle(clientWorld, d, e, f, g, h, i);
-			damageParticle.colorRed *= 0.3F;
-			damageParticle.colorGreen *= 0.8F;
+			damageParticle.colorRed *= 1F;
+			damageParticle.colorGreen *= 1F;
 			damageParticle.setSprite(this.spriteProvider);
 			return damageParticle;
 		}

@@ -6,14 +6,14 @@
   "mixins": [
     "LivingEntityMixin",
     "ExampleMixin",
-    "ModifySweepingParticle"
+    "ModifySweepingParticle",
+    "ModifyCritParticle"
   ],
   "client": [
     "ItemRendererAccessor",
     "ItemRendererMixin",
     "ModelLoaderMixin",
-    "ClientPlayNetworkHandlerMixin",
-    "ModifyCritParticle"
+    "ClientPlayNetworkHandlerMixin"
   ],
   "injectors": {
     "defaultRequire": 1
