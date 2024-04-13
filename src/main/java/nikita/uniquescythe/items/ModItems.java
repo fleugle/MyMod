@@ -56,7 +56,7 @@ public class ModItems {
 	//MACE registry
 	public static final Item MACE = registerItem("mace", new MaceItem(ModToolMaterial.BREEZE_ROD,6,20, new Item.Settings().maxCount(1)));
 
-	public static final Item JUSTICE_REVOLVER = registerItem("justice_revolver", new BowItem(new Item.Settings().maxCount(1).maxDamage(999999999))); //The scythe
+	public static final Item JUSTICE_REVOLVER = registerItem("justice_revolver", new CrossbowItem(new Item.Settings().maxCount(1).maxDamage(999999999))); //The scythe
 
 	// *end of the registering items section*
 
@@ -88,6 +88,7 @@ public class ModItems {
 		entries.addItem(JEVIL_SCYTHE);
         entries.addItem(WANDERERS_SWORD);
 		entries.addItem(MACE);
+		entries.addItem(JUSTICE_REVOLVER);
     }//adding items to combat tab *method*
 
     //helper method to register items
