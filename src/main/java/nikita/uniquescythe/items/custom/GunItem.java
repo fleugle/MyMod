@@ -7,6 +7,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.registry.tag.FluidTags;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Arm;
@@ -190,7 +191,28 @@ public abstract class GunItem extends Item {
 
 	//OVERRIDES: ✅
 
-	//next: fire✅, fire✅, fireParticles, getActiveStack, setActiveStack, isAmmo✅, findAmmo, isLoaded, setLoaded, getLoadingStage, setLoadingStage
+	//next: fire✅, fire✅, fireParticles✅, getActiveStack✅, setActiveStack✅, isAmmo✅, findAmmo✅, isLoaded✅, setLoaded✅, getLoadingStage✅, setLoadingStage✅
+	//🎉🎉🎉🎉
+
+	public static void fireParticles(World world, Vec3d origin, Vec3d direction) {
+		Random random = (Random) world.getRandom();
+
+		for (int i = 0; i != 10; ++i) {
+			double t = Math.pow(random.nextFloat(), 1.5);
+			Vec3d p = origin.add(direction.multiply(1.25 + t));
+			p = p.add(new Vec3d(random.nextFloat() - 0.5, random.nextFloat() - 0.5, random.nextFloat() - 0.5).multiply(0.1));
+			Vec3d v = direction.multiply(0.1 * (1 - t));
+			world.addParticle(ParticleTypes.POOF, p.x, p.y, p.z, v.x, v.y, v.z);
+		}
+	}
+
+	public static ItemStack getActiveStack(Hand hand) {
+		if (hand == Hand.MAIN_HAND) {
+			return activeMainHandStack;
+		} else {
+			return activeOffhandStack;
+		}
+	}
 
 	public static boolean isAmmo(ItemStack stack) {
 		return stack.getItem() == ModItems.CARTRIDGE;
