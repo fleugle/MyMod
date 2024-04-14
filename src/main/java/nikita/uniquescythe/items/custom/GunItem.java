@@ -119,11 +119,59 @@ public abstract class GunItem extends Item {
 		setLoadingStage(stack, 0);
 	}
 
+	@Override
+	public void usageTick(World world, LivingEntity entity, ItemStack stack, int timeLeft) {
+		if (!(entity instanceof PlayerEntity)) return;
+
+		PlayerEntity player = (PlayerEntity) entity;
+		int usingDuration = getMaxUseTime(stack) - timeLeft;
+		int loadingStage = getLoadingStage(stack);
+
+		if (loadingStage == 1 && usingDuration >= LOADING_STAGE_1) {
+			player.playSound(MusketMod.SOUND_MUSKET_LOAD_0, 0.8f, 1);
+			setLoadingStage(stack, 2);
+
+		} else if (loadingStage == 2 && usingDuration >= LOADING_STAGE_2) {
+			player.playSound(MusketMod.SOUND_MUSKET_LOAD_1, 0.8f, 1);
+			setLoadingStage(stack, 3);
+
+		} else if (loadingStage == 3 && usingDuration >= LOADING_STAGE_3) {
+			player.playSound(MusketMod.SOUND_MUSKET_LOAD_2, 0.8f, 1);
+			setLoadingStage(stack, 4);
+		}
+
+		if (world.isClientSide) {
+			setActiveStack(player.getUsedItemHand(), stack);
+			return;
+		}
+
+		if (usingDuration >= RELOAD_DURATION && !isLoaded(stack)) {
+			if (!player.getAbilities().instabuild) {
+				ItemStack ammoStack = findAmmo(player);
+				if (ammoStack.isEmpty()) return;
+
+				ammoStack.shrink(1);
+				if (ammoStack.isEmpty()) player.getInventory().removeItem(ammoStack);
+			}
+
+			world.playSound(null, player.getX(), player.getY(), player.getZ(), MusketMod.SOUND_MUSKET_READY, player.getSoundSource(), 0.8f, 1);
+			setLoaded(stack, true);
+		}
+	}
+
+	@Override
+	public int getMaxUseTime(ItemStack stack) {
+		return 72000;
+	}
 	public static boolean isAmmo(ItemStack stack) {
 		return stack.getItem() == ModItems.CARTRIDGE;
 	}
 	public static boolean isLoaded(ItemStack stack) {
 		return stack.getOrCreateNbt().getByte("loaded") != 0;
+	}
+
+	public static int getLoadingStage(ItemStack stack) {
+		return stack.getOrCreateNbt().getInt("loadingStage");
 	}
 
 	public static ItemStack findAmmo(PlayerEntity player) {
