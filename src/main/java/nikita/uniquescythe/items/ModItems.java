@@ -56,7 +56,7 @@ public class ModItems {
 	//MACE registry
 	public static final Item MACE = registerItem("mace", new MaceItem(ModToolMaterial.BREEZE_ROD,6,20, new Item.Settings().maxCount(1)));
 
-	public static final Item JUSTICE_REVOLVER = registerItem("justice_revolver", new CrossbowItem(new Item.Settings().maxCount(1).maxDamage(999999999))); //The scythe
+	public static final Item JUSTICE_REVOLVER = registerItem("justice_revolver", new JusticeRevolverItem(ModToolMaterial.TRIUMPH_OF_JUSTICE,new Item.Settings().maxCount(1))); //The scythe
 
 	// *end of the registering items section*
 
