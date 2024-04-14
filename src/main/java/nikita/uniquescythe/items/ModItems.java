@@ -56,8 +56,11 @@ public class ModItems {
 	//MACE registry
 	public static final Item MACE = registerItem("mace", new MaceItem(ModToolMaterial.BREEZE_ROD,6,20, new Item.Settings().maxCount(1)));
 
-	public static final Item JUSTICE_REVOLVER = registerItem("justice_revolver", new JusticeRevolverItem(ModToolMaterial.TRIUMPH_OF_JUSTICE,new Item.Settings().maxCount(1))); //The scythe
+	public static final Item JUSTICE_REVOLVER = registerItem("justice_revolver", new JusticeRevolverItem(ModToolMaterial.TRIUMPH_OF_JUSTICE,new Item.Settings().maxCount(1).rarity(Rarity.UNCOMMON)));
 
+	public static final Item JUSTICE_FRAGMENT = registerItem("justice_fragment", new Item(new Item.Settings().fireproof().maxCount(16).rarity(Rarity.UNCOMMON)));
+
+	public static final Item CARTRIDGE = registerItem("cartridge", new Item(new Item.Settings().fireproof().maxCount(16)));
 	// *end of the registering items section*
 
 
@@ -83,6 +86,8 @@ public class ModItems {
 
     private static void addItemsToCombatItemGroup(FabricItemGroupEntries entries) {
         //place to add items to the ingredient item tab
+		entries.addItem(CARTRIDGE);
+		entries.addItem(JUSTICE_FRAGMENT);
 		entries.addItem(FLUGELS_IMMORTALITY_DECLARATION);
         entries.addItem(FROSTY_SCYTHE);
 		entries.addItem(JEVIL_SCYTHE);

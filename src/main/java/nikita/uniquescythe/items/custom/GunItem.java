@@ -13,6 +13,7 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+import nikita.uniquescythe.items.ModItems;
 
 import java.util.Random;
 
@@ -113,25 +114,28 @@ public abstract class GunItem extends Item {
 		}
 	}
 
-
+	@Override
+	public void onStoppedUsing(ItemStack stack, World worldIn, LivingEntity entityLiving, int timeLeft) {
+		setLoadingStage(stack, 0);
+	}
 
 	public static boolean isAmmo(ItemStack stack) {
-		return stack.getItem() == MusketMod.CARTRIDGE;
+		return stack.getItem() == ModItems.CARTRIDGE;
 	}
 	public static boolean isLoaded(ItemStack stack) {
 		return stack.getOrCreateNbt().getByte("loaded") != 0;
 	}
 
 	public static ItemStack findAmmo(PlayerEntity player) {
-		if (isAmmo(player.getItemBySlot(EquipmentSlot.OFFHAND))) {
-			return player.getItemBySlot(EquipmentSlot.OFFHAND);
+		if (isAmmo(player.getEquippedStack(EquipmentSlot.OFFHAND))) {
+			return player.getEquippedStack(EquipmentSlot.OFFHAND);
 
-		} else if (isAmmo(player.getItemBySlot(EquipmentSlot.MAINHAND))) {
-			return player.getItemBySlot(EquipmentSlot.MAINHAND);
+		} else if (isAmmo(player.getEquippedStack(EquipmentSlot.MAINHAND))) {
+			return player.getEquippedStack(EquipmentSlot.MAINHAND);
 
 		} else {
-			for (int i = 0; i != player.getInventory().getContainerSize(); ++i) {
-				ItemStack itemstack = player.getInventory().getItem(i);
+			for (int i = 0; i != player.getInventory().size(); ++i) {
+				ItemStack itemstack = player.getInventory().getStack(i);
 				if (isAmmo(itemstack)) return itemstack;
 			}
 
