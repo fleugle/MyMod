@@ -1,6 +1,7 @@
 package nikita.uniquescythe.items.custom;
 
 
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -14,7 +15,7 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
 import java.util.Random;
-import java.util.logging.Level;
+
 
 
 public abstract class GunItem extends Item {
@@ -91,24 +92,24 @@ public abstract class GunItem extends Item {
 			player.playSound(fireSound(), 3.5f, 1);
 
 			setLoaded(stack, false);
-			stack.hurtAndBreak(1, player, (entity) -> {
-				entity.broadcastBreakEvent(hand);
+			stack.damage(1, player, (entity) -> {
+				entity.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND);
 			});
 
-			if (worldIn.isClientSide) setActiveStack(hand, stack);
+			if (worldIn.isClient) setActiveStack(hand, stack);
 
-			return InteractionResultHolder.consume(stack);
+			return TypedActionResult.consume(stack);
 
 		} else if (haveAmmo) {
 			setLoadingStage(stack, 1);
 
-			player.startUsingItem(hand);
-			if (worldIn.isClientSide) setActiveStack(hand, stack);
+			player.setCurrentHand(hand);
+			if (worldIn.isClient) setActiveStack(hand, stack);
 
-			return InteractionResultHolder.consume(stack);
+			return TypedActionResult.consume(stack);
 
 		} else {
-			return InteractionResultHolder.fail(stack);
+			return TypedActionResult.fail(stack);
 		}
 	}
 
@@ -149,6 +150,21 @@ public abstract class GunItem extends Item {
 		}
 	}
 
+	public static void setActiveStack(Hand hand, ItemStack stack) {
+		if (hand == Hand.MAIN_HAND) {
+			activeMainHandStack = stack;
+		} else {
+			activeOffhandStack = stack;
+		}
+	}
+
+	public static void setLoadingStage(ItemStack stack, int loadingStage) {
+		if (loadingStage != 0) {
+			stack.getOrCreateNbt().putInt("loadingStage", loadingStage);
+		} else {
+			stack.getOrCreateNbt().remove("loadingStage");
+		}
+	}
 
 	public void fire(LivingEntity shooter, Vec3d direction, Vec3d smokeOriginOffset) {
 		Random random = (Random) shooter.getRandom();
