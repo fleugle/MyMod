@@ -17,6 +17,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import nikita.uniquescythe.items.ModItems;
+import net.minecraft.util.math.MathHelper;
 
 import java.util.Random;
 
@@ -290,9 +291,9 @@ public abstract class GunItem extends Item {
 			n2 = direction.crossProduct(n1);
 		}
 
-		Vec3d motion = direction.multiply(Math.cos(spread))
-			.add(n1.multiply(Math.sin(spread) * Math.sin(angle))) // signs are not important for random angle
-			.add(n2.multiply(Math.sin(spread) * Math.cos(angle)))
+		Vec3d motion = direction.multiply(MathHelper.cos(spread))
+			.add(n1.multiply(MathHelper.sin(spread) * MathHelper.sin(angle))) // signs are not important for random angle
+			.add(n2.multiply(MathHelper.sin(spread) * MathHelper.cos(angle)))
 			.multiply(bulletSpeed());
 
 		Vec3d origin = new Vec3d(shooter.getX(), shooter.getEyeY(), shooter.getZ());
