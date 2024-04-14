@@ -1,6 +1,7 @@
 package nikita.uniquescythe.items.custom;
 
 
+import net.minecraft.block.BlockState;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -11,6 +12,7 @@ import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Arm;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import nikita.uniquescythe.items.ModItems;
@@ -164,9 +166,32 @@ public abstract class GunItem extends Item {
 	}
 
 	@Override
+	public boolean postHit(ItemStack stack, LivingEntity enemy, LivingEntity entityIn) {
+		stack.damage(1, entityIn, (entity) -> {
+			entity.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND);
+		});
+		return false;
+	}
+
+	@Override
+	public boolean postMine(ItemStack stack, World worldIn, BlockState state, BlockPos pos, LivingEntity entityIn) {
+		if (state.getHardness(worldIn, pos) != 0) {
+			stack.damage(1, entityIn, (entity) -> {
+				entity.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND);
+			});
+		}
+		return false;
+	}
+
+	@Override
 	public int getMaxUseTime(ItemStack stack) {
 		return 72000;
 	}
+
+	//OVERRIDES: ✅
+
+	//next: fire✅, fire✅, fireParticles, getActiveStack, setActiveStack, isAmmo✅, findAmmo, isLoaded, setLoaded, getLoadingStage, setLoadingStage
+
 	public static boolean isAmmo(ItemStack stack) {
 		return stack.getItem() == ModItems.CARTRIDGE;
 	}
