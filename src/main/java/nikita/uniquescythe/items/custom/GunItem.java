@@ -141,6 +141,15 @@ public abstract class GunItem extends Item {
 		fire(shooter, direction, Vec3d.ZERO);
 	}
 
+	public static void setLoaded(ItemStack stack, boolean loaded) {
+		if (loaded) {
+			stack.getOrCreateNbt().putByte("loaded", (byte)1);
+		} else {
+			stack.getOrCreateNbt().remove("loaded");
+		}
+	}
+
+
 	public void fire(LivingEntity shooter, Vec3d direction, Vec3d smokeOriginOffset) {
 		Random random = (Random) shooter.getRandom();
 		World level = shooter.getWorld();
