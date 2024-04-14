@@ -7,11 +7,13 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.tag.FluidTags;
 import net.minecraft.sound.SoundEvent;
+import net.minecraft.util.Arm;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
+import java.util.Random;
 import java.util.logging.Level;
 
 
@@ -19,7 +21,8 @@ public abstract class GunItem extends Item {
 	public GunItem(Settings settings) {
 		super(settings);
 	}
-	/*
+
+
 	public static final int LOADING_STAGE_1 = 5;
 	public static final int LOADING_STAGE_2 = 10;
 	public static final int LOADING_STAGE_3 = 20;
@@ -77,13 +80,13 @@ public abstract class GunItem extends Item {
 		boolean loaded = isLoaded(stack);
 
 		if (loaded) {
-			if (!worldIn.isClientSide) {
-				Vec3 front = Vec3.directionFromRotation(player.getXRot(), player.getYRot());
-				HumanoidArm arm = hand == InteractionHand.MAIN_HAND ? player.getMainArm() : player.getMainArm().getOpposite();
-				boolean isRightHand = arm == HumanoidArm.RIGHT;
-				Vec3 side = Vec3.directionFromRotation(0, player.getYRot() + (isRightHand ? 90 : -90));
-				Vec3 down = Vec3.directionFromRotation(player.getXRot() + 90, player.getYRot());
-				fire(player, front, side.add(down).scale(0.15));
+			if (!worldIn.isClient) {
+				Vec3d front = Vec3d.fromPolar(player.getPitch(), player.getYaw());
+				Arm arm = hand == Hand.MAIN_HAND ? player.getMainArm() : player.getMainArm().getOpposite();
+				boolean isRightHand = arm == Arm.RIGHT;
+				Vec3d side = Vec3d.fromPolar(0, player.getYaw() + (isRightHand ? 90 : -90));
+				Vec3d down = Vec3d.fromPolar(player.getPitch() + 90, player.getYaw());
+				fire(player, front, side.add(down).multiply(0.15));
 			}
 			player.playSound(fireSound(), 3.5f, 1);
 
@@ -135,8 +138,50 @@ public abstract class GunItem extends Item {
 		}
 	}
 	public void fire(LivingEntity shooter, Vec3d direction) {
-		fire(shooter, direction);
+		fire(shooter, direction, Vec3d.ZERO);
 	}
 
-	 */
+	public void fire(LivingEntity shooter, Vec3d direction, Vec3d smokeOriginOffset) {
+		Random random = (Random) shooter.getRandom();
+		World level = shooter.getWorld();
+
+		float angle = (float) Math.PI * 2 * random.nextFloat();
+		float gaussian = Math.abs((float) random.nextGaussian());
+		if (gaussian > 4) gaussian = 4;
+
+		float spread = bulletStdDev() * gaussian;
+
+		// a plane perpendicular to direction
+		Vec3d n1;
+		Vec3d n2;
+		if (Math.abs(direction.x) < 1e-5 && Math.abs(direction.z) < 1e-5) {
+			n1 = new Vec3d(1, 0, 0);
+			n2 = new Vec3d(0, 0, 1);
+		} else {
+			n1 = new Vec3d(-direction.z, 0, direction.x).normalize();
+			n2 = direction.crossProduct(n1);
+		}
+
+		Vec3d motion = direction.multiply(Math.cos(spread))
+			.add(n1.multiply(Math.sin(spread) * Math.sin(angle))) // signs are not important for random angle
+			.add(n2.multiply(Math.sin(spread) * Math.cos(angle)))
+			.multiply(bulletSpeed());
+
+		Vec3d origin = new Vec3d(shooter.getX(), shooter.getEyeY(), shooter.getZ());
+		/*
+		BulletEntity bullet = new BulletEntity(level);
+		bullet.setOwner(shooter);
+		bullet.setPos(origin);
+		bullet.setInitialSpeed(bulletSpeed());
+		bullet.setDeltaMovement(motion);
+		float t = random.nextFloat();
+		bullet.damageMultiplier = t * damageMultiplierMin() + (1 - t) * damageMultiplierMax();
+
+		level.addFreshEntity(bullet);
+		MusketMod.sendSmokeEffect(shooter, origin.add(smokeOriginOffset), direction);
+
+ 		*///to modify later, when entity made
+	}
+
+
 }
