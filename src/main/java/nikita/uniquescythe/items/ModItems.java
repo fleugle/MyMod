@@ -59,7 +59,7 @@ public class ModItems {
 	public static final Item JUSTICE_REVOLVER = registerItem("justice_revolver", new JusticeRevolverItem(ModToolMaterial.TRIUMPH_OF_JUSTICE,new Item.Settings().maxCount(1).rarity(Rarity.UNCOMMON)));
 
 	public static final Item JUSTICE_FRAGMENT = registerItem("justice_fragment", new Item(new Item.Settings().fireproof().maxCount(16).rarity(Rarity.UNCOMMON)));
-
+	public static final Item JUSTICE_HAT = registerItem("justice_hat", new Item(new Item.Settings().rarity(Rarity.UNCOMMON).maxCount(1)));
 	public static final Item CARTRIDGE = registerItem("cartridge", new Item(new Item.Settings().fireproof().maxCount(16)));
 	// *end of the registering items section*
 
@@ -86,6 +86,9 @@ public class ModItems {
 
     private static void addItemsToCombatItemGroup(FabricItemGroupEntries entries) {
         //place to add items to the ingredient item tab
+		entries.addItem(JUSTICE_HAT);
+
+
 		entries.addItem(CARTRIDGE);
 		entries.addItem(JUSTICE_FRAGMENT);
 		entries.addItem(FLUGELS_IMMORTALITY_DECLARATION);
@@ -95,6 +98,7 @@ public class ModItems {
 		entries.addItem(MACE);
 		entries.addItem(JUSTICE_REVOLVER);
     }//adding items to combat tab *method*
+
 
     //helper method to register items
     private static Item registerItem(String name, Item item){
@@ -106,7 +110,6 @@ public class ModItems {
 
 
 		ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS_AND_UTILITIES).register(ModItems::addItemsToToolsAndUtilitiesItemGroup);//calling for the private method in order to  add item to the ingridient tab
-
 		ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(ModItems::addItemsToIngredientItemGroup);//calling for the private method in order to  add item to the ingridient tab
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT).register(ModItems::addItemsToCombatItemGroup);//calling for the private method in order to  add item to the ingridient tab
     }
