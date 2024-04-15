@@ -63,7 +63,7 @@ public abstract class LivingEntityMixin  extends Entity{
 
 
 	@Inject(at = @At("HEAD"), method = "tryUseTotem", cancellable = true)
-	public void useExplosiveTotem(DamageSource damageSource_1, CallbackInfoReturnable<Boolean> callback) {
+	public void useFlugelsImmortalityTotem(DamageSource damageSource_1, CallbackInfoReturnable<Boolean> callback) {
 		/*inits PlayerEntity entity, which is a copy of this casted to Living Entity and then PlayerEntity*/
 		Entity entity =  this;
 
@@ -85,28 +85,14 @@ public abstract class LivingEntityMixin  extends Entity{
 				callback.setReturnValue(false);
 			}
 			else {
-				/*sets copy to offhand_stack*/
-				/*deletes explosive totem from offhand*/
-
-
-
-
 				/*totem saves player from an untimely death*/
 				this.setHealth(1.0F);
 				this.clearStatusEffects();
 				this.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 125, 2));
-				this.addStatusEffect(new StatusEffectInstance(StatusEffects.ABSORPTION, 350, 4));
+				this.addStatusEffect(new StatusEffectInstance(StatusEffects.ABSORPTION, 350, 10));
 				this.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 100, 2));
 				this.getWorld().sendEntityStatus(this, (byte)35);
-
-				/*Spawns a tntEntity on the player upon use of Explosive Totem*/
-
-
-
 				callback.setReturnValue(true);
-
-
-
 
 			}
 
