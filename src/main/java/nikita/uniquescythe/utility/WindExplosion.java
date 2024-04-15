@@ -1,4 +1,4 @@
-package nikita.uniquescythe.custom;
+package nikita.uniquescythe.utility;
 
 import com.google.common.collect.Sets;
 import net.minecraft.block.BlockState;

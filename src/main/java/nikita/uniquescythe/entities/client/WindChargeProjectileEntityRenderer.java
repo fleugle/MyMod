@@ -1,17 +1,13 @@
 package nikita.uniquescythe.entities.client;
 
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.entity.EntityRenderer;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.math.Axis;
 import net.minecraft.client.render.OverlayTexture;
-import net.minecraft.util.math.BlockPos;
-import nikita.uniquescythe.custom.ModRenderLayers;
-import nikita.uniquescythe.entities.animation.ModAnimations;
+import nikita.uniquescythe.utility.ModRenderLayers;
 import nikita.uniquescythe.entities.custom.WindChargeProjectileEntity;
 
 public class WindChargeProjectileEntityRenderer extends EntityRenderer<WindChargeProjectileEntity> {

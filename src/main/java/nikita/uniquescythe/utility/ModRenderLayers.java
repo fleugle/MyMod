@@ -1,4 +1,4 @@
-package nikita.uniquescythe.custom;
+package nikita.uniquescythe.utility;
 
 import com.mojang.blaze3d.vertex.VertexFormat;
 import com.mojang.blaze3d.vertex.VertexFormats;
