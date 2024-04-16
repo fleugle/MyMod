@@ -9,6 +9,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 import nikita.uniquescythe.UniqueScythe;
 import nikita.uniquescythe.items.custom.*;
+import nikita.uniquescythe.utility.ModArmorMaterials;
 import nikita.uniquescythe.utility.ModToolMaterial;
 
 import static nikita.uniquescythe.blocks.ModBlocks.HEAVY_CORE;
@@ -59,7 +60,7 @@ public class ModItems {
 	public static final Item JUSTICE_REVOLVER = registerItem("justice_revolver", new JusticeRevolverItem(ModToolMaterial.TRIUMPH_OF_JUSTICE,new Item.Settings().maxCount(1).rarity(Rarity.UNCOMMON)));
 
 	public static final Item JUSTICE_FRAGMENT = registerItem("justice_fragment", new Item(new Item.Settings().fireproof().maxCount(16).rarity(Rarity.UNCOMMON)));
-	public static final Item JUSTICE_HAT = registerItem("justice_hat", new Item(new Item.Settings().rarity(Rarity.UNCOMMON).maxCount(1)));
+	public static final Item JUSTICE_HAT = registerItem("justice_hat", new ArmorItem(ModArmorMaterials.JUSTICE, ArmorItem.ArmorSlot.HELMET,new Item.Settings().maxCount(1).rarity(Rarity.UNCOMMON)));
 	public static final Item CARTRIDGE = registerItem("cartridge", new Item(new Item.Settings().fireproof().maxCount(16)));
 	// *end of the registering items section*
 
