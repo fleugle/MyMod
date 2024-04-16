@@ -21,14 +21,6 @@ repositories {
 		url = "https://api.modrinth.com/maven"
 	}
 
-	maven {
-		name = 'GeckoLib'
-		url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
-		content {
-			includeGroupByRegex("software\\.bernie.*")
-			includeGroup("com.eliotlash.mclib")
-		}
-	}
 
 	maven {url = 'https://jitpack.io'}//thing needed to implement libraries. Literally adds this format:
 	//dependencies{implementation 'com.github.User:Repo:Tag'}
@@ -69,7 +61,7 @@ dependencies {
 	modImplementation libs.quilted.fabric.api
 	// modImplementation libs.bundles.quilted.fabric.api // If you wish to use Fabric API's deprecated modules, you can replace the above line with this one
 
-	modImplementation 'software.bernie.geckolib:geckolib-fabric-1.20.1:4.2.3'
+
 
 	include modImplementation('com.github.Chocohead:Fabric-ASM:2.3')
 
