@@ -1,7 +1,8 @@
-package nikita.uniquescythe.items;
+package nikita.uniquescythe.utility;
 
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.recipe.Ingredient;
+import nikita.uniquescythe.items.ModItems;
 
 import java.util.function.Supplier;
 

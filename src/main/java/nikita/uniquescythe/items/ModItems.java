@@ -1,6 +1,5 @@
 package nikita.uniquescythe.items;
 
-import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.item.*;
@@ -10,6 +9,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 import nikita.uniquescythe.UniqueScythe;
 import nikita.uniquescythe.items.custom.*;
+import nikita.uniquescythe.utility.ModToolMaterial;
 
 import static nikita.uniquescythe.blocks.ModBlocks.HEAVY_CORE;
 
