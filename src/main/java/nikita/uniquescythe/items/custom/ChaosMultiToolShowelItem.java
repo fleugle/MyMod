@@ -2,25 +2,21 @@ package nikita.uniquescythe.items.custom;
 
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.*;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.MiningToolItem;
+import net.minecraft.item.ToolMaterial;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
-import nikita.uniquescythe.UniqueScythe;
-import nikita.uniquescythe.utility.ModBlockTags;
 
-public class ChaosMultiToolItem extends MiningToolItem {
+public class ChaosMultiToolShowelItem extends MiningToolItem {
 
 
 
 
 
-
-
-
-
-	public ChaosMultiToolItem(ToolMaterial material, int attackDamage, float attackSpeed, Settings settings) {
-		super((float)attackDamage, attackSpeed, material, ModBlockTags.EVERYTHING, settings);
+	public ChaosMultiToolShowelItem(ToolMaterial material, int attackDamage, float attackSpeed, Settings settings) {
+		super((float)attackDamage, attackSpeed, material, BlockTags.SHOVEL_MINEABLE, settings);
 	}
 
 
