@@ -2,12 +2,14 @@ package nikita.uniquescythe.items.custom;
 
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.*;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.MiningToolItem;
+import net.minecraft.item.ToolMaterial;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 
-public class ChaosMultiToolItem extends MiningToolItem {
+public class ChaosMultiToolHoeItem extends MiningToolItem {
 
 
 
@@ -17,8 +19,8 @@ public class ChaosMultiToolItem extends MiningToolItem {
 
 
 
-	public ChaosMultiToolItem(ToolMaterial material, int attackDamage, float attackSpeed, Settings settings) {
-		super((float)attackDamage, attackSpeed, material, BlockTags.PICKAXE_MINEABLE, settings);
+	public ChaosMultiToolHoeItem(ToolMaterial material, int attackDamage, float attackSpeed, Settings settings) {
+		super((float)attackDamage, attackSpeed, material, BlockTags.HOE_MINEABLE, settings);
 	}
 
 
@@ -39,4 +41,6 @@ public class ChaosMultiToolItem extends MiningToolItem {
     public boolean hasGlint(ItemStack stack) {
         return false;
     }
+
+
 }
