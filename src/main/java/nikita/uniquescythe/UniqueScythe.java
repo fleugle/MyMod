@@ -24,19 +24,13 @@ import org.slf4j.LoggerFactory;
 
 //I've rolled back. good.
 public class UniqueScythe implements ModInitializer {
-	// This logger is used to write text to the console and the log file.
-	// It is considered best practice to use your mod id as the logger's name.
-	// That way, it's clear which mod wrote info, warnings, and errors.
-
-
-	private static TagKey<Block> create(String id) {
-		return TagKey.of(RegistryKeys.BLOCK, new Identifier(id));
-	}
-	public static final TagKey<Block> ULTIMATE_MINEABLE = create("mineable/ultimate");
-
 
 	public static final String MOD_ID = "uniquescythe";//mod id for further usage
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
+
+	public static Identifier id(String path) {
+		return new Identifier(MOD_ID, path);
+	}
 
 	@Override
 	public void onInitialize() {
