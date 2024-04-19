@@ -2,13 +2,17 @@ package nikita.uniquescythe.entities.client;
 
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.model.*;
+import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.client.render.entity.model.EntityModel;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.util.Identifier;
 
-public class JusticeArmorModel extends EntityModel<LivingEntity> {
+import java.util.function.Function;
+
+public class JusticeArmorModel extends BipedEntityModel<LivingEntity> {
 	private final ModelPart helmet;
 	private final ModelPart chestplate;
 	private final ModelPart rarm;
@@ -16,6 +20,7 @@ public class JusticeArmorModel extends EntityModel<LivingEntity> {
 	private final ModelPart rleg;
 	private final ModelPart lleg;
 	public JusticeArmorModel(ModelPart root) {
+		super(root);
         this.helmet = root.getChild("helmet");
 		this.chestplate = root.getChild("chestplate");
 		this.rarm = root.getChild("rarm");
@@ -23,6 +28,9 @@ public class JusticeArmorModel extends EntityModel<LivingEntity> {
 		this.rleg = root.getChild("rleg");
 		this.lleg = root.getChild("lleg");
 	}
+
+
+
 	public static TexturedModelData getTexturedModelData() {
 		ModelData modelData = new ModelData();
 		ModelPartData modelPartData = modelData.getRoot();
@@ -44,14 +52,4 @@ public class JusticeArmorModel extends EntityModel<LivingEntity> {
 		return TexturedModelData.of(modelData, 128, 64);
 	}
 
-
-	@Override
-	public void render(MatrixStack matrices, VertexConsumer vertices, int light, int overlay, float red, float green, float blue, float alpha) {
-
-	}
-
-	@Override
-	public void setAngles(LivingEntity entity, float limbAngle, float limbDistance, float animationProgress, float headYaw, float headPitch) {
-
-	}
 }
