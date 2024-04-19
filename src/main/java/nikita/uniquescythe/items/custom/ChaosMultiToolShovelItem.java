@@ -9,13 +9,13 @@ import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 
-public class ChaosMultiToolShowelItem extends MiningToolItem {
+public class ChaosMultiToolShovelItem extends MiningToolItem {
 
 
 
 
 
-	public ChaosMultiToolShowelItem(ToolMaterial material, int attackDamage, float attackSpeed, Settings settings) {
+	public ChaosMultiToolShovelItem(ToolMaterial material, int attackDamage, float attackSpeed, Settings settings) {
 		super((float)attackDamage, attackSpeed, material, BlockTags.SHOVEL_MINEABLE, settings);
 	}
 
