@@ -8,7 +8,7 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 
-public class JusticeArmorModel extends BipedEntityModel<LivingEntity> {
+public class JusticeArmorModel extends EntityModel<LivingEntity> {
 	private final ModelPart helmet;
 	private final ModelPart chestplate;
 	private final ModelPart rarm;
@@ -47,6 +47,11 @@ public class JusticeArmorModel extends BipedEntityModel<LivingEntity> {
 
 	@Override
 	public void render(MatrixStack matrices, VertexConsumer vertices, int light, int overlay, float red, float green, float blue, float alpha) {
+
+	}
+
+	@Override
+	public void setAngles(LivingEntity entity, float limbAngle, float limbDistance, float animationProgress, float headYaw, float headPitch) {
 
 	}
 }
