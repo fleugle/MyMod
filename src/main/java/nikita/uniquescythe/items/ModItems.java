@@ -42,6 +42,12 @@ public class ModItems {
 
 	public static final Item CHAOS_MULTITOOL = registerItem("chaos_multitool", new ChaosMultiToolItem(ModToolMaterial.CHAOS_WILL, 7, -3f, new Item.Settings().rarity(Rarity.EPIC)));
 
+	public static final Item CHAOS_MULTITOOL_AXE = registerItem("chaos_multitool_axe", new ChaosMultiToolAxeItem(ModToolMaterial.CHAOS_WILL, 7, -3f, new Item.Settings().rarity(Rarity.EPIC)));
+
+	public static final Item CHAOS_MULTITOOL_SHOVEL = registerItem("chaos_multitool_shovel", new ChaosMultiToolShovelItem(ModToolMaterial.CHAOS_WILL, 7, -3f, new Item.Settings().rarity(Rarity.EPIC)));
+
+	public static final Item CHAOS_MULTITOOL_HOE = registerItem("chaos_multitool_hoe", new ChaosMultiToolHoeItem(ModToolMaterial.CHAOS_WILL, 7, -3f, new Item.Settings().rarity(Rarity.EPIC)));
+
 	//EASTEREGG
 	public static final Item EASTER_EGG = registerItem("easter_egg", new EasterEggItem(new Item.Settings().rarity(Rarity.UNCOMMON).maxCount(1)));
 

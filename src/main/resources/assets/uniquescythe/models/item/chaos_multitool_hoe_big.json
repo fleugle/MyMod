@@ -1,0 +1,33 @@
+{
+	"credit": "Made with Blockbench",
+	"parent": "item/generated",
+	"textures": {
+		"layer0": "uniquescythe:item/chaos_multitool_hoe_big"
+	},
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [-42, -90, 0],
+			"translation": [0, 1.5, 0.25],
+			"scale": [1.6, 1.6, 1.6]
+		},
+		"thirdperson_lefthand": {
+			"rotation": [-42, 90, 0],
+			"translation": [0, 1.5, 0.25],
+			"scale": [1.6, 1.6, 1.6]
+		},
+		"firstperson_righthand": {
+			"rotation": [-13, -90, 0],
+			"translation": [0, 3, 2.5],
+			"scale": [1.6, 1.6, 1.6]
+		},
+		"firstperson_lefthand": {
+			"rotation": [-13, 90, 0],
+			"translation": [0, 3, 2.5],
+			"scale": [1.6, 1.6, 1.6]
+		},
+		"ground": {
+			"translation": [0, 11.5, 0],
+			"scale": [1.6, 1.6, 1.05]
+		}
+	}
+}
