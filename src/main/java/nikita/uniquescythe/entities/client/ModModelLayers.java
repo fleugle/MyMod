@@ -9,6 +9,10 @@ public class ModModelLayers {
 	public static final EntityModelLayer WIND_CHARGE =
 		new EntityModelLayer(new Identifier(UniqueScythe.MOD_ID,"wind_charge_entity"), "main");
 
+	public static final EntityModelLayer JUSTICE_ARMOR =
+		new EntityModelLayer(new Identifier(UniqueScythe.MOD_ID,"justice_armor"), "main");
+
+
 
 	//breeze
 	public static final EntityModelLayer BREEZE =

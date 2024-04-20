@@ -2,6 +2,7 @@ package nikita.uniquescythe.entities.client;
 
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
+import net.minecraft.client.render.entity.model.EntityModelLayers;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
@@ -22,7 +23,7 @@ public class JusticeArmorClientRendering implements ArmorRenderingRegistry.Textu
 
 	public JusticeArmorClientRendering(EntityRendererFactory.Context context) {
 		super();
-		this.ARMOR_MODEL = new JusticeArmorModel(context.getPart(ModModelLayers.WIND_CHARGE)); //tells the model to get the part you want
+		this.ARMOR_MODEL = new JusticeArmorModel(context.getPart(ModModelLayers.JUSTICE_ARMOR));
 	}
 
 
