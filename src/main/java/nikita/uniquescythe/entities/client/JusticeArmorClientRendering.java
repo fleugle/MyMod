@@ -1,5 +1,6 @@
 package nikita.uniquescythe.entities.client;
 
+import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
@@ -17,6 +18,13 @@ public class JusticeArmorClientRendering implements ArmorRenderingRegistry.Textu
 
 
 
+	private final JusticeArmorModel ARMOR_MODEL;
+
+	public JusticeArmorClientRendering(EntityRendererFactory.Context context) {
+		super();
+		this.ARMOR_MODEL = new JusticeArmorModel(context.getPart(ModModelLayers.WIND_CHARGE)); //tells the model to get the part you want
+	}
+
 
 	@Override
 	public @NotNull BipedEntityModel<LivingEntity> getArmorModel(
@@ -27,7 +35,7 @@ public class JusticeArmorClientRendering implements ArmorRenderingRegistry.Textu
 
 		if (slot == EquipmentSlot.HEAD) {
 
-			return null;
+			return ARMOR_MODEL;
 		}
 
 		return model;
