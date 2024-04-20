@@ -40,7 +40,7 @@ public class JusticeArmorClientRendering implements ArmorRenderingRegistry.Textu
 		}
 
 		return model;
-	};
+	}
 
 
 	@Override
