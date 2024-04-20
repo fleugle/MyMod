@@ -9,6 +9,10 @@ base {
 
 version = "$project.version+${libs.versions.minecraft.get()}"
 group = project.maven_group
+project.configurations.configureEach {
+	exclude(group: "net.fabricmc", module: "fabric-loader")
+	exclude(group: "net.fabricmc.fabric-api")
+}
 
 repositories {
 	// Add repositories to retrieve artifacts from in here.
@@ -18,6 +22,14 @@ repositories {
 	// for more information about repositories.
 
 
+	maven {
+		name = 'GeckoLib'
+		url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
+		content {
+			includeGroupByRegex("software\\.bernie.*")
+			includeGroup("com.eliotlash.mclib")
+		}
+	}
 
 
 
@@ -62,8 +74,8 @@ dependencies {
 
 	// QSL is not a complete API; You will need Quilted Fabric API to fill in the gaps.
 	// Quilted Fabric API will automatically pull in the correct QSL version.
-	//modImplementation libs.quilted.fabric.api
-	modImplementation libs.bundles.quilted.fabric.api // If you wish to use Fabric API's deprecated modules, you can replace the above line with this one
+	modImplementation libs.quilted.fabric.api
+	//modImplementation libs.bundles.quilted.fabric.api // If you wish to use Fabric API's deprecated modules, you can replace the above line with this one
 
 
 
@@ -74,7 +86,9 @@ dependencies {
 	modImplementation "maven.modrinth:architectury-api:9.2.14+fabric"
 
 
-
+	dependencies {
+		modImplementation 'software.bernie.geckolib:geckolib-fabric-1.20.1:4.2.3'
+	}
 
 
 }
