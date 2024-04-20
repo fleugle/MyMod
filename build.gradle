@@ -17,6 +17,10 @@ repositories {
 	// See https://docs.gradle.org/current/userguide/declaring_repositories.html
 	// for more information about repositories.
 
+
+
+
+
 	maven {
 		url = "https://api.modrinth.com/maven"
 	}
@@ -68,6 +72,10 @@ dependencies {
 
 	modImplementation "maven.modrinth:aaa-particles:mIOu49Wn"
 	modImplementation "maven.modrinth:architectury-api:9.2.14+fabric"
+
+
+
+
 
 }
 
