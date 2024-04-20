@@ -27,7 +27,7 @@ public class JusticeArmorClientRendering implements ArmorRenderingRegistry.Textu
 
 		if (slot == EquipmentSlot.HEAD) {
 
-			return ;
+			return null;
 		}
 
 		return model;
