@@ -42,8 +42,6 @@ public class UniqueScytheClient implements ClientModInitializer {
 		//mod model layers
 		EntityModelLayerRegistry.registerModelLayer(ModModelLayers.WIND_CHARGE, WindChargeProjectileEntityModel::getTexturedModelData);//wind charge
 
-		EntityModelLayerRegistry.registerModelLayer(ModModelLayers.JUSTICE_ARMOR, JusticeArmorModel::getTexturedModelData);//wind charge
-
 		EntityModelLayerRegistry.registerModelLayer(ModModelLayers.BREEZE, BreezeEntityModel::getTexturedModelData);//breeze
 
 
