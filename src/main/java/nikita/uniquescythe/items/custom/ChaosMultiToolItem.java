@@ -6,6 +6,9 @@ import net.minecraft.item.*;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
+import net.minecraft.util.TypedActionResult;
+import net.minecraft.world.World;
+import nikita.uniquescythe.items.ModItems;
 
 public class ChaosMultiToolItem extends MiningToolItem {
 
@@ -39,4 +42,26 @@ public class ChaosMultiToolItem extends MiningToolItem {
     public boolean hasGlint(ItemStack stack) {
         return false;
     }
+
+
+	@Override
+	public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
+
+		ItemStack itemStack = user.getStackInHand(hand);
+
+		changeMultitoolType(itemStack, user, hand);
+
+		return TypedActionResult.success(user.getStackInHand(hand), false);
+	}
+
+
+	public static void changeMultitoolType(ItemStack itemStack, PlayerEntity user, Hand hand){
+
+
+		if(itemStack.getItem() == ModItems.CHAOS_MULTITOOL) user.setStackInHand(hand, ModItems.CHAOS_MULTITOOL_AXE.getDefaultStack());
+		if(itemStack.getItem() == ModItems.CHAOS_MULTITOOL_AXE) user.setStackInHand(hand, ModItems.CHAOS_MULTITOOL_SHOVEL.getDefaultStack());
+		if(itemStack.getItem() == ModItems.CHAOS_MULTITOOL_SHOVEL) user.setStackInHand(hand, ModItems.CHAOS_MULTITOOL_HOE.getDefaultStack());
+		if(itemStack.getItem() == ModItems.CHAOS_MULTITOOL_HOE) user.setStackInHand(hand, ModItems.CHAOS_MULTITOOL.getDefaultStack());
+
+	}
 }

@@ -40,13 +40,13 @@ public class ModItems {
 	public static final Item JEVIL_SCYTHE = registerItem("jevil_scythe", new JevilScytheItem(ModToolMaterial.CHAOS_WILL,12, -3f, new Item.Settings().rarity(Rarity.EPIC)));
 
 
-	public static final Item CHAOS_MULTITOOL = registerItem("chaos_multitool", new ChaosMultiToolItem(ModToolMaterial.CHAOS_WILL, 7, -3f, new Item.Settings().rarity(Rarity.EPIC)));
+	public static final Item CHAOS_MULTITOOL = registerItem("chaos_multitool", new ChaosMultiToolItem(ModToolMaterial.CHAOS_WILL, 1, 100f, new Item.Settings().rarity(Rarity.EPIC)));
 
-	public static final Item CHAOS_MULTITOOL_AXE = registerItem("chaos_multitool_axe", new ChaosMultiToolAxeItem(ModToolMaterial.CHAOS_WILL, 7, -3f, new Item.Settings().rarity(Rarity.EPIC)));
+	public static final Item CHAOS_MULTITOOL_AXE = registerItem("chaos_multitool_axe", new ChaosMultiToolAxeItem(ModToolMaterial.CHAOS_WILL, 1, 100f, new Item.Settings().rarity(Rarity.EPIC)));
 
-	public static final Item CHAOS_MULTITOOL_SHOVEL = registerItem("chaos_multitool_shovel", new ChaosMultiToolShovelItem(ModToolMaterial.CHAOS_WILL, 7, -3f, new Item.Settings().rarity(Rarity.EPIC)));
+	public static final Item CHAOS_MULTITOOL_SHOVEL = registerItem("chaos_multitool_shovel", new ChaosMultiToolShovelItem(ModToolMaterial.CHAOS_WILL, 1, 100f, new Item.Settings().rarity(Rarity.EPIC)));
 
-	public static final Item CHAOS_MULTITOOL_HOE = registerItem("chaos_multitool_hoe", new ChaosMultiToolHoeItem(ModToolMaterial.CHAOS_WILL, 7, -3f, new Item.Settings().rarity(Rarity.EPIC)));
+	public static final Item CHAOS_MULTITOOL_HOE = registerItem("chaos_multitool_hoe", new ChaosMultiToolHoeItem(ModToolMaterial.CHAOS_WILL, 1, 100f, new Item.Settings().rarity(Rarity.EPIC)));
 
 	//EASTEREGG
 	public static final Item EASTER_EGG = registerItem("easter_egg", new EasterEggItem(new Item.Settings().rarity(Rarity.UNCOMMON).maxCount(1)));
@@ -66,10 +66,13 @@ public class ModItems {
 	public static final Item JUSTICE_REVOLVER = registerItem("justice_revolver", new JusticeRevolverItem(ModToolMaterial.TRIUMPH_OF_JUSTICE,new Item.Settings().maxCount(1).rarity(Rarity.UNCOMMON)));
 
 	public static final Item JUSTICE_FRAGMENT = registerItem("justice_fragment", new Item(new Item.Settings().fireproof().maxCount(16).rarity(Rarity.UNCOMMON)));
-	public static final Item JUSTICE_HAT = registerItem("justice_hat", new ArmorItem(ModArmorMaterials.JUSTICE, ArmorItem.ArmorSlot.HELMET,new Item.Settings().maxCount(1).rarity(Rarity.UNCOMMON)));
+
 	public static final Item CARTRIDGE = registerItem("cartridge", new Item(new Item.Settings().fireproof().maxCount(16)));
 	// *end of the registering items section*
 
+	public static final Item JUSTICE_HAT = registerItem("justice_hat", new ArmorItem(ModArmorMaterials.JUSTICE, ArmorItem.ArmorSlot.HELMET,new Item.Settings().maxCount(1).rarity(Rarity.UNCOMMON)));
+
+	public static final Item COWBOYS_CLOAK = registerItem("cowboys_cloak", new ArmorItem(ModArmorMaterials.JUSTICE, ArmorItem.ArmorSlot.CHESTPLATE,new Item.Settings().maxCount(1).rarity(Rarity.UNCOMMON)));
 
 
 
@@ -94,6 +97,7 @@ public class ModItems {
     private static void addItemsToCombatItemGroup(FabricItemGroupEntries entries) {
         //place to add items to the ingredient item tab
 		entries.addItem(JUSTICE_HAT);
+		entries.addItem(COWBOYS_CLOAK);
 
 
 		entries.addItem(CARTRIDGE);

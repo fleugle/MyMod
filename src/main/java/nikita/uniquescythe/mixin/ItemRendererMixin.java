@@ -135,14 +135,53 @@ public abstract class ItemRendererMixin {
 	}
 
 	@ModifyVariable(method = "renderItem", at = @At(value = "HEAD"), argsOnly = true)
+	public BakedModel useBigChaosMultiToolAxeModel(BakedModel value, ItemStack stack, ModelTransformationMode renderMode, boolean leftHanded, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
+		if (((stack.isOf(ModItems.CHAOS_MULTITOOL_AXE) && renderMode == (ModelTransformationMode.THIRD_PERSON_RIGHT_HAND))
+			|| (stack.isOf(ModItems.CHAOS_MULTITOOL_AXE) && renderMode == (ModelTransformationMode.THIRD_PERSON_LEFT_HAND))
+			|| (stack.isOf(ModItems.CHAOS_MULTITOOL_AXE) && renderMode == (ModelTransformationMode.FIRST_PERSON_LEFT_HAND))
+			||(stack.isOf(ModItems.CHAOS_MULTITOOL_AXE) && renderMode == (ModelTransformationMode.FIRST_PERSON_RIGHT_HAND)))){
+
+			return ((ItemRendererAccessor) this).customModels$getModels().getModelManager().getModel(new ModelIdentifier(UniqueScythe.MOD_ID, "chaos_multitool_axe_big", "inventory"));
+		}
+		return value;
+	}
+
+	@ModifyVariable(method = "renderItem", at = @At(value = "HEAD"), argsOnly = true)
+	public BakedModel useBigChaosMultiToolShovelModel(BakedModel value, ItemStack stack, ModelTransformationMode renderMode, boolean leftHanded, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
+		if (((stack.isOf(ModItems.CHAOS_MULTITOOL_SHOVEL) && renderMode == (ModelTransformationMode.THIRD_PERSON_RIGHT_HAND))
+			|| (stack.isOf(ModItems.CHAOS_MULTITOOL_SHOVEL) && renderMode == (ModelTransformationMode.THIRD_PERSON_LEFT_HAND))
+			|| (stack.isOf(ModItems.CHAOS_MULTITOOL_SHOVEL) && renderMode == (ModelTransformationMode.FIRST_PERSON_LEFT_HAND))
+			||(stack.isOf(ModItems.CHAOS_MULTITOOL_SHOVEL) && renderMode == (ModelTransformationMode.FIRST_PERSON_RIGHT_HAND)))){
+
+			return ((ItemRendererAccessor) this).customModels$getModels().getModelManager().getModel(new ModelIdentifier(UniqueScythe.MOD_ID, "chaos_multitool_shovel_big", "inventory"));
+		}
+		return value;
+	}
+
+	@ModifyVariable(method = "renderItem", at = @At(value = "HEAD"), argsOnly = true)
+	public BakedModel useBigChaosMultiToolHoeModel(BakedModel value, ItemStack stack, ModelTransformationMode renderMode, boolean leftHanded, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
+		if (((stack.isOf(ModItems.CHAOS_MULTITOOL_HOE) && renderMode == (ModelTransformationMode.THIRD_PERSON_RIGHT_HAND))
+			|| (stack.isOf(ModItems.CHAOS_MULTITOOL_HOE) && renderMode == (ModelTransformationMode.THIRD_PERSON_LEFT_HAND))
+			|| (stack.isOf(ModItems.CHAOS_MULTITOOL_HOE) && renderMode == (ModelTransformationMode.FIRST_PERSON_LEFT_HAND))
+			||(stack.isOf(ModItems.CHAOS_MULTITOOL_HOE) && renderMode == (ModelTransformationMode.FIRST_PERSON_RIGHT_HAND)))){
+
+			return ((ItemRendererAccessor) this).customModels$getModels().getModelManager().getModel(new ModelIdentifier(UniqueScythe.MOD_ID, "chaos_multitool_hoe_big", "inventory"));
+		}
+		return value;
+	}
+
+	@ModifyVariable(method = "renderItem", at = @At(value = "HEAD"), argsOnly = true)
 	public BakedModel useBigChaosMultiToolModel(BakedModel value, ItemStack stack, ModelTransformationMode renderMode, boolean leftHanded, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
 		if (((stack.isOf(ModItems.CHAOS_MULTITOOL) && renderMode == (ModelTransformationMode.THIRD_PERSON_RIGHT_HAND))
-			|| (stack.isOf(ModItems.CHAOS_MULTITOOL) && renderMode == (ModelTransformationMode.THIRD_PERSON_LEFT_HAND)))){
+			|| (stack.isOf(ModItems.CHAOS_MULTITOOL) && renderMode == (ModelTransformationMode.THIRD_PERSON_LEFT_HAND))
+			|| (stack.isOf(ModItems.CHAOS_MULTITOOL) && renderMode == (ModelTransformationMode.FIRST_PERSON_LEFT_HAND))
+			||(stack.isOf(ModItems.CHAOS_MULTITOOL) && renderMode == (ModelTransformationMode.FIRST_PERSON_RIGHT_HAND)))){
 
 			return ((ItemRendererAccessor) this).customModels$getModels().getModelManager().getModel(new ModelIdentifier(UniqueScythe.MOD_ID, "chaos_multitool_big", "inventory"));
 		}
 		return value;
 	}
+
 
 	@ModifyVariable(method = "renderItem", at = @At(value = "HEAD"), argsOnly = true)
 	public BakedModel useBigJusticeRevolverModel(BakedModel value, ItemStack stack, ModelTransformationMode renderMode, boolean leftHanded, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {

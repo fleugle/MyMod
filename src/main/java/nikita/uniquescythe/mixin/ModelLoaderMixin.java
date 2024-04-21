@@ -83,6 +83,19 @@ public abstract class ModelLoaderMixin {
 	}
 
 	@Inject(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/model/ModelLoader;addModel(Lnet/minecraft/client/util/ModelIdentifier;)V", ordinal = 3, shift = At.Shift.AFTER))
+	public void addBigChaosMultiToolAxe(BlockColors blockColors, Profiler profiler, Map<Identifier, JsonUnbakedModel> jsonUnbakedModels, Map<Identifier, List<ModelLoader.LoadedJson>> blockStateResources, CallbackInfo ci) {
+		this.addModel(new ModelIdentifier(UniqueScythe.MOD_ID, "chaos_multitool_axe_big", "inventory"));
+	}
+	@Inject(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/model/ModelLoader;addModel(Lnet/minecraft/client/util/ModelIdentifier;)V", ordinal = 3, shift = At.Shift.AFTER))
+	public void addBigChaosMultiToolShovel(BlockColors blockColors, Profiler profiler, Map<Identifier, JsonUnbakedModel> jsonUnbakedModels, Map<Identifier, List<ModelLoader.LoadedJson>> blockStateResources, CallbackInfo ci) {
+		this.addModel(new ModelIdentifier(UniqueScythe.MOD_ID, "chaos_multitool_shovel_big", "inventory"));
+	}
+	@Inject(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/model/ModelLoader;addModel(Lnet/minecraft/client/util/ModelIdentifier;)V", ordinal = 3, shift = At.Shift.AFTER))
+	public void addBigChaosMultiToolHoe(BlockColors blockColors, Profiler profiler, Map<Identifier, JsonUnbakedModel> jsonUnbakedModels, Map<Identifier, List<ModelLoader.LoadedJson>> blockStateResources, CallbackInfo ci) {
+		this.addModel(new ModelIdentifier(UniqueScythe.MOD_ID, "chaos_multitool_hoe_big", "inventory"));
+	}
+
+	@Inject(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/model/ModelLoader;addModel(Lnet/minecraft/client/util/ModelIdentifier;)V", ordinal = 3, shift = At.Shift.AFTER))
 	public void addBigJusticeRevolver(BlockColors blockColors, Profiler profiler, Map<Identifier, JsonUnbakedModel> jsonUnbakedModels, Map<Identifier, List<ModelLoader.LoadedJson>> blockStateResources, CallbackInfo ci) {
 		this.addModel(new ModelIdentifier(UniqueScythe.MOD_ID, "justice_revolver_big", "inventory"));
 	}

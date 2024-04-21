@@ -8,6 +8,8 @@ import net.minecraft.item.ToolMaterial;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
+import net.minecraft.util.TypedActionResult;
+import net.minecraft.world.World;
 
 public class ChaosMultiToolAxeItem extends MiningToolItem {
 
@@ -32,6 +34,16 @@ public class ChaosMultiToolAxeItem extends MiningToolItem {
 
         return ActionResult.FAIL;
     }
+
+	@Override
+	public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
+
+		ItemStack itemStack = user.getStackInHand(hand);
+
+		ChaosMultiToolItem.changeMultitoolType(itemStack, user, hand);
+
+		return TypedActionResult.success(user.getStackInHand(hand), false);
+	}
 
     @Override
     public boolean hasGlint(ItemStack stack) {
