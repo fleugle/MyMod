@@ -1,7 +1,7 @@
 [versions]
 # The latest versions are available at https://lambdaurora.dev/tools/import_quilt.html
 minecraft = "1.20.1"
-loom = "1.4.1"
+loom = "1.6+"
 
 quilt_mappings = "1.20.1+build.23"
 quilt_loader = "0.24.0"
