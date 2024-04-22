@@ -2,6 +2,16 @@ package nikita.uniquescythe.items.custom;
 
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import mod.azure.azurelib.animatable.GeoItem;
+import mod.azure.azurelib.animatable.client.RenderProvider;
+import mod.azure.azurelib.constant.DataTickets;
+import mod.azure.azurelib.constant.DefaultAnimations;
+import mod.azure.azurelib.core.animatable.instance.AnimatableInstanceCache;
+import mod.azure.azurelib.core.animation.AnimatableManager;
+import mod.azure.azurelib.core.animation.AnimationController;
+import mod.azure.azurelib.core.object.PlayState;
+import mod.azure.azurelib.renderer.GeoArmorRenderer;
+import mod.azure.azurelib.util.AzureLibUtil;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
@@ -14,23 +24,14 @@ import net.minecraft.item.ItemStack;
 import nikita.uniquescythe.geo.renderers.JusticeArmorRenderer;
 import nikita.uniquescythe.items.ModItems;
 import org.jetbrains.annotations.NotNull;
-import software.bernie.geckolib.animatable.GeoItem;
-import software.bernie.geckolib.animatable.client.RenderProvider;
-import software.bernie.geckolib.constant.DataTickets;
-import software.bernie.geckolib.constant.DefaultAnimations;
-import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
-import software.bernie.geckolib.core.animation.AnimatableManager;
-import software.bernie.geckolib.core.animation.AnimationController;
-import software.bernie.geckolib.core.object.PlayState;
-import software.bernie.geckolib.renderer.GeoArmorRenderer;
-import software.bernie.geckolib.util.GeckoLibUtil;
+
 
 import java.util.Set;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 public class JusticeArmorItem extends ArmorItem implements GeoItem {
-	private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
+	private final AnimatableInstanceCache cache = AzureLibUtil.createInstanceCache(this);
 	private final Supplier<Object> renderProvider = GeoItem.makeRenderer(this);
 
 	public JusticeArmorItem(ArmorMaterial armorMaterial, ArmorItem.ArmorSlot type, Settings properties) {

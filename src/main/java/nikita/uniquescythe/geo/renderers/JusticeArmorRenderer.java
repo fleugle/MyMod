@@ -1,10 +1,11 @@
 package nikita.uniquescythe.geo.renderers;
 
+import mod.azure.azurelib.model.DefaultedItemGeoModel;
+import mod.azure.azurelib.renderer.GeoArmorRenderer;
 import net.minecraft.util.Identifier;
 import nikita.uniquescythe.UniqueScythe;
 import nikita.uniquescythe.items.custom.JusticeArmorItem;
-import software.bernie.geckolib.model.DefaultedItemGeoModel;
-import software.bernie.geckolib.renderer.GeoArmorRenderer;
+
 
 public final class JusticeArmorRenderer extends GeoArmorRenderer<JusticeArmorItem> {
 	public JusticeArmorRenderer() {

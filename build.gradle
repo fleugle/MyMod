@@ -21,15 +21,10 @@ repositories {
 	// See https://docs.gradle.org/current/userguide/declaring_repositories.html
 	// for more information about repositories.
 
-
-	maven {
-		name = 'GeckoLib'
-		url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
-		content {
-			includeGroupByRegex("software\\.bernie.*")
-			includeGroup("com.eliotlash.mclib")
-		}
-	}
+	// The Maven with the mods source
+	maven {url 'https://libs.azuredoom.com:4443/mods'}
+	// Needed for Fabric only at the moment
+	maven { url "https://maven.terraformersmc.com/releases" }
 
 
 
@@ -86,9 +81,9 @@ dependencies {
 	modImplementation "maven.modrinth:architectury-api:9.2.14+fabric"
 
 
-	dependencies {
-		modImplementation 'software.bernie.geckolib:geckolib-fabric-1.20.1:4.2.2'
-	}
+	modImplementation "mod.azure.azurelib:azurelib-fabric-1.20.1:2.0.19"
+	modApi "com.terraformersmc:modmenu:7.2.2" // Fabric bug is requiring this
+
 
 
 }
