@@ -6,6 +6,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.ItemStack;
+import nikita.uniquescythe.geo.models.JusticeArmorModel;
 import nikita.uniquescythe.geo.renderers.JusticeArmorRenderer;
 import software.bernie.geckolib.animatable.GeoItem;
 import software.bernie.geckolib.animatable.client.RenderProvider;
@@ -31,12 +32,14 @@ public class JusticeArmorItem extends ArmorItem implements GeoItem {
 	@Override
 	public void createRenderer(Consumer<Object> consumer) {
 		consumer.accept(new RenderProvider() {
+
+			JusticeArmorModel model;
 			private GeoArmorRenderer<?> renderer;
 
 			@Override
 			public BipedEntityModel<LivingEntity> getHumanoidArmorModel(LivingEntity livingEntity, ItemStack itemStack, EquipmentSlot equipmentSlot, BipedEntityModel<LivingEntity> original) {
 				if(this.renderer == null)
-					this.renderer = new JusticeArmorRenderer();
+					this.renderer = new JusticeArmorRenderer(model);
 
 				// This prepares our GeoArmorRenderer for the current render frame.
 				// These parameters may be null however, so we don't do anything further with them
