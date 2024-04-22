@@ -46,8 +46,8 @@
 					"parent": "armorBody",
 					"pivot": [0, 24, 0],
 					"cubes": [
-						{"origin": [-4, 12, -2], "size": [8, 12, 4], "inflate": 0.25, "uv": [36, 15]},
-						{"origin": [-3, 21.25, -3], "size": [6, 3, 6], "inflate": 0.25, "uv": [32, 32]}
+						{"origin": [-4, 12, -2], "size": [8, 12, 4], "inflate": 0.25, "uv": [104, 23]},
+						{"origin": [-3, 21.25, -3], "size": [6, 3, 6], "inflate": 0.25, "uv": [104, 40]}
 					]
 				},
 				{
@@ -59,7 +59,7 @@
 					"parent": "bipedRightArm",
 					"pivot": [-4, 22, 0],
 					"cubes": [
-						{"origin": [-8, 18, -2], "size": [5, 7, 4], "inflate": 0.25, "uv": [101, 15]}
+						{"origin": [-8, 18, -2], "size": [5, 7, 4], "inflate": 0.25, "uv": [110, 0]}
 					]
 				},
 				{
@@ -71,7 +71,7 @@
 					"parent": "bipedLeftArm",
 					"pivot": [4, 22, 0],
 					"cubes": [
-						{"origin": [3, 17, -2], "size": [5, 8, 4], "inflate": 0.25, "uv": [100, 34]}
+						{"origin": [3, 17, -2], "size": [5, 8, 4], "inflate": 0.25, "uv": [110, 11]}
 					]
 				},
 				{
