@@ -2,12 +2,8 @@ package nikita.uniquescythe;
 
 import com.chocohead.mm.api.ClassTinkerers;
 import net.fabricmc.api.ModInitializer;
-
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
-import net.minecraft.block.Block;
 import net.minecraft.enchantment.EnchantmentTarget;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
 import nikita.uniquescythe.blocks.ModBlocks;
 import nikita.uniquescythe.enchantments.ModEnchantments;
@@ -16,8 +12,6 @@ import nikita.uniquescythe.entities.custom.BreezeEntity;
 import nikita.uniquescythe.items.ModItems;
 import nikita.uniquescythe.particles.ModParticleTypes;
 import nikita.uniquescythe.sounds.ModSounds;
-import org.quiltmc.qsl.block.content.registry.api.BlockContentRegistries;
-import org.quiltmc.qsl.block.content.registry.api.ReversibleBlockEntry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
