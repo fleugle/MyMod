@@ -50,15 +50,7 @@ public class UniqueScythe implements ModInitializer {
 		ModBlocks.registerModBlocks();
 
 
-		/*
-		ReversibleBlockEntry copperToExposed = new ReversibleBlockEntry(ModBlocks.EXPOSED_COPPER_GRATE, true);
-		ReversibleBlockEntry exposedToOxidized = new ReversibleBlockEntry(ModBlocks.OXIDIZED_COPPER_GRATE, true);
 
-
-		BlockContentRegistries.OXIDIZABLE.put(ModBlocks.COPPER_GRATE,copperToExposed);
-		BlockContentRegistries.OXIDIZABLE.put(ModBlocks.EXPOSED_COPPER_GRATE,exposedToOxidized);
-
-		 */
 
 
 
