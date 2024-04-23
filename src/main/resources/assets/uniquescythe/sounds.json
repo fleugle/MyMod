@@ -47,7 +47,12 @@
       "uniquescythe:l-ning_th"
     ]
   },
-
+  "sad": {
+    "subtitle": "sounds.uniquescythe.sad",
+    "sounds": [
+      "uniquescythe:sad"
+    ]
+  },
 
 
   "block.heavy_core.break": {

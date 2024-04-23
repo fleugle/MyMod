@@ -25,7 +25,7 @@ public class ModSounds {
 
 	public static SoundEvent MUFLON = registerSound("muflon");
 
-	public static SoundEvent SAD2_OGG = registerSound("sad2");
+	public static SoundEvent SAD2_OGG = registerSound("sad");
 
 
 
