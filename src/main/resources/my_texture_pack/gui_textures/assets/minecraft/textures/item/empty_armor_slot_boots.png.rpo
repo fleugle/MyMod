@@ -1,0 +1,4 @@
+{
+    "condition": "!dark_mode",
+    "fallback": "assets/minecraft/textures/item/dark_mode/empty_armor_slot_boots.png"
+}

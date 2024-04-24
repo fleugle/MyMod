@@ -1,0 +1,4 @@
+{
+    "condition": "!dark_mode",
+    "fallback": "assets/minecraft/textures/item/dark_mode/empty_slot_amethyst_shard.png"
+}

@@ -1,0 +1,5 @@
+{
+    "condition": "!dark_mode",
+    "fallback": "assets/replaymod/replay_gui_dark_mode.png"
+}
+

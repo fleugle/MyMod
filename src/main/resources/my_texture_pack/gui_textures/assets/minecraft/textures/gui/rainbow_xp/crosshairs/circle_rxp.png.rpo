@@ -1,0 +1,4 @@
+{
+  "condition": "crosshair_style.circle",
+  "fallback": "assets/minecraft/textures/gui/crosshairs/circle_big.png"
+}

@@ -1,0 +1,5 @@
+{
+    "condition": "!dark_mode",
+    "fallback": "assets/trinkets/textures/gui/slots/face_dark_mode.png"
+}
+

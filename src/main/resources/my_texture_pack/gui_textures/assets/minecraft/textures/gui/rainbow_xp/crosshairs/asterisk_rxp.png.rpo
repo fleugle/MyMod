@@ -1,0 +1,4 @@
+{
+  "condition": "crosshair_style.asterisk",
+  "fallback": "assets/minecraft/textures/gui/crosshairs/circle.png"
+}

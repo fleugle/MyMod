@@ -1,0 +1,26 @@
+{
+  id: "guiretextures",
+  version: 9,
+  capabilities: ["FileFilter", "DirFilter"],
+  conf: {
+    dark_mode: false,
+    crosshair_style: [
+      "vanilla",
+      "vanilla_small",
+      "tactical",
+      "tactical_ultra",
+      "heart",
+      "x",
+      "asterisk",
+      "circle",
+      "circle_big",
+      "hand",
+      "dot",
+      "pointer",
+      "launcher",
+      "none"
+    ],
+//    rainbow_xp: false,
+    use_custom_font: false
+  }
+}

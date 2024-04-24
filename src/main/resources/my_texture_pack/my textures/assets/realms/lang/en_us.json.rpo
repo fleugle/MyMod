@@ -1,0 +1,5 @@
+{
+    "condition": "!dark_mode",
+    "fallback": "assets/realms/lang/en_us_dark_mode.json"
+}
+

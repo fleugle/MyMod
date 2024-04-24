@@ -1,0 +1,4 @@
+{
+    "condition": "!dark_mode",
+    "fallback": "assets/inventoryhud/textures/gui/potion_bg_hor_dark_mode.png"
+}

@@ -1,0 +1,13 @@
+{
+    "providers": [
+       {
+         "type": "bitmap",
+         "file": "minecraft:gui/crosshairs/icons/crosshair_icons.png",
+         "height": 13,
+         "ascent": 10,
+         "chars": [
+            "\uE000\uE001\uE002\uE003\uE004\uE005\uE006\uE007\uE008\uE009\uE010\uE011\uE012\uE013"
+            ]
+        }
+    ]
+}

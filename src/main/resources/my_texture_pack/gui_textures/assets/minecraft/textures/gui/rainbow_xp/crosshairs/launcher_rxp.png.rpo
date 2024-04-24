@@ -1,0 +1,4 @@
+{
+  "condition": "crosshair_style.launcher",
+  "fallback": "assets/minecraft/textures/gui/crosshairs/none.png"
+}

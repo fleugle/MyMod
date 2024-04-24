@@ -1,0 +1,4 @@
+{
+  "condition": "crosshair_style.vanilla",
+  "fallback":  "assets/minecraft/textures/gui/crosshairs/vanilla_small.png"
+}

@@ -1,0 +1,4 @@
+{
+  "condition": "crosshair_style.launcher&!rainbow_xp",
+  "fallback": "assets/minecraft/textures/gui/crosshairs/launcher_rxp.png"
+}

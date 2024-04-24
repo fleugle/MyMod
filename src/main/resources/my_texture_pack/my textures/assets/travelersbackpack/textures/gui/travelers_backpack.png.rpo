@@ -1,0 +1,5 @@
+{
+    "condition": "!dark_mode",
+    "fallback": "assets/travelersbackpack/textures/gui/travelers_backpack_dark_mode.png"
+}
+

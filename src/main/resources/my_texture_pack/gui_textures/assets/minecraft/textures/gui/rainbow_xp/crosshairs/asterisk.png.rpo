@@ -1,0 +1,4 @@
+{
+  "condition": "crosshair_style.asterisk&!rainbow_xp",
+  "fallback": "assets/minecraft/textures/gui/crosshairs/asterisk_rxp.png"
+}

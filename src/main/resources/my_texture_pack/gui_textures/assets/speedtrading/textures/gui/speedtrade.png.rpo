@@ -1,0 +1,5 @@
+{
+    "condition": "!dark_mode",
+    "fallback": "assets/speedtrading/textures/gui/speedtrade_dark_mode.png"
+}
+

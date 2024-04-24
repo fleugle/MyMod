@@ -1,0 +1,4 @@
+{
+  "condition": "crosshair_style.circle_big",
+  "fallback": "assets/minecraft/textures/gui/crosshairs/hand.png"
+}

@@ -1,0 +1,135 @@
+{
+  "entity.shard.shatter": {
+	"sounds": [
+	  "random/glass1",
+	  "random/glass2",
+	  "random/glass3"
+	],
+	"subtitle": "subtitles.enchancement.entity.shard.shatter"
+  },
+  "entity.generic.strafe": {
+	"sounds": [
+	  "dig/sand1",
+	  "dig/sand2",
+	  "dig/sand3",
+	  "dig/sand4"
+	],
+	"subtitle": "subtitles.enchancement.entity.generic.strafe"
+  },
+  "entity.generic.dash": {
+	"sounds": [
+	  "dig/sand1",
+	  "dig/sand2",
+	  "dig/sand3",
+	  "dig/sand4"
+	],
+	"subtitle": "subtitles.enchancement.entity.generic.dash"
+  },
+  "entity.generic.impact": {
+	"sounds": [
+	  "enchancement:entity/impact"
+	],
+	"subtitle": "subtitles.enchancement.entity.generic.impact"
+  },
+  "entity.generic.air_jump": {
+	"sounds": [
+	  "dig/sand1",
+	  "dig/sand2",
+	  "dig/sand3",
+	  "dig/sand4"
+	],
+	"subtitle": "subtitles.enchancement.entity.generic.air_jump"
+  },
+  "entity.generic.freeze": {
+	"sounds": [
+	  "entity/player/hurt/freeze_hurt1",
+	  "entity/player/hurt/freeze_hurt2",
+	  "entity/player/hurt/freeze_hurt3",
+	  "entity/player/hurt/freeze_hurt4",
+	  "entity/player/hurt/freeze_hurt5"
+	],
+	"subtitle": "subtitles.enchancement.entity.generic.freeze"
+  },
+  "entity.generic.bury": {
+	"sounds": [
+	  "item/shovel/flatten1",
+	  "item/shovel/flatten2",
+	  "item/shovel/flatten3",
+	  "item/shovel/flatten4"
+	],
+	"subtitle": "subtitles.enchancement.entity.generic.bury"
+  },
+  "entity.generic.teleport": {
+	"sounds": [
+	  "mob/endermen/portal",
+	  "mob/endermen/portal2"
+	],
+	"subtitle": "subtitles.enchancement.entity.generic.teleport"
+  },
+  "block.ore.extract": {
+	"sounds": [
+	  "enchancement:block/extract"
+	],
+	"subtitle": "subtitles.enchancement.block.ore.extract"
+  },
+  "block.generic.smelt": {
+	"sounds": [
+	  "block/furnace/fire_crackle1",
+	  "block/furnace/fire_crackle2",
+	  "block/furnace/fire_crackle3",
+	  "block/furnace/fire_crackle4",
+	  "block/furnace/fire_crackle5"
+	],
+	"subtitle": "subtitles.enchancement.block.generic.smelt"
+  },
+  "item.crossbow.loading_brimstone": {
+	"sounds": [
+	  "enchancement:item/crossbow/loading_crossbow"
+	],
+	"subtitle": "subtitles.item.crossbow.charge"
+  },
+  "item.crossbow.brimstone.1": {
+	"sounds": [
+	  "enchancement:item/crossbow/brimstone1"
+	],
+	"subtitle": "subtitles.item.crossbow.shoot"
+  },
+  "item.crossbow.brimstone.2": {
+	"sounds": [
+	  "enchancement:item/crossbow/brimstone2"
+	],
+	"subtitle": "subtitles.item.crossbow.shoot"
+  },
+  "item.crossbow.brimstone.3": {
+	"sounds": [
+	  "enchancement:item/crossbow/brimstone3"
+	],
+	"subtitle": "subtitles.item.crossbow.shoot"
+  },
+  "item.crossbow.brimstone.4": {
+	"sounds": [
+	  "enchancement:item/crossbow/brimstone4"
+	],
+	"subtitle": "subtitles.item.crossbow.shoot"
+  },
+  "item.crossbow.brimstone.5": {
+	"sounds": [
+	  "enchancement:item/crossbow/brimstone5"
+	],
+	"subtitle": "subtitles.item.crossbow.shoot"
+  },
+  "item.crossbow.brimstone.6": {
+	"sounds": [
+	  "enchancement:item/crossbow/brimstone6"
+	],
+	"subtitle": "subtitles.item.crossbow.shoot"
+  },
+  "item.crossbow.scatter": {
+	"sounds": [
+	  "enchancement:item/crossbow/scatter1",
+	  "enchancement:item/crossbow/scatter2",
+	  "enchancement:item/crossbow/scatter3"
+	],
+	"subtitle": "subtitles.item.crossbow.shoot"
+  }
+}

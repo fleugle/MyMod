@@ -1,0 +1,4 @@
+{
+    "condition": "!dark_mode",
+    "fallback": "assets/iris/textures/gui/widgets_dark_mode.png"
+}

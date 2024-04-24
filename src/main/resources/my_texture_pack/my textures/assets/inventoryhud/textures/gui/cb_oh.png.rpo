@@ -1,0 +1,4 @@
+{
+    "condition": "!dark_mode",
+    "fallback": "assets/inventoryhud/textures/gui/cb_oh_dark_mode.png"
+}

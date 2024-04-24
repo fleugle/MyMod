@@ -1,0 +1,4 @@
+{
+  "condition": "crosshair_style.heart",
+  "fallback": "assets/minecraft/textures/gui/crosshairs/x.png"
+}

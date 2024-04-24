@@ -1,0 +1,4 @@
+{
+  "condition": "crosshair_style.pointer&!rainbow_xp",
+  "fallback": "assets/minecraft/textures/gui/crosshairs/pointer_rxp.png"
+}

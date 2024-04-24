@@ -1,0 +1,5 @@
+{
+    "condition": "!dark_mode",
+    "fallback": "assets/realms/textures/gui/realms/configure_icon_dark_mode.png"
+}
+

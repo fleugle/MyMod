@@ -1,0 +1,4 @@
+{
+    "condition": "!dark_mode",
+    "fallback": "assets/minecraft/textures/gui/dark_mode/container/creative_inventory/tab_item_search.png"
+}

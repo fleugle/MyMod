@@ -1,0 +1,4 @@
+{
+  "condition": "crosshair_style.tactical_ultra",
+  "fallback": "assets/minecraft/textures/gui/crosshairs/heart.png"
+}

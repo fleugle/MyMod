@@ -1,0 +1,4 @@
+{
+  "condition": "crosshair_style.heart&!rainbow_xp",
+  "fallback": "assets/minecraft/textures/gui/crosshairs/heart_rxp.png"
+}

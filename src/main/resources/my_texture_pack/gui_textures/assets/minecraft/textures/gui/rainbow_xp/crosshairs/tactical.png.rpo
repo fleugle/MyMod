@@ -1,0 +1,4 @@
+{
+  "condition": "crosshair_style.tactical&!rainbow_xp",
+  "fallback": "assets/minecraft/textures/gui/crosshairs/tactical_rxp.png"
+}
