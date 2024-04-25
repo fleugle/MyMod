@@ -10,11 +10,13 @@ import java.util.Objects;
 public class CommandsExecuter {
 
 	public static void executeCommand(Entity entity, String command){
-		UniqueScythe.LOGGER.info("Executing command for "+ entity);
+		UniqueScythe.LOGGER.info("Executing command "+ command + " for entity " + entity);//just a nice logger
 		CommandManager commandManager = Objects.requireNonNull(entity.getServer()).getCommandManager();
 		ServerCommandSource commandSource = entity.getServer().getCommandSource();
-		commandManager.executePrefixedCommand(commandSource, command);
-	}
 
+
+		commandManager.executePrefixedCommand(commandSource.withSilent(), command);
+		//withSilent makes the command execution not appear in the game chat.
+	}
 
 }
