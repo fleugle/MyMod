@@ -1,20 +1,26 @@
 package nikita.uniquescythe.items.custom;
 
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.SwordItem;
 import net.minecraft.item.ToolMaterial;
-import net.minecraft.nbt.NbtCompound;
-import net.minecraft.sound.SoundCategory;
+import net.minecraft.scoreboard.Scoreboard;
+import net.minecraft.scoreboard.ScoreboardCriterion;
+import net.minecraft.scoreboard.ScoreboardObjective;
+import net.minecraft.server.function.CommandFunction;
+import net.minecraft.server.function.CommandFunctionManager;
+import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
-import nikita.uniquescythe.sounds.ModSounds;
+import net.minecraft.util.Identifier;
+import net.minecraft.world.World;
+
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Optional;
 
 public class JevilScytheItem extends SwordItem {
-
 
 
     public JevilScytheItem(ToolMaterial material, int attackDamage, float attackSpeed, Settings settings) {
@@ -23,11 +29,11 @@ public class JevilScytheItem extends SwordItem {
 
 
 
-    @Override
+
+	@Override
     public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
 
-
-        return super.postHit(stack, target, attacker);
+		return super.postHit(stack, target, attacker);
     }
 
     @Override

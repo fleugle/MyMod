@@ -36,6 +36,7 @@ public class UniqueScythe implements ModInitializer {
 
 
 
+
 		LOGGER.info("Ghm Ghm, ladies and gentlemen, if you see that message, I declare though, you are either mentally ill little girl, either 30 years stinky man with no social life. (Of coarse if you are not me, because I'm perfect)");
 		//calling for item registry method in ModItems class
 		ModItems.registerModItems();
