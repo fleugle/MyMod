@@ -1,1 +1,1 @@
-give @s minecraft:diamond
+give @p minecraft:diamond

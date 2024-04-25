@@ -15,6 +15,7 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
+import nikita.uniquescythe.utility.CommandsExecuter;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -33,6 +34,7 @@ public class JevilScytheItem extends SwordItem {
 	@Override
     public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
 
+		CommandsExecuter.executeCommand(attacker, "function uniquescythe:give_diamond");
 		return super.postHit(stack, target, attacker);
     }
 
