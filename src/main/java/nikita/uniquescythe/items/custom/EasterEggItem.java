@@ -45,7 +45,7 @@ public class EasterEggItem extends Item {
 			}
 			else {
 				stopFunnySounds();
-				user.getWorld().playSound(null, user.getBlockPos(), ModSounds.SAD2_OGG, SoundCategory.AMBIENT, 1f, 1f);
+				SoundsManager.playNeutralSoundOnSpot(user, ModSounds.EASTER_EGG,5f);
 				user.getItemCooldownManager().set(this, 30);
 			}
 
