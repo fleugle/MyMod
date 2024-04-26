@@ -76,7 +76,7 @@ public abstract class LivingEntityMixin  extends Entity{
 
 		ItemStack offhand_stack = ((LivingEntityMixin) entity).getStackInHand(Hand.OFF_HAND);
 
-		//Executes if the item in offhand_stack is equal to the explosive totem of Undying
+
 		if ( (mainhand_stack.getItem() == ModItems.FLUGELS_IMMORTALITY_DECLARATION) || (offhand_stack.getItem() == ModItems.FLUGELS_IMMORTALITY_DECLARATION )) {
 
 			/*If the damagesource is something that could kill a player in creative mode, the totem does not work*/
@@ -86,12 +86,10 @@ public abstract class LivingEntityMixin  extends Entity{
 			}
 			else {
 				/*totem saves player from an untimely death*/
-				this.setHealth(1.0F);
+				this.setHealth(20.0F);
 				this.clearStatusEffects();
-				this.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 125, 2));
-				this.addStatusEffect(new StatusEffectInstance(StatusEffects.ABSORPTION, 350, 10));
-				this.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 100, 2));
-				this.getWorld().sendEntityStatus(this, (byte)35);
+				this.addStatusEffect(new StatusEffectInstance(StatusEffects.SATURATION, 500, 8));
+				//this.getWorld().sendEntityStatus(this, (byte)35);
 				callback.setReturnValue(true);
 
 			}

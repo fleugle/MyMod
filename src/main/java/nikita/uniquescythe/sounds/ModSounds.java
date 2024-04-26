@@ -3,7 +3,6 @@ package nikita.uniquescythe.sounds;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.sound.SoundEvent;
-import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 import nikita.uniquescythe.UniqueScythe;
 
@@ -28,6 +27,14 @@ public class ModSounds {
 	public static SoundEvent SAD2_OGG = registerSound("sad");
 
 
+
+	//armor sounds
+	public static SoundEvent INNOCENCE_APPROVED = registerSound("innc_apr");
+
+
+
+
+	//blocks
 
 	public static SoundEvent BLOCK_HEAVY_CORE_BREAK = registerSound("block.heavy_core.break");
 

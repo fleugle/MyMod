@@ -8,6 +8,7 @@ import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import nikita.uniquescythe.UniqueScythe;
 import nikita.uniquescythe.items.ModItems;
+import nikita.uniquescythe.sounds.ModSounds;
 
 import java.util.function.Supplier;
 
@@ -24,7 +25,20 @@ public enum ModArmorMaterials implements  ArmorMaterial {
 		20f,
 		20f,
 		() -> Ingredient.ofItems(ModItems.JUSTICE_FRAGMENT)
-	)//do NOT put a ; here, it is already put below, and if you want to add new enum, just put a comma
+	)
+	,
+	INNOCENCE(
+		"innocence",
+		0,
+		new int[]{999999,0,0,0},
+		0,
+		ModSounds.INNOCENCE_APPROVED,
+		999999f,
+		999999f,
+		Ingredient::empty
+	)
+
+	//do NOT put a ; here, it is already put below, and if you want to add new enum, just put a comma
 
 	;
 

@@ -75,10 +75,13 @@ public class ModItems {
 	public static final Item COWBOYS_CLOAK = registerItem("cowboys_cloak", new JusticeArmorItem(ModArmorMaterials.JUSTICE, ArmorItem.ArmorSlot.CHESTPLATE,new Item.Settings().maxCount(1).rarity(Rarity.UNCOMMON)));
 
 
+	public static final Item INNOCENT_NIMBUS = registerItem("innocent_nimbus", new InnocentNimbusItem(ModArmorMaterials.INNOCENCE, ArmorItem.ArmorSlot.HELMET,new Item.Settings().maxCount(1).rarity(Rarity.RARE)));
 
 
 
-    private static void addItemsToIngredientItemGroup(FabricItemGroupEntries entries) {
+
+
+	private static void addItemsToIngredientItemGroup(FabricItemGroupEntries entries) {
         //place to add items to the ingredient item tab
 		entries.addItem(HEAVY_CORE);
         entries.addItem(FROSTY_STEEL);
