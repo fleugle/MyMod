@@ -34,6 +34,7 @@ public abstract class ModifyCritParticle {
 
 			UniqueScythe.LOGGER.info("Changing crit particle ");
 			if (mainHandItem.isOf(ModItems.WANDERERS_SWORD)) return (T) ModParticleTypes.VOID_CRIT;
+			if (mainHandItem.isOf(ModItems.FROSTY_SCYTHE)) return (T) ModParticleTypes.FROSTY_CRIT;
 		}
 
 

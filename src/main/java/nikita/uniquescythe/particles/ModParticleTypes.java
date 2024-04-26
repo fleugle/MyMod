@@ -18,6 +18,8 @@ public class ModParticleTypes {
 
 	public static final DefaultParticleType VOID_CRIT = FabricParticleTypes.simple();
 
+	public static final DefaultParticleType FROSTY_CRIT = FabricParticleTypes.simple();
+
 	static DefaultParticleType modParticleTypesRegistry(String name, DefaultParticleType particleType){
 		return Registry.register(Registries.PARTICLE_TYPE, new Identifier(UniqueScythe.MOD_ID, name), particleType);
 	}
@@ -33,6 +35,7 @@ public class ModParticleTypes {
 		modParticleTypesRegistry("frosty_sweep_attack", FROSTY_SWEEP_ATTACK);
 		modParticleTypesRegistry("void_sweep_attack", VOID_SWEEP_ATTACK);
 		modParticleTypesRegistry("void_crit", VOID_CRIT);
+		modParticleTypesRegistry("frosty_crit", FROSTY_CRIT);
 
 	}
 }

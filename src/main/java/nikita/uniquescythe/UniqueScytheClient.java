@@ -14,10 +14,7 @@ import nikita.uniquescythe.blocks.ModBlocks;
 import nikita.uniquescythe.entities.ModEntities;
 import nikita.uniquescythe.entities.client.*;
 import nikita.uniquescythe.particles.ModParticleTypes;
-import nikita.uniquescythe.particles.custom.FrostySweepAttackParticle;
-import nikita.uniquescythe.particles.custom.VoidDamageParticle;
-import nikita.uniquescythe.particles.custom.VoidSweepAttackParticle;
-import nikita.uniquescythe.particles.custom.WindExplosionParticle;
+import nikita.uniquescythe.particles.custom.*;
 
 
 public class UniqueScytheClient implements ClientModInitializer {
@@ -36,6 +33,7 @@ public class UniqueScytheClient implements ClientModInitializer {
 
 		ParticleFactoryRegistry.getInstance().register(ModParticleTypes.VOID_CRIT, VoidDamageParticle.Factory ::new);
 
+		ParticleFactoryRegistry.getInstance().register(ModParticleTypes.FROSTY_CRIT, FrostyDamageParticle.Factory ::new);
 
 
 
