@@ -4,6 +4,10 @@ import com.chocohead.mm.api.ClassTinkerers;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.minecraft.enchantment.EnchantmentTarget;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.network.ServerPlayNetworkHandler;
+import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import nikita.uniquescythe.blocks.ModBlocks;
 import nikita.uniquescythe.enchantments.ModEnchantments;
@@ -12,6 +16,8 @@ import nikita.uniquescythe.entities.custom.BreezeEntity;
 import nikita.uniquescythe.items.ModItems;
 import nikita.uniquescythe.particles.ModParticleTypes;
 import nikita.uniquescythe.sounds.ModSounds;
+import org.quiltmc.qsl.networking.api.PacketSender;
+import org.quiltmc.qsl.networking.api.ServerPlayConnectionEvents;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -66,7 +72,21 @@ public class UniqueScythe implements ModInitializer {
 
 		EnchantmentTarget target = ClassTinkerers.getEnum(EnchantmentTarget.class, "MACE");
 		LOGGER.info("Can enchant mace? " + target.isAcceptableItem(ModItems.MACE));
+
+
+
+
+		ServerPlayConnectionEvents.JOIN.register(this::onPlayerJoin);
 	}
+
+	private void onPlayerJoin(ServerPlayNetworkHandler serverPlayNetworkHandler, PacketSender packetSender, MinecraftServer minecraftServer) {
+		// Your code here
+		// For example, send a welcome message to the player
+		ServerPlayerEntity player = serverPlayNetworkHandler.player;
+		player.sendMessage(Text.of("Welcome!"), false);
+
+	}
+
 }
 
 
