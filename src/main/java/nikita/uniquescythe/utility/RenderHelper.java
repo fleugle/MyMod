@@ -12,7 +12,6 @@ import net.minecraft.util.math.Axis;
 import net.minecraft.util.math.MathHelper;
 import nikita.uniquescythe.items.ModItems;
 import nikita.uniquescythe.items.custom.GunItem;
-import org.joml.Vector3f;
 
 public class RenderHelper {
 	public static boolean disableMainHandEquipAnimation;
@@ -58,11 +57,11 @@ public class RenderHelper {
 
 
 		} else if (player.isUsingItem() && player.getActiveHand() == hand) {
-			float usingDuration = stack.getMaxUseTime() - (player.getUseItemRemainingTicks() - partialTicks + 1);
+			float usingDuration = stack.getMaxUseTime() - (player.getItemUseTimeLeft() - partialTicks + 1);
 			if (usingDuration > 0 && usingDuration < GunItem.RELOAD_DURATION) {
 				matrixStack.translate(0, -0.3, 0.05);
-				matrixStack.multiply(Vector3f.XP.rotationDegrees(60));
-				matrixStack.multiply(Vector3f.ZP.rotationDegrees(10));
+				matrixStack.multiply(Axis.X_POSITIVE.rotationDegrees(60));
+				matrixStack.multiply(Axis.Y_POSITIVE.rotationDegrees(10));
 
 				if (usingDuration >= 8 && usingDuration <= 14 || usingDuration >= 18 && usingDuration <= 24) {
 					if (usingDuration >= 18) usingDuration -= 10;
@@ -89,7 +88,7 @@ public class RenderHelper {
 			}
 		}
 
-		renderer.renderItem(player, stack, isRightHand ? ItemTransforms.TransformType.FIRST_PERSON_RIGHT_HAND : ItemTransforms.TransformType.FIRST_PERSON_LEFT_HAND, !isRightHand, matrixStack, render, packedLight);
+		renderer.renderItem(player, stack, isRightHand ? ModelTransformationMode.FIRST_PERSON_RIGHT_HAND : ModelTransformationMode.FIRST_PERSON_LEFT_HAND, !isRightHand, matrixStack, render, packedLight);
 		matrixStack.pop();
 	}
 
