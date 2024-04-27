@@ -16,6 +16,22 @@
 					}
 				}
 			}
+		},
+		"animation.model.misc.idle": {
+			"loop": true,
+			"animation_length": 3,
+			"bones": {
+				"bone": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"3.0": {
+							"vector": [0, -360, 0]
+						}
+					}
+				}
+			}
 		}
 	}
 }
