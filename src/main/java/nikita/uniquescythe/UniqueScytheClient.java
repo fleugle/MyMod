@@ -29,14 +29,16 @@ public class UniqueScytheClient implements ClientModInitializer {
 
 		QuiltLoader.getModContainer(UniqueScythe.MOD_ID)
 			.ifPresent(modContainer -> ResourceLoader
-				.registerBuiltinResourcePack(UniqueScythe.id("my_textures"),
-					modContainer, ResourcePackActivationType.ALWAYS_ENABLED, Text.of("§bSMP Textures DEFAULT")));
-
-		QuiltLoader.getModContainer(UniqueScythe.MOD_ID)
-			.ifPresent(modContainer -> ResourceLoader
 				.registerBuiltinResourcePack(UniqueScythe.id("icons"),
 					modContainer, ResourcePackActivationType.ALWAYS_ENABLED, Text.of("§bIcons")));
 
+		QuiltLoader.getModContainer(UniqueScythe.MOD_ID)
+			.ifPresent(modContainer -> ResourceLoader
+				.registerBuiltinResourcePack(UniqueScythe.id("my_textures"),
+					modContainer, ResourcePackActivationType.ALWAYS_ENABLED, Text.of("§bSMP Textures DEFAULT")));
+
+
+		//load in backwards order - from bot to top = from top to bot
 
 
 

@@ -30,11 +30,11 @@ public enum ModArmorMaterials implements  ArmorMaterial {
 	INNOCENCE(
 		"innocence",
 		0,
-		new int[]{999999,0,0,0},
+		new int[]{0,0,0,0},
 		0,
 		ModSounds.INNOCENCE_APPROVED,
-		999999f,
-		9999999f,
+		0f,
+		1000f,
 		Ingredient::empty
 	)
 
