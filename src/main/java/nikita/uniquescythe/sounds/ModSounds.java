@@ -26,6 +26,7 @@ public class ModSounds {
 
 	public static SoundEvent SAD2_OGG = registerSound("sad");
 
+	public static SoundEvent KRIS_GET_THE_BANANA = registerSound("kris_get_the_banana");
 
 
 	//armor sounds

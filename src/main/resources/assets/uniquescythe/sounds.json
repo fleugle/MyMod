@@ -53,7 +53,12 @@
       "uniquescythe:sad"
     ]
   },
-
+  "kris_get_the_banana": {
+    "subtitle": "sounds.uniquescythe.kris_get_the_banana",
+    "sounds": [
+      "uniquescythe:kris_get_the_banana"
+    ]
+  },
 
 
 
