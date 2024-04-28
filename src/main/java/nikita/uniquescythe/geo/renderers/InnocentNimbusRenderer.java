@@ -20,9 +20,7 @@ public final class InnocentNimbusRenderer extends GeoArmorRenderer<InnocentNimbu
 		super(new DefaultedItemGeoModel<>(new Identifier(UniqueScythe.MOD_ID, "armor/innocent_nimbus")));
 
 		// Add the armor layer
-
 		addRenderLayer(new AutoGlowingGeoLayer<>(this));
-
 		//end
 	}
 }
