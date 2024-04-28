@@ -5,21 +5,39 @@ import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
+import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.minecraft.client.particle.DamageParticle;
 import net.minecraft.client.particle.ExplosionEmitterParticle;
 import net.minecraft.client.particle.ExplosionLargeParticle;
 import net.minecraft.client.particle.ParticleFactory;
 import net.minecraft.client.render.RenderLayer;
+import net.minecraft.text.Text;
+import net.minecraft.util.Identifier;
 import nikita.uniquescythe.blocks.ModBlocks;
 import nikita.uniquescythe.entities.ModEntities;
 import nikita.uniquescythe.entities.client.*;
 import nikita.uniquescythe.particles.ModParticleTypes;
 import nikita.uniquescythe.particles.custom.*;
+import org.quiltmc.loader.api.QuiltLoader;
+import org.quiltmc.qsl.resource.loader.api.ResourceLoader;
+import org.quiltmc.qsl.resource.loader.api.ResourcePackActivationType;
 
 
 public class UniqueScytheClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
+
+		QuiltLoader.getModContainer(UniqueScythe.MOD_ID)
+			.ifPresent(modContainer -> ResourceLoader
+				.registerBuiltinResourcePack(UniqueScythe.id("my_textures"),
+					modContainer, ResourcePackActivationType.ALWAYS_ENABLED, Text.of("§bSMP Textures DEFAULT")));
+
+		QuiltLoader.getModContainer(UniqueScythe.MOD_ID)
+			.ifPresent(modContainer -> ResourceLoader
+				.registerBuiltinResourcePack(UniqueScythe.id("icons"),
+					modContainer, ResourcePackActivationType.ALWAYS_ENABLED, Text.of("§bIcons")));
+
+
 
 
 
