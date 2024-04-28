@@ -1,0 +1,756 @@
+{
+	"pack": {
+		"pack_format":15,
+		"description":"V.1.9.1 | 1.19-1.20\n§6by WeNAN Studios§r"
+	},
+	"language":{
+		"aa_a9":{
+			"name":"\uDB80\uDC0BMessage us about errors on §bTwitter§r, §aPlanetminecraft§r or §6CurseForge§r!",
+			"region":" ",
+			"bidirectional":false
+		},
+		
+		"af_z9":{
+			"name":"\uDBC0\uDC00 §nAfrikaans§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+		
+		"ar_s9":{
+			"name":"\u202E\uDBC0\uDC20 §nالسعودية§r",
+			"region":"▼",
+			"bidirectional":true
+		},
+		
+		"ast_er":{
+			"name":"\uDBC0\uDC40\uDBC0\uDC08 §nAsturianu§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+		
+		"az_ay":{
+			"name":"\uDBC0\uDC60 §nAzərbaycanca§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+		
+		"ba_rt":{
+			"name":"\uDBC0\uDC01\uDBC0\uDC57 §nБашкортоста§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+		
+		"baq":{
+			"name":"\uDBC0\uDC21\uDBC0\uDC24 §nBoarisch§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+		
+		"be_bx":{
+			"name":"\uDBC0\uDC41 §nБеларуская§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+		
+		"bg_bf":{
+			"name":"\uDBC0\uDC61 §nБългарски§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+		
+		"br_fq":{
+			"name":"\uDBC0\uDC02\uDBC0\uDC6A §nBrezhoneg§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+		
+		"bra":{
+			"name":"\uDBC0\uDC22\uDBC0\uDC35 §nBraobans§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+		
+		"bs_b9":{
+			"name":"\uDBC0\uDC42 §nBosanski§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+		
+		"ca_er":{
+			"name":"\uDBC0\uDC62\uDBC0\uDC08 §nCatalà§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+		
+		"cs_cy":{
+			"name":"\uDBC0\uDC03 §nČeština§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+		
+		"cy_ga":{
+			"name":"\uDBC0\uDC23\uDBC0\uDC25 §nCymraeg§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+		
+		"da_dj":{
+			"name":"\uDBC0\uDC43 §nDansk§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+		
+		"de_as":{
+			"name":"\uDBC0\uDC63 §nDeitsch§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+		
+		"de_cg":{
+			"name":"\uDBC0\uDC04 §nSchwiizerdütsch§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+		
+		"de_dd":{
+			"name":"\uDBC0\uDC24 §nDeutsch§r",
+			"region":"▼",
+			"bidirectional":false
+		},		
+		
+		"el_gq":{
+			"name":"\uDBC0\uDC44 §nΕλληνικά§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+		
+		"en_at":{
+			"name":"\uDBC0\uDC64 §nAustralian English§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+		
+		"en_c9":{
+			"name":"\uDBC0\uDC05 §nCanadian English§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+		
+		"en_ga":{
+			"name":"\uDBC0\uDC25 §nBritish English§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+		
+		"en_ny":{
+			"name":"\uDBC0\uDC45 §nNew Zealand English§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+		
+		"en_ps":{
+			"name":"\uDBC0\uDC65 §nPirate Speak§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+		
+		"en_uc":{
+			"name":"\uDBC0\uDC06 §nɥsᴉlƃuuƎ uʍoᗡ ǝpᴉsd∩§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+
+		"en_ur":{
+			"name":"\uDBC0\uDC26 §nAmerican English§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+		
+		"eno":{
+			"name":"\uDBC0\uDC46\uDBC0\uDC25 §nAnglish§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+		
+		"enwr":{
+			"name":"\uDBC0\uDC66\uDBC0\uDC25 §nShakespearean English§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+		
+		"eo_ux":{
+			"name":"\uDBC0\uDC07 §nEsperanto§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+		"es_aq":{
+			"name":"\uDBC0\uDC27 §nEspañol argentino§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+		
+		"es_ck":{
+			"name":"\uDBC0\uDC47 §nEspañol chileno§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+		
+		"es_eb":{
+			"name":"\uDBC0\uDC67 §nEspañol ecuatoriano§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+		
+		"es_er":{
+			"name":"\uDBC0\uDC08 §nEspañol§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+		
+		"es_mw":{
+			"name":"\uDBC0\uDC28 §nEspañol mexicano§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+		
+		"es_ux":{
+			"name":"\uDBC0\uDC48 §nEspañol uruguayo§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+		
+		"es_vd":{
+			"name":"\uDBC0\uDC68 §nEspañol venezolano§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+		
+		"esam":{
+			"name":"\uDBC0\uDC09\uDBC0\uDC08 §nAndalûh§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+		
+		"et_ed":{
+			"name":"\uDBC0\uDC29 §nEesti keel§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+		
+		"eu_er":{
+			"name":"\uDBC0\uDC49\uDBC0\uDC08 §nEuskara§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+		
+		"fa_iq":{
+			"name":"\u202E\uDBC0\uDC69 §nفارسی§r",
+			"region":"▼",
+			"bidirectional":true
+		},
+		
+		"fi_fh":{
+			"name":"\uDBC0\uDC0A §nSuomi§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+		
+		"fil_pg":{
+			"name":"\uDBC0\uDC2A §nFilipino§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+		
+		"fo_fn":{
+			"name":"\uDBC0\uDC4A §nFøroyskt§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+		
+		"fr_c9":{
+			"name":"\uDBC0\uDC05\uDBC0\uDC6A §nFrançais Canadien§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+		
+		"fr_fq":{
+			"name":"\uDBC0\uDC6A §nFrançais§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+		
+		"fra_dd":{
+			"name":"\uDBC0\uDC0B\uDBC0\uDC24 §nFränggisch§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+		
+		"fur_is":{
+			"name":"\uDBC0\uDC2B\uDBC0\uDC2F §nFurlan§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+		
+		"fy_nk":{
+			"name":"\uDBC0\uDC4B\uDBC0\uDC35 §nFrysk§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+		
+		"ga_id":{
+			"name":"\uDBC0\uDC6B §nGaeilge§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+	
+		"gd_ga":{
+			"name":"\uDBC0\uDC0C\uDBC0\uDC25 §nGàidhlig§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+
+		"gl_er":{
+			"name":"\uDBC0\uDC2C\uDBC0\uDC08 §nGalego§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+
+		"haw_ur":{
+			"name":"\uDBC0\uDC4C\uDBC0\uDC26 §nʻŌlelo Hawaiʻi§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+
+		"he_ik":{
+			"name":"\u202E\uDBC0\uDC6C §nעברית§r",
+			"region":"▼",
+			"bidirectional":true
+		},
+	
+		"hi_im":{
+			"name":"\uDBC0\uDC0D §nहिंदी§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+
+		"hr_hq":{
+			"name":"\uDBC0\uDC2D §nHrvatski§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+
+		"hu_ht":{
+			"name":"\uDBC0\uDC4D §nMagyar§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+
+		"hy_al":{
+			"name":"\uDBC0\uDC6D §nՀայերեն§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+
+		"id_ic":{
+			"name":"\uDBC0\uDC0E §nBahasa Indonesia§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+
+		"ig_nf":{
+			"name":"\uDBC0\uDC2E §nIgbo§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+
+		"io_em":{
+			"name":"\uDBC0\uDC4E\uDBC0\uDC07 §nIdo§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+
+		"is_ir":{
+			"name":"\uDBC0\uDC6E §nÍslenska§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+
+		"isu":{
+			"name":"\uDBC0\uDC0F §nMedžuslovjansky§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+
+		"it_is":{
+			"name":"\uDBC0\uDC2F §nItaliano§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+
+		"ja_jo":{
+			"name":"\uDBC0\uDC4F §n日本語§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+
+		"jbo_em":{
+			"name":"\uDBC0\uDC6F §nla .lojban.§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+
+		"ka_gd":{
+			"name":"\uDBC0\uDC10 §nქართული§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+
+		"kk_ky":{
+			"name":"\uDBC0\uDC30 §nқазақша§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+
+		"kn_im":{
+			"name":"\uDBC0\uDC50\uDBC0\uDC0D §nಕನ್ನಡ§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+
+		"ko_kq":{
+			"name":"\uDBC0\uDC70 §n한국어§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+
+		"ksg":{
+			"name":"\uDBC0\uDC11\uDBC0\uDC5F\uDBC0\uDC24 §nKölsch/Ripoarisch§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+
+		"kw_ga":{
+			"name":"\uDBC0\uDC31\uDBC0\uDC66\uDBC0\uDC25 §nKernewek§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+
+		"la_l9":{
+			"name":"\uDBC0\uDC51 §nLatina§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+
+		"lb_lt":{
+			"name":"\uDBC0\uDC71 §nLëtzebuergesch§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+
+		"li_lh":{
+			"name":"\uDBC0\uDC12\uDBC0\uDC35 §nLimburgs§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+
+		"lmn":{
+			"name":"\uDBC0\uDC32\uDBC0\uDC2F §nLombard§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+
+		"lo_l9":{
+			"name":"\uDBC0\uDC52 §nລາວ§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+
+		"lol_ur":{
+			"name":"\uDBC0\uDC72\uDBC0\uDC26 §nLOLCAT§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+
+		"lt_ls":{
+			"name":"\uDBC0\uDC13 §nLietuvių§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+
+		"lv_lu":{
+			"name":"\uDBC0\uDC33 §nLatviešu§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+
+		"lzg":{
+			"name":"\uDBC0\uDC5D §n文言§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+
+		"mk_mj":{
+			"name":"\uDBC0\uDC53 §nмакедонски§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+
+		"mn_mm":{
+			"name":"\uDBC0\uDC73 §nМонгол§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+
+		"ms_mx":{
+			"name":"\uDBC0\uDC14 §nBahasa Melayu§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+
+		"mt_ms":{
+			"name":"\uDBC0\uDC34 §nMalti§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+
+		"nag":{
+			"name":"\uDBC0\uDC54\uDBC0\uDC28 §nMēxikatlahtōlli§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+
+		"nds_dd":{
+			"name":"\uDBC0\uDC74\uDBC0\uDC24 §nPlattdüütsch§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+
+		"nl_bd":{
+			"name":"\uDBC0\uDC15\uDBC0\uDC7F\uDBC0\uDC35 §nVlaams§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+	
+		"nl_nk":{
+			"name":"\uDBC0\uDC35 §nNederlands§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+
+		"nn_nn":{
+			"name":"\uDBC0\uDC55 §nNorsk nynorsk§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+	
+		"no_nn":{
+			"name":"\uDBC0\uDC55 §nNorsk bokmål§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+
+		"oc_fq":{
+			"name":"\uDBC0\uDC75\uDBC0\uDC6A §nOccitan§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+
+		"ovc":{
+			"name":"\uDBC0\uDC16\uDBC0\uDC79 §nÖvdalska§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+
+		"pl_pk":{
+			"name":"\uDBC0\uDC36 §nPolski§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+
+		"pt_bq":{
+			"name":"\uDBC0\uDC56 §nPortuguês brasileiro§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+
+		"pt_ps":{
+			"name":"\uDBC0\uDC76 §nPortuguês§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+
+		"qya_a9":{
+			"name":"\uDBC0\uDC17 §nQuenya§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+
+		"ro_rn":{
+			"name":"\uDBC0\uDC37 §nRomână§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+
+		"rpq":{
+			"name":"\uDBC0\uDC57 §nPyccĸiй дopeфopмeнный§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+
+		"ru_rt":{
+			"name":"\uDBC0\uDC57 §nPусский§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+
+		"ry_u9":{
+			"name":"\uDBC0\uDC77\uDBC0\uDC3C §nРуснацькый§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+
+		"sah_sag":{
+			"name":"\uDBC0\uDC18\uDBC0\uDC57 §nсахалыы§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+		
+		"se_nm":{
+			"name":"\uDBC0\uDC38 §nDavvisámegiella§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+
+		"sk_sj":{
+			"name":"\uDBC0\uDC58 §nSlovenčina§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+
+		"sl_sh":{
+			"name":"\uDBC0\uDC78 §nSlovenščina§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+		"so_sn":{
+			"name":"\uDBC0\uDC19 §nSoomaali§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+		"sq_ak":{
+			"name":"\uDBC0\uDC39 §nShqip§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+		"sr_cr":{
+			"name":"\uDBC0\uDC59 §nSrpski§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+		"sr_so":{
+			"name":"\uDBC0\uDC59 §nCpпcκи§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+		"sv_sd":{
+			"name":"\uDBC0\uDC79 §nSvenska§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+		"sxt":{
+			"name":"\uDBC0\uDC1A\uDBC0\uDC24 §nSäggs'sch§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+		"szk":{
+			"name":"\uDBC0\uDC3A\uDBC0\uDC03\uDBC0\uDC36 §nŚlōnskǒ§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+		"ta_im":{
+			"name":"\uDBC0\uDC5A §nதமிழ்§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+		"th_tg":{
+			"name":"\uDBC0\uDC7A §nไทย§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+		"tl_pg":{
+			"name":"\uDBC0\uDC1B §nTagalog§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+		"tlh_a9":{
+			"name":"\uDBC0\uDC3B §ntlhIngan Hol§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+		"toj":{
+			"name":"\uDBC0\uDC5B §ntoki pona§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+		"tr_tq":{
+			"name":"\uDBC0\uDC7B §nTürkçe§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+		"tt_rt":{
+			"name":"\uDBC0\uDC1C\uDBC0\uDC57 §nтатарча§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+		"uk_u9":{
+			"name":"\uDBC0\uDC3C §nукраїнська§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+		"val_er":{
+			"name":"\uDBC0\uDC5C\uDBC0\uDC08 §nCatalà§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+		"vec_is":{
+			"name":"\uDBC0\uDC7C\uDBC0\uDC2F §nVèneto§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+		"vi_vm":{
+			"name":"\uDBC0\uDC1D §nTiếng Việt§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+		"yi_dd":{
+			"name":"\uDBC0\uDC3D §nיידיש§r",
+			"region":"▼",
+			"bidirectional":true
+		},
+		"yo_nf":{
+			"name":"\uDBC0\uDC2E §nYorùbá§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+		"zh_cm":{
+			"name":"\uDBC0\uDC5D §n简体中文§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+		"zh_hj":{
+			"name":"\uDBC0\uDC7D §n繁體中文§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+		"zh_tv":{
+			"name":"\uDBC0\uDC1E §n繁體中文§r",
+			"region":"▼",
+			"bidirectional":false
+		},
+		"zlm_araa":{
+			"name":"\uDBC0\uDC14 §nبهاس ملايو§r",
+			"region":"▼",
+			"bidirectional":true
+		}	
+	}
+}
