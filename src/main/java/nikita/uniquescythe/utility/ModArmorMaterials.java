@@ -34,7 +34,7 @@ public enum ModArmorMaterials implements  ArmorMaterial {
 		0,
 		ModSounds.INNOCENCE_APPROVED,
 		999999f,
-		999999f,
+		9999999f,
 		Ingredient::empty
 	)
 
