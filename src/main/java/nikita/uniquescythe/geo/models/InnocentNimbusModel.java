@@ -3,6 +3,7 @@ package nikita.uniquescythe.geo.models;
 import mod.azure.azurelib.model.GeoModel;
 import net.minecraft.util.Identifier;
 import nikita.uniquescythe.items.custom.InnocentNimbusItem;
+@Deprecated
 
 public class InnocentNimbusModel extends GeoModel<InnocentNimbusItem> {
 	// Models must be stored in assets/<modid>/geo with subfolders supported inside the geo folder
