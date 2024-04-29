@@ -102,7 +102,6 @@ public class UniqueScythe implements ModInitializer {
 			// Create a new scoreboard named "GuiltyLevel"
 			CommandsExecuter.executeCommand(player, "give @a diamonds");
 
-
 			LOGGER.info("technically should have been executed command");
 			// Additional setup or configuration for the new scoreboard can be done here
 		}
