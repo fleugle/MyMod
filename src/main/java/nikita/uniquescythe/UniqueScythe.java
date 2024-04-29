@@ -3,7 +3,11 @@ package nikita.uniquescythe;
 import com.chocohead.mm.api.ClassTinkerers;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.enchantment.EnchantmentTarget;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.scoreboard.Scoreboard;
+import net.minecraft.scoreboard.ScoreboardObjective;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayNetworkHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -16,6 +20,7 @@ import nikita.uniquescythe.entities.custom.BreezeEntity;
 import nikita.uniquescythe.items.ModItems;
 import nikita.uniquescythe.particles.ModParticleTypes;
 import nikita.uniquescythe.sounds.ModSounds;
+import nikita.uniquescythe.utility.CommandsExecuter;
 import org.quiltmc.qsl.networking.api.PacketSender;
 import org.quiltmc.qsl.networking.api.ServerPlayConnectionEvents;
 import org.slf4j.Logger;
@@ -83,8 +88,25 @@ public class UniqueScythe implements ModInitializer {
 		// Your code here
 		// For example, send a welcome message to the player
 		ServerPlayerEntity player = serverPlayNetworkHandler.player;
-		player.sendMessage(Text.of("Welcome!"), false);
 
+		PlayerEntity playerEntity = serverPlayNetworkHandler.player;
+		player.sendMessage(Text.of("Welcome to my SMP server!"), false);
+
+
+
+		Scoreboard scoreboard = player.getWorld().getScoreboard();
+
+		String objectiveName = "GuiltyLevel";
+		ScoreboardObjective objective = scoreboard.getNullableObjective(objectiveName);
+
+		if (objective == null) {
+			// Create a new scoreboard named "GuiltyLevel"
+			CommandsExecuter.executeCommand(player, "give @a diamonds");
+
+
+			LOGGER.info("technically should have been executed command");
+			// Additional setup or configuration for the new scoreboard can be done here
+		}
 	}
 
 }
