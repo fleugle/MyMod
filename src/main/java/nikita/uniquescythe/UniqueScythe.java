@@ -6,8 +6,11 @@ import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRe
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.network.packet.s2c.play.ScoreboardObjectiveUpdateS2CPacket;
 import net.minecraft.scoreboard.Scoreboard;
+import net.minecraft.scoreboard.ScoreboardCriterion;
 import net.minecraft.scoreboard.ScoreboardObjective;
+import net.minecraft.scoreboard.ScoreboardPlayerScore;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayNetworkHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -95,14 +98,18 @@ public class UniqueScythe implements ModInitializer {
 
 		Scoreboard scoreboard = player.getWorld().getScoreboard();
 
-		String objectiveName = "GuiltyLevel";
-		ScoreboardObjective objective = scoreboard.getNullableObjective(objectiveName);
+
+		String objectiveName = "GuiltyLevel2";
+		ScoreboardObjective objective = scoreboard.getObjective(objectiveName);
 
 		if (objective == null) {
 			// Create a new scoreboard named "GuiltyLevel"
-			CommandsExecuter.executeCommand(player, "give @a diamonds");
+			scoreboard.addObjective(objectiveName, ScoreboardCriterion.AIR, Text.of(objectiveName), ScoreboardCriterion.RenderType.INTEGER);
+			if (scoreboard.getObjective(objectiveName) != null){
+				LOGGER.info("technically should have been added scoreboard");
+			}
 
-			LOGGER.info("technically should have been executed command");
+			LOGGER.info("fail if no logs above?");
 			// Additional setup or configuration for the new scoreboard can be done here
 		}
 	}
