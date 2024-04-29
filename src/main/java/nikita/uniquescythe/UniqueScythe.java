@@ -87,9 +87,8 @@ public class UniqueScythe implements ModInitializer {
 	private void onPlayerJoin(ServerPlayNetworkHandler serverPlayNetworkHandler, PacketSender packetSender, MinecraftServer minecraftServer) {
 		// Your code here
 		// For example, send a welcome message to the player
-		ServerPlayerEntity player = serverPlayNetworkHandler.player;
+		PlayerEntity player = serverPlayNetworkHandler.player;
 
-		PlayerEntity playerEntity = serverPlayNetworkHandler.player;
 		player.sendMessage(Text.of("Welcome to my SMP server!"), false);
 
 
