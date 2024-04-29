@@ -99,15 +99,15 @@ public class UniqueScythe implements ModInitializer {
 		Scoreboard scoreboard = player.getWorld().getScoreboard();
 
 
-		String objectiveName = "GuiltyLevel";
+		String objectiveName = "GuiltyLevelDebug";
 		ScoreboardObjective objective = scoreboard.getObjective(objectiveName);
 
 		if (objective == null) {
 			// Create a new scoreboard named "GuiltyLevel"
-			scoreboard.addObjective(objectiveName, ScoreboardCriterion.AIR, Text.of(objectiveName), ScoreboardCriterion.RenderType.INTEGER);
+			scoreboard.addObjective(objectiveName, ScoreboardCriterion.DUMMY, Text.of(objectiveName), ScoreboardCriterion.RenderType.INTEGER);
 			if (scoreboard.getObjective(objectiveName) != null){
-				LOGGER.info("technically should have been added scoreboard");
-			}else LOGGER.info("fail");
+				LOGGER.info("scoreboard exists");
+			}else LOGGER.info("failed scoreboard creation");
 			// Additional setup or configuration for the new scoreboard can be done here
 		}
 	}
