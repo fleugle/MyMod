@@ -99,7 +99,7 @@ public class UniqueScythe implements ModInitializer {
 		Scoreboard scoreboard = player.getWorld().getScoreboard();
 
 
-		String objectiveName = "GuiltyLevel2";
+		String objectiveName = "GuiltyLevel";
 		ScoreboardObjective objective = scoreboard.getObjective(objectiveName);
 
 		if (objective == null) {
@@ -107,9 +107,7 @@ public class UniqueScythe implements ModInitializer {
 			scoreboard.addObjective(objectiveName, ScoreboardCriterion.AIR, Text.of(objectiveName), ScoreboardCriterion.RenderType.INTEGER);
 			if (scoreboard.getObjective(objectiveName) != null){
 				LOGGER.info("technically should have been added scoreboard");
-			}
-
-			LOGGER.info("fail if no logs above?");
+			}else LOGGER.info("fail");
 			// Additional setup or configuration for the new scoreboard can be done here
 		}
 	}
