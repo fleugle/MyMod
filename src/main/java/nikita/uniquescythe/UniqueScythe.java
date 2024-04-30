@@ -24,6 +24,7 @@ import nikita.uniquescythe.items.ModItems;
 import nikita.uniquescythe.particles.ModParticleTypes;
 import nikita.uniquescythe.sounds.ModSounds;
 import nikita.uniquescythe.utility.CommandsExecuter;
+import nikita.uniquescythe.utility.GuiltyLevelSystem;
 import org.quiltmc.qsl.networking.api.PacketSender;
 import org.quiltmc.qsl.networking.api.ServerPlayConnectionEvents;
 import org.slf4j.Logger;
@@ -99,16 +100,24 @@ public class UniqueScythe implements ModInitializer {
 		Scoreboard scoreboard = player.getWorld().getScoreboard();
 
 
-		String objectiveName = "GuiltyLevelDebug";
+		GuiltyLevelSystem.createIntScoreboadIfMissing(scoreboard, ScoreboardCriterion.DUMMY, "PersistentGuiltyLevel");
+		GuiltyLevelSystem.createIntScoreboadIfMissing(scoreboard, ScoreboardCriterion.TOTAL_KILL_COUNT, "GeneralKillsGuiltyLevel");
+		GuiltyLevelSystem.createIntScoreboadIfMissing(scoreboard, ScoreboardCriterion.PLAYER_KILL_COUNT, "PlayersKillGuiltyAddition");
+	}
+
+
+	public void createIntScoreboadIfMissingAlt(Scoreboard scoreboard, ScoreboardCriterion criteria, String objectiveName){
+
 		ScoreboardObjective objective = scoreboard.getObjective(objectiveName);
 
 		if (objective == null) {
 			// Create a new scoreboard named "GuiltyLevel"
-			scoreboard.addObjective(objectiveName, ScoreboardCriterion.DUMMY, Text.of(objectiveName), ScoreboardCriterion.RenderType.INTEGER);
+			scoreboard.addObjective(objectiveName, criteria, Text.of(objectiveName), ScoreboardCriterion.RenderType.INTEGER);
+
+			//additional check
 			if (scoreboard.getObjective(objectiveName) != null){
-				LOGGER.info("scoreboard exists");
-			}else LOGGER.info("failed scoreboard creation");
-			// Additional setup or configuration for the new scoreboard can be done here
+				LOGGER.info("objective "+ objectiveName +" with criteria "+ criteria +" exists");
+			}else LOGGER.info("failed objective "+ objectiveName + " with criteria " + criteria + " creation");
 		}
 	}
 
