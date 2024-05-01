@@ -8,14 +8,17 @@ import net.minecraft.item.ToolMaterial;
 import net.minecraft.scoreboard.Scoreboard;
 import net.minecraft.scoreboard.ScoreboardCriterion;
 import net.minecraft.scoreboard.ScoreboardObjective;
+import net.minecraft.scoreboard.ScoreboardPlayerScore;
 import net.minecraft.server.function.CommandFunction;
 import net.minecraft.server.function.CommandFunctionManager;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
 import nikita.uniquescythe.utility.CommandsExecuter;
+import nikita.uniquescythe.utility.GuiltyLevelSystem;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -34,7 +37,13 @@ public class JevilScytheItem extends SwordItem {
 	@Override
     public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
 
-		CommandsExecuter.executeCommand(attacker, "function uniquescythe:give_diamond");
+
+
+		String playerName = attacker.getDisplayName().getString();
+		GuiltyLevelSystem.addGuiltyLevelsToPlayer((PlayerEntity) attacker, playerName, 5);
+		int GeneralKillsGuiltyLevel = GuiltyLevelSystem.getGuiltyLevel( (ServerPlayerEntity) attacker, playerName,"GeneralKillsGuiltyLevel");
+
+
 		return super.postHit(stack, target, attacker);
     }
 

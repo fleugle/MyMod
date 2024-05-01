@@ -106,21 +106,6 @@ public class UniqueScythe implements ModInitializer {
 	}
 
 
-	public void createIntScoreboadIfMissingAlt(Scoreboard scoreboard, ScoreboardCriterion criteria, String objectiveName){
-
-		ScoreboardObjective objective = scoreboard.getObjective(objectiveName);
-
-		if (objective == null) {
-			// Create a new scoreboard named "GuiltyLevel"
-			scoreboard.addObjective(objectiveName, criteria, Text.of(objectiveName), ScoreboardCriterion.RenderType.INTEGER);
-
-			//additional check
-			if (scoreboard.getObjective(objectiveName) != null){
-				LOGGER.info("objective "+ objectiveName +" with criteria "+ criteria +" exists");
-			}else LOGGER.info("failed objective "+ objectiveName + " with criteria " + criteria + " creation");
-		}
-	}
-
 }
 
 
