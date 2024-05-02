@@ -47,10 +47,6 @@ public class GuiltyLevelSystem {
 		return score.getScore();
 	}
 
-	public static Scoreboard getScoreboard(PlayerEntity player){
-
-		return player.getWorld().getScoreboard();
-	}
 
 
 }
