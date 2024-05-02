@@ -9,6 +9,7 @@ import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import nikita.uniquescythe.utility.GuiltyLevelSystem;
+import org.jetbrains.annotations.NotNull;
 
 public class JevilScytheItem extends SwordItem {
 
@@ -21,14 +22,11 @@ public class JevilScytheItem extends SwordItem {
 
 
 	@Override
-    public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-
+    public boolean postHit(ItemStack stack, LivingEntity target, @NotNull LivingEntity attacker) {
 
 
 		String playerName = attacker.getDisplayName().getString();
-		GuiltyLevelSystem.addGuiltyLevelsToPlayer((PlayerEntity) attacker, playerName, 5);
-		int GeneralKillsGuiltyLevel = GuiltyLevelSystem.getGuiltyLevel( (ServerPlayerEntity) attacker, playerName,"GeneralKillsGuiltyLevel");
-
+		GuiltyLevelSystem.addGuiltyLevelsToPlayer((ServerPlayerEntity) attacker, playerName, 5, 5);
 
 		return super.postHit(stack, target, attacker);
     }

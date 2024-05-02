@@ -6,36 +6,36 @@
 // Main Menu
 	"menu.singleplayer":	"\uDB80\uDC00 Singleplayer \uDB80\uDC00",
 	"menu.multiplayer":		"\uDB80\uDC01 Multiplayer \uDB80\uDC01",
-	"menu.online":			"\uDB80\uDC02 Realms",
+	"menu.online":			"\uDB80\uDC02 Realms \uDB80\uDC02",
 	"menu.quit":			"Quit Game \uDB80\uDC04",
 	"menu.options":			"\uDB80\uDC03 Options...",
-	"menu.savingLevel":		"§f\uDB80\uDC60 §rSaving World",  
+	"menu.savingLevel":		"§f\uDB80\uDC60 §rSaving World",
 
 // Options
 	"options.fov":						"\uDB80\uDC08 FOV",
 	"options.online":					"\uDB80\uDC09 Online...",
-	"options.skinCustomisation":		"\uDB80\uDC0A Skin Customization...", 
-	"options.sounds":					"\uDB80\uDC0B Music & Sounds...",  
-	"options.video":					"\uDB80\uDC0C Video Settings...", 
-	"options.controls":					"\uDB80\uDC0D Controls...",  
+	"options.skinCustomisation":		"\uDB80\uDC0A Skin Customization...",
+	"options.sounds":					"\uDB80\uDC0B Music & Sounds...",
+	"options.video":					"\uDB80\uDC0C Video Settings...",
+	"options.controls":					"\uDB80\uDC0D Controls...",
 	"options.language":					"\uDB80\uDC0E Language...",
-	"options.chat.title":				"\uDB80\uDC0F Chat Settings...",  
+	"options.chat.title":				"\uDB80\uDC0F Chat Settings...",
 	"options.resourcepack":				"\uDB80\uDC10 Resource Packs...",
 	"options.accessibility.title":		"\uDB80\uDC11 Accessibility Settings...",
 	"options.telemetry":				"\uDB80\uDC12 Telemetry Data...",
 	"options.credits_and_attribution":	"\uDB80\uDC13 Credits & Attribution...",
-  
+
 // Online Options
 	"options.realmsNotifications":	"\uDB80\uDC07 Realms Notifications",
 
-// Skin Customization 
+// Skin Customization
 	"options.modelPart.cape":				"\uDB80\uDC2A Cape",
 	"options.modelPart.jacket":				"\uDB80\uDC2B Jacket",
 	"options.modelPart.left_sleeve":		"\uDB80\uDC2C Left Sleeve",
 	"options.modelPart.right_sleeve":		"\uDB80\uDC2D Right Sleeve",
 	"options.modelPart.left_pants_leg":		"\uDB80\uDC2E Left Pants Leg",
 	"options.modelPart.right_pants_leg":	"\uDB80\uDC2F Right Pants Leg",
-	"options.modelPart.hat":				"\uDB80\uDC30 Hat",  
+	"options.modelPart.hat":				"\uDB80\uDC30 Hat",
 	"options.mainHand.left":				"\uDB80\uDC32 Left \uDB80\uDC33",
 	"options.mainHand.right":				"\uDB80\uDC31 Right \uDB80\uDC34",
 
@@ -44,7 +44,7 @@
 	"soundCategory.music":		"\uDB80\uDC3B Music",
 	"soundCategory.record":		"\uDB80\uDC3C Music Blocks",
 	"soundCategory.weather":	"\uDB80\uDC3D Weather",
-	"soundCategory.block":		"\uDB80\uDC3E Blocks",  
+	"soundCategory.block":		"\uDB80\uDC3E Blocks",
 	"soundCategory.hostile":	"\uDB80\uDC3F Hostile Creatures",
 	"soundCategory.neutral":	"\uDB80\uDC40 Friendly Creatures",
 	"soundCategory.player":		"\uDB80\uDC41 Players",
@@ -58,49 +58,49 @@
 	"options.ao":						"\uDB80\uDC4E Smooth Lighting",
 	"options.vsync":					"\uDB80\uDC50 VSync",
 	"options.viewBobbing":				"\uDB80\uDC51 View Bobbing",
-	"options.guiScale":					"\uDB80\uDC52 GUI Scale",  
+	"options.guiScale":					"\uDB80\uDC52 GUI Scale",
 	"options.attack.crosshair":			"\uDB80\uDC53",
-	"options.attack.hotbar":			"\uDB80\uDC54", 
+	"options.attack.hotbar":			"\uDB80\uDC54",
 	"options.gamma.min":				"Moody \uDB80\uDC55",
-	"options.gamma.default":			"Default \uDB80\uDC56",  
+	"options.gamma.default":			"Default \uDB80\uDC56",
 	"options.gamma.max":				"Bright \uDB80\uDC57",
 	"options.renderClouds": 			"\uDB80\uDC58 Clouds",
 	"options.particles": 				"\uDB80\uDC5A Particles",
-	"options.mipmapLevels":				"\uDB80\uDC5B Mipmap Levels",  
-	"options.entityShadows": 			"\uDB80\uDC5C Entity Shadows",   
+	"options.mipmapLevels":				"\uDB80\uDC5B Mipmap Levels",
+	"options.entityShadows": 			"\uDB80\uDC5C Entity Shadows",
 	"options.biomeBlendRadius.1": 		"\uDB80\uDC24 (Fastest)",
 	"options.screenEffectScale":		"\uDB80\uDC5D Distortion Effects",
-	"options.entityDistanceScaling":	"\uDB80\uDC5E Entity Distance",  
-	"options.autosaveIndicator":		"\uDB80\uDC60 Autosave Indicator",  
+	"options.entityDistanceScaling":	"\uDB80\uDC5E Entity Distance",
+	"options.autosaveIndicator":		"\uDB80\uDC60 Autosave Indicator",
 	"options.glintSpeed":				"\uDB80\uDC61 Glint Speed",
-	"options.glintStrength":			"\uDB80\uDC61 Glint Strength",  
-	"options.graphics":					"\uDB80\uDC4A Graphics", 
+	"options.glintStrength":			"\uDB80\uDC61 Glint Strength",
+	"options.graphics":					"\uDB80\uDC4A Graphics",
 	"options.clouds.fancy":				"§aFancy§r",
-	"options.clouds.fast":				"§eFast§r",   
+	"options.clouds.fast":				"§eFast§r",
 	"options.graphics.fast":			"§eFast§r",
 	"options.graphics.fancy":			"§aFancy§r",
 
 // Controls
 	"telemetry_info.button.give_feedback":	"\uDB80\uDC86 Give Feedback \uDB80\uDC86",
-	"options.mouse_settings":				"\uDB80\uDC70 Mouse Settings...",  
+	"options.mouse_settings":				"\uDB80\uDC70 Mouse Settings...",
 	"controls.keybinds": 					"\uDB80\uDC71 Key Binds...",
-  
+
 // Key Categories
 	"key.categories.movement":		"\uDB80\uDC71 Movement \uDB80\uDC71§r",
 	"key.categories.gameplay":		"\uDB80\uDC70 Gameplay \uDB80\uDC71§r",
 	"key.categories.inventory":		"\uDB80\uDC74 Inventory \uDB80\uDC71§r",
 	"key.categories.creative":		"\uDB80\uDC47 Creative Mode \uDB80\uDC71§r",
-	"key.categories.multiplayer":	"\uDB80\uDC01 Multiplayer \uDB80\uDC71§r",  
-	"key.categories.misc":			"\uDB80\uDC77 Miscellaneous \uDB80\uDC71§r",  
+	"key.categories.multiplayer":	"\uDB80\uDC01 Multiplayer \uDB80\uDC71§r",
+	"key.categories.misc":			"\uDB80\uDC77 Miscellaneous \uDB80\uDC71§r",
 	"controls.reset":				"\uDB80\uDC78 Reset",
 
-// Chat Options  
+// Chat Options
 	"options.chat.visibility.full":		"Shown \uDB80\uDC0F",
-	"options.chat.visibility.hidden":	"Hidden \uDB80\uDC7A",    
-	"options.chat.visibility.system":	"Commands Only \uDB80\uDC7B", 
+	"options.chat.visibility.hidden":	"Hidden \uDB80\uDC7A",
+	"options.chat.visibility.system":	"Commands Only \uDB80\uDC7B",
 
-// Resourcepack Selection  
-	"pack.openFolder": "\uDB80\uDC82 Open Pack Folder \uDB80\uDC82", 
+// Resourcepack Selection
+	"pack.openFolder": "\uDB80\uDC82 Open Pack Folder \uDB80\uDC82",
 
 // Other Options
 	"options.sensitivity.min":		"§8*yawn*§r",
@@ -115,22 +115,22 @@
 	"options.generic_value":		"%s: %s",
 	"options.pixel_value":			"%s: %spx",
 	"options.percent_value":		"%s: %s%%",
-	"options.percent_add_value":	"%s: +%s%%", 
+	"options.percent_add_value":	"%s: +%s%%",
 
 // Accessibility Settings
-	"options.narrator.off":						"\uDB80\uDC24",    
-	"options.accessibility.link":				"\uDB80\uDC39 Accessibility Guide \uDB80\uDC39",  
+	"options.narrator.off":						"\uDB80\uDC24",
+	"options.accessibility.link":				"\uDB80\uDC39 Accessibility Guide \uDB80\uDC39",
 	"options.darkMojangStudiosBackgroundColor":	"\uDB80\uDC37 Monochrome Logo",
 
 // Escape/Game Menu
 	"menu.returnToGame": 	"\uDB80\uDC83 Back to Game \uDB80\uDC83",
 	"gui.advancements":		"§f\uDB80\uDC84§r Advancements",
-	"gui.stats":			"Statistics \uDB80\uDC85",  
+	"gui.stats":			"Statistics \uDB80\uDC85",
 	"menu.sendFeedback":	"\uDB80\uDC86 Give Feedback",
-	"menu.reportBugs":		"Report Bugs \uDB80\uDC87",  
+	"menu.reportBugs":		"Report Bugs \uDB80\uDC87",
 	"menu.shareToLan":		"Open to LAN \uDB80\uDC88",
 	"menu.returnToMenu":	"\uDB80\uDC04 Save and Quit to Title \uDB80\uDC89",
-	"menu.game":			"\uDB80\uDC25",   
+	"menu.game":			"\uDB80\uDC25",
 
 // Gamemode Selection
 	"selectWorld.gameMode.survival":	"§2Survival§f\uDB80\uDC63§r",
@@ -138,13 +138,13 @@
 	"selectWorld.gameMode.spectator":	"§1Spectator§f\uDB80\uDC65§r",
 	"selectWorld.gameMode.hardcore":	"§4Hardcore§f\uDB80\uDC64§r",
 	"selectWorld.gameMode.adventure":	"§3Adventure§f\uDB80\uDC66§r",
-	"selectWorld.hardcoreMode":			"§4Hardcore§f\uDB80\uDC64§r:", 
+	"selectWorld.hardcoreMode":			"§4Hardcore§f\uDB80\uDC64§r:",
 
 // Difficulty
 	"options.difficulty.easy":		"§aEasy§r §f\uDB80\uDC67",
 	"options.difficulty.normal":	"§eNormal§r §f\uDB80\uDC68",
 	"options.difficulty.hard":		"§cHard§r §f\uDB80\uDC69",
-	"options.difficulty.peaceful":	"§bPeaceful§r §f\uDB80\uDC6A",  
+	"options.difficulty.peaceful":	"§bPeaceful§r §f\uDB80\uDC6A",
 	"options.difficulty.hardcore":	"§4Hardcore§r",
 
 // Singleplayer World options and management
@@ -152,17 +152,17 @@
 	"selectWorld.create":				"\uDB80\uDC15 Create New World",
 	"selectWorld.delete":				"\uDB80\uDC17 Delete",
 	"selectWorld.edit":					"\uDB80\uDC16 Edit",
-	
+
 	"selectWorld.mapFeatures":			"\uDB80\uDC6B Generate Structures",
 	"selectWorld.bonusItems": 			"\uDB80\uDC6C Bonus Chest",
-	"selectWorld.gameRules":			"\uDB80\uDC6D Game Rules", 
-	"selectWorld.experiments":			"\uDB80\uDC6E Experiments",  
+	"selectWorld.gameRules":			"\uDB80\uDC6D Game Rules",
+	"selectWorld.experiments":			"\uDB80\uDC6E Experiments",
 	"selectWorld.dataPacks":			"\uDB80\uDC6F Data Packs",
-	
+
 	"selectWorld.cheats":				"§5Cheats§r",
 	"selectWorld.version":				"§8Version:§r",
-	
-	
+
+
 	"selectWorld.edit.openFolder":		"\uDB80\uDC82 Open World Folder \uDB80\uDC82",
 	"selectWorld.edit.backupFolder":	"\uDB80\uDC82 Open Backups Folder \uDB80\uDC82",
 
@@ -170,9 +170,9 @@
 	"selectServer.select":			"\uDB80\uDC14 Join Server",
 	"selectServer.edit":			"\uDB80\uDC16 Edit",
 	"selectServer.delete":			"\uDB80\uDC17 Delete",
-	"selectServer.refresh":			"\uDB80\uDC06 Refresh",   
+	"selectServer.refresh":			"\uDB80\uDC06 Refresh",
 	"selectServer.add":				"\uDB80\uDC05 Add Server",
-	"selectServer.deleteButton":	"\uDB80\uDC17 Delete", 
+	"selectServer.deleteButton":	"\uDB80\uDC17 Delete",
 
 
 
@@ -187,10 +187,10 @@
 
 // Gamemode
 	"gameMode.creative":		"§f\uDB80\uDE0B§6Creative Mode§r",
-	"gameMode.spectator":		"§f\uDB80\uDE0C§1Spectator Mode§r",  
-	"gameMode.adventure":		"§f\uDB80\uDE0D§3Adventure Mode§r",  
+	"gameMode.spectator":		"§f\uDB80\uDE0C§1Spectator Mode§r",
+	"gameMode.adventure":		"§f\uDB80\uDE0D§3Adventure Mode§r",
 	"gameMode.survival":		"§f\uDB80\uDE0E§2Survival Mode§r",
-	"gameMode.hardcore":		"§f\uDB80\uDE0F§4Hardcore Mode!§r",     
+	"gameMode.hardcore":		"§f\uDB80\uDE0F§4Hardcore Mode!§r",
 	"selectWorld.experimental":	"§f\uDBC1\uDE69 §rExperimental",
 
 // Command Block
@@ -200,23 +200,23 @@
 	"advMode.mode.conditional":			"§dConditional§r",
 	"advMode.mode.unconditional":		"§5Unconditional§r",
 	"advMode.mode.redstoneTriggered":	"§4Needs Redstone§r",
-	"advMode.mode.autoexec.bat":		"§cAlways Active§r",  
+	"advMode.mode.autoexec.bat":		"§cAlways Active§r",
 
 // Miscellaneous
 	"sleep.skipping_night": "Sleeping through this night \uDB80\uDC47",
 
 // Attributes
 	"attribute.name.generic.max_health":			"§f\uDB80\uDCFD §rMax Health",
-	"attribute.name.generic.attack_damage":			"§f\uDB80\uDCFE §rAttack Damage", 
-														
+	"attribute.name.generic.attack_damage":			"§f\uDB80\uDCFE §rAttack Damage",
+
 	"attribute.name.generic.armor":					"§f\uDB80\uDD00 §rArmor",
-	"attribute.name.generic.armor_toughness":		"§f\uDB80\uDD01 §rArmor Toughness", 
-	"attribute.name.generic.knockback_resistance":	"§f\uDB80\uDD02 §rKnockback Resistance",  
-	"attribute.name.generic.attack_speed":			"§f\uDB80\uDD03 §rAttack Speed", 
+	"attribute.name.generic.armor_toughness":		"§f\uDB80\uDD01 §rArmor Toughness",
+	"attribute.name.generic.knockback_resistance":	"§f\uDB80\uDD02 §rKnockback Resistance",
+	"attribute.name.generic.attack_speed":			"§f\uDB80\uDD03 §rAttack Speed",
 	"item.durability":								"\uDB80\uDD04 Durability: %s / %s",
 	"attribute.name.generic.movement_speed":		"§f\uDB80\uDD05 §rSpeed",
-	"attribute.name.generic.luck":					"§f\uDB80\uDD06 §rLuck",   
-	"attribute.name.generic.flying_speed":			"§f\uDB80\uDD07 §rFlying Speed",  
+	"attribute.name.generic.luck":					"§f\uDB80\uDD06 §rLuck",
+	"attribute.name.generic.flying_speed":			"§f\uDB80\uDD07 §rFlying Speed",
 	"attribute.name.horse.jump_strength":			"§f\uDB80\uDD08 §rHorse Jump Strength",
 	"attribute.name.zombie.spawn_reinforcements":	"§f\uDB80\uDD09 §rZombie Reinforcements",
 	"attribute.name.generic.follow_range": 			"§f\uDB80\uDD0A §rMob Follow Range",
@@ -235,7 +235,7 @@
 
 
 // Banner Pattern
-	"item.minecraft.flower_banner_pattern.desc":	"§f\uDB80\uDD45 §rFlower Charge", 
+	"item.minecraft.flower_banner_pattern.desc":	"§f\uDB80\uDD45 §rFlower Charge",
 	"item.minecraft.creeper_banner_pattern.desc":	"§f\uDB80\uDD46 §rCreeper Charge",
 	"item.minecraft.skull_banner_pattern.desc":		"§f\uDB80\uDD47 §rSkull Charge",
 	"item.minecraft.mojang_banner_pattern.desc":	"§f\uDB80\uDD48 §rThing",
@@ -276,26 +276,26 @@
 	"container.enchant.level.one":			"1 §f\uDB80\uDE10§r Enchantment Level",
 	"container.enchant.level.many":			"%s §f\uDB80\uDE11§r Enchantment Levels",
 	"container.enchant.level.requirement":	"Level Requirement: %s §f\uDB80\uDE10§r",
-  
+
 //Creative Inventory
 // Item Groups
 	"itemGroup.buildingBlocks":	"§f\uDB80\uDDC6 §rBuilding Blocks",
 	"itemGroup.coloredBlocks":	"§f\uDB80\uDDC7 §rColored Blocks",
 	"itemGroup.natural":		"§f\uDB80\uDDC8 §rNatural Blocks",
 	"itemGroup.functional":		"§f\uDB80\uDDC9 §rFunctional Blocks",
-	"itemGroup.redstone":		"§f\uDB80\uDDCA §rRedstone Blocks",  
-	"itemGroup.hotbar":			"§f\uDB80\uDDCB §rSaved Hotbars", 
+	"itemGroup.redstone":		"§f\uDB80\uDDCA §rRedstone Blocks",
+	"itemGroup.hotbar":			"§f\uDB80\uDDCB §rSaved Hotbars",
 	"itemGroup.search":			"§f\uDB80\uDDCC §rSearch",
 	"itemGroup.tools":			"§f\uDB80\uDDCD §rTools & Utilities",
 	"itemGroup.combat":			"§f\uDB80\uDDCE §rCombat",
 	"itemGroup.foodAndDrink":	"§f\uDB80\uDDCF §rFood & Drinks",
 	"itemGroup.ingredients":	"§f\uDB80\uDDD0 §rIngredients",
 	"itemGroup.spawnEggs":		"§f\uDB80\uDDD1 §rSpawn Eggs",
-	"itemGroup.op":				"§f\uDB80\uDDD2 §rOperator Utilities",  
+	"itemGroup.op":				"§f\uDB80\uDDD2 §rOperator Utilities",
 	"itemGroup.inventory":		"§f\uDB80\uDDD3 §rSurvival Inventory",
 
 
- 
+
 // Banner
 	"block.minecraft.banner.border.black":						"§f\uDBC0\uDD26 §rBlack Bordure",
 	"block.minecraft.banner.border.blue":						"§f\uDBC0\uDD27 §rBlue Bordure",
@@ -313,7 +313,7 @@
 	"block.minecraft.banner.border.red":						"§f\uDBC0\uDD33 §rRed Bordure",
 	"block.minecraft.banner.border.white":						"§f\uDBC0\uDD34 §rWhite Bordure",
 	"block.minecraft.banner.border.yellow":						"§f\uDBC0\uDD35 §rYellow Bordure",
-	
+
 	"block.minecraft.banner.bricks.black":						"§f\uDBC0\uDD36 §rBlack Field Masoned",
 	"block.minecraft.banner.bricks.blue":						"§f\uDBC0\uDD37 §rBlue Field Masoned",
 	"block.minecraft.banner.bricks.brown":						"§f\uDBC0\uDD38 §rBrown Field Masoned",
@@ -329,8 +329,8 @@
 	"block.minecraft.banner.bricks.purple":						"§f\uDBC0\uDD42 §rPurple Field Masoned",
 	"block.minecraft.banner.bricks.red":						"§f\uDBC0\uDD43 §rRed Field Masoned",
 	"block.minecraft.banner.bricks.white":						"§f\uDBC0\uDD44 §rWhite Field Masoned",
-	"block.minecraft.banner.bricks.yellow":						"§f\uDBC0\uDD45 §rYellow Field Masoned", 
-	
+	"block.minecraft.banner.bricks.yellow":						"§f\uDBC0\uDD45 §rYellow Field Masoned",
+
 	"block.minecraft.banner.circle.black":						"§f\uDBC0\uDD46 §rBlack Roundel",
 	"block.minecraft.banner.circle.blue":						"§f\uDBC0\uDD47 §rBlue Roundel",
 	"block.minecraft.banner.circle.brown":						"§f\uDBC0\uDD48 §rBrown Roundel",
@@ -347,7 +347,7 @@
 	"block.minecraft.banner.circle.red":						"§f\uDBC0\uDD53 §rRed Roundel",
 	"block.minecraft.banner.circle.white":						"§f\uDBC0\uDD54 §rWhite Roundel",
 	"block.minecraft.banner.circle.yellow":						"§f\uDBC0\uDD55 §rYellow Roundel",
-	
+
 	"block.minecraft.banner.creeper.black":						"§f\uDBC0\uDD56 §rBlack Creeper Charge",
 	"block.minecraft.banner.creeper.blue":						"§f\uDBC0\uDD57 §rBlue Creeper Charge",
 	"block.minecraft.banner.creeper.brown":						"§f\uDBC0\uDD58 §rBrown Creeper Charge",
@@ -364,7 +364,7 @@
 	"block.minecraft.banner.creeper.red":						"§f\uDBC0\uDD63 §rRed Creeper Charge",
 	"block.minecraft.banner.creeper.white":						"§f\uDBC0\uDD64 §rWhite Creeper Charge",
 	"block.minecraft.banner.creeper.yellow":					"§f\uDBC0\uDD65 §rYellow Creeper Charge",
-	
+
 	"block.minecraft.banner.cross.black":						"§f\uDBC0\uDD66 §rBlack Saltire",
 	"block.minecraft.banner.cross.blue":						"§f\uDBC0\uDD67 §rBlue Saltire",
 	"block.minecraft.banner.cross.brown":						"§f\uDBC0\uDD68 §rBrown Saltire",
@@ -381,7 +381,7 @@
 	"block.minecraft.banner.cross.red":							"§f\uDBC0\uDD73 §rRed Saltire",
 	"block.minecraft.banner.cross.white":						"§f\uDBC0\uDD74 §rWhite Saltire",
 	"block.minecraft.banner.cross.yellow":						"§f\uDBC0\uDD75 §rYellow Saltire",
-	
+
 	"block.minecraft.banner.curly_border.black":				"§f\uDBC0\uDD76 §rBlack Bordure Indented",
 	"block.minecraft.banner.curly_border.blue":					"§f\uDBC0\uDD77 §rBlue Bordure Indented",
 	"block.minecraft.banner.curly_border.brown":				"§f\uDBC0\uDD78 §rBrown Bordure Indented",
@@ -398,7 +398,7 @@
 	"block.minecraft.banner.curly_border.red":					"§f\uDBC0\uDD83 §rRed Bordure Indented",
 	"block.minecraft.banner.curly_border.white":				"§f\uDBC0\uDD84 §rWhite Bordure Indented",
 	"block.minecraft.banner.curly_border.yellow":				"§f\uDBC0\uDD85 §rYellow Bordure Indented",
-	
+
 	"block.minecraft.banner.diagonal_left.black":				"§f\uDBC0\uDD86 §rBlack Per Bend Sinister",
 	"block.minecraft.banner.diagonal_left.blue":				"§f\uDBC0\uDD87 §rBlue Per Bend Sinister",
 	"block.minecraft.banner.diagonal_left.brown":				"§f\uDBC0\uDD88 §rBrown Per Bend Sinister",
@@ -415,7 +415,7 @@
 	"block.minecraft.banner.diagonal_left.red":					"§f\uDBC0\uDD93 §rRed Per Bend Sinister",
 	"block.minecraft.banner.diagonal_left.white":				"§f\uDBC0\uDD94 §rWhite Per Bend Sinister",
 	"block.minecraft.banner.diagonal_left.yellow":				"§f\uDBC0\uDD95 §rYellow Per Bend Sinister",
-	
+
 	"block.minecraft.banner.diagonal_right.black":				"§f\uDBC0\uDD96 §rBlack Per Bend",
 	"block.minecraft.banner.diagonal_right.blue":				"§f\uDBC0\uDD97 §rBlue Per Bend",
 	"block.minecraft.banner.diagonal_right.brown":				"§f\uDBC0\uDD98 §rBrown Per Bend",
@@ -432,7 +432,7 @@
 	"block.minecraft.banner.diagonal_right.red":				"§f\uDBC0\uDDA3 §rRed Per Bend",
 	"block.minecraft.banner.diagonal_right.white":				"§f\uDBC0\uDDA4 §rWhite Per Bend",
 	"block.minecraft.banner.diagonal_right.yellow":				"§f\uDBC0\uDDA5 §rYellow Per Bend",
-	
+
 	"block.minecraft.banner.diagonal_up_left.black":			"§f\uDBC0\uDDA6 §rBlack Per Bend Inverted",
 	"block.minecraft.banner.diagonal_up_left.blue":				"§f\uDBC0\uDDA7 §rBlue Per Bend Inverted",
 	"block.minecraft.banner.diagonal_up_left.brown":			"§f\uDBC0\uDDA8 §rBrown Per Bend Inverted",
@@ -449,7 +449,7 @@
 	"block.minecraft.banner.diagonal_up_left.red":				"§f\uDBC0\uDDB3 §rRed Per Bend Inverted",
 	"block.minecraft.banner.diagonal_up_left.white":			"§f\uDBC0\uDDB4 §rWhite Per Bend Inverted",
 	"block.minecraft.banner.diagonal_up_left.yellow":			"§f\uDBC0\uDDB5 §rYellow Per Bend Inverted",
-	
+
 	"block.minecraft.banner.diagonal_up_right.black":			"§f\uDBC0\uDDB6 §rBlack Per Bend Sinister Inverted",
 	"block.minecraft.banner.diagonal_up_right.blue":			"§f\uDBC0\uDDB7 §rBlue Per Bend Sinister Inverted",
 	"block.minecraft.banner.diagonal_up_right.brown":			"§f\uDBC0\uDDB8 §rBrown Per Bend Sinister Inverted",
@@ -466,7 +466,7 @@
 	"block.minecraft.banner.diagonal_up_right.red":				"§f\uDBC0\uDDC3 §rRed Per Bend Sinister Inverted",
 	"block.minecraft.banner.diagonal_up_right.white":			"§f\uDBC0\uDDC4 §rWhite Per Bend Sinister Inverted",
 	"block.minecraft.banner.diagonal_up_right.yellow":			"§f\uDBC0\uDDC5 §rYellow Per Bend Sinister Inverted",
-	
+
 	"block.minecraft.banner.flower.black":						"§f\uDBC0\uDDC6 §rBlack Flower Charge",
 	"block.minecraft.banner.flower.blue":						"§f\uDBC0\uDDC7 §rBlue Flower Charge",
 	"block.minecraft.banner.flower.brown":						"§f\uDBC0\uDDC8 §rBrown Flower Charge",
@@ -483,7 +483,7 @@
 	"block.minecraft.banner.flower.red":						"§f\uDBC0\uDDD3 §rRed Flower Charge",
 	"block.minecraft.banner.flower.white":						"§f\uDBC0\uDDD4 §rWhite Flower Charge",
 	"block.minecraft.banner.flower.yellow":						"§f\uDBC0\uDDD5 §rYellow Flower Charge",
-	
+
 	"block.minecraft.banner.globe.black":						"§f\uDBC0\uDDD6 §rBlack Globe",
 	"block.minecraft.banner.globe.blue":						"§f\uDBC0\uDDD7 §rBlue Globe",
 	"block.minecraft.banner.globe.brown":						"§f\uDBC0\uDDD8 §rBrown Globe",
@@ -500,7 +500,7 @@
 	"block.minecraft.banner.globe.red":							"§f\uDBC0\uDDE3 §rRed Globe",
 	"block.minecraft.banner.globe.white":						"§f\uDBC0\uDDE4 §rWhite Globe",
 	"block.minecraft.banner.globe.yellow":						"§f\uDBC0\uDDE5 §rYellow Globe",
-	
+
 	"block.minecraft.banner.gradient.black":					"§f\uDBC0\uDDE6 §rBlack Gradient",
 	"block.minecraft.banner.gradient.blue":						"§f\uDBC0\uDDE7 §rBlue Gradient",
 	"block.minecraft.banner.gradient.brown":					"§f\uDBC0\uDDE8 §rBrown Gradient",
@@ -517,7 +517,7 @@
 	"block.minecraft.banner.gradient.red":						"§f\uDBC0\uDDF3 §rRed Gradient",
 	"block.minecraft.banner.gradient.white":					"§f\uDBC0\uDDF4 §rWhite Gradient",
 	"block.minecraft.banner.gradient.yellow":					"§f\uDBC0\uDDF5 §rYellow Gradient",
-	
+
 	"block.minecraft.banner.gradient_up.black":					"§f\uDBC0\uDDF6 §rBlack Base Gradient",
 	"block.minecraft.banner.gradient_up.blue":					"§f\uDBC0\uDDF7 §rBlue Base Gradient",
 	"block.minecraft.banner.gradient_up.brown":					"§f\uDBC0\uDDF8 §rBrown Base Gradient",
@@ -534,7 +534,7 @@
 	"block.minecraft.banner.gradient_up.red":					"§f\uDBC0\uDE03 §rRed Base Gradient",
 	"block.minecraft.banner.gradient_up.white":					"§f\uDBC0\uDE04 §rWhite Base Gradient",
 	"block.minecraft.banner.gradient_up.yellow":				"§f\uDBC0\uDE05 §rYellow Base Gradient",
-	
+
 	"block.minecraft.banner.half_horizontal.black":				"§f\uDBC0\uDE06 §rBlack Per Fess",
 	"block.minecraft.banner.half_horizontal.blue":				"§f\uDBC0\uDE07 §rBlue Per Fess",
 	"block.minecraft.banner.half_horizontal.brown":				"§f\uDBC0\uDE08 §rBrown Per Fess",
@@ -551,7 +551,7 @@
 	"block.minecraft.banner.half_horizontal.red":				"§f\uDBC0\uDE13 §rRed Per Fess",
 	"block.minecraft.banner.half_horizontal.white":				"§f\uDBC0\uDE14 §rWhite Per Fess",
 	"block.minecraft.banner.half_horizontal.yellow":			"§f\uDBC0\uDE15 §rYellow Per Fess",
-	
+
 	"block.minecraft.banner.half_horizontal_bottom.black":		"§f\uDBC0\uDE16 §rBlack Per Fess Inverted",
 	"block.minecraft.banner.half_horizontal_bottom.blue":		"§f\uDBC0\uDE17 §rBlue Per Fess Inverted",
 	"block.minecraft.banner.half_horizontal_bottom.brown":		"§f\uDBC0\uDE18 §rBrown Per Fess Inverted",
@@ -568,7 +568,7 @@
 	"block.minecraft.banner.half_horizontal_bottom.red":		"§f\uDBC0\uDE23 §rRed Per Fess Inverted",
 	"block.minecraft.banner.half_horizontal_bottom.white":		"§f\uDBC0\uDE24 §rWhite Per Fess Inverted",
 	"block.minecraft.banner.half_horizontal_bottom.yellow":		"§f\uDBC0\uDE25 §rYellow Per Fess Inverted",
-	
+
 	"block.minecraft.banner.half_vertical.black":				"§f\uDBC0\uDE26 §rBlack Per Pale",
 	"block.minecraft.banner.half_vertical.blue":				"§f\uDBC0\uDE27 §rBlue Per Pale",
 	"block.minecraft.banner.half_vertical.brown":				"§f\uDBC0\uDE28 §rBrown Per Pale",
@@ -585,7 +585,7 @@
 	"block.minecraft.banner.half_vertical.red":					"§f\uDBC0\uDE33 §rRed Per Pale",
 	"block.minecraft.banner.half_vertical.white":				"§f\uDBC0\uDE34 §rWhite Per Pale",
 	"block.minecraft.banner.half_vertical.yellow":				"§f\uDBC0\uDE35 §rYellow Per Pale",
-	
+
 	"block.minecraft.banner.half_vertical_right.black":			"§f\uDBC0\uDE36 §rBlack Per Pale Inverted",
 	"block.minecraft.banner.half_vertical_right.blue":			"§f\uDBC0\uDE37 §rBlue Per Pale Inverted",
 	"block.minecraft.banner.half_vertical_right.brown":			"§f\uDBC0\uDE38 §rBrown Per Pale Inverted",
@@ -602,7 +602,7 @@
 	"block.minecraft.banner.half_vertical_right.red":			"§f\uDBC0\uDE43 §rRed Per Pale Inverted",
 	"block.minecraft.banner.half_vertical_right.white":			"§f\uDBC0\uDE44 §rWhite Per Pale Inverted",
 	"block.minecraft.banner.half_vertical_right.yellow":		"§f\uDBC0\uDE45 §rYellow Per Pale Inverted",
-	
+
 	"block.minecraft.banner.mojang.black":						"§f\uDBC0\uDE46 §rBlack Thing",
 	"block.minecraft.banner.mojang.blue":						"§f\uDBC0\uDE47 §rBlue Thing",
 	"block.minecraft.banner.mojang.brown":						"§f\uDBC0\uDE48 §rBrown Thing",
@@ -619,7 +619,7 @@
 	"block.minecraft.banner.mojang.red":						"§f\uDBC0\uDE53 §rRed Thing",
 	"block.minecraft.banner.mojang.white":						"§f\uDBC0\uDE54 §rWhite Thing",
 	"block.minecraft.banner.mojang.yellow":						"§f\uDBC0\uDE55 §rYellow Thing",
-	
+
 	"block.minecraft.banner.piglin.black":						"§f\uDBC0\uDE56 §rBlack Snout",
 	"block.minecraft.banner.piglin.blue":						"§f\uDBC0\uDE57 §rBlue Snout",
 	"block.minecraft.banner.piglin.brown":						"§f\uDBC0\uDE58 §rBrown Snout",
@@ -636,7 +636,7 @@
 	"block.minecraft.banner.piglin.red":						"§f\uDBC0\uDE63 §rRed Snout",
 	"block.minecraft.banner.piglin.white":						"§f\uDBC0\uDE64 §rWhite Snout",
 	"block.minecraft.banner.piglin.yellow":						"§f\uDBC0\uDE65 §rYellow Snout",
-	
+
 	"block.minecraft.banner.rhombus.black":						"§f\uDBC0\uDE66 §rBlack Lozenge",
 	"block.minecraft.banner.rhombus.blue":						"§f\uDBC0\uDE67 §rBlue Lozenge",
 	"block.minecraft.banner.rhombus.brown":						"§f\uDBC0\uDE68 §rBrown Lozenge",
@@ -653,7 +653,7 @@
 	"block.minecraft.banner.rhombus.red":						"§f\uDBC0\uDE73 §rRed Lozenge",
 	"block.minecraft.banner.rhombus.white":						"§f\uDBC0\uDE74 §rWhite Lozenge",
 	"block.minecraft.banner.rhombus.yellow":					"§f\uDBC0\uDE75 §rYellow Lozenge",
-	
+
 	"block.minecraft.banner.skull.black":						"§f\uDBC0\uDE76 §rBlack Skull Charge",
 	"block.minecraft.banner.skull.blue":						"§f\uDBC0\uDE77 §rBlue Skull Charge",
 	"block.minecraft.banner.skull.brown":						"§f\uDBC0\uDE78 §rBrown Skull Charge",
@@ -669,8 +669,8 @@
 	"block.minecraft.banner.skull.purple":						"§f\uDBC0\uDE82 §rPurple Skull Charge",
 	"block.minecraft.banner.skull.red":							"§f\uDBC0\uDE83 §rRed Skull Charge",
 	"block.minecraft.banner.skull.white":						"§f\uDBC0\uDE84 §rWhite Skull Charge",
-	"block.minecraft.banner.skull.yellow":						"§f\uDBC0\uDE85 §rYellow Skull Charge", 
-	
+	"block.minecraft.banner.skull.yellow":						"§f\uDBC0\uDE85 §rYellow Skull Charge",
+
 	"block.minecraft.banner.small_stripes.black":				"§f\uDBC0\uDE86 §rBlack Paly",
 	"block.minecraft.banner.small_stripes.blue":				"§f\uDBC0\uDE87 §rBlue Paly",
 	"block.minecraft.banner.small_stripes.brown":				"§f\uDBC0\uDE88 §rBrown Paly",
@@ -687,7 +687,7 @@
 	"block.minecraft.banner.small_stripes.red":					"§f\uDBC0\uDE93 §rRed Paly",
 	"block.minecraft.banner.small_stripes.white":				"§f\uDBC0\uDE94 §rWhite Paly",
 	"block.minecraft.banner.small_stripes.yellow":				"§f\uDBC0\uDE95 §rYellow Paly",
-	
+
 	"block.minecraft.banner.square_bottom_left.black":			"§f\uDBC0\uDE96 §rBlack Base Dexter Canton",
 	"block.minecraft.banner.square_bottom_left.blue":			"§f\uDBC0\uDE97 §rBlue Base Dexter Canton",
 	"block.minecraft.banner.square_bottom_left.brown":			"§f\uDBC0\uDE98 §rBrown Base Dexter Canton",
@@ -704,7 +704,7 @@
 	"block.minecraft.banner.square_bottom_left.red":			"§f\uDBC0\uDEA3 §rRed Base Dexter Canton",
 	"block.minecraft.banner.square_bottom_left.white":			"§f\uDBC0\uDEA4 §rWhite Base Dexter Canton",
 	"block.minecraft.banner.square_bottom_left.yellow":			"§f\uDBC0\uDEA5 §rYellow Base Dexter Canton",
-	
+
 	"block.minecraft.banner.square_bottom_right.black":			"§f\uDBC0\uDEA6 §rBlack Base Sinister Canton",
 	"block.minecraft.banner.square_bottom_right.blue":			"§f\uDBC0\uDEA7 §rBlue Base Sinister Canton",
 	"block.minecraft.banner.square_bottom_right.brown":			"§f\uDBC0\uDEA8 §rBrown Base Sinister Canton",
@@ -721,7 +721,7 @@
 	"block.minecraft.banner.square_bottom_right.red":			"§f\uDBC0\uDEB3 §rRed Base Sinister Canton",
 	"block.minecraft.banner.square_bottom_right.white":			"§f\uDBC0\uDEB4 §rWhite Base Sinister Canton",
 	"block.minecraft.banner.square_bottom_right.yellow":		"§f\uDBC0\uDEB5 §rYellow Base Sinister Canton",
-	
+
 	"block.minecraft.banner.square_top_left.black":				"§f\uDBC0\uDEB6 §rBlack Chief Dexter Canton",
 	"block.minecraft.banner.square_top_left.blue":				"§f\uDBC0\uDEB7 §rBlue Chief Dexter Canton",
 	"block.minecraft.banner.square_top_left.brown":				"§f\uDBC0\uDEB8 §rBrown Chief Dexter Canton",
@@ -738,7 +738,7 @@
 	"block.minecraft.banner.square_top_left.red":				"§f\uDBC0\uDEC3 §rRed Chief Dexter Canton",
 	"block.minecraft.banner.square_top_left.white":				"§f\uDBC0\uDEC4 §rWhite Chief Dexter Canton",
 	"block.minecraft.banner.square_top_left.yellow":			"§f\uDBC0\uDEC5 §rYellow Chief Dexter Canton",
-	
+
 	"block.minecraft.banner.square_top_right.black":			"§f\uDBC0\uDEC6 §rBlack Chief Sinister Canton",
 	"block.minecraft.banner.square_top_right.blue":				"§f\uDBC0\uDEC7 §rBlue Chief Sinister Canton",
 	"block.minecraft.banner.square_top_right.brown":			"§f\uDBC0\uDEC8 §rBrown Chief Sinister Canton",
@@ -755,7 +755,7 @@
 	"block.minecraft.banner.square_top_right.red":				"§f\uDBC0\uDED3 §rRed Chief Sinister Canton",
 	"block.minecraft.banner.square_top_right.white":			"§f\uDBC0\uDED4 §rWhite Chief Sinister Canton",
 	"block.minecraft.banner.square_top_right.yellow":			"§f\uDBC0\uDED5 §rYellow Chief Sinister Canton",
-	
+
 	"block.minecraft.banner.straight_cross.black":				"§f\uDBC0\uDED6 §rBlack Cross",
 	"block.minecraft.banner.straight_cross.blue":				"§f\uDBC0\uDED7 §rBlue Cross",
 	"block.minecraft.banner.straight_cross.brown":				"§f\uDBC0\uDED8 §rBrown Cross",
@@ -772,7 +772,7 @@
 	"block.minecraft.banner.straight_cross.red":				"§f\uDBC0\uDEE3 §rRed Cross",
 	"block.minecraft.banner.straight_cross.white":				"§f\uDBC0\uDEE4 §rWhite Cross",
 	"block.minecraft.banner.straight_cross.yellow":				"§f\uDBC0\uDEE5 §rYellow Cross",
-	
+
 	"block.minecraft.banner.stripe_bottom.black":				"§f\uDBC0\uDEE6 §rBlack Base",
 	"block.minecraft.banner.stripe_bottom.blue":				"§f\uDBC0\uDEE7 §rBlue Base",
 	"block.minecraft.banner.stripe_bottom.brown":				"§f\uDBC0\uDEE8 §rBrown Base",
@@ -789,7 +789,7 @@
 	"block.minecraft.banner.stripe_bottom.red":					"§f\uDBC0\uDEF3 §rRed Base",
 	"block.minecraft.banner.stripe_bottom.white":				"§f\uDBC0\uDEF4 §rWhite Base",
 	"block.minecraft.banner.stripe_bottom.yellow":				"§f\uDBC0\uDEF5 §rYellow Base",
-	
+
 	"block.minecraft.banner.stripe_center.black":				"§f\uDBC0\uDEF6 §rBlack Pale",
 	"block.minecraft.banner.stripe_center.blue":				"§f\uDBC0\uDEF7 §rBlue Pale",
 	"block.minecraft.banner.stripe_center.brown":				"§f\uDBC0\uDEF8 §rBrown Pale",
@@ -806,7 +806,7 @@
 	"block.minecraft.banner.stripe_center.red":					"§f\uDBC0\uDF03 §rRed Pale",
 	"block.minecraft.banner.stripe_center.white":				"§f\uDBC0\uDF04 §rWhite Pale",
 	"block.minecraft.banner.stripe_center.yellow":				"§f\uDBC0\uDF05 §rYellow Pale",
-	
+
 	"block.minecraft.banner.stripe_downleft.black":				"§f\uDBC0\uDF06 §rBlack Bend Sinister",
 	"block.minecraft.banner.stripe_downleft.blue":				"§f\uDBC0\uDF07 §rBlue Bend Sinister",
 	"block.minecraft.banner.stripe_downleft.brown":				"§f\uDBC0\uDF08 §rBrown Bend Sinister",
@@ -823,7 +823,7 @@
 	"block.minecraft.banner.stripe_downleft.red":				"§f\uDBC0\uDF13 §rRed Bend Sinister",
 	"block.minecraft.banner.stripe_downleft.white":				"§f\uDBC0\uDF14 §rWhite Bend Sinister",
 	"block.minecraft.banner.stripe_downleft.yellow":			"§f\uDBC0\uDF15 §rYellow Bend Sinister",
-	
+
 	"block.minecraft.banner.stripe_downright.black":			"§f\uDBC0\uDF16 §rBlack Bend",
 	"block.minecraft.banner.stripe_downright.blue":				"§f\uDBC0\uDF17 §rBlue Bend",
 	"block.minecraft.banner.stripe_downright.brown":			"§f\uDBC0\uDF18 §rBrown Bend",
@@ -840,7 +840,7 @@
 	"block.minecraft.banner.stripe_downright.red":				"§f\uDBC0\uDF23 §rRed Bend",
 	"block.minecraft.banner.stripe_downright.white":			"§f\uDBC0\uDF24 §rWhite Bend",
 	"block.minecraft.banner.stripe_downright.yellow":			"§f\uDBC0\uDF25 §rYellow Bend",
-	
+
 	"block.minecraft.banner.stripe_left.black":					"§f\uDBC0\uDF26 §rBlack Pale Dexter",
 	"block.minecraft.banner.stripe_left.blue":					"§f\uDBC0\uDF27 §rBlue Pale Dexter",
 	"block.minecraft.banner.stripe_left.brown":					"§f\uDBC0\uDF28 §rBrown Pale Dexter",
@@ -857,7 +857,7 @@
 	"block.minecraft.banner.stripe_left.red":					"§f\uDBC0\uDF33 §rRed Pale Dexter",
 	"block.minecraft.banner.stripe_left.white":					"§f\uDBC0\uDF34 §rWhite Pale Dexter",
 	"block.minecraft.banner.stripe_left.yellow":				"§f\uDBC0\uDF35 §rYellow Pale Dexter",
-	
+
 	"block.minecraft.banner.stripe_middle.black":				"§f\uDBC0\uDF36 §rBlack Fess",
 	"block.minecraft.banner.stripe_middle.blue":				"§f\uDBC0\uDF37 §rBlue Fess",
 	"block.minecraft.banner.stripe_middle.brown":				"§f\uDBC0\uDF38 §rBrown Fess",
@@ -874,7 +874,7 @@
 	"block.minecraft.banner.stripe_middle.red":					"§f\uDBC0\uDF43 §rRed Fess",
 	"block.minecraft.banner.stripe_middle.white":				"§f\uDBC0\uDF44 §rWhite Fess",
 	"block.minecraft.banner.stripe_middle.yellow":				"§f\uDBC0\uDF45 §rYellow Fess",
-	
+
 	"block.minecraft.banner.stripe_right.black":				"§f\uDBC0\uDF46 §rBlack Pale Sinister",
 	"block.minecraft.banner.stripe_right.blue":					"§f\uDBC0\uDF47 §rBlue Pale Sinister",
 	"block.minecraft.banner.stripe_right.brown":				"§f\uDBC0\uDF48 §rBrown Pale Sinister",
@@ -891,7 +891,7 @@
 	"block.minecraft.banner.stripe_right.red":					"§f\uDBC0\uDF53 §rRed Pale Sinister",
 	"block.minecraft.banner.stripe_right.white":				"§f\uDBC0\uDF54 §rWhite Pale Sinister",
 	"block.minecraft.banner.stripe_right.yellow":				"§f\uDBC0\uDF55 §rYellow Pale Sinister",
-	
+
 	"block.minecraft.banner.stripe_top.black":					"§f\uDBC0\uDF56 §rBlack Chief",
 	"block.minecraft.banner.stripe_top.blue":					"§f\uDBC0\uDF57 §rBlue Chief",
 	"block.minecraft.banner.stripe_top.brown":					"§f\uDBC0\uDF58 §rBrown Chief",
@@ -908,7 +908,7 @@
 	"block.minecraft.banner.stripe_top.red":					"§f\uDBC0\uDF63 §rRed Chief",
 	"block.minecraft.banner.stripe_top.white":					"§f\uDBC0\uDF64 §rWhite Chief",
 	"block.minecraft.banner.stripe_top.yellow":					"§f\uDBC0\uDF65 §rYellow Chief",
-	
+
 	"block.minecraft.banner.triangle_bottom.black":				"§f\uDBC0\uDF66 §rBlack Chevron",
 	"block.minecraft.banner.triangle_bottom.blue":				"§f\uDBC0\uDF67 §rBlue Chevron",
 	"block.minecraft.banner.triangle_bottom.brown":				"§f\uDBC0\uDF68 §rBrown Chevron",
@@ -925,7 +925,7 @@
 	"block.minecraft.banner.triangle_bottom.red":				"§f\uDBC0\uDF73 §rRed Chevron",
 	"block.minecraft.banner.triangle_bottom.white":				"§f\uDBC0\uDF74 §rWhite Chevron",
 	"block.minecraft.banner.triangle_bottom.yellow":			"§f\uDBC0\uDF75 §rYellow Chevron",
-	
+
 	"block.minecraft.banner.triangle_top.black":				"§f\uDBC0\uDF76 §rBlack Inverted Chevron",
 	"block.minecraft.banner.triangle_top.blue":					"§f\uDBC0\uDF77 §rBlue Inverted Chevron",
 	"block.minecraft.banner.triangle_top.brown":				"§f\uDBC0\uDF78 §rBrown Inverted Chevron",
@@ -941,8 +941,8 @@
 	"block.minecraft.banner.triangle_top.purple":				"§f\uDBC0\uDF82 §rPurple Inverted Chevron",
 	"block.minecraft.banner.triangle_top.red":					"§f\uDBC0\uDF83 §rRed Inverted Chevron",
 	"block.minecraft.banner.triangle_top.white":				"§f\uDBC0\uDF84 §rWhite Inverted Chevron",
-	"block.minecraft.banner.triangle_top.yellow":				"§f\uDBC0\uDF85 §rYellow Inverted Chevron", 
-	
+	"block.minecraft.banner.triangle_top.yellow":				"§f\uDBC0\uDF85 §rYellow Inverted Chevron",
+
 	"block.minecraft.banner.triangles_bottom.black":			"§f\uDBC0\uDF86 §rBlack Base Indented",
 	"block.minecraft.banner.triangles_bottom.blue":				"§f\uDBC0\uDF87 §rBlue Base Indented",
 	"block.minecraft.banner.triangles_bottom.brown":			"§f\uDBC0\uDF88 §rBrown Base Indented",
@@ -958,8 +958,8 @@
 	"block.minecraft.banner.triangles_bottom.purple":			"§f\uDBC0\uDF92 §rPurple Base Indented",
 	"block.minecraft.banner.triangles_bottom.red":				"§f\uDBC0\uDF93 §rRed Base Indented",
 	"block.minecraft.banner.triangles_bottom.white":			"§f\uDBC0\uDF94 §rWhite Base Indented",
-	"block.minecraft.banner.triangles_bottom.yellow":			"§f\uDBC0\uDF95 §rYellow Base Indented", 
-	
+	"block.minecraft.banner.triangles_bottom.yellow":			"§f\uDBC0\uDF95 §rYellow Base Indented",
+
 	"block.minecraft.banner.triangles_top.black":				"§f\uDBC0\uDF96 §rBlack Chief Indented",
 	"block.minecraft.banner.triangles_top.blue":				"§f\uDBC0\uDF97 §rBlue Chief Indented",
 	"block.minecraft.banner.triangles_top.brown":				"§f\uDBC0\uDF98 §rBrown Chief Indented",
@@ -979,18 +979,18 @@
 
 // Chat Icons
 //Minecraft
-	"advancements.story.cure_zombie_villager.title":	"§f\uDB80\uDE19 §rZombie Doctor",  
+	"advancements.story.cure_zombie_villager.title":	"§f\uDB80\uDE19 §rZombie Doctor",
 	"advancements.story.deflect_arrow.title":			"§f\uDB80\uDE19 §rNot Today, Thank You",
 	"advancements.story.enchant_item.title":			"§f\uDB80\uDE19 §rEnchanter",
 	"advancements.story.enter_the_end.title":			"§f\uDB80\uDE19 §rThe End?",
-	"advancements.story.enter_the_nether.title":		"§f\uDB80\uDE19 §rWe Need to Go Deeper", 
-	"advancements.story.follow_ender_eye.title":		"§f\uDB80\uDE19 §rEye Spy", 
+	"advancements.story.enter_the_nether.title":		"§f\uDB80\uDE19 §rWe Need to Go Deeper",
+	"advancements.story.follow_ender_eye.title":		"§f\uDB80\uDE19 §rEye Spy",
 	"advancements.story.form_obsidian.title":			"§f\uDB80\uDE19 §rIce Bucket Challenge",
-	"advancements.story.iron_tools.title":				"§f\uDB80\uDE19 §rIsn't It Iron Pick",  
+	"advancements.story.iron_tools.title":				"§f\uDB80\uDE19 §rIsn't It Iron Pick",
 	"advancements.story.lava_bucket.title":				"§f\uDB80\uDE19 §rHot Stuff",
 	"advancements.story.mine_diamond.title":			"§f\uDB80\uDE19 §rDiamonds!",
 	"advancements.story.mine_stone.title":				"§f\uDB80\uDE19 §rStone Age",
-	"advancements.story.obtain_armor.title":			"§f\uDB80\uDE19 §rSuit Up",  
+	"advancements.story.obtain_armor.title":			"§f\uDB80\uDE19 §rSuit Up",
 	"advancements.story.root.title":					"§f\uDB80\uDE19 §rMinecraft",
 	"advancements.story.shiny_gear.title":				"§f\uDB80\uDE19 §rCover Me with Diamonds",
 	"advancements.story.smelt_iron.title":				"§f\uDB80\uDE19 §rAcquire Hardware",
@@ -1038,7 +1038,7 @@
 	"advancements.adventure.arbalistic.title":								"§f\uDB80\uDE16 §rArbalistic",
 	"advancements.adventure.avoid_vibration.title":							"§f\uDB80\uDE16 §rSneak 100",
 	"advancements.adventure.bullseye.title":								"§f\uDB80\uDE16 §rBullseye",
-  
+
 	"advancements.adventure.fall_from_world_height.title":					"§f\uDB80\uDE16 §rCaves & Cliffs",
 	"advancements.adventure.hero_of_the_village.title":						"§f\uDB80\uDE16 §rHero of the Village",
 	"advancements.adventure.honey_block_slide.title":						"§f\uDB80\uDE16 §rSticky Situation",
@@ -1156,7 +1156,7 @@
 	"enchantment.level.48":	"§f\uDB80\uDE57§r",
 	"enchantment.level.49":	"§f\uDB80\uDE58§r",
 	"enchantment.level.50":	"§f\uDB80\uDE59§r",
-	
+
 	"potion.potency.0":		"",
 	"potion.potency.1":		"§f\uDB80\uDE29§r",
 	"potion.potency.2":		"§f\uDB80\uDE2A§r",
@@ -1164,7 +1164,7 @@
 	"potion.potency.4":		"§f\uDB80\uDE2C§r",
 	"potion.potency.5":		"§f\uDB80\uDE2D§r",
 
-  
+
 //Spawn Eggs
 	"item.minecraft.allay_spawn_egg":				"\uDBC1\uDC10 Allay Spawn Egg",
 	"item.minecraft.axolotl_spawn_egg":				"\uDBC1\uDC11 Axolotl Spawn Egg",
@@ -1187,10 +1187,10 @@
 	"item.minecraft.endermite_spawn_egg":			"\uDBC1\uDC22 Endermite Spawn Egg",
 	"item.minecraft.evoker_spawn_egg":				"\uDBC1\uDC23 Evoker Spawn Egg",
 	"item.minecraft.fox_spawn_egg":					"\uDBC1\uDC24 Fox Spawn Egg",
-	"item.minecraft.frog_spawn_egg":				"\uDBC1\uDC25 Frog Spawn Egg",  
+	"item.minecraft.frog_spawn_egg":				"\uDBC1\uDC25 Frog Spawn Egg",
 	"item.minecraft.ghast_spawn_egg":				"\uDBC1\uDC26 Ghast Spawn Egg",
 	"item.minecraft.glow_squid_spawn_egg":			"\uDBC1\uDC27 Glow Squid Spawn Egg",
-	"item.minecraft.goat_spawn_egg":				"\uDBC1\uDC28 Goat Spawn Egg",  
+	"item.minecraft.goat_spawn_egg":				"\uDBC1\uDC28 Goat Spawn Egg",
 	"item.minecraft.guardian_spawn_egg":			"\uDBC1\uDC29 Guardian Spawn Egg",
 	"item.minecraft.hoglin_spawn_egg":				"\uDBC1\uDC2A Hoglin Spawn Egg",
 	"item.minecraft.horse_spawn_egg":				"\uDBC1\uDC2B Horse Spawn Egg",
@@ -1203,20 +1203,20 @@
 	"item.minecraft.ocelot_spawn_egg":				"\uDBC1\uDC32 Ocelot Spawn Egg",
 	"item.minecraft.panda_spawn_egg":				"\uDBC1\uDC33 Panda Spawn Egg",
 	"item.minecraft.parrot_spawn_egg":				"\uDBC1\uDC34 Parrot Spawn Egg",
-	"item.minecraft.phantom_spawn_egg":				"\uDBC1\uDC35 Phantom Spawn Egg",  
+	"item.minecraft.phantom_spawn_egg":				"\uDBC1\uDC35 Phantom Spawn Egg",
 	"item.minecraft.pig_spawn_egg":					"\uDBC1\uDC36 Pig Spawn Egg",
-	"item.minecraft.piglin_brute_spawn_egg":		"\uDBC1\uDC37 Piglin Brute Spawn Egg",  
+	"item.minecraft.piglin_brute_spawn_egg":		"\uDBC1\uDC37 Piglin Brute Spawn Egg",
 	"item.minecraft.piglin_spawn_egg":				"\uDBC1\uDC38 Piglin Spawn Egg",
 	"item.minecraft.pillager_spawn_egg":			"\uDBC1\uDC39 Pillager Spawn Egg",
 	"item.minecraft.polar_bear_spawn_egg":			"\uDBC1\uDC3A Polar Bear Spawn Egg",
 	"item.minecraft.pufferfish_spawn_egg":			"\uDBC1\uDC3B Pufferfish Spawn Egg",
 	"item.minecraft.rabbit_spawn_egg":				"\uDBC1\uDC3C Rabbit Spawn Egg",
-	"item.minecraft.ravager_spawn_egg":				"\uDBC1\uDC3D Ravager Spawn Egg",  
+	"item.minecraft.ravager_spawn_egg":				"\uDBC1\uDC3D Ravager Spawn Egg",
 	"item.minecraft.salmon_spawn_egg":				"\uDBC1\uDC3E Salmon Spawn Egg",
 	"item.minecraft.sheep_spawn_egg":				"\uDBC1\uDC3F Sheep Spawn Egg",
 	"item.minecraft.shulker_spawn_egg":				"\uDBC1\uDC40 Shulker Spawn Egg",
 	"item.minecraft.silverfish_spawn_egg":			"\uDBC1\uDC41 Silverfish Spawn Egg",
-	"item.minecraft.skeleton_horse_spawn_egg":		"\uDBC1\uDC42 Skeleton Horse Spawn Egg",  
+	"item.minecraft.skeleton_horse_spawn_egg":		"\uDBC1\uDC42 Skeleton Horse Spawn Egg",
 	"item.minecraft.skeleton_spawn_egg":			"\uDBC1\uDC43 Skeleton Spawn Egg",
 	"item.minecraft.slime_spawn_egg":				"\uDBC1\uDC44 Slime Spawn Egg",
 	"item.minecraft.sniffer_spawn_egg":				"\uDBC1\uDC45 Sniffer Spawn Egg",
@@ -1225,22 +1225,22 @@
 	"item.minecraft.squid_spawn_egg":				"\uDBC1\uDC48 Squid Spawn Egg",
 	"item.minecraft.stray_spawn_egg":				"\uDBC1\uDC49 Stray Spawn Egg",
 	"item.minecraft.strider_spawn_egg":				"\uDBC1\uDC4A Strider Spawn Egg",
-	"item.minecraft.tadpole_spawn_egg":				"\uDBC1\uDC4B Tadpole Spawn Egg",  
+	"item.minecraft.tadpole_spawn_egg":				"\uDBC1\uDC4B Tadpole Spawn Egg",
 	"item.minecraft.trader_llama_spawn_egg":		"\uDBC1\uDC4C Trader Llama Spawn Egg",
 	"item.minecraft.tropical_fish_spawn_egg":		"\uDBC1\uDC4D Tropical Fish Spawn Egg",
 	"item.minecraft.turtle_spawn_egg":				"\uDBC1\uDC4E Turtle Spawn Egg",
 	"item.minecraft.vex_spawn_egg":					"\uDBC1\uDC4F Vex Spawn Egg",
 	"item.minecraft.villager_spawn_egg":			"\uDBC1\uDC50 Villager Spawn Egg",
-	"item.minecraft.vindicator_spawn_egg":			"\uDBC1\uDC51 Vindicator Spawn Egg",  
+	"item.minecraft.vindicator_spawn_egg":			"\uDBC1\uDC51 Vindicator Spawn Egg",
 	"item.minecraft.wandering_trader_spawn_egg":	"\uDBC1\uDC52 Wandering Trader Spawn Egg",
-	"item.minecraft.warden_spawn_egg":				"\uDBC1\uDC53 Warden Spawn Egg",  
+	"item.minecraft.warden_spawn_egg":				"\uDBC1\uDC53 Warden Spawn Egg",
 	"item.minecraft.witch_spawn_egg":				"\uDBC1\uDC54 Witch Spawn Egg",
 	"item.minecraft.wither_skeleton_spawn_egg":		"\uDBC1\uDC55 Wither Skeleton Spawn Egg",
 	"item.minecraft.wither_spawn_egg":				"\uDBC1\uDC56 Wither Spawn Egg",
 	"item.minecraft.wolf_spawn_egg":				"\uDBC1\uDC57 Wolf Spawn Egg",
 	"item.minecraft.zoglin_spawn_egg":				"\uDBC1\uDC58 Zoglin Spawn Egg",
-	"item.minecraft.zombie_spawn_egg":				"\uDBC1\uDC59 Zombie Spawn Egg",  
-	"item.minecraft.zombie_horse_spawn_egg":		"\uDBC1\uDC5A Zombie Horse Spawn Egg",  
+	"item.minecraft.zombie_spawn_egg":				"\uDBC1\uDC59 Zombie Spawn Egg",
+	"item.minecraft.zombie_horse_spawn_egg":		"\uDBC1\uDC5A Zombie Horse Spawn Egg",
 	"item.minecraft.zombie_villager_spawn_egg":		"\uDBC1\uDC5B Zombie Villager Spawn Egg",
 	"item.minecraft.zombified_piglin_spawn_egg":	"\uDBC1\uDC5C Zombified Piglin Spawn Egg",
 
@@ -1267,17 +1267,17 @@
 	"entity.minecraft.tropical_fish.predefined.19":		"§f\uDBFF\uDFE5 §rTriggerfish",
 	"entity.minecraft.tropical_fish.predefined.20":		"§f\uDBFF\uDFE6 §rYellowtail Parrotfish",
 	"entity.minecraft.tropical_fish.predefined.21":		"§f\uDBFF\uDFE7 §rYellow Tang",
-	"entity.minecraft.tropical_fish.type.betty":		"§f\uDBFF\uDFDA §rBetty", 
+	"entity.minecraft.tropical_fish.type.betty":		"§f\uDBFF\uDFDA §rBetty",
 	"entity.minecraft.tropical_fish.type.blockfish":	"§f\uDBFF\uDFC9 §rBlockfish",
 	"entity.minecraft.tropical_fish.type.brinely":		"§f\uDBFF\uDFD0 §rBrinely",
 	"entity.minecraft.tropical_fish.type.clayfish":		"§f\uDBFF\uDFDB §rClayfish",
-	"entity.minecraft.tropical_fish.type.dasher":		"§f\uDBFF\uDFDF §rDasher",  
+	"entity.minecraft.tropical_fish.type.dasher":		"§f\uDBFF\uDFDF §rDasher",
 	"entity.minecraft.tropical_fish.type.flopper":		"§f\uDBFF\uDFC6 §rFlopper",
 	"entity.minecraft.tropical_fish.type.glitter":		"§f\uDBFF\uDFC8 §rGlitter",
 	"entity.minecraft.tropical_fish.type.kob":			"§f\uDBFF\uDFDC §rKob",
 	"entity.minecraft.tropical_fish.type.snooper":		"§f\uDBFF\uDFDE §rSnooper",
 	"entity.minecraft.tropical_fish.type.spotty":		"§f\uDBFF\uDFD1 §rSpotty",
-	"entity.minecraft.tropical_fish.type.stripey":		"§f\uDBFF\uDFC7 §rStripey",  
+	"entity.minecraft.tropical_fish.type.stripey":		"§f\uDBFF\uDFC7 §rStripey",
 	"entity.minecraft.tropical_fish.type.sunstreak":	"§f\uDBFF\uDFDD §rSunstreak",
 
 	"item.color":					"§f\uDB80\uDDFC §rColor: %s",
@@ -1288,31 +1288,31 @@
 	"color.minecraft.gray":			"§f\uDB80\uDDF0 §rGray",
 	"color.minecraft.green":		"§f\uDB80\uDDF1 §rGreen",
 	"color.minecraft.light_blue":	"§f\uDB80\uDDF2 §rLight Blue",
-	"color.minecraft.light_gray":	"§f\uDB80\uDDF3 §rLight Gray",  
-	"color.minecraft.lime":			"§f\uDB80\uDDF4 §rLime",  
-	"color.minecraft.magenta":		"§f\uDB80\uDDF5 §rMagenta", 
+	"color.minecraft.light_gray":	"§f\uDB80\uDDF3 §rLight Gray",
+	"color.minecraft.lime":			"§f\uDB80\uDDF4 §rLime",
+	"color.minecraft.magenta":		"§f\uDB80\uDDF5 §rMagenta",
 	"color.minecraft.orange":		"§f\uDB80\uDDF6 §rOrange",
 	"color.minecraft.pink":			"§f\uDB80\uDDF7 §rPink",
-	"color.minecraft.purple":		"§f\uDB80\uDDF8 §rPurple",  
-	"color.minecraft.red":			"§f\uDB80\uDDF9 §rRed",  
+	"color.minecraft.purple":		"§f\uDB80\uDDF8 §rPurple",
+	"color.minecraft.red":			"§f\uDB80\uDDF9 §rRed",
 	"color.minecraft.white":		"§f\uDB80\uDDFA §rWhite",
 	"color.minecraft.yellow":		"§f\uDB80\uDDFB §rYellow",
-	
+
 	"filled_map.unknown":         "§f\uDBFF\uDFA3 §rUnknown Map",
 	"filled_map.id":              "§f\uDBFF\uDFA4 §r#%s",
 	"filled_map.scale":           "§f\uDBFF\uDFA5 §rScaling at 1:%s",
 	"filled_map.locked":          "§f\uDBFF\uDFA6 §rLocked",
-  
+
 
 	"instrument.minecraft.ponder_goat_horn":  "§f\uDBFF\uDFAB §rPonder §f\uDBDA\uDF49§r",
-	"instrument.minecraft.sing_goat_horn":    "§f\uDBFF\uDFAC §rSing §f\uDBDA\uDF4A§r", 
+	"instrument.minecraft.sing_goat_horn":    "§f\uDBFF\uDFAC §rSing §f\uDBDA\uDF4A§r",
 	"instrument.minecraft.seek_goat_horn":    "§f\uDBFF\uDFAD §rSeek §f\uDBDA\uDF4B§r",
-	"instrument.minecraft.feel_goat_horn":    "§f\uDBFF\uDFAE §rFeel §f\uDBDA\uDF4C§r",  
+	"instrument.minecraft.feel_goat_horn":    "§f\uDBFF\uDFAE §rFeel §f\uDBDA\uDF4C§r",
 	"instrument.minecraft.admire_goat_horn":  "§f\uDBFF\uDFAF §rAdmire §f\uDBDA\uDF4D§r",
 	"instrument.minecraft.call_goat_horn":    "§f\uDBFF\uDFA0 §rCall §f\uDBDA\uDF4E§r",
-	"instrument.minecraft.yearn_goat_horn":   "§f\uDBFF\uDFA1 §rYearn §f\uDBDA\uDF4F§r",  
+	"instrument.minecraft.yearn_goat_horn":   "§f\uDBFF\uDFA1 §rYearn §f\uDBDA\uDF4F§r",
 	"instrument.minecraft.dream_goat_horn":   "§f\uDBFF\uDFA2 §rDream §f\uDBDA\uDF50§r",
-  
+
 // Smithing
 	"item.minecraft.smithing_template.armor_trim.applies_to":			"§f\uDBFF\uDFCC§r Armor",
 	"item.minecraft.smithing_template.armor_trim.ingredients":			"§f\uDBFF\uDFCD§r Ingots & Crystals",

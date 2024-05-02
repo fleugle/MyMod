@@ -12,18 +12,18 @@ import org.jetbrains.annotations.NotNull;
 
 public class GuiltyLevelSystem {
 
-	public static void addGuiltyLevelsToPlayer(PlayerEntity player, String playerName, int amount){
+	public static void addGuiltyLevelsToPlayer(ServerPlayerEntity player, String playerName, int amount, int multiplier){
 
 
 		CommandsExecuter.executeCommand(player, "scoreboard players add "+ playerName +" PersistentGuiltyLevel "+ amount);
+		updateGuiltyLevelPerEachEntityKill(player, playerName, multiplier);
 
 	}
 
 
 	public static void updateGuiltyLevelPerEachEntityKill(ServerPlayerEntity player, String playerName, int multiplier){
 
-		//get values
-
+		//get values and write all of them as
 		int amount = (getGuiltyLevel(player, playerName, "GeneralKillsGuiltyLevel"))
 			+ (getGuiltyLevel(player, playerName, "PlayersKillGuiltyAddition") * multiplier)
 			+ (getGuiltyLevel(player, playerName, "PersistentGuiltyLevel")) ;
@@ -53,10 +53,11 @@ public class GuiltyLevelSystem {
 
 			//additional check
 			if (scoreboard.getObjective(objectiveName) != null){
-				UniqueScythe.LOGGER.info("objective "+ objectiveName +" with criteria "+ criteria +" has been created");
-			}else UniqueScythe.LOGGER.info("failed objective "+ objectiveName + " with criteria " + criteria + " creation");
-		}else UniqueScythe.LOGGER.info(objectiveName + " objective "+ " with criteria " + criteria +"already exists");
+				UniqueScythe.LOGGER.info("objective {} with criteria {} has been created", objectiveName, criteria);
+			}else UniqueScythe.LOGGER.info("failed objective {} with criteria {} creation", objectiveName, criteria);
+		}else UniqueScythe.LOGGER.info("{} objective  with criteria {} already exists", objectiveName, criteria);
 	}
+
 
 	public static int getGuiltyLevel(ServerPlayerEntity player, String playerName, String objectiveName){
 
