@@ -19,6 +19,30 @@ public class GuiltyLevelSystem {
 
 	}
 
+
+	public static void updateGuiltyLevelPerEachEntityKill(ServerPlayerEntity player, String playerName, int multiplier){
+
+		//get values
+
+		int amount = (getGuiltyLevel(player, playerName, "GeneralKillsGuiltyLevel"))
+			+ (getGuiltyLevel(player, playerName, "PlayersKillGuiltyAddition") * multiplier)
+			+ (getGuiltyLevel(player, playerName, "PersistentGuiltyLevel")) ;
+
+
+
+		//resets values for goods
+		CommandsExecuter.executeCommand(player, "scoreboard players reset "+playerName+" PersistentGuiltyLevel");
+		CommandsExecuter.executeCommand(player, "scoreboard players reset "+playerName+" GeneralKillsGuiltyLevel");
+		CommandsExecuter.executeCommand(player, "scoreboard players reset "+playerName+" PlayersKillGuiltyAddition");
+
+
+
+		//applies new values
+		CommandsExecuter.executeCommand(player, "scoreboard players add "+ playerName +" PersistentGuiltyLevel "+ amount);
+
+	}
+
+
 	public static void createIntScoreboadIfMissing(@NotNull Scoreboard scoreboard, ScoreboardCriterion criteria, String objectiveName){
 
 		ScoreboardObjective objective = scoreboard.getObjective(objectiveName);
