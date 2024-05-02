@@ -4,9 +4,9 @@
   "language.code": "en_us",
 
 // Main Menu
-	"menu.singleplayer":	"\uDB80\uDC00 Singleplayer \uDB80\uDC00",
-	"menu.multiplayer":		"\uDB80\uDC01 Multiplayer \uDB80\uDC01",
-	"menu.online":			"\uDB80\uDC02 Realms \uDB80\uDC02",
+	"menu.singleplayer":	"\uDB80\uDC00  Singleplayer  \uDB80\uDC00",
+	"menu.multiplayer":		"\uDB80\uDC01  Multiplayer  \uDB80\uDC01",
+	"menu.online":			"\uDB80\uDC02   Realms   \uDB80\uDC02",
 	"menu.quit":			"Quit Game \uDB80\uDC04",
 	"menu.options":			"\uDB80\uDC03 Options...",
 	"menu.savingLevel":		"§f\uDB80\uDC60 §rSaving World",
