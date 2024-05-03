@@ -30,7 +30,7 @@ public class ModItems {
 	public static final Item AIR_BOTTLE = registerItem("air_bottle", new Item(new Item.Settings().maxCount(16)));
 
 	//Flugel's immortality declaration
-	public static final Item FLUGELS_IMMORTALITY_DECLARATION = registerItem("flugels_immortality_declaration", new Item(new Item.Settings().maxCount(1).rarity(Rarity.EPIC)));
+	public static final Item FLUGELS_IMMORTALITY_DECLARATION = registerItem("flugels_immortality_declaration", new Item(new Item.Settings().maxCount(1).rarity(Rarity.EPIC).maxDamage(20)));
 
 
     //FROSTY_SCYTHE registry

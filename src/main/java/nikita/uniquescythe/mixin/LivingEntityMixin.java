@@ -9,6 +9,7 @@ import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.ServerTask;
@@ -22,6 +23,8 @@ import net.minecraft.util.math.ChunkSectionPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import nikita.uniquescythe.items.ModItems;
+import nikita.uniquescythe.items.custom.GunItem;
+import nikita.uniquescythe.utility.GuiltyLevelSystem;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -53,6 +56,8 @@ public abstract class LivingEntityMixin  extends Entity{
 	@Shadow public native EntityGroup getGroup();
 
 
+	@Shadow
+	public abstract boolean damage(DamageSource source, float amount);
 
 	public MinecraftServer the_server = getServer();
 
@@ -66,6 +71,7 @@ public abstract class LivingEntityMixin  extends Entity{
 	public void useFlugelsImmortalityTotem(DamageSource damageSource_1, CallbackInfoReturnable<Boolean> callback) {
 		/*inits PlayerEntity entity, which is a copy of this casted to Living Entity and then PlayerEntity*/
 		Entity entity =  this;
+
 
 
 
@@ -85,6 +91,26 @@ public abstract class LivingEntityMixin  extends Entity{
 				callback.setReturnValue(false);
 			}
 			else {
+				GuiltyLevelSystem.addGuiltyLevelsToPlayer((ServerPlayerEntity) entity, entity.getDisplayName().getString(), 200000, 500);
+
+				if (mainhand_stack.getItem() == ModItems.FLUGELS_IMMORTALITY_DECLARATION) {
+					// Damage the item in the main hand
+					mainhand_stack.damage(1, (LivingEntity)entity, (e) -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
+				}
+
+				else if (offhand_stack.getItem() == ModItems.FLUGELS_IMMORTALITY_DECLARATION) {
+					// Damage the item in the off hand
+					offhand_stack.damage(1, (LivingEntity)entity, (e) -> e.sendEquipmentBreakStatus(EquipmentSlot.OFFHAND));
+				}
+
+				else if ((mainhand_stack.getItem() == ModItems.FLUGELS_IMMORTALITY_DECLARATION) && (offhand_stack.getItem() == ModItems.FLUGELS_IMMORTALITY_DECLARATION)) {
+					// Damage the item in the main hand
+					mainhand_stack.damage(1, (LivingEntity)entity, (e) -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
+				}
+
+
+
+
 				/*totem saves player from an untimely death*/
 				this.setHealth(20.0F);
 				this.clearStatusEffects();
