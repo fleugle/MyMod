@@ -79,54 +79,56 @@ public class ModItems {
 
 
 
-
-
-	private static void addItemsToIngredientItemGroup(FabricItemGroupEntries entries) {
-        //place to add items to the ingredient item tab
-		entries.addItem(HEAVY_CORE);
-        entries.addItem(FROSTY_STEEL);
-		entries.addItem(CHAOS_WILL);
-		entries.addItem(BREEZE_ROD);
-		entries.addItem(AIR_BOTTLE);
-
-    }//adding items to ingredient tab *method*
-
-	private static void addItemsToToolsAndUtilitiesItemGroup(FabricItemGroupEntries entries) {
-		//place to add items to the ingredient item tab
-		entries.addItem(WIND_CHARGE);
-		entries.addItem(CHAOS_MULTITOOL);
-	}//adding items to tools and utilities tab *method*
-
-    private static void addItemsToCombatItemGroup(FabricItemGroupEntries entries) {
-        //place to add items to the ingredient item tab
-		entries.addBefore(Items.LEATHER_HORSE_ARMOR, INNOCENT_NIMBUS);
-		entries.addBefore(Items.LEATHER_HORSE_ARMOR, JUSTICE_HAT);
-		entries.addBefore(Items.LEATHER_HORSE_ARMOR ,COWBOYS_CLOAK);
-
-
-
-		entries.addBefore(Items.SHIELD ,MACE);
-		entries.addBefore(Items.SHIELD ,WANDERERS_SWORD);
-		entries.addItem(CARTRIDGE);
-		entries.addItem(JUSTICE_FRAGMENT);
-		entries.addBefore(Items.TNT, FLUGELS_IMMORTALITY_DECLARATION);
-        entries.addBefore(Items.SHIELD ,FROSTY_SCYTHE);
-		entries.addBefore(Items.SHIELD ,JEVIL_SCYTHE);
-		entries.addBefore(Items.FIREWORK_ROCKET, JUSTICE_REVOLVER);
-    }//adding items to combat tab *method*
-
-
     //helper method to register items
     private static Item registerItem(String name, Item item){
         return Registry.register(Registries.ITEM, new Identifier(UniqueScythe.MOD_ID,name), item);
     }
 
     public static void registerModItems(){
-        //logger output to see if mod actually registers items
+
+		//TOOLS AND UTILITIES TAB ITEMS REGISTRY
+		ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS_AND_UTILITIES).register(entries -> {
+			entries.addAfter(Items.FIRE_CHARGE, WIND_CHARGE);
+			entries.addAfter(Items.NETHERITE_HOE, CHAOS_MULTITOOL);
+		});
 
 
-		ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS_AND_UTILITIES).register(ModItems::addItemsToToolsAndUtilitiesItemGroup);//calling for the private method in order to  add item to the ingridient tab
-		ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(ModItems::addItemsToIngredientItemGroup);//calling for the private method in order to  add item to the ingridient tab
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT).register(ModItems::addItemsToCombatItemGroup);//calling for the private method in order to  add item to the ingridient tab
+		//INGREDIENTS TAB ITEMS REGISTRY
+		ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(entries -> {
+			entries.addBefore(Items.SHULKER_SHELL, HEAVY_CORE);
+			entries.addAfter(Items.GOLD_INGOT, FROSTY_STEEL);
+			entries.addBefore(Items.FIRE_CHARGE, CHAOS_WILL);
+			entries.addAfter(Items.BLAZE_ROD, BREEZE_ROD);
+			entries.addBefore(Items.DRAGON_BREATH, AIR_BOTTLE);
+		});
+
+
+		//COMBAT TAB ITEMS REGISTRY
+		ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT).register(entries -> {
+			//armor & equipment
+			entries.addBefore(Items.LEATHER_HORSE_ARMOR, INNOCENT_NIMBUS);
+			entries.addBefore(Items.LEATHER_HORSE_ARMOR, JUSTICE_HAT);
+			entries.addBefore(Items.LEATHER_HORSE_ARMOR ,COWBOYS_CLOAK);
+
+
+
+			//weapons
+			entries.addBefore(Items.SHIELD ,MACE);
+			entries.addBefore(Items.SHIELD ,WANDERERS_SWORD);
+			entries.addBefore(Items.SHIELD ,FROSTY_SCYTHE);
+			entries.addBefore(Items.SHIELD ,JEVIL_SCYTHE);
+			entries.addBefore(Items.FIREWORK_ROCKET, JUSTICE_REVOLVER);
+
+
+
+			//utility items
+			entries.addBefore(Items.TNT, FLUGELS_IMMORTALITY_DECLARATION);
+
+
+
+			//ammo
+			entries.addItem(CARTRIDGE);
+			entries.addItem(JUSTICE_FRAGMENT);
+		});//calling for the private method in order to  add item to the ingridient tab
     }
 }
