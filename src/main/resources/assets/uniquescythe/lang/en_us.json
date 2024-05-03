@@ -6,7 +6,11 @@
   "item.uniquescythe.easter_egg":"Easter Egg",
   "item.uniquescythe.wind_charge":"Wind charge",
   "item.uniquescythe.breeze_rod":"Breeze rod",
-  "item.uniquescythe.mace":"Mace",
+  "item.uniquescythe.chaos_multitool_hoe":"World Devourer",
+  "item.uniquescythe.chaos_multitool_axe":"World Devourer",
+  "item.uniquescythe.chaos_multitool_shovel":"World Devourer",
+  "item.uniquescythe.chaos_multitool":"World Devourer",
+  "item.uniquescythe.jevil_scythe":"Jevil's scythe",
   "item.uniquescythe.air_bottle":"Bottle With Air",
 
   "block.uniquescythe.tuff_bricks": "Tuff Bricks",

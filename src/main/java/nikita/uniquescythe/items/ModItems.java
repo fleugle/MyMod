@@ -99,18 +99,20 @@ public class ModItems {
 
     private static void addItemsToCombatItemGroup(FabricItemGroupEntries entries) {
         //place to add items to the ingredient item tab
-		entries.addItem(JUSTICE_HAT);
-		entries.addItem(COWBOYS_CLOAK);
+		entries.addBefore(Items.LEATHER_HORSE_ARMOR, INNOCENT_NIMBUS);
+		entries.addBefore(Items.LEATHER_HORSE_ARMOR, JUSTICE_HAT);
+		entries.addBefore(Items.LEATHER_HORSE_ARMOR ,COWBOYS_CLOAK);
 
 
+
+		entries.addBefore(Items.SHIELD ,MACE);
+		entries.addBefore(Items.SHIELD ,WANDERERS_SWORD);
 		entries.addItem(CARTRIDGE);
 		entries.addItem(JUSTICE_FRAGMENT);
-		entries.addItem(FLUGELS_IMMORTALITY_DECLARATION);
-        entries.addItem(FROSTY_SCYTHE);
-		entries.addItem(JEVIL_SCYTHE);
-        entries.addItem(WANDERERS_SWORD);
-		entries.addItem(MACE);
-		entries.addItem(JUSTICE_REVOLVER);
+		entries.addBefore(Items.TNT, FLUGELS_IMMORTALITY_DECLARATION);
+        entries.addBefore(Items.SHIELD ,FROSTY_SCYTHE);
+		entries.addBefore(Items.SHIELD ,JEVIL_SCYTHE);
+		entries.addBefore(Items.FIREWORK_ROCKET, JUSTICE_REVOLVER);
     }//adding items to combat tab *method*
 
 

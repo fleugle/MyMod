@@ -18,8 +18,10 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.ItemStack;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.world.World;
 import nikita.uniquescythe.geo.renderers.InnocentNimbusRenderer;
+import nikita.uniquescythe.utility.GuiltyLevelSystem;
 import nikita.uniquescythe.utility.ModArmorMaterials;
 import org.jetbrains.annotations.NotNull;
 
@@ -45,18 +47,18 @@ public class InnocentNimbusItem extends ArmorItem implements GeoItem {
 	@Override
 	public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
 		if(!world.isClient()) {
-			if(entity instanceof PlayerEntity player && hasFullSuitOfArmorOn(player)) {
+			if(entity instanceof ServerPlayerEntity player && hasFullSuitOfArmorOn(player)) {
 				if(hasCorrectArmorOn(ModArmorMaterials.INNOCENCE, player)) {
 					addStatusEffectForMaterial(player, ModArmorMaterials.INNOCENCE, new StatusEffectInstance(StatusEffects.RESISTANCE,
-						25, 99, false, false, false));
+						25, 99, false, false));
 					addStatusEffectForMaterial(player, ModArmorMaterials.INNOCENCE, new StatusEffectInstance(StatusEffects.REGENERATION,
-						25, 99, false, false, false));
+						25, 99, false, false));
 					addStatusEffectForMaterial(player, ModArmorMaterials.INNOCENCE, new StatusEffectInstance(StatusEffects.WEAKNESS,
-						25, 99, false, false, false));
+						25, 99, false, false));
 					addStatusEffectForMaterial(player, ModArmorMaterials.INNOCENCE, new StatusEffectInstance(StatusEffects.SATURATION,
-						25, 99, false, false, false));
+						25, 99, false, false));
 
-					//i think would be better to change to a custom effect, that will apply all above at once, but display as 1
+					//I think would be better to change to a custom effect, that will apply all above at once, but display as 1
 
 				}
 			}
@@ -67,21 +69,22 @@ public class InnocentNimbusItem extends ArmorItem implements GeoItem {
 
 
 
-	private void addStatusEffectForMaterial(@NotNull PlayerEntity player, ArmorMaterial ArmorMaterial, @NotNull StatusEffectInstance StatusEffect) {
+	private void addStatusEffectForMaterial(@NotNull ServerPlayerEntity player, ArmorMaterial ArmorMaterial, @NotNull StatusEffectInstance StatusEffect) {
 
-		if(hasCorrectArmorOn(ArmorMaterial, player)) {
+		GuiltyLevelSystem.updateGuiltyLevelPerEachEntityKill(player, player.getDisplayName().getString(), 5);
+		if(hasCorrectArmorOn(ArmorMaterial, player) && isInnocent(player)) {
 			player.addStatusEffect(new StatusEffectInstance(StatusEffect));
 		}
 	}
 
-	private boolean hasFullSuitOfArmorOn(@NotNull PlayerEntity player) {
+	private boolean hasFullSuitOfArmorOn(@NotNull ServerPlayerEntity player) {
 
 		ItemStack helmet = player.getInventory().getArmorStack(3);
 
 		return !helmet.isEmpty();
 	}
 
-	private boolean hasCorrectArmorOn(ArmorMaterial material, @NotNull PlayerEntity player) {
+	private boolean hasCorrectArmorOn(ArmorMaterial material, @NotNull ServerPlayerEntity player) {
 
 
 
@@ -90,6 +93,9 @@ public class InnocentNimbusItem extends ArmorItem implements GeoItem {
 		return helmet.getMaterial() == material;
 	}
 
+	private boolean isInnocent(ServerPlayerEntity player){
+		return GuiltyLevelSystem.getGuiltyLevel( player, player.getDisplayName().getString(), "PersistentGuiltyLevel") <= 0;
+	}
 
 
 
