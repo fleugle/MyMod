@@ -67,6 +67,7 @@ public abstract class LivingEntityMixin  extends Entity{
 
 
 
+	@SuppressWarnings("UnreachableCode")
 	@Inject(at = @At("HEAD"), method = "tryUseTotem", cancellable = true)
 	public void useFlugelsImmortalityTotem(DamageSource damageSource_1, CallbackInfoReturnable<Boolean> callback) {
 		/*inits PlayerEntity entity, which is a copy of this casted to Living Entity and then PlayerEntity*/
