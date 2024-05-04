@@ -14,13 +14,12 @@ import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.world.World;
-import nikita.uniquescythe.geo.renderers.InnocentNimbusRenderer;
+import nikita.uniquescythe.geo.renderers.EyePatchRenderer;
 import nikita.uniquescythe.utility.GuiltyLevelSystem;
 import nikita.uniquescythe.utility.ModArmorMaterials;
 import org.jetbrains.annotations.NotNull;
@@ -28,7 +27,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
-public class InnocentNimbusItem extends ArmorItem implements GeoItem {
+public class EyePatchItem extends ArmorItem implements GeoItem {
 
 	private final AnimatableInstanceCache cache = AzureLibUtil.createInstanceCache(this);
 	private final Supplier<Object> renderProvider = GeoItem.makeRenderer(this);
@@ -38,7 +37,7 @@ public class InnocentNimbusItem extends ArmorItem implements GeoItem {
 
 
 
-	public InnocentNimbusItem(ArmorMaterial armorMaterial, ArmorSlot type, Settings properties) {
+	public EyePatchItem(ArmorMaterial armorMaterial, ArmorSlot type, Settings properties) {
 		super(armorMaterial, type, properties);
 	}
 
@@ -124,7 +123,7 @@ public class InnocentNimbusItem extends ArmorItem implements GeoItem {
 			@Override
 			public @NotNull BipedEntityModel<LivingEntity> getHumanoidArmorModel(LivingEntity livingEntity, ItemStack itemStack, EquipmentSlot equipmentSlot, BipedEntityModel<LivingEntity> original) {
 				if (this.renderer == null)
-					this.renderer = new InnocentNimbusRenderer();
+					this.renderer = new EyePatchRenderer();
 
 				// This prepares our GeoArmorRenderer for the current render frame.
 				// These parameters may be null however, so we don't do anything further with them
@@ -143,7 +142,7 @@ public class InnocentNimbusItem extends ArmorItem implements GeoItem {
 	// Let's add our animation controller
 	@Override
 	public void registerControllers(AnimatableManager.@NotNull ControllerRegistrar controllers) {
-		controllers.add(new AnimationController<>(this, "controllerName", 0, event ->
+		controllers.add(new AnimationController<>(this, "idle", 0, event ->
 		{
 			return event.setAndContinue(RawAnimation.begin().thenLoop("idle"));
 		}));

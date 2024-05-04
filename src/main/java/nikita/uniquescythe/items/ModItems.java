@@ -1,6 +1,5 @@
 package nikita.uniquescythe.items;
 
-import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
@@ -75,7 +74,7 @@ public class ModItems {
 	public static final Item COWBOYS_CLOAK = registerItem("cowboys_cloak", new JusticeArmorItem(ModArmorMaterials.JUSTICE, ArmorItem.ArmorSlot.CHESTPLATE,new Item.Settings().maxCount(1).rarity(Rarity.UNCOMMON)));
 
 
-	public static final Item INNOCENT_NIMBUS = registerItem("innocent_nimbus", new InnocentNimbusItem(ModArmorMaterials.INNOCENCE, ArmorItem.ArmorSlot.HELMET,new Item.Settings().maxCount(1).rarity(Rarity.RARE)));
+	public static final Item EYE_PATCH = registerItem("eye_patch", new EyePatchItem(ModArmorMaterials.INNOCENCE, ArmorItem.ArmorSlot.HELMET,new Item.Settings().maxCount(1).rarity(Rarity.RARE)));
 
 
 
@@ -106,7 +105,7 @@ public class ModItems {
 		//COMBAT TAB ITEMS REGISTRY
 		ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT).register(entries -> {
 			//armor & equipment
-			entries.addBefore(Items.LEATHER_HORSE_ARMOR, INNOCENT_NIMBUS);
+			entries.addBefore(Items.LEATHER_HORSE_ARMOR, EYE_PATCH);
 			entries.addBefore(Items.LEATHER_HORSE_ARMOR, JUSTICE_HAT);
 			entries.addBefore(Items.LEATHER_HORSE_ARMOR ,COWBOYS_CLOAK);
 

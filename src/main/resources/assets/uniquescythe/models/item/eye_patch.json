@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0":"uniquescythe:item/innocent_nimbus"
+    "layer0":"uniquescythe:item/eye_patch"
   }
 }

@@ -119,7 +119,7 @@ public abstract class LivingEntityMixin  extends Entity{
 
 
 
-				this.getWorld().sendEntityStatus(this, EntityStatuses.USE_TOTEM_OF_UNDYING);
+				this.getWorld().sendEntityStatus(this, EntityStatuses.USE_TOTEM_OF_UNDYING);//ClientPlayNetworkHandler has a switch, that renders totem of undiying and its sound.
 				//this.getWorld().sendEntityStatus(this, (byte)35);
 				callback.setReturnValue(true);
 
