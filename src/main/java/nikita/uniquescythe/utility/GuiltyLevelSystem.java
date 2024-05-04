@@ -53,7 +53,7 @@ public class GuiltyLevelSystem {
 
 	public static void removeGuiltyLevel(ServerPlayerEntity player, String playerName, int amount, int multiplier){
 
-		updateGuiltyLevelPerEachEntityKill(player, playerName, multiplier);
+		updateGuiltyLevelPerEachEntityKill( player, playerName, multiplier);
 		//applies new values
 		CommandsExecuter.executeCommand(player, "scoreboard players add "+ playerName +" PersistentGuiltyLevel "+ amount);
 
@@ -88,6 +88,7 @@ public class GuiltyLevelSystem {
 
 		return score.getScore();
 	}
+
 
 
 

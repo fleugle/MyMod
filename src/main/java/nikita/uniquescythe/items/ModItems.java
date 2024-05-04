@@ -77,6 +77,8 @@ public class ModItems {
 	public static final Item EYE_PATCH = registerItem("eye_patch", new EyePatchItem(ModArmorMaterials.INNOCENCE, ArmorItem.ArmorSlot.HELMET,new Item.Settings().maxCount(1).rarity(Rarity.RARE)));
 
 
+	public static final Item SORRY_STONE = registerItem("sorry_stone", new SorryStoneItem(new Item.Settings().maxCount(16).fireproof().rarity(Rarity.RARE)));
+
 
     //helper method to register items
     private static Item registerItem(String name, Item item){
@@ -89,6 +91,7 @@ public class ModItems {
 		ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS_AND_UTILITIES).register(entries -> {
 			entries.addAfter(Items.FIRE_CHARGE, WIND_CHARGE);
 			entries.addAfter(Items.NETHERITE_HOE, CHAOS_MULTITOOL);
+			entries.addItem(SORRY_STONE);
 		});
 
 
