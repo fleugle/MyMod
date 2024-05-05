@@ -65,8 +65,8 @@ public class WindChargeProjectileEntity extends ThrownItemEntity {
 		this.setNoGravity(true);
 	}
 
-	public WindChargeProjectileEntity(LivingEntity LivingEntity, World world) {
-		super(ModEntities.WIND_CHARGE_PROJECTILE,LivingEntity, world);
+	public WindChargeProjectileEntity(LivingEntity livingEntity, World world) {
+		super(ModEntities.WIND_CHARGE_PROJECTILE,livingEntity, world);
 		this.setNoGravity(true);
 	}
 

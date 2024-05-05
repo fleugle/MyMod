@@ -13,6 +13,7 @@ import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.mob.BlazeEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.ExplosiveProjectileEntity;
 import net.minecraft.entity.projectile.PersistentProjectileEntity;
 import net.minecraft.entity.projectile.ProjectileUtil;
@@ -38,6 +39,7 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import nikita.uniquescythe.entities.ModEntities;
 import nikita.uniquescythe.items.ModItems;
+import nikita.uniquescythe.items.custom.GunItem;
 import nikita.uniquescythe.particles.ModParticleTypes;
 import nikita.uniquescythe.sounds.ModSounds;
 import nikita.uniquescythe.utility.GuiltyLevelSystem;
@@ -45,15 +47,18 @@ import nikita.uniquescythe.utility.WindExplosion;
 
 public class BulletEntity extends ThrownItemEntity {
 
+	private PlayerEntity shooter;
 
 	public BulletEntity(EntityType<? extends ThrownItemEntity> entityType, World world) {
 		super(entityType, world);
 		this.setNoGravity(true);
 	}
 
-	public BulletEntity(LivingEntity LivingEntity, World world) {
-		super(ModEntities.BULLET_ENTITY,LivingEntity, world);
+	public BulletEntity(LivingEntity livingEntity, World world/*, PlayerEntity shooter*/) {
+		super(ModEntities.BULLET_ENTITY,livingEntity, world);
+		this.shooter = (PlayerEntity) livingEntity;
 		this.setNoGravity(true);
+
 	}
 
 
@@ -152,21 +157,32 @@ public class BulletEntity extends ThrownItemEntity {
 
 		super.onEntityHit(entityHitResult);
 		Entity entity = entityHitResult.getEntity();
-		float damageAmount = 0;
+		float damageAmount;
+
 		if (!entity.getWorld().isClient){
 			if (entity.isPlayer()){
 
-				int guiltyLevel = GuiltyLevelSystem
+				int targetGuiltyLevel = GuiltyLevelSystem
 					.getGuiltyLevel(
 						(ServerPlayerEntity) entity,
 						entity.getDisplayName().getString(),
 						"PersistentGuiltyLevel");
 
 
+
+				int shooterGuiltyLevel = GuiltyLevelSystem
+					.getGuiltyLevel(
+						(ServerPlayerEntity) shooter,
+						entity.getDisplayName().getString(),
+						"PersistentGuiltyLevel");
+
+				damageAmount = (float) targetGuiltyLevel - shooterGuiltyLevel;
 			}
+			else damageAmount = 8;
+			entity.damage(this.getDamageSources().thrown(this, this.getOwner()), damageAmount);
 		}
 
-		entity.damage(this.getDamageSources().thrown(this, this.getOwner()), damageAmount);
+
 		if(!getWorld().isClient()){
 			World world = this.getWorld();
 			if (world instanceof ServerWorld serverWorld) {
