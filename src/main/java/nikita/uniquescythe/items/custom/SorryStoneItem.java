@@ -18,7 +18,7 @@ public class SorryStoneItem extends Item {
 	public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand){
 
 		if (!world.isClient){//if the problem is in casting unexpected client side classes to server side ones, the problem is that i haven't split them on 2 different cases: client and server
-			GuiltyLevelSystem.removeGuiltyLevel((ServerPlayerEntity) user, user.getDisplayName().getString(), 5, 5);
+			GuiltyLevelSystem.subtractGuiltyLevel((ServerPlayerEntity) user, user.getDisplayName().getString(), 5, 5);
 			ItemStack stack = user.getStackInHand(hand);
 			stack.decrement(1);
 			user.kill();

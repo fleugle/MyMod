@@ -1,6 +1,5 @@
 package nikita.uniquescythe.utility;
 
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.scoreboard.Scoreboard;
 import net.minecraft.scoreboard.ScoreboardCriterion;
 import net.minecraft.scoreboard.ScoreboardObjective;
@@ -51,7 +50,7 @@ public class GuiltyLevelSystem {
 
 	}
 
-	public static void removeGuiltyLevel(ServerPlayerEntity player, String playerName, int amount, int multiplier){
+	public static void subtractGuiltyLevel(ServerPlayerEntity player, String playerName, int amount, int multiplier){
 
 		updateGuiltyLevelPerEachEntityKill( player, playerName, multiplier);
 		//applies new values
