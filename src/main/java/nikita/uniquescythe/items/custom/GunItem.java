@@ -216,7 +216,7 @@ public abstract class GunItem extends Item {
 	}
 
 	public static boolean isAmmo(ItemStack stack) {
-		return stack.getItem() == ModItems.CARTRIDGE;
+		return stack.getItem() == ModItems.BULLET;
 	}
 	public static boolean isLoaded(ItemStack stack) {
 		return stack.getOrCreateNbt().getByte("loaded") != 0;

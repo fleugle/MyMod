@@ -1,27 +1,6 @@
 {
-	"credit": "Made with Blockbench",
-	"parent": "item/generated",
-	"textures": {
-		"layer0": "uniquescythe:item/breeze_rod"
-	},
-	"display": {
-		"thirdperson_righthand": {
-			"rotation": [-50, -90, 0],
-			"translation": [0, 3.25, 1.75],
-			"scale": [0.8, 0.8, 1]
-		},
-		"thirdperson_lefthand": {
-			"rotation": [0, 90, -50],
-			"translation": [0, 3.25, 1.75],
-			"scale": [0.8, 0.8, 1]
-		},
-		"firstperson_righthand": {
-			"rotation": [0, 90, 0],
-			"translation": [0.75, 0, -0.75]
-		},
-		"firstperson_lefthand": {
-			"rotation": [0, -90, 0],
-			"translation": [0.75, 0, -0.75]
-		}
-	}
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "uniquescythe:item:breeze_rod"
+  }
 }

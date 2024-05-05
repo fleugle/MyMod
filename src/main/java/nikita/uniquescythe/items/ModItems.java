@@ -66,7 +66,7 @@ public class ModItems {
 
 	public static final Item JUSTICE_FRAGMENT = registerItem("justice_fragment", new Item(new Item.Settings().fireproof().maxCount(16).rarity(Rarity.UNCOMMON)));
 
-	public static final Item CARTRIDGE = registerItem("cartridge", new Item(new Item.Settings().fireproof().maxCount(16)));
+	public static final Item BULLET = registerItem("bullet", new Item(new Item.Settings().fireproof().maxCount(16)));
 	// *end of the registering items section*
 
 	public static final Item JUSTICE_HAT = registerItem("justice_hat", new JusticeArmorItem(ModArmorMaterials.JUSTICE, ArmorItem.ArmorSlot.HELMET,new Item.Settings().maxCount(1).rarity(Rarity.UNCOMMON)));
@@ -129,7 +129,7 @@ public class ModItems {
 
 
 			//ammo
-			entries.addItem(CARTRIDGE);
+			entries.addItem(BULLET);
 			entries.addItem(JUSTICE_FRAGMENT);
 		});//calling for the private method in order to  add item to the ingridient tab
     }
