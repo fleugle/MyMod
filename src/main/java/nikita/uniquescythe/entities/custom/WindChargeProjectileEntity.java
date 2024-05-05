@@ -89,7 +89,7 @@ public class WindChargeProjectileEntity extends ThrownItemEntity {
 
 	@Override
 	protected boolean canHit(Entity entity) {
-		return super.canHit(entity) && !entity.noClip;
+		return super.canHit(entity) ;
 	}
 
 	@Override
