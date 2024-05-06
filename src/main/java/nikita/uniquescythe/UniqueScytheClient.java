@@ -16,6 +16,7 @@ import net.minecraft.util.Identifier;
 import nikita.uniquescythe.blocks.ModBlocks;
 import nikita.uniquescythe.entities.ModEntities;
 import nikita.uniquescythe.entities.client.*;
+import nikita.uniquescythe.geo.renderers.BulletEntityRenderer;
 import nikita.uniquescythe.particles.ModParticleTypes;
 import nikita.uniquescythe.particles.custom.*;
 import org.quiltmc.loader.api.QuiltLoader;
@@ -68,6 +69,7 @@ public class UniqueScytheClient implements ClientModInitializer {
 
 		EntityRendererRegistry.register(ModEntities.BREEZE, BreezeEntityRenderer::new );
 
+		EntityRendererRegistry.register(ModEntities.BULLET_ENTITY, BulletEntityRenderer::new);
 
 
 

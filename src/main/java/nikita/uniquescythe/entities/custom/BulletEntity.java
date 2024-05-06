@@ -1,35 +1,27 @@
 package nikita.uniquescythe.entities.custom;
 
+import mod.azure.azurelib.animatable.GeoEntity;
+import mod.azure.azurelib.core.animatable.instance.AnimatableInstanceCache;
+import mod.azure.azurelib.core.animation.AnimatableManager;
+import mod.azure.azurelib.core.animation.AnimationController;
+import mod.azure.azurelib.core.animation.RawAnimation;
+import mod.azure.azurelib.util.AzureLibUtil;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.EndGatewayBlockEntity;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityStatuses;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.damage.DamageSource;
-import net.minecraft.entity.data.DataTracker;
-import net.minecraft.entity.data.TrackedData;
-import net.minecraft.entity.data.TrackedDataHandlerRegistry;
-import net.minecraft.entity.mob.BlazeEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.projectile.ExplosiveProjectileEntity;
-import net.minecraft.entity.projectile.PersistentProjectileEntity;
 import net.minecraft.entity.projectile.ProjectileUtil;
 import net.minecraft.entity.projectile.thrown.ThrownItemEntity;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.network.listener.ClientPlayPacketListener;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.s2c.play.EntitySpawnS2CPacket;
-import net.minecraft.particle.ItemStackParticleEffect;
-import net.minecraft.particle.ParticleEffect;
-import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.sound.SoundCategory;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.hit.HitResult;
@@ -39,15 +31,16 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import nikita.uniquescythe.entities.ModEntities;
 import nikita.uniquescythe.items.ModItems;
-import nikita.uniquescythe.items.custom.GunItem;
 import nikita.uniquescythe.particles.ModParticleTypes;
-import nikita.uniquescythe.sounds.ModSounds;
 import nikita.uniquescythe.utility.GuiltyLevelSystem;
-import nikita.uniquescythe.utility.WindExplosion;
 
-public class BulletEntity extends ThrownItemEntity {
+import static net.minecraft.advancement.criterion.ConstructBeaconCriterion.Conditions.level;
 
-	private PlayerEntity shooter;
+public class BulletEntity extends ThrownItemEntity /*implements GeoEntity*/ {
+
+	//private final AnimatableInstanceCache cache = AzureLibUtil.createInstanceCache(this);
+
+	//private PlayerEntity shooter;
 
 	public BulletEntity(EntityType<? extends ThrownItemEntity> entityType, World world) {
 		super(entityType, world);
@@ -56,7 +49,7 @@ public class BulletEntity extends ThrownItemEntity {
 
 	public BulletEntity(LivingEntity livingEntity, World world/*, PlayerEntity shooter*/) {
 		super(ModEntities.BULLET_ENTITY,livingEntity, world);
-		this.shooter = (PlayerEntity) livingEntity;
+		//this.shooter = (PlayerEntity) livingEntity;
 		this.setNoGravity(true);
 
 	}
@@ -159,6 +152,7 @@ public class BulletEntity extends ThrownItemEntity {
 		Entity entity = entityHitResult.getEntity();
 		float damageAmount;
 
+		/*
 		if (!entity.getWorld().isClient){
 			if (entity.isPlayer()){
 
@@ -182,6 +176,8 @@ public class BulletEntity extends ThrownItemEntity {
 			entity.damage(this.getDamageSources().thrown(this, this.getOwner()), damageAmount);
 		}
 
+		 */
+
 
 		if(!getWorld().isClient()){
 			World world = this.getWorld();
@@ -202,6 +198,34 @@ public class BulletEntity extends ThrownItemEntity {
 
 		this.discard();
 	}
+
+
+
+
+
+
+	/*
+
+	//AZURELIB CODE PART
+
+	@Override
+	public AnimatableInstanceCache getAnimatableInstanceCache() {
+		return cache;
+	}
+
+	@Override
+	public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
+		controllers.add(new AnimationController<>(this, "idle", 0, event ->
+		{
+			return event.setAndContinue(RawAnimation.begin().thenLoop("idle"));
+		}));
+	}
+
+
+
+
+
+	 */
 
 
 

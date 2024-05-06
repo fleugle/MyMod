@@ -54,7 +54,7 @@ public abstract class GunItem extends Item {
 			if (offhand_stack.getItem() == ModItems.BULLET) {
 				BulletEntity bulletEntity = new BulletEntity(user, world);
 				bulletEntity.setItem(itemStack);
-				bulletEntity.setBulletProperties(user, user.getPitch(), user.getYaw(), 1.0F, 100F, 0F);
+				bulletEntity.setBulletProperties(user, user.getPitch(), user.getYaw(), 1.0F, 0.5F, 0F);
 				world.spawnEntity(bulletEntity);
 				user.getItemCooldownManager().set(this, 30);
 				SoundsManager.playPlayersSoundOnSpot(user, ModSounds.SCYTHE_HIT, 1f);
@@ -64,7 +64,7 @@ public abstract class GunItem extends Item {
 			else if (mainhand_stack.getItem() == ModItems.BULLET){
 				BulletEntity bulletEntity = new BulletEntity(user, world);
 				bulletEntity.setItem(itemStack);
-				bulletEntity.setBulletProperties(user, user.getPitch(), user.getYaw(), 1.0F, 100F, 0F);
+				bulletEntity.setBulletProperties(user, user.getPitch(), user.getYaw(), 1.0F, 0.5F, 0F);
 				world.spawnEntity(bulletEntity);
 				user.getItemCooldownManager().set(this, 30);
 				SoundsManager.playPlayersSoundOnSpot(user, ModSounds.SCYTHE_HIT, 1f);
