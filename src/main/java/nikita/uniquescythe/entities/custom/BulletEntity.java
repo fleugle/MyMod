@@ -36,11 +36,11 @@ import nikita.uniquescythe.utility.GuiltyLevelSystem;
 
 import static net.minecraft.advancement.criterion.ConstructBeaconCriterion.Conditions.level;
 
-public class BulletEntity extends ThrownItemEntity /*implements GeoEntity*/ {
+public class BulletEntity extends ThrownItemEntity implements GeoEntity {
 
-	//private final AnimatableInstanceCache cache = AzureLibUtil.createInstanceCache(this);
+	private final AnimatableInstanceCache cache = AzureLibUtil.createInstanceCache(this);
 
-	//private PlayerEntity shooter;
+	private PlayerEntity shooter;
 
 	public BulletEntity(EntityType<? extends ThrownItemEntity> entityType, World world) {
 		super(entityType, world);
@@ -49,7 +49,7 @@ public class BulletEntity extends ThrownItemEntity /*implements GeoEntity*/ {
 
 	public BulletEntity(LivingEntity livingEntity, World world/*, PlayerEntity shooter*/) {
 		super(ModEntities.BULLET_ENTITY,livingEntity, world);
-		//this.shooter = (PlayerEntity) livingEntity;
+		this.shooter = (PlayerEntity) livingEntity;
 		this.setNoGravity(true);
 
 	}
@@ -152,7 +152,7 @@ public class BulletEntity extends ThrownItemEntity /*implements GeoEntity*/ {
 		Entity entity = entityHitResult.getEntity();
 		float damageAmount;
 
-		/*
+
 		if (!entity.getWorld().isClient){
 			if (entity.isPlayer()){
 
@@ -176,7 +176,6 @@ public class BulletEntity extends ThrownItemEntity /*implements GeoEntity*/ {
 			entity.damage(this.getDamageSources().thrown(this, this.getOwner()), damageAmount);
 		}
 
-		 */
 
 
 		if(!getWorld().isClient()){
@@ -204,7 +203,7 @@ public class BulletEntity extends ThrownItemEntity /*implements GeoEntity*/ {
 
 
 
-	/*
+
 
 	//AZURELIB CODE PART
 
@@ -225,7 +224,6 @@ public class BulletEntity extends ThrownItemEntity /*implements GeoEntity*/ {
 
 
 
-	 */
 
 
 
