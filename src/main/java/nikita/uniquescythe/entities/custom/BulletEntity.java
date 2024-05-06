@@ -36,9 +36,7 @@ import nikita.uniquescythe.utility.GuiltyLevelSystem;
 
 import static net.minecraft.advancement.criterion.ConstructBeaconCriterion.Conditions.level;
 
-public class BulletEntity extends ThrownItemEntity implements GeoEntity {
-
-	private final AnimatableInstanceCache cache = AzureLibUtil.createInstanceCache(this);
+public class BulletEntity extends ThrownItemEntity{
 
 	private PlayerEntity shooter;
 
@@ -83,52 +81,7 @@ public class BulletEntity extends ThrownItemEntity implements GeoEntity {
 
 
 	//this.idleState.restart(this.age);
-	@Override
-	public void tick() {
-		this.baseTick();
 
-
-
-
-
-		HitResult hitResult = ProjectileUtil.getCollision(this, this::canHit);
-		boolean bl = false;
-		if (hitResult.getType() == HitResult.Type.BLOCK) {
-			BlockPos blockPos = ((BlockHitResult)hitResult).getBlockPos();
-			BlockState blockState = this.getWorld().getBlockState(blockPos);
-			if (blockState.isOf(Blocks.NETHER_PORTAL)) {
-				this.setInNetherPortal(blockPos);
-				bl = true;
-			} else if (blockState.isOf(Blocks.END_GATEWAY)) {
-				BlockEntity blockEntity = this.getWorld().getBlockEntity(blockPos);
-				if (blockEntity instanceof EndGatewayBlockEntity && EndGatewayBlockEntity.canTeleport(this)) {
-					EndGatewayBlockEntity.tryTeleportingEntity(this.getWorld(), blockPos, blockState, this, (EndGatewayBlockEntity)blockEntity);
-				}
-
-				bl = true;
-			}
-		}
-
-		if (hitResult.getType() != HitResult.Type.MISS && !bl) {
-			this.onCollision(hitResult);
-		}
-
-		this.checkBlockCollision();
-		Vec3d vec3d = this.getVelocity();
-		double d = this.getX() + vec3d.x;
-		double e = this.getY() + vec3d.y;
-		double f = this.getZ() + vec3d.z;
-		this.updateRotation();
-		float h = 1;
-
-		this.setVelocity(vec3d.multiply((double)h));
-		if (!this.hasNoGravity()) {
-			Vec3d vec3d2 = this.getVelocity();
-			this.setVelocity(vec3d2.x, vec3d2.y - (double)this.getGravity(), vec3d2.z);
-		}
-
-		this.setPosition(d, e, f);
-	}
 
 
 
@@ -197,33 +150,6 @@ public class BulletEntity extends ThrownItemEntity implements GeoEntity {
 
 		this.discard();
 	}
-
-
-
-
-
-
-
-
-	//AZURELIB CODE PART
-
-	@Override
-	public AnimatableInstanceCache getAnimatableInstanceCache() {
-		return cache;
-	}
-
-	@Override
-	public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
-		controllers.add(new AnimationController<>(this, "idle", 0, event ->
-		{
-			return event.setAndContinue(RawAnimation.begin().thenLoop("idle"));
-		}));
-	}
-
-
-
-
-
 
 
 

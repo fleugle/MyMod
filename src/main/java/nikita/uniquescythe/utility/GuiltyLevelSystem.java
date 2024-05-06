@@ -54,7 +54,7 @@ public class GuiltyLevelSystem {
 
 		updateGuiltyLevelPerEachEntityKill( player, playerName, multiplier);
 		//applies new values
-		CommandsExecuter.executeCommand(player, "scoreboard players add "+ playerName +" PersistentGuiltyLevel "+ amount);
+		CommandsExecuter.executeCommand(player, "scoreboard players remove "+ playerName +" PersistentGuiltyLevel "+ amount);
 
 	}
 

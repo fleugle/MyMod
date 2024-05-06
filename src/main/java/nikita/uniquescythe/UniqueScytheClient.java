@@ -5,18 +5,12 @@ import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
-import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
-import net.minecraft.client.particle.DamageParticle;
-import net.minecraft.client.particle.ExplosionEmitterParticle;
-import net.minecraft.client.particle.ExplosionLargeParticle;
-import net.minecraft.client.particle.ParticleFactory;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.text.Text;
-import net.minecraft.util.Identifier;
 import nikita.uniquescythe.blocks.ModBlocks;
 import nikita.uniquescythe.entities.ModEntities;
 import nikita.uniquescythe.entities.client.*;
-import nikita.uniquescythe.geo.renderers.BulletEntityRenderer;
+import nikita.uniquescythe.entities.client.BulletEntityRenderer;
 import nikita.uniquescythe.particles.ModParticleTypes;
 import nikita.uniquescythe.particles.custom.*;
 import org.quiltmc.loader.api.QuiltLoader;
@@ -60,7 +54,7 @@ public class UniqueScytheClient implements ClientModInitializer {
 
 		//mod model layers
 		EntityModelLayerRegistry.registerModelLayer(ModModelLayers.WIND_CHARGE, WindChargeProjectileEntityModel::getTexturedModelData);//wind charge
-
+		EntityModelLayerRegistry.registerModelLayer(ModModelLayers.BULLET, BulletEntityModel::getTexturedModelData);//wind charge
 		EntityModelLayerRegistry.registerModelLayer(ModModelLayers.BREEZE, BreezeEntityModel::getTexturedModelData);//breeze
 
 
