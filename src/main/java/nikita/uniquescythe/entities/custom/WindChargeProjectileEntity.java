@@ -1,5 +1,11 @@
 package nikita.uniquescythe.entities.custom;
 
+import mod.azure.azurelib.animatable.GeoEntity;
+import mod.azure.azurelib.core.animatable.instance.AnimatableInstanceCache;
+import mod.azure.azurelib.core.animatable.instance.SingletonAnimatableInstanceCache;
+import mod.azure.azurelib.core.animation.AnimatableManager;
+import mod.azure.azurelib.core.animation.AnimationController;
+import mod.azure.azurelib.core.animation.RawAnimation;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.entity.BlockEntity;
@@ -31,31 +37,11 @@ import nikita.uniquescythe.sounds.ModSounds;
 
 
 
-public class WindChargeProjectileEntity extends ThrownItemEntity {
+public class WindChargeProjectileEntity extends ThrownItemEntity implements GeoEntity {
+
+	private AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(this);
 
 
-
-	public final AnimationState idleState = new AnimationState();
-	private int idleAnimationTimeout = 0;
-
-
-	private void setupAnimationStates() {
-
-		/*
-		if(isAttacking && !isSprinting){
-			idleAnimationTimeout =0;
-
-		}
-		*/
-
-		if (this.idleAnimationTimeout <= 0) {
-			this.idleAnimationTimeout = 119;
-			this.idleState.restart(this.age);
-		} else {
-			--this.idleAnimationTimeout;
-		}
-
-	}
 
 
 
@@ -103,8 +89,6 @@ public class WindChargeProjectileEntity extends ThrownItemEntity {
 	public void tick() {
 		this.baseTick();
 
-
-		setupAnimationStates();
 
 
 		HitResult hitResult = ProjectileUtil.getCollision(this, this::canHit);
@@ -243,6 +227,20 @@ public class WindChargeProjectileEntity extends ThrownItemEntity {
 	@Override
 	public boolean collides() {
 		return true;
+	}
+
+	@Override
+	public void registerControllers(AnimatableManager.ControllerRegistrar controllerRegistrar) {
+		controllerRegistrar.add(new AnimationController<>(this, "controllerName", 0, event ->
+		{
+			return event.setAndContinue(RawAnimation.begin()
+				.thenLoop("idle"));
+		}));
+	}
+
+	@Override
+	public AnimatableInstanceCache getAnimatableInstanceCache() {
+		return cache;
 	}
 }
 

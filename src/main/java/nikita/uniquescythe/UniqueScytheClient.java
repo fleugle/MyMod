@@ -11,6 +11,7 @@ import nikita.uniquescythe.blocks.ModBlocks;
 import nikita.uniquescythe.entities.ModEntities;
 import nikita.uniquescythe.entities.client.*;
 import nikita.uniquescythe.entities.client.BulletEntityRenderer;
+import nikita.uniquescythe.geo.renderers.WindChargeRenderer;
 import nikita.uniquescythe.particles.ModParticleTypes;
 import nikita.uniquescythe.particles.custom.*;
 import org.quiltmc.loader.api.QuiltLoader;
@@ -53,13 +54,12 @@ public class UniqueScytheClient implements ClientModInitializer {
 
 
 		//mod model layers
-		EntityModelLayerRegistry.registerModelLayer(ModModelLayers.WIND_CHARGE, WindChargeProjectileEntityModel::getTexturedModelData);//wind charge
 		EntityModelLayerRegistry.registerModelLayer(ModModelLayers.BULLET, BulletEntityModel::getTexturedModelData);//wind charge
 		EntityModelLayerRegistry.registerModelLayer(ModModelLayers.BREEZE, BreezeEntityModel::getTexturedModelData);//breeze
 
 
 
-		EntityRendererRegistry.register(ModEntities.WIND_CHARGE_PROJECTILE, WindChargeProjectileEntityRenderer::new);
+		EntityRendererRegistry.register(ModEntities.WIND_CHARGE_PROJECTILE, WindChargeRenderer::new);
 
 		EntityRendererRegistry.register(ModEntities.BREEZE, BreezeEntityRenderer::new );
 
