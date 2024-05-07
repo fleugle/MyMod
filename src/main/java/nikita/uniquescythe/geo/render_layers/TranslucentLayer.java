@@ -12,6 +12,7 @@ import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.util.math.MatrixStack;
 import nikita.uniquescythe.entities.custom.WindChargeProjectileEntity;
+import nikita.uniquescythe.geo.textures.AutoTranslucentTexture;
 
 public class TranslucentLayer<T extends WindChargeProjectileEntity> extends GeoRenderLayer<T> {
 	public TranslucentLayer(GeoRenderer<T> renderer) {
@@ -19,11 +20,11 @@ public class TranslucentLayer<T extends WindChargeProjectileEntity> extends GeoR
 	}
 
 	protected RenderLayer getRenderType(T animatable) {
-		return AutoGlowingTexture.getRenderType(this.getTextureResource(animatable));
+		return AutoTranslucentTexture.getRenderType(this.getTextureResource(animatable));
 	}
 
 	public void render(MatrixStack poseStack, T animatable, BakedGeoModel bakedModel, RenderLayer renderType, VertexConsumerProvider bufferSource, VertexConsumer buffer, float partialTick, int packedLight, int packedOverlay) {
-		RenderLayer emissiveRenderType = this.getRenderType(animatable);
-		this.getRenderer().reRender(bakedModel, poseStack, bufferSource, animatable, emissiveRenderType, bufferSource.getBuffer(emissiveRenderType), partialTick, 15728640, OverlayTexture.DEFAULT_UV, 1.0F, 1.0F, 1.0F, 1.0F);
+		RenderLayer translucentRenderType = this.getRenderType(animatable);
+		this.getRenderer().reRender(bakedModel, poseStack, bufferSource, animatable, translucentRenderType, bufferSource.getBuffer(translucentRenderType), partialTick, 0, OverlayTexture.DEFAULT_UV, 1.0F, 1.0F, 1.0F, 1.0F);
 	}
 }

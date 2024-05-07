@@ -31,6 +31,7 @@ import net.minecraft.util.Util;
 import org.jetbrains.annotations.Nullable;
 
 public class AutoTranslucentTexture extends GeoAbstractTexture {
+
 	private static final RenderPhase.Shader SHADER_STATE = new RenderPhase.Shader(GameRenderer::getRenderTypeEntityTranslucentEmissiveShader);
 	private static final RenderPhase.Transparency TRANSPARENCY_STATE = new RenderPhase.Transparency("translucent_transparency", () -> {
 		RenderSystem.enableBlend();
@@ -44,7 +45,7 @@ public class AutoTranslucentTexture extends GeoAbstractTexture {
 		RenderPhase.Texture textureState = new RenderPhase.Texture(texture, false, false);
 		return RenderLayer.of("geo_glowing_layer", VertexFormats.POSITION_COLOR_TEXTURE_OVERLAY_LIGHT_NORMAL, DrawMode.QUADS, 256, false, true, MultiPhaseParameters.builder().shader(SHADER_STATE).texture(textureState).transparency(TRANSPARENCY_STATE).writeMaskState(WRITE_MASK).build(false));
 	});
-	private static final String APPENDIX = "_glowmask";
+
 	protected final Identifier textureBase;
 	protected final Identifier glowLayer;
 
@@ -54,7 +55,7 @@ public class AutoTranslucentTexture extends GeoAbstractTexture {
 	}
 
 	protected static Identifier getEmissiveResource(Identifier baseResource) {
-		Identifier path = appendToPath(baseResource, "_glowmask");
+		Identifier path = appendToPath(baseResource, "_transparencymask");
 		generateTexture(path, (textureManager) -> {
 			textureManager.registerTexture(path, new mod.azure.azurelib.cache.texture.AutoGlowingTexture(baseResource, path));
 		});
