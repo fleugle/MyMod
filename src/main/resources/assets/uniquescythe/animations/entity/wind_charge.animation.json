@@ -3,14 +3,14 @@
 	"animations": {
 		"idle": {
 			"loop": true,
-			"animation_length": 3,
+			"animation_length": 2,
 			"bones": {
 				"charge": {
 					"rotation": {
 						"0.0": {
 							"vector": [0, 0, 0]
 						},
-						"3.0": {
+						"2.0": {
 							"vector": [0, -720, 0]
 						}
 					}
@@ -20,7 +20,7 @@
 						"0.0": {
 							"vector": [0, 0, 0]
 						},
-						"3.0": {
+						"2.0": {
 							"vector": [0, -360, 0]
 						}
 					},
@@ -33,7 +33,7 @@
 						"0.0": {
 							"vector": [0, 0, 0]
 						},
-						"3.0": {
+						"2.0": {
 							"vector": [0, 360, 0]
 						}
 					},

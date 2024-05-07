@@ -35,10 +35,12 @@ public class AutoTranslucentTexture extends GeoAbstractTexture {
 	private static final RenderPhase.Shader SHADER_STATE = new RenderPhase.Shader(GameRenderer::getRenderTypeEntityTranslucentEmissiveShader);
 	private static final RenderPhase.Transparency TRANSPARENCY_STATE = new RenderPhase.Transparency("translucent_transparency", () -> {
 		RenderSystem.enableBlend();
+		RenderSystem.disableCull();
 		RenderSystem.blendFuncSeparate(SourceFactor.SRC_ALPHA, DestFactor.ONE_MINUS_SRC_ALPHA, SourceFactor.ONE, DestFactor.ONE_MINUS_SRC_ALPHA);
 	}, () -> {
 		RenderSystem.disableBlend();
 		RenderSystem.defaultBlendFunc();
+		RenderSystem.enableCull();
 	});
 	private static final RenderPhase.WriteMaskState WRITE_MASK = new RenderPhase.WriteMaskState(true, true);
 	private static final Function<Identifier, RenderLayer> RENDER_TYPE_FUNCTION = Util.memoize((texture) -> {

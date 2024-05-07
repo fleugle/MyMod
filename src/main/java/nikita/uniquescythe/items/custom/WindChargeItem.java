@@ -19,6 +19,7 @@ public class WindChargeItem extends Item {
 
 
 
+
 	@Override
 	public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
 		ItemStack itemStack = user.getStackInHand(hand);
@@ -35,7 +36,7 @@ public class WindChargeItem extends Item {
 		if (!world.isClient) {
 			WindChargeProjectileEntity windChargeProjectileEntity = new WindChargeProjectileEntity(user, world);
 			windChargeProjectileEntity.setItem(itemStack);
-			windChargeProjectileEntity.setWindProjectyleProperties(user, user.getPitch(), user.getYaw(), 1.0F, 1.5F, 0F);
+			windChargeProjectileEntity.setProperties(user, user.getPitch(), user.getYaw(), 1.0F, 2F, 1F);
 			world.spawnEntity(windChargeProjectileEntity);
 			user.getItemCooldownManager().set(this, 7);
 		}
