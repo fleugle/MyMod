@@ -15,6 +15,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class BipedEntityModelMixin {
 
 	@Shadow
+	public @Final ModelPart head;
+
+	@Shadow
 	public @Final ModelPart rightArm;
 
 	@Shadow
@@ -31,10 +34,11 @@ public class BipedEntityModelMixin {
 	)
 	public void poseArms(LivingEntity entity, CallbackInfo ci) {
 		if(entity.getMainHandStack().getItem() instanceof GunItem || entity.getOffHandStack().getItem() instanceof GunItem) {
-			this.rightArm.pitch = -0.95F;
-			//this.rightArm.yaw = (float) (-Math.PI / 8);
-			this.leftArm.pitch = 0f;
-			this.leftArm.yaw = /*(float) (Math.PI / 8)*/0;
+
+			this.rightArm.yaw = this.head.yaw;
+			//this.leftArm.yaw = (0.7F) + this.head.yaw;
+			this.rightArm.pitch = (float) (-Math.PI / 2) + this.head.pitch + (-0F);
+			//this.leftArm.pitch = -1.5F + head.pitch;
 			ci.cancel();
 		}
 	}
