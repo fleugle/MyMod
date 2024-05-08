@@ -13,7 +13,9 @@
     "ItemRendererAccessor",
     "ItemRendererMixin",
     "ModelLoaderMixin",
-    "ClientPlayNetworkHandlerMixin"
+    "ClientPlayNetworkHandlerMixin",
+    "BipedEntityModelMixin",
+    "PlayerEntityRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1

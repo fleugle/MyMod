@@ -45,19 +45,19 @@ public class AutoTranslucentTexture extends GeoAbstractTexture {
 	private static final RenderPhase.WriteMaskState WRITE_MASK = new RenderPhase.WriteMaskState(true, true);
 	private static final Function<Identifier, RenderLayer> RENDER_TYPE_FUNCTION = Util.memoize((texture) -> {
 		RenderPhase.Texture textureState = new RenderPhase.Texture(texture, false, false);
-		return RenderLayer.of("geo_glowing_layer", VertexFormats.POSITION_COLOR_TEXTURE_OVERLAY_LIGHT_NORMAL, DrawMode.QUADS, 256, false, true, MultiPhaseParameters.builder().shader(SHADER_STATE).texture(textureState).transparency(TRANSPARENCY_STATE).writeMaskState(WRITE_MASK).build(false));
+		return RenderLayer.of("geo_translucency_layer", VertexFormats.POSITION_COLOR_TEXTURE_OVERLAY_LIGHT_NORMAL, DrawMode.QUADS, 256, false, true, MultiPhaseParameters.builder().shader(SHADER_STATE).texture(textureState).transparency(TRANSPARENCY_STATE).writeMaskState(WRITE_MASK).build(false));
 	});
 
 	protected final Identifier textureBase;
-	protected final Identifier glowLayer;
+	protected final Identifier translucencyLayer;
 
 	public AutoTranslucentTexture(Identifier originalLocation, Identifier location) {
 		this.textureBase = originalLocation;
-		this.glowLayer = location;
+		this.translucencyLayer = location;
 	}
 
-	protected static Identifier getEmissiveResource(Identifier baseResource) {
-		Identifier path = appendToPath(baseResource, "_transparencymask");
+	protected static Identifier getTranslucencyResource(Identifier baseResource) {
+		Identifier path = appendToPath(baseResource, "_translucencymask");
 		generateTexture(path, (textureManager) -> {
 			textureManager.registerTexture(path, new mod.azure.azurelib.cache.texture.AutoGlowingTexture(baseResource, path));
 		});
@@ -84,38 +84,38 @@ public class AutoTranslucentTexture extends GeoAbstractTexture {
 		}
 
 		NativeImage baseImage = var10000;
-		NativeImage glowImage = null;
+		NativeImage translucencyImage = null;
 		Optional<TextureResourceMetadata> textureBaseMeta = textureBaseResource.getMetadata().readMetadata(TextureResourceMetadata.READER);
 		boolean blur = textureBaseMeta.isPresent() && ((TextureResourceMetadata)textureBaseMeta.get()).shouldBlur();
 		boolean clamp = textureBaseMeta.isPresent() && ((TextureResourceMetadata)textureBaseMeta.get()).shouldClamp();
 
 		try {
-			Optional<Resource> glowLayerResource = resourceManager.getResource(this.glowLayer);
+			Optional<Resource> glowLayerResource = resourceManager.getResource(this.translucencyLayer);
 			GeoGlowingTextureMeta glowLayerMeta = null;
 			if (glowLayerResource.isPresent()) {
-				glowImage = NativeImage.read(((Resource)glowLayerResource.get()).open());
-				glowLayerMeta = GeoGlowingTextureMeta.fromExistingImage(glowImage);
+				translucencyImage = NativeImage.read(((Resource)glowLayerResource.get()).open());
+				glowLayerMeta = GeoGlowingTextureMeta.fromExistingImage(translucencyImage);
 			} else {
 				Optional<GeoGlowingTextureMeta> meta = textureBaseResource.getMetadata().readMetadata(GeoGlowingTextureMeta.DESERIALIZER);
 				if (meta.isPresent()) {
 					glowLayerMeta = (GeoGlowingTextureMeta)meta.get();
-					glowImage = new NativeImage(baseImage.getWidth(), baseImage.getHeight(), true);
+					translucencyImage = new NativeImage(baseImage.getWidth(), baseImage.getHeight(), true);
 				}
 			}
 
 			if (glowLayerMeta != null) {
-				glowLayerMeta.createImageMask(baseImage, glowImage);
+				glowLayerMeta.createImageMask(baseImage, translucencyImage);
 				if (Services.PLATFORM.isDevelopmentEnvironment()) {
 					this.printDebugImageToDisk(this.textureBase, baseImage);
-					this.printDebugImageToDisk(this.glowLayer, glowImage);
+					this.printDebugImageToDisk(this.translucencyLayer, translucencyImage);
 				}
 			}
 		} catch (IOException var13) {
 			IOException e = var13;
-			AzureLib.LOGGER.warn("Resource failed to open for glowlayer meta: {}", this.glowLayer, e);
+			AzureLib.LOGGER.warn("Resource failed to open for translucencyLayer88 meta: {}", this.translucencyLayer, e);
 		}
 
-		NativeImage mask = glowImage;
+		NativeImage mask = translucencyImage;
 		return mask == null ? null : () -> {
 			uploadSimple(this.getGlId(), mask, blur, clamp);
 			if (originalTexture instanceof NativeImageBackedTexture dynamicTexture) {
@@ -128,6 +128,6 @@ public class AutoTranslucentTexture extends GeoAbstractTexture {
 	}
 
 	public static RenderLayer getRenderType(Identifier texture) {
-		return (RenderLayer)RENDER_TYPE_FUNCTION.apply(getEmissiveResource(texture));
+		return (RenderLayer)RENDER_TYPE_FUNCTION.apply(getTranslucencyResource(texture));
 	}
 }
