@@ -35,7 +35,7 @@ public class BipedEntityModelMixin {
 	public void poseArms(LivingEntity entity, CallbackInfo ci) {
 		if(entity.getMainHandStack().getItem() instanceof GunItem || entity.getOffHandStack().getItem() instanceof GunItem) {
 
-			this.rightArm.yaw = this.head.yaw;
+			this.rightArm.yaw = this.head.yaw;//this one seems to respond for a horizontal axis(is arm towards ceiling or floor)
 			//this.leftArm.yaw = (0.7F) + this.head.yaw;
 			this.rightArm.pitch = (float) (-Math.PI / 2) + this.head.pitch + (-0F);
 			//this.leftArm.pitch = -1.5F + head.pitch;
