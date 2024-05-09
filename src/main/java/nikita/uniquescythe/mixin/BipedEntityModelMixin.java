@@ -26,7 +26,7 @@ public class BipedEntityModelMixin {
 	public @Final ModelPart leftArm;
 
 	@Inject(
-		method = {"positionRightArm", "positionLeftArm"},
+		method = {"positionRightArm"},
 		at = @At(
 			value = "INVOKE",
 			target = "Lnet/minecraft/client/render/entity/model/CrossbowPosing;hold(Lnet/minecraft/client/model/ModelPart;Lnet/minecraft/client/model/ModelPart;Lnet/minecraft/client/model/ModelPart;Z)V",
@@ -34,13 +34,31 @@ public class BipedEntityModelMixin {
 		),
 		cancellable = true
 	)
-	public void poseArms(LivingEntity entity, CallbackInfo ci) {
-		if(entity.getMainHandStack().getItem() instanceof GunItem || entity.getOffHandStack().getItem() instanceof GunItem) {
-
-			ItemsPosing.pointGun(this.rightArm, this.leftArm, this.head, true);
+	public void poseArmsInRightHandledCases(LivingEntity entity, CallbackInfo ci) {
 
 
-			ci.cancel();
-		}
+		ItemsPosing.pointGun(this.rightArm, this.leftArm, this.head, entity, ci, true);
+
+
+
+	}
+
+
+	@Inject(
+		method = {"positionLeftArm"},
+		at = @At(
+			value = "INVOKE",
+			target = "Lnet/minecraft/client/render/entity/model/CrossbowPosing;hold(Lnet/minecraft/client/model/ModelPart;Lnet/minecraft/client/model/ModelPart;Lnet/minecraft/client/model/ModelPart;Z)V",
+			shift = At.Shift.AFTER
+		),
+		cancellable = true
+	)
+	public void poseArmsInLeftHandledCases(LivingEntity entity, CallbackInfo ci) {
+
+
+		ItemsPosing.pointGun(this.rightArm, this.leftArm, this.head, entity, ci, false);
+
+
+
 	}
 }
