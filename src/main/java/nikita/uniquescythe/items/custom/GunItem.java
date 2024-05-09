@@ -56,7 +56,7 @@ public abstract class GunItem extends Item {
 				bulletEntity.setItem(itemStack);
 				bulletEntity.setBulletProperties(user, user.getPitch(), user.getYaw(), 1.0F, 100F, 0F);
 				world.spawnEntity(bulletEntity);
-				user.getItemCooldownManager().set(this, 30);
+				user.getItemCooldownManager().set(this, 20);
 				SoundsManager.playPlayersSoundOnSpot(user, ModSounds.SCYTHE_HIT, 1f);
 				offhand_stack.decrement(1);
 
@@ -66,12 +66,13 @@ public abstract class GunItem extends Item {
 				bulletEntity.setItem(itemStack);
 				bulletEntity.setBulletProperties(user, user.getPitch(), user.getYaw(), 1.0F, 100F, 0F);
 				world.spawnEntity(bulletEntity);
-				user.getItemCooldownManager().set(this, 30);
+				user.getItemCooldownManager().set(this, 20);
 				SoundsManager.playPlayersSoundOnSpot(user, ModSounds.SCYTHE_HIT, 1f);
 				mainhand_stack.decrement(1);
 			}
 			else {
 				SoundsManager.playPlayersSoundOnSpot(user, ModSounds.SAD2_OGG, 1f);
+				user.getItemCooldownManager().set(this, 20);
 			}
 
 
@@ -86,7 +87,7 @@ public abstract class GunItem extends Item {
 		}
 
 
-		return TypedActionResult.success(itemStack, world.isClient());
+		return TypedActionResult.success(itemStack, false);
 
 
 	}
