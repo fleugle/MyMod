@@ -103,7 +103,7 @@
 			"rotation": {"angle": 0, "axis": "z", "origin": [10.67065, 12.14096, 8.5]},
 			"faces": {
 				"north": {"uv": [0, 0, 4, 1], "texture": "#0"},
-				"east": {"uv": [1.75, 7.75, 2.75, 8.75], "texture": "#0"},
+				"east": {"uv": [3, 7.5, 4, 8.5], "texture": "#0"},
 				"south": {"uv": [0, 1, 4, 2], "texture": "#0"},
 				"west": {"uv": [3, 7.5, 4, 8.5], "texture": "#0"},
 				"up": {"uv": [4, 3, 0, 2], "texture": "#0"},

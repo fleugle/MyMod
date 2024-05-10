@@ -183,7 +183,7 @@ public abstract class ItemRendererMixin {
 	}
 
 
-	@ModifyVariable(method = "renderItem", at = @At(value = "HEAD"), argsOnly = true)
+	/*@ModifyVariable(method = "renderItem", at = @At(value = "HEAD"), argsOnly = true)
 	public BakedModel useBigJusticeRevolverModel(BakedModel value, ItemStack stack, ModelTransformationMode renderMode, boolean leftHanded, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
 		if (((stack.isOf(ModItems.JUSTICE_REVOLVER) && renderMode == (ModelTransformationMode.THIRD_PERSON_RIGHT_HAND))
 			|| (stack.isOf(ModItems.JUSTICE_REVOLVER) && renderMode == (ModelTransformationMode.THIRD_PERSON_LEFT_HAND))
@@ -193,5 +193,5 @@ public abstract class ItemRendererMixin {
 			return ((ItemRendererAccessor) this).customModels$getModels().getModelManager().getModel(new ModelIdentifier(UniqueScythe.MOD_ID, "justice_revolver_big", "inventory"));
 		}
 		return value;
-	}
+	}*/
 }
