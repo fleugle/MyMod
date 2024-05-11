@@ -22,9 +22,9 @@ public class GuiltyLevelSystem {
 
 	public static void updateGuiltyLevelPerEachEntityKill(ServerPlayerEntity player, String playerName, int multiplier){
 
-		int timeOut = 0;
 
-		if (timeOut == 0){
+
+		if (getGuiltyLevel(player, playerName, "GeneralKillsGuiltyLevel") > 0){
 			//get values and write all of them as
 			int amount = (getGuiltyLevel(player, playerName, "GeneralKillsGuiltyLevel"))
 				+ (getGuiltyLevel(player, playerName, "PlayersKillGuiltyAddition") * multiplier)
@@ -42,10 +42,12 @@ public class GuiltyLevelSystem {
 			//applies new values
 			CommandsExecuter.executeCommand(player, "scoreboard players add "+ playerName +" PersistentGuiltyLevel "+ amount);
 
-			timeOut++;
 
-			if (timeOut == 100) timeOut = 0;
+
+
+
 		}
+
 
 
 	}
