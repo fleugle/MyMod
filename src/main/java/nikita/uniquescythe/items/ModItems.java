@@ -79,6 +79,7 @@ public class ModItems {
 
 	public static final Item SORRY_STONE = registerItem("sorry_stone", new SorryStoneItem(new Item.Settings().maxCount(16).fireproof().rarity(Rarity.RARE)));
 
+	public static final Item TEST_ANIMATED = registerItem("test_animated", new TestAnimatedItem(new Item.Settings()));
 
     //helper method to register items
     private static Item registerItem(String name, Item item){
