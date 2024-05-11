@@ -8,6 +8,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.Hand;
 
 import nikita.uniquescythe.items.custom.GunItem;
+import nikita.uniquescythe.items.custom.JusticeRevolverItem;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -23,7 +24,7 @@ public class PlayerEntityRendererMixin {
 	)
 	private static void cuddleBlahaj(AbstractClientPlayerEntity player, Hand hand, CallbackInfoReturnable<BipedEntityModel.ArmPose> ci) {
 		ItemStack lv = player.getStackInHand(hand);
-		if(lv.getItem() instanceof GunItem) {
+		if(lv.getItem() instanceof JusticeRevolverItem) {//don't forget to edit values here as well
 			ci.setReturnValue(ArmPose.CROSSBOW_HOLD);
 			ci.cancel();
 		}
