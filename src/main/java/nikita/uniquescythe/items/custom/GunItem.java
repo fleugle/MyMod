@@ -1,6 +1,7 @@
 package nikita.uniquescythe.items.custom;
 
 
+import mod.azure.azurelib.items.BaseGunItem;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
@@ -30,10 +31,13 @@ import java.util.Random;
 
 
 
-public abstract class GunItem extends Item {
+public abstract class GunItem extends BaseGunItem {
+	protected GunItem(Settings properties) {
+		super(properties);
+	}
 
 
-	public GunItem(Settings settings) {
+	/*public GunItem(Settings settings) {
 		super(settings);
 	}
 
@@ -90,7 +94,7 @@ public abstract class GunItem extends Item {
 		return TypedActionResult.success(itemStack, false);
 
 
-	}
+	}*/
 
 
 

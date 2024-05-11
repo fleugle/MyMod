@@ -4,7 +4,7 @@ package nikita.uniquescythe.items.custom;
 import mod.azure.azurelib.animatable.GeoItem;
 import mod.azure.azurelib.animatable.SingletonGeoAnimatable;
 import mod.azure.azurelib.animatable.client.RenderProvider;
-import mod.azure.azurelib.items.BaseGunItem;
+
 import net.minecraft.client.render.item.BuiltinModelItemRenderer;
 import nikita.uniquescythe.geo.renderers.JusticeRevolverRenderer;
 
@@ -12,7 +12,7 @@ import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 
-public class JusticeRevolverItem extends BaseGunItem {
+public class JusticeRevolverItem extends GunItem {
 	private final Supplier<Object> renderProvider = GeoItem.makeRenderer(this);
 
 	public JusticeRevolverItem(Settings properties) {

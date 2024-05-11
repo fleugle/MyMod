@@ -22,9 +22,12 @@ public class PlayerEntityRendererMixin {
 		at = @At("TAIL"),
 		cancellable = true
 	)
-	private static void cuddleBlahaj(AbstractClientPlayerEntity player, Hand hand, CallbackInfoReturnable<BipedEntityModel.ArmPose> ci) {
-		ItemStack lv = player.getStackInHand(hand);
-		if(lv.getItem() instanceof JusticeRevolverItem) {//don't forget to edit values here as well
+	private static void gunInArms(AbstractClientPlayerEntity player, Hand hand, CallbackInfoReturnable<BipedEntityModel.ArmPose> ci) {
+
+		ItemStack itemStack = player.getStackInHand(hand);
+
+
+		if(itemStack.getItem() instanceof GunItem) {//don't forget to edit values here as well
 			ci.setReturnValue(ArmPose.CROSSBOW_HOLD);
 			ci.cancel();
 		}
