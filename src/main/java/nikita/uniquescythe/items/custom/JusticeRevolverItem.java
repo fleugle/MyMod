@@ -6,6 +6,7 @@ import mod.azure.azurelib.animatable.SingletonGeoAnimatable;
 import mod.azure.azurelib.animatable.client.RenderProvider;
 
 import net.minecraft.client.render.item.BuiltinModelItemRenderer;
+import net.minecraft.item.ToolMaterial;
 import nikita.uniquescythe.geo.renderers.JusticeRevolverRenderer;
 
 import java.util.function.Consumer;
@@ -15,8 +16,8 @@ import java.util.function.Supplier;
 public class JusticeRevolverItem extends GunItem {
 	private final Supplier<Object> renderProvider = GeoItem.makeRenderer(this);
 
-	public JusticeRevolverItem(Settings properties) {
-		super(properties);
+	public JusticeRevolverItem(ToolMaterial toolMaterial, Settings properties) {
+		super(toolMaterial, 6,properties);
 		SingletonGeoAnimatable.registerSyncedAnimatable(this);
 	}
 
