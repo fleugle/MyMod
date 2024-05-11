@@ -9,7 +9,7 @@ import nikita.uniquescythe.items.custom.JusticeRevolverItem;
 public class JusticeRevolverModel extends GeoModel<JusticeRevolverItem> {
 	@Override
 	public Identifier getModelResource(JusticeRevolverItem windChargeProjectileEntity) {
-		return new Identifier(UniqueScythe.MOD_ID, "geo/item/justice_revolver.geo.json");
+		return new Identifier(UniqueScythe.MOD_ID, "geo/item/item/justice_revolver.geo.json");
 	}
 
 	@Override

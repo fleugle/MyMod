@@ -4,6 +4,8 @@ import net.fabricmc.api.Environment;
 import net.minecraft.client.model.ModelPart;
 import net.minecraft.entity.LivingEntity;
 import nikita.uniquescythe.items.custom.GunItem;
+import nikita.uniquescythe.items.custom.JusticeRevolverItem;
+import nikita.uniquescythe.items.custom.MaceItem;
 import org.quiltmc.loader.api.minecraft.ClientOnly;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
@@ -11,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class ItemsPosing {
 
 	public static void pointGun(ModelPart holdingArm, ModelPart otherArm, ModelPart head, LivingEntity entity, CallbackInfo callbackInfo, boolean rightArmed) {
-		if(entity.getMainHandStack().getItem() instanceof GunItem || entity.getOffHandStack().getItem() instanceof GunItem) {
+		if(entity.getMainHandStack().getItem() instanceof JusticeRevolverItem || entity.getOffHandStack().getItem() instanceof JusticeRevolverItem) {//change it in advance, as well as GunItem class
 			ModelPart modelPart = rightArmed ? holdingArm : otherArm;
 			ModelPart modelPart2 = rightArmed ? otherArm : holdingArm;
 
