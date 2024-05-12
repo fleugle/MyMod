@@ -13,14 +13,6 @@
 			"translation": [0, 2.5, 0.75],
 			"scale": [0.6, 0.6, 0.7]
 		},
-		"firstperson_righthand": {
-			"rotation": [-60.12, -85.99, -60.2],
-			"translation": [0.25, 0.75, -2.5]
-		},
-		"firstperson_lefthand": {
-			"rotation": [-60.12, -85.99, -60.2],
-			"translation": [0.25, 0.75, -2.5]
-		},
 		"gui": {
 			"scale": [1.15, 1.15, 1.1]
 		},
