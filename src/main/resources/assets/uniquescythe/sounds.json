@@ -59,6 +59,18 @@
       "uniquescythe:kris_get_the_banana"
     ]
   },
+  "justice_shoot": {
+    "subtitle": "sounds.uniquescythe.justice_shoot",
+    "sounds": [
+      "uniquescythe:justice_shoot"
+    ]
+  },
+  "empty_gun_shot": {
+    "subtitle": "sounds.uniquescythe.empty_gun_shot",
+    "sounds": [
+      "uniquescythe:empty_gun_shot"
+    ]
+  },
 
 
 

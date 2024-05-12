@@ -61,6 +61,7 @@ public abstract class GunItem extends Item implements GeoItem {
 	private final AnimatableInstanceCache cache = AzureLibUtil.createInstanceCache(this);
 	private BlockPos lightBlockPos = null;
 	public int maxAmmo;
+	public int shootingDelay;
 
 
 
@@ -79,11 +80,12 @@ public abstract class GunItem extends Item implements GeoItem {
 
 
 
-	public GunItem(ToolMaterial toolMaterial, int maxAmmo,Settings settings) {
+	public GunItem(ToolMaterial toolMaterial, int maxAmmo, int shootingDelay,Settings settings) {
 		super( settings );
 
 		this.toolMaterial = toolMaterial;
 		this.maxAmmo = maxAmmo;
+		this.shootingDelay = shootingDelay;
 
 	}
 
@@ -103,8 +105,8 @@ public abstract class GunItem extends Item implements GeoItem {
 				bulletEntity.setItem(itemStack);
 				bulletEntity.setBulletProperties(user, user.getPitch(), user.getYaw(), 1.0F, 100F, 0F);
 				world.spawnEntity(bulletEntity);
-				user.getItemCooldownManager().set(this, 20);
-				SoundsManager.playPlayersSoundOnSpot(user, ModSounds.SCYTHE_HIT, 1f);
+				user.getItemCooldownManager().set(this, this.shootingDelay);
+				SoundsManager.playPlayersSoundOnSpot(user, getShootingSound(), 1f);
 				offhand_stack.decrement(1);
 
 			}
@@ -113,13 +115,13 @@ public abstract class GunItem extends Item implements GeoItem {
 				bulletEntity.setItem(itemStack);
 				bulletEntity.setBulletProperties(user, user.getPitch(), user.getYaw(), 1.0F, 100F, 0F);
 				world.spawnEntity(bulletEntity);
-				user.getItemCooldownManager().set(this, 20);
-				SoundsManager.playPlayersSoundOnSpot(user, ModSounds.SCYTHE_HIT, 1f);
+				user.getItemCooldownManager().set(this, this.shootingDelay);
+				SoundsManager.playPlayersSoundOnSpot(user, getShootingSound(), 1f);
 				mainhand_stack.decrement(1);
 			}
 			else {
-				SoundsManager.playPlayersSoundOnSpot(user, ModSounds.SAD2_OGG, 1f);
-				user.getItemCooldownManager().set(this, 20);
+				SoundsManager.playPlayersSoundOnSpot(user, getEmptySound(), 1f);
+				user.getItemCooldownManager().set(this, this.shootingDelay);
 			}
 
 
@@ -129,7 +131,8 @@ public abstract class GunItem extends Item implements GeoItem {
 			itemStack.damage(1, user, e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
 		}
 
-		return TypedActionResult.consume(itemStack/*, false*/);
+
+		return TypedActionResult.pass(itemStack/*, false*/);
 
 	}
 
@@ -166,6 +169,15 @@ public abstract class GunItem extends Item implements GeoItem {
 	public Item getAmmoItem(){
 		return null;
 	}
+
+	public SoundEvent getShootingSound(){
+		return null;
+	}
+
+	public SoundEvent getEmptySound(){
+		return ModSounds.EMPTY_GUN_SHOT;
+	}
+
 
 	public int getCurrentAmmo(ItemStack itemStack){
 		int ammo = 0;

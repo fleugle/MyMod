@@ -28,6 +28,9 @@ public class ModSounds {
 
 	public static SoundEvent KRIS_GET_THE_BANANA = registerSound("kris_get_the_banana");
 
+	public static SoundEvent JUSTICE_SHOOT = registerSound("justice_shoot");
+
+	public static SoundEvent EMPTY_GUN_SHOT = registerSound("empty_gun_shot");
 
 	//armor sounds
 	public static SoundEvent INNOCENCE_APPROVED = registerSound("innc_apr");
