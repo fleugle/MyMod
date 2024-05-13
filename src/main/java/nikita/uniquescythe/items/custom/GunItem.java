@@ -22,6 +22,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.item.ToolMaterial;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.registry.tag.FluidTags;
 import net.minecraft.sound.SoundCategory;
@@ -62,6 +63,8 @@ public abstract class GunItem extends Item implements GeoItem {
 	private BlockPos lightBlockPos = null;
 	public int maxAmmo;
 	public int shootingDelay;
+
+
 
 
 
@@ -167,6 +170,18 @@ public abstract class GunItem extends Item implements GeoItem {
 		tooltip.add(Text.translatable("Ammo: " + getCurrentAmmo(stack) + " / " + this.maxAmmo));
 	}
 
+	private int getAmmoAmount(ItemStack stack) {
+
+		NbtCompound tag = stack.getOrCreateNbt();
+		return tag.contains("ammoAmount") ? tag.getInt("ammoAmount") : 0;
+	}
+
+	private void setAmmoAmount(ItemStack stack, int ammoAmount) {
+
+		NbtCompound tag = stack.getOrCreateNbt();
+		tag.putInt("ammoAmount", ammoAmount);
+	}
+
 	public Item getAmmoItem(){
 		return null;
 	}
@@ -181,7 +196,7 @@ public abstract class GunItem extends Item implements GeoItem {
 
 
 	public int getCurrentAmmo(ItemStack itemStack){
-		int ammo = 0;
+		int ammo = getAmmoAmount(itemStack);
 		return ammo;
 	}
 
