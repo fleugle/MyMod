@@ -64,7 +64,7 @@ public class ModItems {
 
 	public static final Item SORRY_STONE = registerItem("sorry_stone", new SorryStoneItem(new Item.Settings().maxCount(16).fireproof().rarity(Rarity.RARE)));
 
-	public static final Item TEST_ANIMATED = registerItem("test_animated", new TestAnimatedItem(new Item.Settings()));
+
 	// *end of the registering items section*
 
 
@@ -90,6 +90,7 @@ public class ModItems {
 			entries.addBefore(Items.FIRE_CHARGE, CHAOS_WILL);
 			entries.addAfter(Items.BLAZE_ROD, BREEZE_ROD);
 			entries.addBefore(Items.DRAGON_BREATH, AIR_BOTTLE);
+			entries.addBefore(Items.FIRE_CHARGE, JUSTICE_FRAGMENT);
 		});
 
 
@@ -118,7 +119,9 @@ public class ModItems {
 
 			//ammo
 			entries.addItem(BULLET);
-			entries.addItem(JUSTICE_FRAGMENT);
+			entries.addAfter(BULLET, JUSTICE_BULLET);
+
+
 		});//calling for the private method in order to  add item to the ingridient tab
     }
 }

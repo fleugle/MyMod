@@ -69,11 +69,12 @@ public abstract class GunItem extends Item implements GeoItem {
 	public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
 		controllers.add(new AnimationController[]{(new AnimationController(this, "shoot_controller", (event) -> {
 			return PlayState.CONTINUE;
-		})).triggerableAnim("firing", RawAnimation.begin().then("firing", Animation.LoopType.PLAY_ONCE)).triggerableAnim("reload", RawAnimation.begin().then("reload", Animation.LoopType.PLAY_ONCE))});
+		}))
+			.triggerableAnim("shoot", RawAnimation.begin().then("shoot", Animation.LoopType.PLAY_ONCE))
+			.triggerableAnim("reload", RawAnimation.begin().then("reload", Animation.LoopType.HOLD_ON_LAST_FRAME))
+			.triggerableAnim("idle", RawAnimation.begin().then("idle", Animation.LoopType.LOOP))});
 	}
-
-
-
+	//base model of animations nomenclature is present above. If I need a different on - override in an item class
 
 
 
@@ -132,7 +133,7 @@ public abstract class GunItem extends Item implements GeoItem {
 		}
 
 
-		return TypedActionResult.pass(itemStack/*, false*/);
+		return TypedActionResult.pass(itemStack);
 
 	}
 
