@@ -16,6 +16,7 @@ import net.minecraft.client.resource.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.ProjectileUtil;
 import net.minecraft.item.Item;
@@ -25,6 +26,7 @@ import net.minecraft.item.ToolMaterial;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.registry.tag.FluidTags;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.stat.Stats;
@@ -45,6 +47,7 @@ import nikita.uniquescythe.items.ModItems;
 import net.minecraft.util.math.MathHelper;
 import nikita.uniquescythe.mixin.LivingEntityMixin;
 import nikita.uniquescythe.sounds.ModSounds;
+import nikita.uniquescythe.utility.GuiltyLevelSystem;
 import nikita.uniquescythe.utility.SoundsManager;
 
 import java.util.Iterator;
@@ -63,6 +66,9 @@ public abstract class GunItem extends Item implements GeoItem {
 	private BlockPos lightBlockPos = null;
 	public int maxAmmo;
 	public int shootingDelay;
+	public int reloadTime;
+	public double maxShootingRange;
+	public String notificationAboutAmmo;
 
 
 
@@ -74,6 +80,7 @@ public abstract class GunItem extends Item implements GeoItem {
 			return PlayState.CONTINUE;
 		}))
 			.triggerableAnim("shoot", RawAnimation.begin().then("shoot", Animation.LoopType.PLAY_ONCE))
+			.triggerableAnim("empty_shoot", RawAnimation.begin().then("empty_shoot", Animation.LoopType.PLAY_ONCE))
 			.triggerableAnim("reload", RawAnimation.begin().then("reload", Animation.LoopType.HOLD_ON_LAST_FRAME))
 			.triggerableAnim("idle", RawAnimation.begin().then("idle", Animation.LoopType.LOOP))});
 	}
@@ -84,12 +91,22 @@ public abstract class GunItem extends Item implements GeoItem {
 
 
 
-	public GunItem(ToolMaterial toolMaterial, int maxAmmo, int shootingDelay,Settings settings) {
+	public GunItem(
+		ToolMaterial toolMaterial,
+		int maxAmmo,
+		int shootingDelay,
+		int reloadTime,
+		double maxShootingRange,
+		String notificationAboutAmmo,
+		Settings settings) {
 		super( settings );
 
 		this.toolMaterial = toolMaterial;
 		this.maxAmmo = maxAmmo;
 		this.shootingDelay = shootingDelay;
+		this.reloadTime = reloadTime;
+		this.maxShootingRange = maxShootingRange;
+		this.notificationAboutAmmo = notificationAboutAmmo;
 
 	}
 
@@ -140,8 +157,101 @@ public abstract class GunItem extends Item implements GeoItem {
 
 	}
 
+	public void hitScanShoot(World world, PlayerEntity shooter, ItemStack stackWithGun, double shootingRange){
 
-	public static EntityHitResult hitscanTrace(PlayerEntity player, double range, float ticks) {
+
+		if (!world.isClient) {
+
+			if (hasEnoughAmmoInWeapon(stackWithGun)){
+				EntityHitResult hitResult = hitscanTrace(shooter, shootingRange, 1.0F); // Perform hitscan with a range of 50 blocks
+
+				if (hitResult != null) {
+					Entity entity = hitResult.getEntity();
+					float damageAmount;
+
+					int shooterGuiltyLevel = GuiltyLevelSystem.getGuiltyLevel(
+						(ServerPlayerEntity) shooter,
+						shooter.getDisplayName().getString(),
+						"PersistentGuiltyLevel"
+					);
+
+					if (entity instanceof PlayerEntity) {
+						int targetGuiltyLevel = GuiltyLevelSystem.getGuiltyLevel(
+							(ServerPlayerEntity) entity,
+							entity.getDisplayName().getString(),
+							"PersistentGuiltyLevel"
+						);
+
+
+
+						damageAmount = (float) targetGuiltyLevel - shooterGuiltyLevel;
+					} else if (entity instanceof HostileEntity) {
+
+						damageAmount = 50f - shooterGuiltyLevel;
+
+					} else {
+
+						damageAmount = 8f - shooterGuiltyLevel;
+					}
+
+
+
+					if (damageAmount < 0) {
+						damageAmount = 0 - damageAmount;
+						shooter.damage(shooter.getDamageSources().generic(), damageAmount);
+					}
+					else entity.damage(entity.getDamageSources().generic(), damageAmount);
+
+				}
+				SoundsManager.playPlayersSoundOnSpot(shooter, getShootingSound(), 1f);
+			}
+			else {
+				notifyShooterAboutAmmo(shooter);
+				SoundsManager.playPlayersSoundOnSpot(shooter, getEmptySound(), 1f);
+			}
+
+
+
+
+			shooter.getItemCooldownManager().set(this, this.shootingDelay); // Set cooldown
+		}
+
+		shooter.incrementStat(Stats.USED.getOrCreateStat(this));
+		if (!shooter.getAbilities().creativeMode) {
+			stackWithGun.damage(1, shooter, e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
+		}
+
+	}
+
+	public void tryToReloadGun(World world, PlayerEntity shooter, ItemStack stackWithGun, ItemStack mainhand_stack, ItemStack offhand_stack){
+
+		int ammoAmount = getAmmoAmount(stackWithGun);
+
+		if(!world.isClient){
+			if (!hasFullAmmoInWeapon(stackWithGun)){
+
+				int howMuchAmmoItNeeds = maxAmmo - ammoAmount;
+				if(mainhand_stack.getItem() == getAmmoItem()){
+					int howMuchAmmoIsPresent = mainhand_stack.getCount();
+					consumeNeededAmountOfAmmoAndPutItInTheGun(stackWithGun, mainhand_stack, howMuchAmmoItNeeds, howMuchAmmoIsPresent);
+
+					shooter.getItemCooldownManager().set(this, this.reloadTime);
+				} else if (offhand_stack.getItem() == getAmmoItem()) {
+					int howMuchAmmoIsPresent = offhand_stack.getCount();
+					consumeNeededAmountOfAmmoAndPutItInTheGun(stackWithGun, offhand_stack, howMuchAmmoItNeeds, howMuchAmmoIsPresent);
+
+					shooter.getItemCooldownManager().set(this, this.reloadTime);
+				}
+				else {
+					hitScanShoot(world, shooter, stackWithGun, this.maxShootingRange);
+				}
+
+			}
+		}
+
+	}
+
+	private static EntityHitResult hitscanTrace(PlayerEntity player, double range, float ticks) {
 		Vec3d look = player.getRotationVec(ticks);
 		Vec3d start = player.getCameraPosVec(ticks);
 		Vec3d end = new Vec3d(player.getX() + look.x * range, player.getEyeY() + look.y * range, player.getZ() + look.z * range);
@@ -167,7 +277,7 @@ public abstract class GunItem extends Item implements GeoItem {
 	@Override
 	public void appendTooltip(ItemStack stack, World world, List<Text> tooltip, TooltipContext context) {
 		super.appendTooltip(stack, world, tooltip, context);
-		tooltip.add(Text.translatable("Ammo: " + getCurrentAmmo(stack) + " / " + this.maxAmmo));
+		tooltip.add(Text.translatable("Ammo: " + getAmmoAmount(stack) + " / " + this.maxAmmo));
 	}
 
 	private int getAmmoAmount(ItemStack stack) {
@@ -194,10 +304,30 @@ public abstract class GunItem extends Item implements GeoItem {
 		return ModSounds.EMPTY_GUN_SHOT;
 	}
 
+	private boolean hasEnoughAmmoInWeapon(ItemStack itemStack){
 
-	public int getCurrentAmmo(ItemStack itemStack){
-		int ammo = getAmmoAmount(itemStack);
-		return ammo;
+		if (getAmmoAmount(itemStack) > 0) return true;
+		else return false;
 	}
 
+	private void notifyShooterAboutAmmo(PlayerEntity shooter){
+		shooter.sendMessage(Text.of(notificationAboutAmmo), true);
+	}
+
+	private boolean hasFullAmmoInWeapon(ItemStack itemStack){
+
+		if (getAmmoAmount(itemStack) == this.maxAmmo) return true;
+		else return false;
+	}
+
+	private void consumeNeededAmountOfAmmoAndPutItInTheGun(ItemStack stackWithGunItem,ItemStack stackWithAmmo, int neededAmount, int amountPresent){
+		if (amountPresent <= neededAmount) {
+			stackWithAmmo.decrement(amountPresent);
+			setAmmoAmount(stackWithGunItem, getAmmoAmount(stackWithGunItem) + amountPresent);
+		}else {
+			stackWithAmmo.decrement(this.maxAmmo);
+			setAmmoAmount(stackWithGunItem, getAmmoAmount(stackWithGunItem) + neededAmount);
+		}
+
+	}
 }

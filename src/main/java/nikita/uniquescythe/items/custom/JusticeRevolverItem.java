@@ -26,7 +26,14 @@ public class JusticeRevolverItem extends GunItem {
 
 
 	public JusticeRevolverItem(ToolMaterial toolMaterial, Settings properties) {
-		super(toolMaterial, 5,5,properties);
+		super(
+			toolMaterial,
+			6,
+			5,
+			60,
+			50D,
+			"§6Hey pardner, you'll need some bullets for that!",
+			properties);
 		SingletonGeoAnimatable.registerSyncedAnimatable(this);
 	}
 

@@ -26,13 +26,10 @@ import nikita.uniquescythe.sounds.ModSounds;
 
 public class MaceItem
 	extends Item {
-	private static final int ATTACK_DAMAGE_MODIFIER_VALUE = 6;
-	private static final float ATTACK_SPEED_MODIFIER_VALUE = -2.4f;
-	public static final float MINING_SPEED_MULTIPLIER = 1.5f;
 	private final ToolMaterial material;
 
 	private final float attackDamage;
-	private final Multimap<EntityAttribute, EntityAttributeModifier> attributeModifiers;
+
 
 	public MaceItem(ToolMaterial material, int attackDamage, float attackSpeed, Settings settings) {
 		super(settings.maxDamageIfAbsent(material.getDurability()));
@@ -47,7 +44,6 @@ public class MaceItem
 			EntityAttributes.GENERIC_ATTACK_SPEED,
 			new EntityAttributeModifier(ATTACK_SPEED_MODIFIER_ID, "Weapon modifier", (double)attackSpeed, EntityAttributeModifier.Operation.ADDITION)
 		);
-		this.attributeModifiers = builder.build();
 	}
 
 
@@ -111,65 +107,9 @@ public class MaceItem
 				ServerPlayerEntity serverPlayerEntity = (ServerPlayerEntity)attacker;
 				float soundVol = (attacker.fallDistance) / 10;
 
-
-
 				if (serverPlayerEntity.fallDistance > 1.5f) {
 
-
 					applyAdditionalDamage(stack, target, attacker);//func to apply additional dmg
-
-
-
-
-
-					/*
-					//enchantment func
-					World world = attacker.getWorld();
-					if (world instanceof ServerWorld) {
-
-						// Spawn smoke particles in a radius of 2 blocks
-						serverWorld.spawnParticles(ParticleTypes.EXPLOSION,
-							attacker.getPos().getX()  + 0.5,
-							attacker.getPos().getY()  + 0.5,
-							attacker.getPos().getZ()  + 0.5,
-							30, soundVol*2, soundVol*2, soundVol*2, 0.1);
-
-						serverWorld.spawnParticles(ParticleTypes.SMOKE,
-							attacker.getPos().getX()  + 0.5,
-							attacker.getPos().getY()  + 0.5,
-							attacker.getPos().getZ()  + 0.5,
-							30, soundVol*2, soundVol*2, soundVol*2, 0.1);
-					}
-
-
-
-					attacker.getWorld().sendEntityStatus(attacker, (byte) 3);
-					WindExplosion explosion = new WindExplosion(attacker.getWorld(), null, attacker.getPos().getX(), attacker.getPos().getY() - 1, attacker.getPos().getZ(), soundVol);
-					explosion.collectBlocksAndDamageEntities();
-
-					DamageSource damageSource = attacker.getRecentDamageSource();
-					if (soundVol > 2){
-						soundVol = 2;
-					}
-
-					attacker.setVelocity(0, 0f,0);//reset velocity
-					attacker.addVelocity(0, soundVol + 0.6f ,0);//boost to the sky
-					attacker.damage(damageSource, 0.00001f);
-
-					//sound on block collision
-					attacker.getWorld().playSound(
-						null,
-						attacker.getPos().getX(),
-						attacker.getPos().getY(),
-						attacker.getPos().getZ(),
-						ModSounds.WIND_CHARGE_BURST,
-						SoundCategory.NEUTRAL,
-						1F,
-						0.4F / (attacker.getWorld().getRandom().nextFloat() * 0.4F + 0.8F)
-					);
-
-
-					 */
 
 				}
 
