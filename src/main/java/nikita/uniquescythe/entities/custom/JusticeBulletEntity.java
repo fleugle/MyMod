@@ -172,7 +172,7 @@ public class JusticeBulletEntity extends ThrownItemEntity implements GeoEntity {
 								shooter.getX()  + 0.5,
 								shooter.getY()  + 0.5,
 								shooter.getZ()  + 0.5,
-								3, 1, 1, 1, 1);
+								5, 1, 1, 1, 1);
 						}
 					}
 				}
