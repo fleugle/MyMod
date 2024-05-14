@@ -15,7 +15,7 @@ import net.minecraft.sound.SoundCategory;
 import net.minecraft.world.World;
 import nikita.uniquescythe.items.custom.MaceItem;
 import nikita.uniquescythe.particles.ModParticleTypes;
-import nikita.uniquescythe.sounds.ModSounds;
+import nikita.uniquescythe.sounds.ModSoundEvents;
 
 public class WindBurstEnchantment extends Enchantment {
 
@@ -96,7 +96,7 @@ public class WindBurstEnchantment extends Enchantment {
 				attacker.getPos().getX(),
 				attacker.getPos().getY(),
 				attacker.getPos().getZ(),
-				ModSounds.WIND_CHARGE_BURST,
+				ModSoundEvents.WIND_CHARGE_BURST,
 				SoundCategory.NEUTRAL,
 				1F,
 				0.4F / (attacker.getWorld().getRandom().nextFloat() * 0.4F + 0.8F)

@@ -23,6 +23,7 @@ public class UniqueScytheClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
 
+		//build-in texture packs
 		QuiltLoader.getModContainer(UniqueScythe.MOD_ID)
 			.ifPresent(modContainer -> ResourceLoader
 				.registerBuiltinResourcePack(UniqueScythe.id("icons"),
@@ -34,7 +35,6 @@ public class UniqueScytheClient implements ClientModInitializer {
 					modContainer, ResourcePackActivationType.ALWAYS_ENABLED, Text.of("§bSMP Textures DEFAULT")));
 
 
-		//load in backwards order - from bot to top = from top to bot
 
 
 
@@ -50,6 +50,8 @@ public class UniqueScytheClient implements ClientModInitializer {
 		ParticleFactoryRegistry.getInstance().register(ModParticleTypes.VOID_CRIT, VoidDamageParticle.Factory ::new);
 
 		ParticleFactoryRegistry.getInstance().register(ModParticleTypes.FROSTY_CRIT, FrostyDamageParticle.Factory ::new);
+
+		ParticleFactoryRegistry.getInstance().register(ModParticleTypes.JUSTICE_HIT, JusticeHitParticle.Factory ::new);
 
 
 

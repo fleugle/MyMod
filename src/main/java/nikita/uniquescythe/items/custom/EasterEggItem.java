@@ -7,7 +7,7 @@ import net.minecraft.sound.SoundCategory;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
-import nikita.uniquescythe.sounds.ModSounds;
+import nikita.uniquescythe.sounds.ModSoundEvents;
 import nikita.uniquescythe.utility.GetSuitableRandomNumber;
 import nikita.uniquescythe.utility.SoundsManager;
 import org.jetbrains.annotations.NotNull;
@@ -32,24 +32,24 @@ public class EasterEggItem extends Item {
 
 			if (soundPlayed == 0) {
 				stopFunnySounds();
-				SoundsManager.playNeutralSoundOnSpot(user, ModSounds.MUFLON,5f);
+				SoundsManager.playNeutralSoundOnSpot(user, ModSoundEvents.MUFLON,5f);
 				user.getItemCooldownManager().set(this, 150); // a way to make a cooldown for an item
 			} else if (soundPlayed == 1) {
 				stopFunnySounds();
-				SoundsManager.playNeutralSoundOnSpot(user, ModSounds.EASTER_EGG,5f);
+				SoundsManager.playNeutralSoundOnSpot(user, ModSoundEvents.EASTER_EGG,5f);
 				user.getItemCooldownManager().set(this, 100); // a way to make a cooldown for an item
 			} else if (soundPlayed == 2) {
 				stopFunnySounds();
-				SoundsManager.playNeutralSoundOnSpot(user, ModSounds.SAD2_OGG,5f);
+				SoundsManager.playNeutralSoundOnSpot(user, ModSoundEvents.SAD2_OGG,5f);
 				user.getItemCooldownManager().set(this, 30);
 			} else if (soundPlayed == 3) {
 				stopFunnySounds();
-				SoundsManager.playNeutralSoundOnSpot(user, ModSounds.KRIS_GET_THE_BANANA,5f);
+				SoundsManager.playNeutralSoundOnSpot(user, ModSoundEvents.KRIS_GET_THE_BANANA,5f);
 				user.getItemCooldownManager().set(this, 70);
 			}
 			else {
 				stopFunnySounds();
-				SoundsManager.playNeutralSoundOnSpot(user, ModSounds.EASTER_EGG,5f);
+				SoundsManager.playNeutralSoundOnSpot(user, ModSoundEvents.EASTER_EGG,5f);
 				user.getItemCooldownManager().set(this, 30);
 			}
 
@@ -60,10 +60,10 @@ public class EasterEggItem extends Item {
 
 
 	private static void stopFunnySounds(){
-		SoundsManager.stopSound(ModSounds.KRIS_GET_THE_BANANA, SoundCategory.NEUTRAL);
-		SoundsManager.stopSound(ModSounds.MUFLON, SoundCategory.NEUTRAL);
-		SoundsManager.stopSound(ModSounds.SAD2_OGG, SoundCategory.NEUTRAL);
-		SoundsManager.stopSound(ModSounds.EASTER_EGG, SoundCategory.NEUTRAL);
+		SoundsManager.stopSound(ModSoundEvents.KRIS_GET_THE_BANANA, SoundCategory.NEUTRAL);
+		SoundsManager.stopSound(ModSoundEvents.MUFLON, SoundCategory.NEUTRAL);
+		SoundsManager.stopSound(ModSoundEvents.SAD2_OGG, SoundCategory.NEUTRAL);
+		SoundsManager.stopSound(ModSoundEvents.EASTER_EGG, SoundCategory.NEUTRAL);
 	}
 
 	public void setSuitableRandomNumber(GetSuitableRandomNumber suitableRandomNumber) {

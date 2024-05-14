@@ -10,7 +10,7 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 import nikita.uniquescythe.entities.custom.WindChargeProjectileEntity;
-import nikita.uniquescythe.sounds.ModSounds;
+import nikita.uniquescythe.sounds.ModSoundEvents;
 
 public class WindChargeItem extends Item {
 	public WindChargeItem(Settings settings) {
@@ -28,7 +28,7 @@ public class WindChargeItem extends Item {
 			user.getX(),
 			user.getY(),
 			user.getZ(),
-			ModSounds.WIND_CHARGE_THROW,
+			ModSoundEvents.WIND_CHARGE_THROW,
 			SoundCategory.NEUTRAL,
 			2F,
 			0.4F / (world.getRandom().nextFloat() * 0.4F + 0.8F)

@@ -8,7 +8,7 @@ import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import nikita.uniquescythe.UniqueScythe;
 import nikita.uniquescythe.items.ModItems;
-import nikita.uniquescythe.sounds.ModSounds;
+import nikita.uniquescythe.sounds.ModSoundEvents;
 
 import java.util.function.Supplier;
 
@@ -32,7 +32,7 @@ public enum ModArmorMaterials implements  ArmorMaterial {
 		0,
 		new int[]{0,0,0,0},
 		0,
-		ModSounds.INNOCENCE_APPROVED,
+		ModSoundEvents.INNOCENCE_APPROVED,
 		0f,
 		1000f,
 		Ingredient::empty

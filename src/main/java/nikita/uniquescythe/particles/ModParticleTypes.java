@@ -1,13 +1,11 @@
 package nikita.uniquescythe.particles;
 
-import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.particle.v1.FabricParticleTypes;
 import net.minecraft.particle.DefaultParticleType;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import nikita.uniquescythe.UniqueScythe;
-import nikita.uniquescythe.particles.custom.WindExplosionParticle;
 
 
 public class ModParticleTypes {
@@ -15,10 +13,9 @@ public class ModParticleTypes {
 	public static final DefaultParticleType WIND_EXPLOSION = FabricParticleTypes.simple();//simple particle for wind explosion I guess
 	public static final DefaultParticleType FROSTY_SWEEP_ATTACK = FabricParticleTypes.simple();
 	public static final DefaultParticleType VOID_SWEEP_ATTACK = FabricParticleTypes.simple();
-
 	public static final DefaultParticleType VOID_CRIT = FabricParticleTypes.simple();
-
 	public static final DefaultParticleType FROSTY_CRIT = FabricParticleTypes.simple();
+	public static final DefaultParticleType JUSTICE_HIT = FabricParticleTypes.simple();
 
 	static DefaultParticleType modParticleTypesRegistry(String name, DefaultParticleType particleType){
 		return Registry.register(Registries.PARTICLE_TYPE, new Identifier(UniqueScythe.MOD_ID, name), particleType);
@@ -36,6 +33,7 @@ public class ModParticleTypes {
 		modParticleTypesRegistry("void_sweep_attack", VOID_SWEEP_ATTACK);
 		modParticleTypesRegistry("void_crit", VOID_CRIT);
 		modParticleTypesRegistry("frosty_crit", FROSTY_CRIT);
+		modParticleTypesRegistry("justice_hit", JUSTICE_HIT);
 
 	}
 }

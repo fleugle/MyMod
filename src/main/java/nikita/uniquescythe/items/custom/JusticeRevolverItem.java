@@ -10,14 +10,14 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ToolMaterial;
+import net.minecraft.particle.ParticleTypes;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvent;
-import net.minecraft.util.Hand;
-import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 import nikita.uniquescythe.entities.custom.JusticeBulletEntity;
 import nikita.uniquescythe.geo.renderers.JusticeRevolverRenderer;
 import nikita.uniquescythe.items.ModItems;
-import nikita.uniquescythe.sounds.ModSounds;
+import nikita.uniquescythe.sounds.ModSoundEvents;
 
 import java.util.function.Consumer;
 import java.util.function.Supplier;
@@ -46,14 +46,31 @@ public class JusticeRevolverItem extends GunItem {
 
 	@Override
 	public SoundEvent getShootingSound(){
-		return ModSounds.JUSTICE_SHOOT;
+		return ModSoundEvents.JUSTICE_SHOOT;
 	}
 
 	@Override
 	public SoundEvent getReloadSound(){
-		return ModSounds.REVOLVER_RELOAD;
+		return ModSoundEvents.REVOLVER_RELOAD;
 	}
 
+	@Override
+	public SoundEvent getEmptySound(){
+		return ModSoundEvents.EMPTY_GUN_SHOT;
+	}
+
+	@Override
+	public void createFiringParticles(World world, PlayerEntity shooter){
+		if (world instanceof ServerWorld serverWorld) {
+
+			// Spawn smoke particles in a radius of 2 blocks
+			serverWorld.spawnParticles(ParticleTypes.SMOKE,
+				shooter.getX()  + 0.5,
+				shooter.getY()  + 0.5,
+				shooter.getZ()  + 0.5,
+				30, 1, 1, 1, 1);
+		}
+	}
 
 	@Override
 	public void createProjectile(World world, PlayerEntity shooter, ItemStack stackWithGun){

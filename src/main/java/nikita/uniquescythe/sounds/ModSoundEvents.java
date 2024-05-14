@@ -7,7 +7,7 @@ import net.minecraft.util.Identifier;
 import nikita.uniquescythe.UniqueScythe;
 
 
-public class ModSounds {
+public class ModSoundEvents {
     public static SoundEvent SCYTHE_CHARGED = registerSound("sc_ch");
     public static SoundEvent SCYTHE_HIT = registerSound("sc_ht");
 
@@ -62,7 +62,7 @@ public class ModSounds {
     }
 
     // called in the ModInitializer implementing class
-    // to initialize the ModSounds class
+    // to initialize the ModSoundEvents class
     public static void initializeSounds() {
         UniqueScythe.LOGGER.info("Registering " + UniqueScythe.MOD_ID + " Sounds");
     }

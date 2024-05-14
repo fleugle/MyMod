@@ -24,12 +24,11 @@ import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+import nikita.uniquescythe.sounds.ModSoundEvents;
 import nikita.uniquescythe.utility.WindExplosion;
 import nikita.uniquescythe.entities.ModEntities;
 import nikita.uniquescythe.items.ModItems;
 import nikita.uniquescythe.particles.ModParticleTypes;
-import nikita.uniquescythe.sounds.ModSounds;
-
 
 
 public class WindChargeProjectileEntity extends ThrownItemEntity implements GeoEntity {
@@ -181,7 +180,7 @@ public class WindChargeProjectileEntity extends ThrownItemEntity implements GeoE
 					getPos().getX(),
 					getPos().getY(),
 					getPos().getZ(),
-					ModSounds.WIND_CHARGE_BURST,
+					ModSoundEvents.WIND_CHARGE_BURST,
 					SoundCategory.NEUTRAL,
 					1F,
 					0.4F / (getWorld().getRandom().nextFloat() * 0.4F + 0.8F)

@@ -9,7 +9,7 @@ import net.minecraft.stat.Stats;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
-import nikita.uniquescythe.sounds.ModSounds;
+import nikita.uniquescythe.sounds.ModSoundEvents;
 
 public class LightningChargeItem extends Item {
 	public LightningChargeItem(Settings settings) {
@@ -26,7 +26,7 @@ public class LightningChargeItem extends Item {
 			user.getX(),
 			user.getY(),
 			user.getZ(),
-			ModSounds.LIGHTNING_CHARGE_THROW,
+			ModSoundEvents.LIGHTNING_CHARGE_THROW,
 			SoundCategory.NEUTRAL,
 			2F,
 			0.4F / (world.getRandom().nextFloat() * 0.4F + 0.8F)

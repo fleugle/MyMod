@@ -16,7 +16,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.stat.Stats;
@@ -25,9 +25,8 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import nikita.uniquescythe.entities.custom.JusticeBulletEntity;
-import nikita.uniquescythe.sounds.ModSounds;
-import nikita.uniquescythe.utility.GuiltyLevelSystem;
+import nikita.uniquescythe.particles.ModParticleTypes;
+import nikita.uniquescythe.sounds.ModSoundEvents;
 import nikita.uniquescythe.utility.SoundsManager;
 
 import java.util.List;
@@ -116,6 +115,8 @@ public abstract class GunItem extends Item implements GeoItem {
 				createProjectile(world, shooter, stackWithGun);
 				shooter.getItemCooldownManager().set(this, this.shootingDelay);
 
+				createFiringParticles(world, shooter);
+
 				if (!shooter.getAbilities().creativeMode) {
 					setAmmoAmount(stackWithGun, getAmmoAmount(stackWithGun) - 1);
 				}
@@ -152,12 +153,14 @@ public abstract class GunItem extends Item implements GeoItem {
 
 				int howMuchAmmoItNeeds = maxAmmo - ammoAmount;
 				if(mainhand_stack.getItem() == getAmmoItem()){
+
 					int howMuchAmmoIsPresent = mainhand_stack.getCount();
 					consumeNeededAmountOfAmmoAndPutItInTheGun(stackWithGun, mainhand_stack, howMuchAmmoItNeeds, howMuchAmmoIsPresent);
 					SoundsManager.playPlayersSoundOnSpot(shooter, getReloadSound(), 1f);
 					triggerAnim(shooter, GeoItem.getOrAssignId(stackWithGun, (ServerWorld) world), "shooting_controller", "reload");
 					shooter.getItemCooldownManager().set(this, this.reloadTime);
 				} else if (offhand_stack.getItem() == getAmmoItem()) {
+
 					int howMuchAmmoIsPresent = offhand_stack.getCount();
 					consumeNeededAmountOfAmmoAndPutItInTheGun(stackWithGun, offhand_stack, howMuchAmmoItNeeds, howMuchAmmoIsPresent);
 					SoundsManager.playPlayersSoundOnSpot(shooter, getReloadSound(), 1f);
@@ -193,6 +196,7 @@ public abstract class GunItem extends Item implements GeoItem {
 		tag.putInt("ammoAmount", ammoAmount);
 	}
 
+
 	public Item getAmmoItem(){
 		return null;
 	}
@@ -206,7 +210,7 @@ public abstract class GunItem extends Item implements GeoItem {
 	}
 
 	public SoundEvent getEmptySound(){
-		return ModSounds.EMPTY_GUN_SHOT;
+		return null;
 	}
 
 	private boolean hasEnoughAmmoInWeapon(ItemStack itemStack){
@@ -216,6 +220,10 @@ public abstract class GunItem extends Item implements GeoItem {
 	}
 
 	public void createProjectile(World world, PlayerEntity shooter, ItemStack stackWithGun){
+
+	}
+
+	public void createFiringParticles(World world, PlayerEntity shooter){
 
 	}
 

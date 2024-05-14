@@ -16,6 +16,7 @@ import net.minecraft.item.Item;
 import net.minecraft.network.listener.ClientPlayPacketListener;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.s2c.play.EntitySpawnS2CPacket;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.hit.EntityHitResult;
@@ -47,18 +48,6 @@ public class JusticeBulletEntity extends ThrownItemEntity implements GeoEntity {
 	public AnimatableInstanceCache getAnimatableInstanceCache() {
 		return cache;
 	}
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -174,27 +163,39 @@ public class JusticeBulletEntity extends ThrownItemEntity implements GeoEntity {
 				if (damageAmount < 0) {
 					damageAmount = 0 - damageAmount;
 					shooter.damage(shooter.getDamageSources().magic(), damageAmount);
+					if(!getWorld().isClient()){
+						World world = this.getWorld();
+						if (world instanceof ServerWorld serverWorld) {
+
+							// Spawn smoke particles in a radius of 2 blocks
+							serverWorld.spawnParticles(ModParticleTypes.JUSTICE_HIT,
+								shooter.getX()  + 0.5,
+								shooter.getY()  + 0.5,
+								shooter.getZ()  + 0.5,
+								3, 1, 1, 1, 1);
+						}
+					}
 				}
-				else entity.damage(this.getDamageSources().thrown(this, this.getOwner()), damageAmount);
+				else {
+					if(!getWorld().isClient()){
+						World world = this.getWorld();
+						if (world instanceof ServerWorld serverWorld) {
+
+							// Spawn smoke particles in a radius of 2 blocks
+							serverWorld.spawnParticles(ModParticleTypes.JUSTICE_HIT,
+								entity.getX()  + 0.5,
+								entity.getY()  + 0.5,
+								entity.getZ()  + 0.5,
+								3, 1, 1, 1, 1);
+						}
+					}
+					entity.damage(this.getDamageSources().thrown(this, this.getOwner()), damageAmount);
+				}
 			}
 		}
 
 
-		if(!getWorld().isClient()){
-			World world = this.getWorld();
-			if (world instanceof ServerWorld serverWorld) {
 
-				// Spawn smoke particles in a radius of 2 blocks
-				serverWorld.spawnParticles(ModParticleTypes.WIND_EXPLOSION,
-					shooter.getX()  + 0.5,
-					shooter.getY()  + 0.5,
-					shooter.getZ()  + 0.5,
-					8, 1, 1, 1, 1);
-			}
-
-
-
-		}
 
 
 		this.discard();

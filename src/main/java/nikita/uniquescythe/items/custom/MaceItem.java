@@ -2,7 +2,6 @@ package nikita.uniquescythe.items.custom;
 
 
 import com.google.common.collect.ImmutableMultimap;
-import com.google.common.collect.Multimap;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -20,8 +19,7 @@ import net.minecraft.sound.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import nikita.uniquescythe.enchantments.ModEnchantments;
-import nikita.uniquescythe.sounds.ModSounds;
-
+import nikita.uniquescythe.sounds.ModSoundEvents;
 
 
 public class MaceItem
@@ -90,7 +88,7 @@ public class MaceItem
 		int additionalDamage = ((int) attacker.fallDistance) * damageMultiplier;
 
 		// Apply additional damage
-		target.getWorld().playSound(null, target.getBlockPos(), ModSounds.MACE_BONK, SoundCategory.NEUTRAL, 1f, 1f);
+		target.getWorld().playSound(null, target.getBlockPos(), ModSoundEvents.MACE_BONK, SoundCategory.NEUTRAL, 1f, 1f);
 		target.damage(attacker.getDamageSources().generic(), additionalDamage);
 		// Reset fall distance to prevent fall damage
 		attacker.fallDistance = 0;

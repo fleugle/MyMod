@@ -4,7 +4,6 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.Entity;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
-import nikita.uniquescythe.sounds.ModSounds;
 import org.jetbrains.annotations.NotNull;
 
 public class SoundsManager {

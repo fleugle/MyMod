@@ -6,17 +6,8 @@ import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.damage.DamageSource;
-import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.ItemStack;
-import net.minecraft.particle.ParticleTypes;
-import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.server.world.ServerWorld;
-import net.minecraft.sound.SoundCategory;
-import net.minecraft.world.World;
 import nikita.uniquescythe.items.custom.MaceItem;
-import nikita.uniquescythe.particles.ModParticleTypes;
-import nikita.uniquescythe.sounds.ModSounds;
 
 public class DensityEnchantment extends Enchantment {
 

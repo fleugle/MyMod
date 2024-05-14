@@ -4,14 +4,10 @@ import com.chocohead.mm.api.ClassTinkerers;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
-import net.minecraft.client.MinecraftClient;
 import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.network.packet.s2c.play.ScoreboardObjectiveUpdateS2CPacket;
 import net.minecraft.scoreboard.Scoreboard;
 import net.minecraft.scoreboard.ScoreboardCriterion;
-import net.minecraft.scoreboard.ScoreboardObjective;
-import net.minecraft.scoreboard.ScoreboardPlayerScore;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayNetworkHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -23,8 +19,7 @@ import nikita.uniquescythe.entities.ModEntities;
 import nikita.uniquescythe.entities.custom.BreezeEntity;
 import nikita.uniquescythe.items.ModItems;
 import nikita.uniquescythe.particles.ModParticleTypes;
-import nikita.uniquescythe.sounds.ModSounds;
-import nikita.uniquescythe.utility.CommandsExecuter;
+import nikita.uniquescythe.sounds.ModSoundEvents;
 import nikita.uniquescythe.utility.GuiltyLevelSystem;
 import org.quiltmc.qsl.networking.api.PacketSender;
 import org.quiltmc.qsl.networking.api.ServerPlayConnectionEvents;
@@ -58,7 +53,7 @@ public class UniqueScythe implements ModInitializer {
 		ModItems.registerModItems();
 
 		//calling for sound registry method in mod sounds
-		ModSounds.initializeSounds();
+		ModSoundEvents.initializeSounds();
 
 		//particles
 		ModParticleTypes.initialiseModParticleTypes();

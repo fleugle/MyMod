@@ -7,10 +7,9 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.SwordItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ToolMaterial;
-import net.minecraft.sound.SoundCategory;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
-import nikita.uniquescythe.sounds.ModSounds;
+import nikita.uniquescythe.sounds.ModSoundEvents;
 import net.minecraft.nbt.NbtCompound;
 import nikita.uniquescythe.utility.SoundsManager;
 
@@ -46,7 +45,7 @@ public class FrostyScytheItem extends SwordItem {
         if (chargeState == 8) {
             target.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 200, 100));
 
-			SoundsManager.playPlayersSoundOnSpot(attacker, ModSounds.SCYTHE_HIT, 5f);
+			SoundsManager.playPlayersSoundOnSpot(attacker, ModSoundEvents.SCYTHE_HIT, 5f);
 
             target.addStatusEffect(new StatusEffectInstance(StatusEffects.DARKNESS, 400, 1));
             target.addStatusEffect(new StatusEffectInstance(StatusEffects.INSTANT_DAMAGE, 1, 2));
@@ -56,7 +55,7 @@ public class FrostyScytheItem extends SwordItem {
         if (chargeState == 7) {
             target.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 400, 1));
             target.addStatusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS, 400, 1));
-            SoundsManager.playPlayersSoundOnSpot(attacker, ModSounds.SCYTHE_CHARGED, 5f);
+            SoundsManager.playPlayersSoundOnSpot(attacker, ModSoundEvents.SCYTHE_CHARGED, 5f);
         }
 
         return super.postHit(stack, target, attacker);
