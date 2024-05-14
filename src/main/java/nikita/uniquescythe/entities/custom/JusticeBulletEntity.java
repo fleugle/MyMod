@@ -2,19 +2,15 @@ package nikita.uniquescythe.entities.custom;
 
 import mod.azure.azurelib.animatable.GeoEntity;
 import mod.azure.azurelib.core.animatable.instance.AnimatableInstanceCache;
+import mod.azure.azurelib.core.animatable.instance.SingletonAnimatableInstanceCache;
 import mod.azure.azurelib.core.animation.AnimatableManager;
 import mod.azure.azurelib.core.animation.AnimationController;
 import mod.azure.azurelib.core.animation.RawAnimation;
-import mod.azure.azurelib.util.AzureLibUtil;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.block.entity.EndGatewayBlockEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.projectile.ProjectileUtil;
 import net.minecraft.entity.projectile.thrown.ThrownItemEntity;
 import net.minecraft.item.Item;
 import net.minecraft.network.listener.ClientPlayPacketListener;
@@ -22,10 +18,7 @@ import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.s2c.play.EntitySpawnS2CPacket;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.EntityHitResult;
-import net.minecraft.util.hit.HitResult;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
@@ -34,20 +27,60 @@ import nikita.uniquescythe.items.ModItems;
 import nikita.uniquescythe.particles.ModParticleTypes;
 import nikita.uniquescythe.utility.GuiltyLevelSystem;
 
-import static net.minecraft.advancement.criterion.ConstructBeaconCriterion.Conditions.level;
+public class JusticeBulletEntity extends ThrownItemEntity implements GeoEntity {
 
-public class BulletEntity extends ThrownItemEntity{
+	private LivingEntity shooter;
 
-	private PlayerEntity shooter;
+	private AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(this);
 
-	public BulletEntity(EntityType<? extends ThrownItemEntity> entityType, World world) {
+
+	@Override
+	public void registerControllers(AnimatableManager.ControllerRegistrar controllerRegistrar) {
+		controllerRegistrar.add(new AnimationController<>(this, "controllerName", 0, event ->
+		{
+			return event.setAndContinue(RawAnimation.begin()
+				.thenLoop("idle"));
+		}));
+	}
+
+	@Override
+	public AnimatableInstanceCache getAnimatableInstanceCache() {
+		return cache;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	public JusticeBulletEntity(EntityType<? extends ThrownItemEntity> entityType, World world) {
 		super(entityType, world);
 		this.setNoGravity(true);
 	}
 
-	public BulletEntity(LivingEntity livingEntity, World world/*, PlayerEntity shooter*/) {
-		super(ModEntities.BULLET_ENTITY,livingEntity, world);
-		this.shooter = (PlayerEntity) livingEntity;
+	public JusticeBulletEntity(LivingEntity livingEntity, World world/*, PlayerEntity shooter*/) {
+		super(ModEntities.JUSTICE_BULLET_ENTITY,livingEntity, world);
+		this.shooter = livingEntity;
 		this.setNoGravity(true);
 
 	}
@@ -103,32 +136,48 @@ public class BulletEntity extends ThrownItemEntity{
 
 		super.onEntityHit(entityHitResult);
 		Entity entity = entityHitResult.getEntity();
-		float damageAmount;
 
 
-		if (!entity.getWorld().isClient){
-			if (entity.isPlayer()){
+		if (shooter != null) {
+			if (!shooter.getWorld().isClient){
+				float damageAmount = 0;
 
-				int targetGuiltyLevel = GuiltyLevelSystem
-					.getGuiltyLevel(
-						(ServerPlayerEntity) entity,
-						entity.getDisplayName().getString(),
-						"PersistentGuiltyLevel");
+				int shooterGuiltyLevel = GuiltyLevelSystem.getGuiltyLevel(
+					(ServerPlayerEntity) shooter,
+					shooter.getDisplayName().getString(),
+					"PersistentGuiltyLevel"
+				);
+				if (entity.isPlayer()) {
 
 
 
-				int shooterGuiltyLevel = GuiltyLevelSystem
-					.getGuiltyLevel(
-						(ServerPlayerEntity) shooter,
-						entity.getDisplayName().getString(),
-						"PersistentGuiltyLevel");
+					if (entity instanceof PlayerEntity) {
+						int targetGuiltyLevel = GuiltyLevelSystem.getGuiltyLevel(
+							(ServerPlayerEntity) entity,
+							entity.getDisplayName().getString(),
+							"PersistentGuiltyLevel"
+						);
 
-				damageAmount = (float) targetGuiltyLevel - shooterGuiltyLevel;
+
+						damageAmount = (float) targetGuiltyLevel - shooterGuiltyLevel;
+					}
+				}
+				else if (entity instanceof HostileEntity) {
+
+					damageAmount = 50f - shooterGuiltyLevel;
+
+				} else {
+					damageAmount = 8f - shooterGuiltyLevel;
+				}
+
+
+				if (damageAmount < 0) {
+					damageAmount = 0 - damageAmount;
+					shooter.damage(shooter.getDamageSources().magic(), damageAmount);
+				}
+				else entity.damage(this.getDamageSources().thrown(this, this.getOwner()), damageAmount);
 			}
-			else damageAmount = 8;
-			entity.damage(this.getDamageSources().thrown(this, this.getOwner()), damageAmount);
 		}
-
 
 
 		if(!getWorld().isClient()){
@@ -137,9 +186,9 @@ public class BulletEntity extends ThrownItemEntity{
 
 				// Spawn smoke particles in a radius of 2 blocks
 				serverWorld.spawnParticles(ModParticleTypes.WIND_EXPLOSION,
-					getPos().getX()  + 0.5,
-					getPos().getY()  + 0.5,
-					getPos().getZ()  + 0.5,
+					shooter.getX()  + 0.5,
+					shooter.getY()  + 0.5,
+					shooter.getZ()  + 0.5,
 					8, 1, 1, 1, 1);
 			}
 

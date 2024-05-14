@@ -19,6 +19,5 @@ public class ModModelLayers {
 	public static final EntityModelLayer BREEZE_WIND =
 		new EntityModelLayer(new Identifier(UniqueScythe.MOD_ID,"breeze_wind"), "outer");
 
-	public static final EntityModelLayer BULLET =
-		new EntityModelLayer(new Identifier(UniqueScythe.MOD_ID,"bullet"),"main");
+
 }

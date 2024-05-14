@@ -8,52 +8,26 @@ import mod.azure.azurelib.core.animation.Animation;
 import mod.azure.azurelib.core.animation.AnimationController;
 import mod.azure.azurelib.core.animation.RawAnimation;
 import mod.azure.azurelib.core.object.PlayState;
-import mod.azure.azurelib.items.BaseGunItem;
 import mod.azure.azurelib.util.AzureLibUtil;
-import net.minecraft.block.BlockState;
 import net.minecraft.client.item.TooltipContext;
-import net.minecraft.client.resource.Material;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.projectile.ProjectileUtil;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.particle.ParticleTypes;
-import net.minecraft.registry.tag.FluidTags;
-import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.stat.Stats;
 import net.minecraft.text.Text;
-import net.minecraft.util.Arm;
-import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
-import net.minecraft.util.hit.EntityHitResult;
-import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Vec3d;
-import net.minecraft.world.RaycastContext;
 import net.minecraft.world.World;
-import nikita.uniquescythe.entities.custom.BulletEntity;
-import nikita.uniquescythe.entities.custom.WindChargeProjectileEntity;
-import nikita.uniquescythe.items.ModItems;
-import net.minecraft.util.math.MathHelper;
-import nikita.uniquescythe.mixin.LivingEntityMixin;
+import nikita.uniquescythe.entities.custom.JusticeBulletEntity;
 import nikita.uniquescythe.sounds.ModSounds;
-import nikita.uniquescythe.utility.GuiltyLevelSystem;
 import nikita.uniquescythe.utility.SoundsManager;
 
-import java.util.Iterator;
 import java.util.List;
-import java.util.Random;
-
 
 
 public abstract class GunItem extends Item implements GeoItem {
@@ -121,31 +95,7 @@ public abstract class GunItem extends Item implements GeoItem {
 		ItemStack itemStack = user.getStackInHand(hand);
 
 		if (!world.isClient) {
-			if (offhand_stack.getItem() == getAmmoItem()) {
-				BulletEntity bulletEntity = new BulletEntity(user, world);
-				bulletEntity.setItem(itemStack);
-				bulletEntity.setBulletProperties(user, user.getPitch(), user.getYaw(), 1.0F, 100F, 0F);
-				world.spawnEntity(bulletEntity);
-				user.getItemCooldownManager().set(this, this.shootingDelay);
-				SoundsManager.playPlayersSoundOnSpot(user, getShootingSound(), 1f);
-				offhand_stack.decrement(1);
-
-			}
-			else if (mainhand_stack.getItem() == getAmmoItem()){
-				BulletEntity bulletEntity = new BulletEntity(user, world);
-				bulletEntity.setItem(itemStack);
-				bulletEntity.setBulletProperties(user, user.getPitch(), user.getYaw(), 1.0F, 100F, 0F);
-				world.spawnEntity(bulletEntity);
-				user.getItemCooldownManager().set(this, this.shootingDelay);
-				SoundsManager.playPlayersSoundOnSpot(user, getShootingSound(), 1f);
-				mainhand_stack.decrement(1);
-			}
-			else {
-				SoundsManager.playPlayersSoundOnSpot(user, getEmptySound(), 1f);
-				user.getItemCooldownManager().set(this, this.shootingDelay);
-			}
-
-
+			tryToReloadGun(world, user, itemStack, mainhand_stack, offhand_stack);
 		}
 
 		if (!user.getAbilities().creativeMode) {
@@ -157,51 +107,21 @@ public abstract class GunItem extends Item implements GeoItem {
 
 	}
 
-	public void hitScanShoot(World world, PlayerEntity shooter, ItemStack stackWithGun, double shootingRange){
+	public void projectileShoot(World world, PlayerEntity shooter, ItemStack stackWithGun, double shootingRange){
 
 
 		if (!world.isClient) {
 
 			if (hasEnoughAmmoInWeapon(stackWithGun)){
-				EntityHitResult hitResult = hitscanTrace(shooter, shootingRange, 1.0F); // Perform hitscan with a range of 50 blocks
-
-				if (hitResult != null) {
-					Entity entity = hitResult.getEntity();
-					float damageAmount;
-
-					int shooterGuiltyLevel = GuiltyLevelSystem.getGuiltyLevel(
-						(ServerPlayerEntity) shooter,
-						shooter.getDisplayName().getString(),
-						"PersistentGuiltyLevel"
-					);
-
-					if (entity instanceof PlayerEntity) {
-						int targetGuiltyLevel = GuiltyLevelSystem.getGuiltyLevel(
-							(ServerPlayerEntity) entity,
-							entity.getDisplayName().getString(),
-							"PersistentGuiltyLevel"
-						);
+				JusticeBulletEntity justiceBulletEntity = new JusticeBulletEntity(shooter, world);
+				justiceBulletEntity.setItem(stackWithGun);
+				justiceBulletEntity.setBulletProperties(shooter, shooter.getPitch(), shooter.getYaw(), 1.0F, 100F, 0F);
+				world.spawnEntity(justiceBulletEntity);
+				shooter.getItemCooldownManager().set(this, this.shootingDelay);
 
 
-
-						damageAmount = (float) targetGuiltyLevel - shooterGuiltyLevel;
-					} else if (entity instanceof HostileEntity) {
-
-						damageAmount = 50f - shooterGuiltyLevel;
-
-					} else {
-
-						damageAmount = 8f - shooterGuiltyLevel;
-					}
-
-
-
-					if (damageAmount < 0) {
-						damageAmount = 0 - damageAmount;
-						shooter.damage(shooter.getDamageSources().generic(), damageAmount);
-					}
-					else entity.damage(entity.getDamageSources().generic(), damageAmount);
-
+				if (!shooter.getAbilities().creativeMode) {
+					setAmmoAmount(stackWithGun, getAmmoAmount(stackWithGun) - 1);
 				}
 				SoundsManager.playPlayersSoundOnSpot(shooter, getShootingSound(), 1f);
 			}
@@ -243,36 +163,50 @@ public abstract class GunItem extends Item implements GeoItem {
 					shooter.getItemCooldownManager().set(this, this.reloadTime);
 				}
 				else {
-					hitScanShoot(world, shooter, stackWithGun, this.maxShootingRange);
+					projectileShoot(world, shooter, stackWithGun, this.maxShootingRange);
 				}
 
 			}
+			else projectileShoot(world, shooter, stackWithGun, this.maxShootingRange);
 		}
 
 	}
 
-	private static EntityHitResult hitscanTrace(PlayerEntity player, double range, float ticks) {
-		Vec3d look = player.getRotationVec(ticks);
+
+	/*public static Entity getEntityOnCursor(PlayerEntity player, double maxShootingRange) {
+		World world = player.getWorld();
+		Vec3d cameraPos = player.getCameraPosVec(1.0F);
+		Vec3d rotationVec = player.getRotationVec(1.0F);
+		Vec3d combinedVec = cameraPos.add(rotationVec.x * maxShootingRange, rotationVec.y * maxShootingRange, rotationVec.z * maxShootingRange);
+		HitResult hitResult = world.raycast(new RaycastContext(cameraPos, combinedVec, RaycastContext.ShapeType.OUTLINE, RaycastContext.FluidHandling.NONE, player));
+
+		if (hitResult != null && hitResult.getType() == HitResult.Type.ENTITY) {
+			EntityHitResult entityHitResult = (EntityHitResult) hitResult;
+			return entityHitResult.getEntity();
+		}
+
+		return null;
+	}*/
+
+	/*public static EntityHitResult hitscanTrace(PlayerEntity player, double range, float ticks) {
+		World world = player.getWorld();
 		Vec3d start = player.getCameraPosVec(ticks);
-		Vec3d end = new Vec3d(player.getX() + look.x * range, player.getEyeY() + look.y * range, player.getZ() + look.z * range);
-		double traceDistance = player.getWorld().raycast(new RaycastContext(start, end, RaycastContext.ShapeType.COLLIDER, RaycastContext.FluidHandling.NONE, player)).getPos().squaredDistanceTo(end);
-		Iterator var9 = player.getWorld().getOtherEntities(player, player.getBoundingBox().stretch(look.multiply(traceDistance)).stretch(3.0, 3.0, 3.0), (entity) -> {
-			return !entity.isSpectator() && entity.collides() && entity instanceof LivingEntity;
-		}).iterator();
+		Vec3d look = player.getRotationVec(ticks);
+		Vec3d end = start.add(look.x * range, look.y * range, look.z * range);
+		Box searchBox = player.getBoundingBox().stretch(look.multiply(range)).expand(0.3);
 
-		Entity possible;
-		do {
-			if (!var9.hasNext()) {
-				return null;
-			}
-
-			possible = (Entity)var9.next();
-		} while(!possible.getBoundingBox().expand(0.3).raycast(start, end).isPresent() || !(start.squaredDistanceTo((Vec3d)possible.getBoundingBox().expand(0.3).raycast(start, end).get()) < traceDistance));
-
-		return ProjectileUtil.getEntityCollision(player.getWorld(), player, start, end, player.getBoundingBox().stretch(look.multiply(traceDistance)).expand(3.0, 3.0, 3.0), (target) -> {
-			return !target.isSpectator() && player.isAttackable() && player.canSee(target);
-		});
-	}
+		return world.getOtherEntities(player, searchBox, entity -> entity instanceof LivingEntity && !entity.isSpectator())
+			.stream()
+			.filter(entity -> {
+				Vec3d entityVec = entity.getPos().subtract(start);
+				double dotProduct = entityVec.dotProduct(look.normalize());
+				// Check if entity is in the line of sight
+				return dotProduct > 0 && start.add(look.multiply(dotProduct)).squaredDistanceTo(entity.getPos()) < 0.3 * 0.3;
+			})
+			.map(entity -> new EntityHitResult(entity))
+			.findFirst()
+			.orElse(null);
+	}*/
 
 	@Override
 	public void appendTooltip(ItemStack stack, World world, List<Text> tooltip, TooltipContext context) {
@@ -325,7 +259,7 @@ public abstract class GunItem extends Item implements GeoItem {
 			stackWithAmmo.decrement(amountPresent);
 			setAmmoAmount(stackWithGunItem, getAmmoAmount(stackWithGunItem) + amountPresent);
 		}else {
-			stackWithAmmo.decrement(this.maxAmmo);
+			stackWithAmmo.decrement(neededAmount);
 			setAmmoAmount(stackWithGunItem, getAmmoAmount(stackWithGunItem) + neededAmount);
 		}
 

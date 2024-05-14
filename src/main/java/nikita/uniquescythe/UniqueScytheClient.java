@@ -10,7 +10,7 @@ import net.minecraft.text.Text;
 import nikita.uniquescythe.blocks.ModBlocks;
 import nikita.uniquescythe.entities.ModEntities;
 import nikita.uniquescythe.entities.client.*;
-import nikita.uniquescythe.entities.client.BulletEntityRenderer;
+import nikita.uniquescythe.geo.renderers.JusticeBulletRenderer;
 import nikita.uniquescythe.geo.renderers.WindChargeRenderer;
 import nikita.uniquescythe.particles.ModParticleTypes;
 import nikita.uniquescythe.particles.custom.*;
@@ -54,16 +54,16 @@ public class UniqueScytheClient implements ClientModInitializer {
 
 
 		//mod model layers
-		EntityModelLayerRegistry.registerModelLayer(ModModelLayers.BULLET, BulletEntityModel::getTexturedModelData);//wind charge
 		EntityModelLayerRegistry.registerModelLayer(ModModelLayers.BREEZE, BreezeEntityModel::getTexturedModelData);//breeze
 
 
 
 		EntityRendererRegistry.register(ModEntities.WIND_CHARGE_PROJECTILE, WindChargeRenderer::new);
+		EntityRendererRegistry.register(ModEntities.JUSTICE_BULLET_ENTITY, JusticeBulletRenderer::new);
 
 		EntityRendererRegistry.register(ModEntities.BREEZE, BreezeEntityRenderer::new );
 
-		EntityRendererRegistry.register(ModEntities.BULLET_ENTITY, BulletEntityRenderer::new);
+
 
 
 

@@ -37,6 +37,29 @@ public class WindChargeProjectileEntity extends ThrownItemEntity implements GeoE
 	private AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(this);
 
 
+	@Override
+	public void registerControllers(AnimatableManager.ControllerRegistrar controllerRegistrar) {
+		controllerRegistrar.add(new AnimationController<>(this, "controllerName", 0, event ->
+		{
+			return event.setAndContinue(RawAnimation.begin()
+				.thenLoop("idle"));
+		}));
+	}
+
+	@Override
+	public AnimatableInstanceCache getAnimatableInstanceCache() {
+		return cache;
+	}
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -179,19 +202,7 @@ public class WindChargeProjectileEntity extends ThrownItemEntity implements GeoE
 
 
 
-	@Override
-	public void registerControllers(AnimatableManager.ControllerRegistrar controllerRegistrar) {
-		controllerRegistrar.add(new AnimationController<>(this, "controllerName", 0, event ->
-		{
-			return event.setAndContinue(RawAnimation.begin()
-				.thenLoop("idle"));
-		}));
-	}
 
-	@Override
-	public AnimatableInstanceCache getAnimatableInstanceCache() {
-		return cache;
-	}
 }
 
 

@@ -1,4 +1,4 @@
-package nikita.uniquescythe.geo.textures;
+package nikita.uniquescythe.geo.auto_textures;
 
 
 import com.mojang.blaze3d.platform.GlStateManager.DestFactor;

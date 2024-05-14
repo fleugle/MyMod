@@ -1,10 +1,7 @@
 package nikita.uniquescythe.geo.render_layers;
 
-import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import mod.azure.azurelib.cache.object.BakedGeoModel;
-import mod.azure.azurelib.cache.texture.AutoGlowingTexture;
-import mod.azure.azurelib.renderer.GeoEntityRenderer;
 import mod.azure.azurelib.renderer.GeoRenderer;
 import mod.azure.azurelib.renderer.layer.GeoRenderLayer;
 import net.minecraft.client.render.OverlayTexture;
@@ -12,7 +9,7 @@ import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.util.math.MatrixStack;
 import nikita.uniquescythe.entities.custom.WindChargeProjectileEntity;
-import nikita.uniquescythe.geo.textures.AutoTranslucentTexture;
+import nikita.uniquescythe.geo.auto_textures.AutoTranslucentTexture;
 
 public class TranslucentLayer<T extends WindChargeProjectileEntity> extends GeoRenderLayer<T> {
 	public TranslucentLayer(GeoRenderer<T> renderer) {
