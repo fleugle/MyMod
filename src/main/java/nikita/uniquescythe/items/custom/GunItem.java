@@ -38,10 +38,9 @@ public abstract class GunItem extends Item implements GeoItem {
 	private final AnimatableInstanceCache cache = AzureLibUtil.createInstanceCache(this);
 	private BlockPos lightBlockPos = null;
 	public int maxAmmo;
-	public int shootingDelay;
+	public int shootingDelay;//not less than 10, 'cause in minecraft there is invulnerability timer for 10 ticks.
 	public int reloadTime;
 	public String notificationAboutAmmo;
-
 
 
 
@@ -53,7 +52,7 @@ public abstract class GunItem extends Item implements GeoItem {
 		}))
 			.triggerableAnim("shoot", RawAnimation.begin().then("shoot", Animation.LoopType.PLAY_ONCE))
 			.triggerableAnim("empty_shoot", RawAnimation.begin().then("empty_shoot", Animation.LoopType.PLAY_ONCE))
-			.triggerableAnim("reload", RawAnimation.begin().then("reload", Animation.LoopType.HOLD_ON_LAST_FRAME))
+			.triggerableAnim("reload", RawAnimation.begin().then("reload", Animation.LoopType.PLAY_ONCE))
 		});
 	}
 	//base model of animations nomenclature is present above. If I need a different on - override in an item class
@@ -69,7 +68,9 @@ public abstract class GunItem extends Item implements GeoItem {
 		int shootingDelay,
 		int reloadTime,
 		String notificationAboutAmmo,
-		Settings settings) {
+		Settings settings)
+	{
+
 		super( settings );
 
 		this.toolMaterial = toolMaterial;
@@ -77,6 +78,7 @@ public abstract class GunItem extends Item implements GeoItem {
 		this.shootingDelay = shootingDelay;
 		this.reloadTime = reloadTime;
 		this.notificationAboutAmmo = notificationAboutAmmo;
+
 
 	}
 
@@ -90,12 +92,14 @@ public abstract class GunItem extends Item implements GeoItem {
 		ItemStack offhand_stack = user.getStackInHand(Hand.OFF_HAND);
 		ItemStack itemStack = user.getStackInHand(hand);
 
-		if (!world.isClient) {
-			tryToReloadGun(world, user, itemStack, mainhand_stack, offhand_stack);
-		}
+		if (!user.getItemCooldownManager().isCoolingDown(this)) {
+			if (!world.isClient) {
+				tryToReloadGun(world, user, itemStack, mainhand_stack, offhand_stack);
+			}
 
-		if (!user.getAbilities().creativeMode) {
-			itemStack.damage(1, user, e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
+			if (!user.getAbilities().creativeMode) {
+				itemStack.damage(1, user, e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
+			}
 		}
 
 

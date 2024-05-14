@@ -30,9 +30,9 @@ public class JusticeRevolverItem extends GunItem {
 		super(
 			toolMaterial,
 			6,
-			5,
-			55,
-			"§6Hey pardner, you'll need some bullets for that!",
+			10,
+			60,
+			"§6Hey, pardner! Don't forget to charge it next time, Okay?",
 			properties);
 		SingletonGeoAnimatable.registerSyncedAnimatable(this);
 	}
@@ -65,10 +65,10 @@ public class JusticeRevolverItem extends GunItem {
 
 			// Spawn smoke particles in a radius of 2 blocks
 			serverWorld.spawnParticles(ParticleTypes.SMOKE,
-				shooter.getX()  + 0.5,
+				shooter.getX() + 0,
 				shooter.getY()  + 0.5,
-				shooter.getZ()  + 0.5,
-				30, 1, 1, 1, 1);
+				shooter.getZ()  + 0,
+				4, 0.5, 0.5, 0.5, 0.03);
 		}
 	}
 
