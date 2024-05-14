@@ -24,7 +24,7 @@ public class GuiltyLevelSystem {
 
 
 
-		if (getGuiltyLevel(player, playerName, "GeneralKillsGuiltyLevel") > 0){
+		if ((getGuiltyLevel(player, playerName, "GeneralKillsGuiltyLevel") > 0) || (getGuiltyLevel(player, playerName, "PlayersKillGuiltyAddition") > 0)){
 			//get values and write all of them as
 			int amount = (getGuiltyLevel(player, playerName, "GeneralKillsGuiltyLevel"))
 				+ (getGuiltyLevel(player, playerName, "PlayersKillGuiltyAddition") * multiplier)

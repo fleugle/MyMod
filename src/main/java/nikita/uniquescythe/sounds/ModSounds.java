@@ -32,6 +32,8 @@ public class ModSounds {
 
 	public static SoundEvent EMPTY_GUN_SHOT = registerSound("empty_gun_shot");
 
+	public static SoundEvent REVOLVER_RELOAD = registerSound("revolver_reload");
+
 	//armor sounds
 	public static SoundEvent INNOCENCE_APPROVED = registerSound("innc_apr");
 

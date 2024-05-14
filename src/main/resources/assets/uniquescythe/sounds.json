@@ -71,6 +71,12 @@
       "uniquescythe:empty_gun_shot"
     ]
   },
+  "revolver_reload": {
+    "subtitle": "sounds.uniquescythe.revolver_reload",
+    "sounds": [
+      "uniquescythe:revolver_reload"
+    ]
+  },
 
 
 

@@ -19,6 +19,6 @@ public class JusticeRevolverModel extends GeoModel<JusticeRevolverItem> {
 
 	@Override
 	public Identifier getAnimationResource(JusticeRevolverItem windChargeProjectileEntity) {
-		return new Identifier(UniqueScythe.MOD_ID, "animations/item/justice_revolver/justice_revolver.animation.json");
+		return new Identifier(UniqueScythe.MOD_ID, "animations/item/item/justice_revolver.animation.json");
 	}
 }

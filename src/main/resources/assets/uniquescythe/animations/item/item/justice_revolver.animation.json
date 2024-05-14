@@ -1,9 +1,6 @@
 {
 	"format_version": "1.8.0",
 	"animations": {
-		"idle": {
-			"loop": true
-		},
 		"shoot": {
 			"animation_length": 0.25,
 			"bones": {
@@ -56,16 +53,13 @@
 				"trigger": {
 					"rotation": {
 						"0.0": {
-							"vector": [0, 0, 45]
+							"vector": [0, 0, 0]
 						},
 						"0.0417": {
-							"vector": [0, 0, 0]
-						},
-						"0.2083": {
-							"vector": [0, 0, 0]
-						},
-						"0.25": {
 							"vector": [0, 0, 45]
+						},
+						"0.0833": {
+							"vector": [0, 0, 0]
 						}
 					}
 				},
@@ -142,16 +136,13 @@
 				"trigger": {
 					"rotation": {
 						"0.0": {
-							"vector": [0, 0, 45]
+							"vector": [0, 0, 0]
 						},
 						"0.0417": {
-							"vector": [0, 0, 0]
-						},
-						"0.2083": {
-							"vector": [0, 0, 0]
-						},
-						"0.25": {
 							"vector": [0, 0, 45]
+						},
+						"0.0833": {
+							"vector": [0, 0, 0]
 						}
 					}
 				}
@@ -159,7 +150,7 @@
 		},
 		"reload": {
 			"loop": "hold_on_last_frame",
-			"animation_length": 3,
+			"animation_length": 2.75,
 			"bones": {
 				"bone": {
 					"rotation": {
@@ -222,6 +213,15 @@
 				},
 				"cylinder": {
 					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.125": {
+							"vector": [-11.8, 0, 0]
+						},
+						"0.2083": {
+							"vector": [-5, 0, 0]
+						},
 						"0.2917": {
 							"vector": [0, 0, 0]
 						},
@@ -314,16 +314,6 @@
 						},
 						"2.6667": {
 							"vector": [0, 0, 0]
-						}
-					}
-				},
-				"trigger": {
-					"rotation": {
-						"2.875": {
-							"vector": [0, 0, 0]
-						},
-						"3.0": {
-							"vector": [0, 0, 45]
 						}
 					}
 				}

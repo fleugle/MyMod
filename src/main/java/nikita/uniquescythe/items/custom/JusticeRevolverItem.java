@@ -14,6 +14,7 @@ import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
+import nikita.uniquescythe.entities.custom.JusticeBulletEntity;
 import nikita.uniquescythe.geo.renderers.JusticeRevolverRenderer;
 import nikita.uniquescythe.items.ModItems;
 import nikita.uniquescythe.sounds.ModSounds;
@@ -30,12 +31,13 @@ public class JusticeRevolverItem extends GunItem {
 			toolMaterial,
 			6,
 			5,
-			60,
-			50D,
+			55,
 			"§6Hey pardner, you'll need some bullets for that!",
 			properties);
 		SingletonGeoAnimatable.registerSyncedAnimatable(this);
 	}
+
+
 
 	@Override
 	public Item getAmmoItem(){
@@ -47,6 +49,19 @@ public class JusticeRevolverItem extends GunItem {
 		return ModSounds.JUSTICE_SHOOT;
 	}
 
+	@Override
+	public SoundEvent getReloadSound(){
+		return ModSounds.REVOLVER_RELOAD;
+	}
+
+
+	@Override
+	public void createProjectile(World world, PlayerEntity shooter, ItemStack stackWithGun){
+		JusticeBulletEntity justiceBulletEntity = new JusticeBulletEntity(shooter, world);
+		justiceBulletEntity.setItem(stackWithGun);
+		justiceBulletEntity.setBulletProperties(shooter, shooter.getPitch(), shooter.getYaw(), 1.0F, 100F, 0F);
+		world.spawnEntity(justiceBulletEntity);
+	}
 
 
 

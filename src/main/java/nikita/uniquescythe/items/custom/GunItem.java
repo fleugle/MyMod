@@ -16,6 +16,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.stat.Stats;
 import net.minecraft.text.Text;
@@ -25,6 +27,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import nikita.uniquescythe.entities.custom.JusticeBulletEntity;
 import nikita.uniquescythe.sounds.ModSounds;
+import nikita.uniquescythe.utility.GuiltyLevelSystem;
 import nikita.uniquescythe.utility.SoundsManager;
 
 import java.util.List;
@@ -41,7 +44,6 @@ public abstract class GunItem extends Item implements GeoItem {
 	public int maxAmmo;
 	public int shootingDelay;
 	public int reloadTime;
-	public double maxShootingRange;
 	public String notificationAboutAmmo;
 
 
@@ -50,13 +52,13 @@ public abstract class GunItem extends Item implements GeoItem {
 
 	//needed implementation for azurelib code part
 	public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
-		controllers.add(new AnimationController[]{(new AnimationController(this, "shoot_controller", (event) -> {
+		controllers.add(new AnimationController[]{(new AnimationController(this, "shooting_controller", (event) -> {
 			return PlayState.CONTINUE;
 		}))
 			.triggerableAnim("shoot", RawAnimation.begin().then("shoot", Animation.LoopType.PLAY_ONCE))
 			.triggerableAnim("empty_shoot", RawAnimation.begin().then("empty_shoot", Animation.LoopType.PLAY_ONCE))
 			.triggerableAnim("reload", RawAnimation.begin().then("reload", Animation.LoopType.HOLD_ON_LAST_FRAME))
-			.triggerableAnim("idle", RawAnimation.begin().then("idle", Animation.LoopType.LOOP))});
+		});
 	}
 	//base model of animations nomenclature is present above. If I need a different on - override in an item class
 
@@ -70,7 +72,6 @@ public abstract class GunItem extends Item implements GeoItem {
 		int maxAmmo,
 		int shootingDelay,
 		int reloadTime,
-		double maxShootingRange,
 		String notificationAboutAmmo,
 		Settings settings) {
 		super( settings );
@@ -79,7 +80,6 @@ public abstract class GunItem extends Item implements GeoItem {
 		this.maxAmmo = maxAmmo;
 		this.shootingDelay = shootingDelay;
 		this.reloadTime = reloadTime;
-		this.maxShootingRange = maxShootingRange;
 		this.notificationAboutAmmo = notificationAboutAmmo;
 
 	}
@@ -107,26 +107,25 @@ public abstract class GunItem extends Item implements GeoItem {
 
 	}
 
-	public void projectileShoot(World world, PlayerEntity shooter, ItemStack stackWithGun, double shootingRange){
+	public void projectileShoot(World world, PlayerEntity shooter, ItemStack stackWithGun){
 
 
 		if (!world.isClient) {
 
 			if (hasEnoughAmmoInWeapon(stackWithGun)){
-				JusticeBulletEntity justiceBulletEntity = new JusticeBulletEntity(shooter, world);
-				justiceBulletEntity.setItem(stackWithGun);
-				justiceBulletEntity.setBulletProperties(shooter, shooter.getPitch(), shooter.getYaw(), 1.0F, 100F, 0F);
-				world.spawnEntity(justiceBulletEntity);
+				createProjectile(world, shooter, stackWithGun);
 				shooter.getItemCooldownManager().set(this, this.shootingDelay);
-
 
 				if (!shooter.getAbilities().creativeMode) {
 					setAmmoAmount(stackWithGun, getAmmoAmount(stackWithGun) - 1);
 				}
+				triggerAnim(shooter, GeoItem.getOrAssignId(stackWithGun, (ServerWorld) world), "shooting_controller", "shoot");
 				SoundsManager.playPlayersSoundOnSpot(shooter, getShootingSound(), 1f);
 			}
 			else {
 				notifyShooterAboutAmmo(shooter);
+				shooter.getItemCooldownManager().set(this, this.shootingDelay);
+				triggerAnim(shooter, GeoItem.getOrAssignId(stackWithGun, (ServerWorld) world), "shooting_controller", "empty_shoot");
 				SoundsManager.playPlayersSoundOnSpot(shooter, getEmptySound(), 1f);
 			}
 
@@ -134,6 +133,7 @@ public abstract class GunItem extends Item implements GeoItem {
 
 
 			shooter.getItemCooldownManager().set(this, this.shootingDelay); // Set cooldown
+
 		}
 
 		shooter.incrementStat(Stats.USED.getOrCreateStat(this));
@@ -154,59 +154,26 @@ public abstract class GunItem extends Item implements GeoItem {
 				if(mainhand_stack.getItem() == getAmmoItem()){
 					int howMuchAmmoIsPresent = mainhand_stack.getCount();
 					consumeNeededAmountOfAmmoAndPutItInTheGun(stackWithGun, mainhand_stack, howMuchAmmoItNeeds, howMuchAmmoIsPresent);
-
+					SoundsManager.playPlayersSoundOnSpot(shooter, getReloadSound(), 1f);
+					triggerAnim(shooter, GeoItem.getOrAssignId(stackWithGun, (ServerWorld) world), "shooting_controller", "reload");
 					shooter.getItemCooldownManager().set(this, this.reloadTime);
 				} else if (offhand_stack.getItem() == getAmmoItem()) {
 					int howMuchAmmoIsPresent = offhand_stack.getCount();
 					consumeNeededAmountOfAmmoAndPutItInTheGun(stackWithGun, offhand_stack, howMuchAmmoItNeeds, howMuchAmmoIsPresent);
-
+					SoundsManager.playPlayersSoundOnSpot(shooter, getReloadSound(), 1f);
+					triggerAnim(shooter, GeoItem.getOrAssignId(stackWithGun, (ServerWorld) world), "shooting_controller", "reload");
 					shooter.getItemCooldownManager().set(this, this.reloadTime);
 				}
 				else {
-					projectileShoot(world, shooter, stackWithGun, this.maxShootingRange);
+					projectileShoot(world, shooter, stackWithGun);
 				}
 
 			}
-			else projectileShoot(world, shooter, stackWithGun, this.maxShootingRange);
+			else projectileShoot(world, shooter, stackWithGun);
 		}
 
 	}
 
-
-	/*public static Entity getEntityOnCursor(PlayerEntity player, double maxShootingRange) {
-		World world = player.getWorld();
-		Vec3d cameraPos = player.getCameraPosVec(1.0F);
-		Vec3d rotationVec = player.getRotationVec(1.0F);
-		Vec3d combinedVec = cameraPos.add(rotationVec.x * maxShootingRange, rotationVec.y * maxShootingRange, rotationVec.z * maxShootingRange);
-		HitResult hitResult = world.raycast(new RaycastContext(cameraPos, combinedVec, RaycastContext.ShapeType.OUTLINE, RaycastContext.FluidHandling.NONE, player));
-
-		if (hitResult != null && hitResult.getType() == HitResult.Type.ENTITY) {
-			EntityHitResult entityHitResult = (EntityHitResult) hitResult;
-			return entityHitResult.getEntity();
-		}
-
-		return null;
-	}*/
-
-	/*public static EntityHitResult hitscanTrace(PlayerEntity player, double range, float ticks) {
-		World world = player.getWorld();
-		Vec3d start = player.getCameraPosVec(ticks);
-		Vec3d look = player.getRotationVec(ticks);
-		Vec3d end = start.add(look.x * range, look.y * range, look.z * range);
-		Box searchBox = player.getBoundingBox().stretch(look.multiply(range)).expand(0.3);
-
-		return world.getOtherEntities(player, searchBox, entity -> entity instanceof LivingEntity && !entity.isSpectator())
-			.stream()
-			.filter(entity -> {
-				Vec3d entityVec = entity.getPos().subtract(start);
-				double dotProduct = entityVec.dotProduct(look.normalize());
-				// Check if entity is in the line of sight
-				return dotProduct > 0 && start.add(look.multiply(dotProduct)).squaredDistanceTo(entity.getPos()) < 0.3 * 0.3;
-			})
-			.map(entity -> new EntityHitResult(entity))
-			.findFirst()
-			.orElse(null);
-	}*/
 
 	@Override
 	public void appendTooltip(ItemStack stack, World world, List<Text> tooltip, TooltipContext context) {
@@ -234,6 +201,10 @@ public abstract class GunItem extends Item implements GeoItem {
 		return null;
 	}
 
+	public SoundEvent getReloadSound(){
+		return null;
+	}
+
 	public SoundEvent getEmptySound(){
 		return ModSounds.EMPTY_GUN_SHOT;
 	}
@@ -242,6 +213,10 @@ public abstract class GunItem extends Item implements GeoItem {
 
 		if (getAmmoAmount(itemStack) > 0) return true;
 		else return false;
+	}
+
+	public void createProjectile(World world, PlayerEntity shooter, ItemStack stackWithGun){
+
 	}
 
 	private void notifyShooterAboutAmmo(PlayerEntity shooter){
@@ -264,4 +239,10 @@ public abstract class GunItem extends Item implements GeoItem {
 		}
 
 	}
+
+	@Override
+	public boolean allowNbtUpdateAnimation(PlayerEntity player, Hand hand, ItemStack oldStack, ItemStack newStack) {
+		return false;
+	}
+
 }
