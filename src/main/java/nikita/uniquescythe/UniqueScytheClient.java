@@ -1,7 +1,8 @@
 package nikita.uniquescythe;
 
 import net.fabricmc.api.ClientModInitializer;
-import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+
+import org. quiltmc. qsl. block. extensions. api. client.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
@@ -72,8 +73,15 @@ public class UniqueScytheClient implements ClientModInitializer {
 
 
 		//Blocks render layer maps
-		BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.COPPER_GRATE, RenderLayer.getCutout());
-		BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.EXPOSED_COPPER_GRATE, RenderLayer.getCutout());
-		BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.OXIDIZED_COPPER_GRATE, RenderLayer.getCutout());
+		BlockRenderLayerMap.put(RenderLayer.getCutout(), ModBlocks.COPPER_GRATE);
+		BlockRenderLayerMap.put(RenderLayer.getCutout(), ModBlocks.EXPOSED_COPPER_GRATE);
+		BlockRenderLayerMap.put(RenderLayer.getCutout() ,ModBlocks.OXIDIZED_COPPER_GRATE );
+		BlockRenderLayerMap.put(RenderLayer.getCutout(), ModBlocks.WAXED_COPPER_GRATE);
+		BlockRenderLayerMap.put(RenderLayer.getCutout(), ModBlocks.WAXED_EXPOSED_COPPER_GRATE);
+		BlockRenderLayerMap.put(RenderLayer.getCutout() ,ModBlocks.WAXED_OXIDIZED_COPPER_GRATE );
+
+
+
+
 	}
 }

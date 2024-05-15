@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": {
+    "uniquescythe:copper_grate": "uniquescythe:waxed_copper_grate",
+    "uniquescythe:exposed_copper_grate": "uniquescythe:waxed_exposed_copper_grate",
+    "uniquescythe:oxidized_copper_grate": "uniquescythe:waxed_oxidized_copper_grate"
+  }
+}

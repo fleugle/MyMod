@@ -32,6 +32,9 @@
   "block.uniquescythe.copper_grate": "Copper Grate",
   "block.uniquescythe.oxidized_copper_grate": "Oxidized Copper Grate",
   "block.uniquescythe.exposed_copper_grate": "Exposed Copper Grate",
+  "block.uniquescythe.waxed_copper_grate": "Waxed Copper Grate",
+  "block.uniquescythe.waxed_oxidized_copper_grate": "Waxed Oxidized Copper Grate",
+  "block.uniquescythe.waxed_exposed_copper_grate": "Waxed Exposed Copper Grate",
   "block.uniquescythe.heavy_core": "Heavy Core",
 
 

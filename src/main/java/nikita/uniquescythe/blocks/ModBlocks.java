@@ -14,6 +14,7 @@ import net.minecraft.util.Identifier;
 import nikita.uniquescythe.UniqueScythe;
 import nikita.uniquescythe.blocks.custom.AbstractCopperGrateBlock;
 import nikita.uniquescythe.blocks.custom.AbstractHeavyCoreBlock;
+import nikita.uniquescythe.blocks.custom.AbstractWaxedCopperGrateBlock;
 import nikita.uniquescythe.sounds.ModBlockSoundGroup;
 
 public class ModBlocks {
@@ -56,17 +57,32 @@ public class ModBlocks {
 				.sounds(BlockSoundGroup.COPPER)));//exposed copper grate
 
 
+	public static final Block  WAXED_COPPER_GRATE = registerBlock("waxed_copper_grate",
+		new AbstractWaxedCopperGrateBlock(
+			AbstractBlock.Settings.create()
+				.mapColor(MapColor.ORANGE)
+				.nonOpaque().strength(4.0f)
+				.requiresTool().strength(3.0F, 6.0F)
+				.sounds(BlockSoundGroup.COPPER)));//copper grate
 
-	//ADDING TO ITEM TABS METHOD
-	private static void addBlockToBuildingBlocksItemGroup(FabricItemGroupEntries entries) {
-		//place to add items to the BuildingBlocks item tab
-		entries.addItem(TUFF_BRICKS);
-		entries.addItem(COPPER_GRATE);
-		entries.addItem(EXPOSED_COPPER_GRATE);
-		entries.addItem(OXIDIZED_COPPER_GRATE);
-		entries.addItem(HEAVY_CORE);
 
-	}//adding items to combat tab *method*
+	public static final Block  WAXED_OXIDIZED_COPPER_GRATE = registerBlock("waxed_oxidized_copper_grate",
+		new AbstractWaxedCopperGrateBlock(
+			AbstractBlock.Settings.create().mapColor(MapColor.WARPED_NYLIUM)
+				.requiresTool()
+				.nonOpaque().strength(4.0f)
+				.strength(3.0F, 6.0F)
+				.sounds(BlockSoundGroup.COPPER)));//oxidized copper grate
+
+	public static final Block  WAXED_EXPOSED_COPPER_GRATE = registerBlock("waxed_exposed_copper_grate",
+		new AbstractWaxedCopperGrateBlock(
+			AbstractBlock.Settings.create().mapColor(MapColor.LIGHT_GRAY_TERRACOTTA)
+				.requiresTool()
+				.nonOpaque().strength(4.0f)
+				.strength(3.0F, 6.0F)
+				.sounds(BlockSoundGroup.COPPER)));//exposed copper grate
+
+
 
 	//HELPER METHODS
 	//
@@ -88,7 +104,16 @@ public class ModBlocks {
 
 	public static void registerModBlocks() {
 
-		ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register(ModBlocks::addBlockToBuildingBlocksItemGroup);
+		ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register(entries -> {
+			entries.addItem(TUFF_BRICKS);
+			entries.addItem(COPPER_GRATE);
+			entries.addItem(EXPOSED_COPPER_GRATE);
+			entries.addItem(OXIDIZED_COPPER_GRATE);
+			entries.addItem(WAXED_COPPER_GRATE);
+			entries.addItem(WAXED_EXPOSED_COPPER_GRATE);
+			entries.addItem(WAXED_OXIDIZED_COPPER_GRATE);
+			entries.addItem(HEAVY_CORE);
+		});
 
 
 
