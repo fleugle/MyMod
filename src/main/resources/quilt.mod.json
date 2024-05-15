@@ -25,6 +25,9 @@
 			"mm:early_risers":[
 				"nikita.uniquescythe.early_risers.MaceEnumAdder"
 			],
+			"terrablender": [
+				"nikita.uniquescythe.world.UniqueScytheTerrablender"
+			],
 			"client": [
 				"nikita.uniquescythe.UniqueScytheClient"
 			]
