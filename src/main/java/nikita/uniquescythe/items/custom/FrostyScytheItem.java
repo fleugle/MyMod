@@ -45,7 +45,7 @@ public class FrostyScytheItem extends SwordItem {
         if (chargeState == 8) {
             target.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 200, 100));
 
-			SoundsManager.playPlayersSoundOnSpot(attacker, ModSoundEvents.SCYTHE_HIT, 5f);
+			SoundsManager.playPlayersSoundFromPlayer(attacker, ModSoundEvents.SCYTHE_HIT, 5f);
 
             target.addStatusEffect(new StatusEffectInstance(StatusEffects.DARKNESS, 400, 1));
             target.addStatusEffect(new StatusEffectInstance(StatusEffects.INSTANT_DAMAGE, 1, 2));
@@ -55,7 +55,7 @@ public class FrostyScytheItem extends SwordItem {
         if (chargeState == 7) {
             target.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 400, 1));
             target.addStatusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS, 400, 1));
-            SoundsManager.playPlayersSoundOnSpot(attacker, ModSoundEvents.SCYTHE_CHARGED, 5f);
+            SoundsManager.playPlayersSoundFromPlayer(attacker, ModSoundEvents.SCYTHE_CHARGED, 5f);
         }
 
         return super.postHit(stack, target, attacker);

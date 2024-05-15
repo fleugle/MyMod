@@ -6,7 +6,9 @@ import net.minecraft.entity.effect.StatusEffectType;
 import net.minecraft.entity.player.PlayerEntity;
 
 public class DelayedSatisfactionStatusEffect extends StatusEffect {
-	protected DelayedSatisfactionStatusEffect() {
+	private int countDownToEffect = 0;
+
+	public DelayedSatisfactionStatusEffect() {
 		super(
 			StatusEffectType.BENEFICIAL,
 			0xFE7A38);// 0x is the same as # for rgb color
@@ -22,8 +24,14 @@ public class DelayedSatisfactionStatusEffect extends StatusEffect {
 	// This method is called when it applies the status effect. We implement custom functionality here.
 	@Override
 	public void applyUpdateEffect(LivingEntity entity, int amplifier) {
+
 		if (entity instanceof PlayerEntity) {
-			((PlayerEntity) entity).addExperience(1 << amplifier); // Higher amplifier gives you EXP faster
+
+			if (this.countDownToEffect == 199/* = 10 seconds */){
+				entity.heal((float)Math.max(4 << amplifier, 0));
+				this.countDownToEffect = 0;
+			}
+			else this.countDownToEffect++;
 		}
 	}
 

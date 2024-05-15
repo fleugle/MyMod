@@ -32,24 +32,24 @@ public class EasterEggItem extends Item {
 
 			if (soundPlayed == 0) {
 				stopFunnySounds();
-				SoundsManager.playNeutralSoundOnSpot(user, ModSoundEvents.MUFLON,5f);
+				SoundsManager.playNeutralSoundFromPlayer(user, ModSoundEvents.MUFLON,5f);
 				user.getItemCooldownManager().set(this, 150); // a way to make a cooldown for an item
 			} else if (soundPlayed == 1) {
 				stopFunnySounds();
-				SoundsManager.playNeutralSoundOnSpot(user, ModSoundEvents.EASTER_EGG,5f);
+				SoundsManager.playNeutralSoundFromPlayer(user, ModSoundEvents.EASTER_EGG,5f);
 				user.getItemCooldownManager().set(this, 100); // a way to make a cooldown for an item
 			} else if (soundPlayed == 2) {
 				stopFunnySounds();
-				SoundsManager.playNeutralSoundOnSpot(user, ModSoundEvents.SAD2_OGG,5f);
+				SoundsManager.playNeutralSoundFromPlayer(user, ModSoundEvents.SAD2_OGG,5f);
 				user.getItemCooldownManager().set(this, 30);
 			} else if (soundPlayed == 3) {
 				stopFunnySounds();
-				SoundsManager.playNeutralSoundOnSpot(user, ModSoundEvents.KRIS_GET_THE_BANANA,5f);
+				SoundsManager.playNeutralSoundFromPlayer(user, ModSoundEvents.KRIS_GET_THE_BANANA,5f);
 				user.getItemCooldownManager().set(this, 70);
 			}
 			else {
 				stopFunnySounds();
-				SoundsManager.playNeutralSoundOnSpot(user, ModSoundEvents.EASTER_EGG,5f);
+				SoundsManager.playNeutralSoundFromPlayer(user, ModSoundEvents.EASTER_EGG,5f);
 				user.getItemCooldownManager().set(this, 30);
 			}
 

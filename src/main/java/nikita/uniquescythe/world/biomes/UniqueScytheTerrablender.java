@@ -7,6 +7,8 @@ public class UniqueScytheTerrablender implements TerraBlenderApi {
 	@Override
 	public void onTerraBlenderInitialized()
 	{
-		// Your code here.
+
+
+
 	}
 }

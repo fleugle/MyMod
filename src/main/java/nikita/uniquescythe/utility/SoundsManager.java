@@ -30,8 +30,16 @@ public class SoundsManager {
 		entity.getWorld().playSound(null, entity.getBlockPos(), soundEvent, SoundCategory.PLAYERS, volume, pitch);
 	}
 
+	public static void playPlayersSoundFromPlayer(@NotNull Entity entity, SoundEvent soundEvent, float volume, float pitch){
+		entity.getWorld().playSoundFromEntity(null, entity, soundEvent, SoundCategory.PLAYERS, volume, pitch);
+	}
+
 	public static void playNeutralSoundOnSpot(@NotNull Entity entity, SoundEvent soundEvent, float volume, float pitch){
 		entity.getWorld().playSound(null, entity.getBlockPos(), soundEvent, SoundCategory.NEUTRAL, volume, pitch);
+	}
+
+	public static void playNeutralSoundFromPlayer(@NotNull Entity entity, SoundEvent soundEvent, float volume, float pitch){
+		entity.getWorld().playSoundFromEntity(null, entity, soundEvent, SoundCategory.NEUTRAL, volume, pitch);
 	}
 
 	public static void playAmbientSoundOnSpot(@NotNull Entity entity, SoundEvent soundEvent, float volume){
@@ -44,5 +52,13 @@ public class SoundsManager {
 
 	public static void playNeutralSoundOnSpot(@NotNull Entity entity, SoundEvent soundEvent, float volume){
 		entity.getWorld().playSound(null, entity.getBlockPos(), soundEvent, SoundCategory.NEUTRAL, volume, 1f);
+	}
+
+	public static void playPlayersSoundFromPlayer(@NotNull Entity entity, SoundEvent soundEvent, float volume){
+		entity.getWorld().playSoundFromEntity(null, entity, soundEvent, SoundCategory.PLAYERS, volume, 1f);
+	}
+
+	public static void playNeutralSoundFromPlayer(@NotNull Entity entity, SoundEvent soundEvent, float volume){
+		entity.getWorld().playSoundFromEntity(null, entity, soundEvent, SoundCategory.NEUTRAL, volume, 1f);
 	}
 }

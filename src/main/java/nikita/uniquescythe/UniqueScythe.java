@@ -20,6 +20,7 @@ import nikita.uniquescythe.entities.custom.BreezeEntity;
 import nikita.uniquescythe.items.ModItems;
 import nikita.uniquescythe.particles.ModParticleTypes;
 import nikita.uniquescythe.sounds.ModSoundEvents;
+import nikita.uniquescythe.status_effects.ModStatusEffects;
 import nikita.uniquescythe.utility.GuiltyLevelSystem;
 import org.quiltmc.qsl.networking.api.PacketSender;
 import org.quiltmc.qsl.networking.api.ServerPlayConnectionEvents;
@@ -60,6 +61,9 @@ public class UniqueScythe implements ModInitializer {
 
 		//calling for blocks registry method in mod blocks
 		ModBlocks.registerModBlocks();
+
+		//status effects
+		ModStatusEffects.initialiseStatusEffects();
 
 
 

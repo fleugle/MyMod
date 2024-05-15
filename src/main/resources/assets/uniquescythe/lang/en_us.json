@@ -23,6 +23,11 @@
   "item.uniquescythe.air_bottle":"Bottle With Air",
   "item.uniquescythe.sorry_stone":"Sorry Stone",
 
+
+  "effect.uniquescythe.delayed_satisfaction": "Late Satisfaction",
+
+
+
   "block.uniquescythe.tuff_bricks": "Tuff Bricks",
   "block.uniquescythe.copper_grate": "Copper Grate",
   "block.uniquescythe.oxidized_copper_grate": "Oxidized Copper Grate",

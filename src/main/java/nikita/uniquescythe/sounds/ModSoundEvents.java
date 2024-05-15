@@ -56,7 +56,7 @@ public class ModSoundEvents {
 
 
 	// actual registration of all the custom SoundEvents
-    static SoundEvent registerSound(String id) {
+    public static SoundEvent registerSound(String id) {
         SoundEvent sound = SoundEvent.createVariableRangeEvent(new Identifier(UniqueScythe.MOD_ID, id));
         return Registry.register(Registries.SOUND_EVENT, new Identifier(UniqueScythe.MOD_ID, id), sound);
     }
