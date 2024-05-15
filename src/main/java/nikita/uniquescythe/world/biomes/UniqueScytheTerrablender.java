@@ -1,4 +1,4 @@
-package nikita.uniquescythe.world;
+package nikita.uniquescythe.world.biomes;
 
 import terrablender.api.TerraBlenderApi;
 
