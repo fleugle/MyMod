@@ -175,7 +175,7 @@ public class JusticeBulletEntity extends ThrownItemEntity implements GeoEntity {
 								5, 1, 1, 1, 1);
 						}
 					}
-				}
+				}//maybe to change on a simple command using command executer
 				else {
 					if(!getWorld().isClient()){
 						World world = this.getWorld();
