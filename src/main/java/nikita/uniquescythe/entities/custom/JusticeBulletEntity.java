@@ -163,32 +163,10 @@ public class JusticeBulletEntity extends ThrownItemEntity implements GeoEntity {
 				if (damageAmount < 0) {
 					damageAmount = 0 - damageAmount;
 					shooter.damage(shooter.getDamageSources().magic(), damageAmount);
-					if(!getWorld().isClient()){
-						World world = this.getWorld();
-						if (world instanceof ServerWorld serverWorld) {
-
-							// Spawn smoke particles in a radius of 2 blocks
-							serverWorld.spawnParticles(ModParticleTypes.JUSTICE_HIT,
-								shooter.getX()  + 0.5,
-								shooter.getY()  + 0.5,
-								shooter.getZ()  + 0.5,
-								5, 1, 1, 1, 1);
-						}
-					}
+					//put aaaparticles here
 				}//maybe to change on a simple command using command executer
 				else {
-					if(!getWorld().isClient()){
-						World world = this.getWorld();
-						if (world instanceof ServerWorld serverWorld) {
-
-							// Spawn smoke particles in a radius of 2 blocks
-							serverWorld.spawnParticles(ModParticleTypes.JUSTICE_HIT,
-								entity.getX()  + 0.5,
-								entity.getY()  + 0.5,
-								entity.getZ()  + 0.5,
-								3, 1, 1, 1, 1);
-						}
-					}
+					//put aaaparticles here
 					entity.damage(this.getDamageSources().thrown(this, this.getOwner()), damageAmount);
 				}
 			}

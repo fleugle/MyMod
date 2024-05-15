@@ -51,7 +51,7 @@ public class UniqueScytheClient implements ClientModInitializer {
 
 		ParticleFactoryRegistry.getInstance().register(ModParticleTypes.FROSTY_CRIT, FrostyDamageParticle.Factory ::new);
 
-		ParticleFactoryRegistry.getInstance().register(ModParticleTypes.JUSTICE_HIT, JusticeHitParticle.Factory ::new);
+		//ParticleFactoryRegistry.getInstance().register(ModParticleTypes.JUSTICE_HIT, JusticeHitParticle.Factory ::new);
 
 
 
