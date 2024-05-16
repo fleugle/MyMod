@@ -4,8 +4,11 @@ import com.chocohead.mm.api.ClassTinkerers;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
+import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.registry.Registries;
 import net.minecraft.scoreboard.Scoreboard;
 import net.minecraft.scoreboard.ScoreboardCriterion;
 import net.minecraft.server.MinecraftServer;
@@ -22,10 +25,15 @@ import nikita.uniquescythe.particles.ModParticleTypes;
 import nikita.uniquescythe.sounds.ModSoundEvents;
 import nikita.uniquescythe.status_effects.ModStatusEffects;
 import nikita.uniquescythe.utility.GuiltyLevelSystem;
+import org.quiltmc.qsl.block.content.registry.api.BlockContentRegistries;
+import org.quiltmc.qsl.block.content.registry.api.ReversibleBlockEntry;
 import org.quiltmc.qsl.networking.api.PacketSender;
 import org.quiltmc.qsl.networking.api.ServerPlayConnectionEvents;
+import org.quiltmc.qsl.registry.attachment.api.RegistryEntryAttachment;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.Optional;
 
 
 //I've rolled back. good.
@@ -111,7 +119,7 @@ public class UniqueScythe implements ModInitializer {
 		GuiltyLevelSystem.createIntScoreboadIfMissing(scoreboard, ScoreboardCriterion.TOTAL_KILL_COUNT, "GeneralKillsGuiltyLevel");
 		GuiltyLevelSystem.createIntScoreboadIfMissing(scoreboard, ScoreboardCriterion.PLAYER_KILL_COUNT, "PlayersKillGuiltyAddition");
 	}
-
+	
 
 }
 
