@@ -64,11 +64,17 @@ public class ModItems {
 
 	public static final Item SORRY_STONE = registerItem("sorry_stone", new SorryStoneItem(new Item.Settings().maxCount(16).fireproof().rarity(Rarity.RARE)));
 
-	public static final Item LOW_HONEY_APPLE = registerItem("low_honey_apple", new HoneyAppleItem(new Item.Settings().rarity(Rarity.RARE).food(ModFoodComponents.LOW_HONEY_APPLE), "Mildly Honeyed"));
+	public static final Item LOW_HONEY_APPLE = registerItem(
+		"low_honey_apple",
+		new HoneyAppleItem(new Item.Settings().food(ModFoodComponents.LOW_HONEY_APPLE), "§9Mildly Honeyed"));//§5 - Dark Purple. §9 - Blue. §1 - Dark Blue
 
-	public static final Item MID_HONEY_APPLE = registerItem("mid_honey_apple", new HoneyAppleItem(new Item.Settings().rarity(Rarity.RARE).food(ModFoodComponents.MID_HONEY_APPLE), "Honeyed"));
+	public static final Item MID_HONEY_APPLE = registerItem(
+		"mid_honey_apple",
+		new HoneyAppleItem(new Item.Settings().food(ModFoodComponents.MID_HONEY_APPLE), "§9Honeyed"));
 
-	public static final Item HIGH_HONEY_APPLE = registerItem("high_honey_apple", new HoneyAppleItem(new Item.Settings().rarity(Rarity.RARE).food(ModFoodComponents.HIGH_HONEY_APPLE), "Strongly Honeyed"));
+	public static final Item HIGH_HONEY_APPLE = registerItem(
+		"high_honey_apple",
+		new HoneyAppleItem(new Item.Settings().food(ModFoodComponents.HIGH_HONEY_APPLE), "§9Strongly Honeyed"));
 
 
 
@@ -101,6 +107,9 @@ public class ModItems {
 			entries.addBefore(Items.FIRE_CHARGE, JUSTICE_FRAGMENT);
 		});
 
+		ItemGroupEvents.modifyEntriesEvent(ItemGroups.FOOD_AND_DRINKS).register(entries -> {
+			entries.addAfter(Items.APPLE, LOW_HONEY_APPLE);
+		});
 
 		//COMBAT TAB ITEMS REGISTRY
 		ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT).register(entries -> {

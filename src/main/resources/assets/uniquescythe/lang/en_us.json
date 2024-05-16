@@ -22,9 +22,12 @@
   "item.uniquescythe.mace":"Mace",
   "item.uniquescythe.air_bottle":"Bottle With Air",
   "item.uniquescythe.sorry_stone":"Sorry Stone",
+  "item.uniquescythe.low_honey_apple":"Honeyed Apple",
+  "item.uniquescythe.mid_honey_apple":"Honeyed Apple",
+  "item.uniquescythe.high_honey_apple":"Honeyed Apple",
 
 
-  "effect.uniquescythe.delayed_satisfaction": "Late Satisfaction",
+  "effect.uniquescythe.delayed_satisfaction": "Satisfaction",
 
 
 
