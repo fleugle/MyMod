@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "combat",
+  "ingredients": [
+    {
+      "item": "uniquescythe:breeze_rod"
+    },
+    {
+      "item": "uniquescythe:heavy_core"
+    }
+  ],
+  "result": {
+    "item": "uniquescythe:mace",
+    "count": 1
+  }
+}
