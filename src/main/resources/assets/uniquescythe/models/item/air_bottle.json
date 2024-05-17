@@ -1,23 +1,6 @@
 {
-	"credit": "Made with Blockbench",
 	"parent": "item/generated",
 	"textures": {
 		"layer0": "uniquescythe:item/air_bottle"
-	},
-	"display": {
-		"thirdperson_righthand": {
-			"translation": [0, 2.5, 0.75],
-			"scale": [0.6, 0.6, 0.7]
-		},
-		"thirdperson_lefthand": {
-			"translation": [0, 2.5, 0.75],
-			"scale": [0.6, 0.6, 0.7]
-		},
-		"gui": {
-			"scale": [1.15, 1.15, 1.1]
-		},
-		"fixed": {
-			"scale": [1.15, 1.15, 1.15]
-		}
 	}
 }

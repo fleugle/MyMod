@@ -7,10 +7,10 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 
-public class DuplicateMirror extends Item {
+public class DuplicateMirrorItem extends Item {
 
 
-	public DuplicateMirror(Settings settings) {
+	public DuplicateMirrorItem(Settings settings) {
 		super(settings);
 	}
 
