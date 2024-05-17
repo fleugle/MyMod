@@ -7,10 +7,13 @@ import net.minecraft.util.Identifier;
 import nikita.uniquescythe.UniqueScythe;
 import nikita.uniquescythe.status_effects.custom.DelayedSatisfactionStatusEffect;
 
+
 public class ModStatusEffects {
 
 
 	public static final StatusEffect DELAYED_SATISFACTION = new DelayedSatisfactionStatusEffect();
+
+
 
 
 
@@ -21,5 +24,6 @@ public class ModStatusEffects {
 
 	public static void initialiseStatusEffects(){
 		registerStatusEffect("delayed_satisfaction", DELAYED_SATISFACTION);
+
 	}
 }

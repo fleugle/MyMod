@@ -34,7 +34,6 @@ public abstract class GunItem extends Item implements GeoItem {
 		return this.cache;
 	}
 	private ItemStack persistantItemStack;
-	private final ToolMaterial toolMaterial;
 	private final AnimatableInstanceCache cache = AzureLibUtil.createInstanceCache(this);
 	private BlockPos lightBlockPos = null;
 	public int maxAmmo;
@@ -63,7 +62,7 @@ public abstract class GunItem extends Item implements GeoItem {
 
 
 	public GunItem(
-		ToolMaterial toolMaterial,
+
 		int maxAmmo,
 		int shootingDelay,
 		int reloadTime,
@@ -73,7 +72,6 @@ public abstract class GunItem extends Item implements GeoItem {
 
 		super( settings );
 
-		this.toolMaterial = toolMaterial;
 		this.maxAmmo = maxAmmo;
 		this.shootingDelay = shootingDelay;
 		this.reloadTime = reloadTime;

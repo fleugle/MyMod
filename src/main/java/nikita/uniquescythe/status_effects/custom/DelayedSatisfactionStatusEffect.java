@@ -6,7 +6,7 @@ import net.minecraft.entity.effect.StatusEffectType;
 import net.minecraft.entity.player.PlayerEntity;
 
 public class DelayedSatisfactionStatusEffect extends StatusEffect {
-	private int countDownToEffect = 0;
+	//private int countDownToEffect = 0;
 
 	public DelayedSatisfactionStatusEffect() {
 		super(
@@ -23,16 +23,9 @@ public class DelayedSatisfactionStatusEffect extends StatusEffect {
 
 	// This method is called when it applies the status effect. We implement custom functionality here.
 	@Override
-	public void applyUpdateEffect(LivingEntity entity, int amplifier) {
-
-		if (entity instanceof PlayerEntity) {
-
-			if (this.countDownToEffect == 199/* = 10 seconds */){
-				entity.heal((float)Math.max(4 << amplifier, 0));
-				this.countDownToEffect = 0;
-			}
-			else this.countDownToEffect++;
-		}
+	public void onRemoved(LivingEntity entity, net.minecraft.entity.attribute.AttributeContainer attributes, int amplifier) {
+		super.onRemoved(entity, attributes, amplifier);
+		entity.heal((float)Math.max(5 << amplifier, 0));
 	}
 
 

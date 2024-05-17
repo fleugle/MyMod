@@ -48,7 +48,7 @@ public class ModItems {
 
 	public static final Item MACE = registerItem("mace", new MaceItem(ModToolMaterial.BREEZE_ROD,6,20, new Item.Settings().maxCount(1)));
 
-	public static final Item JUSTICE_REVOLVER = registerItem("justice_revolver", new JusticeRevolverItem(ModToolMaterial.TRIUMPH_OF_JUSTICE,new Item.Settings().maxCount(1).rarity(Rarity.UNCOMMON)));
+	public static final Item JUSTICE_REVOLVER = registerItem("justice_revolver", new JusticeRevolverItem(new Item.Settings().maxCount(1).rarity(Rarity.UNCOMMON).maxDamageIfAbsent(500)));
 
 	public static final Item JUSTICE_FRAGMENT = registerItem("justice_fragment", new Item(new Item.Settings().fireproof().maxCount(16).rarity(Rarity.UNCOMMON)));
 

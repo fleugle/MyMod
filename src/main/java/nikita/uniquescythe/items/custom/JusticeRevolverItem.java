@@ -26,9 +26,8 @@ import java.util.function.Supplier;
 public class JusticeRevolverItem extends GunItem {
 
 
-	public JusticeRevolverItem(ToolMaterial toolMaterial, Settings properties) {
+	public JusticeRevolverItem(Settings properties) {
 		super(
-			toolMaterial,
 			6,
 			10,
 			60,
