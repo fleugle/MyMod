@@ -31,7 +31,7 @@ public class JusticeRevolverItem extends GunItem {
 			6,
 			10,
 			60,
-			"§6Hey, pardner! Don't forget to charge it next time, Okay?",
+			"§6Hey, partner! Don't forget to charge it next time, Okay?",
 			properties);
 		SingletonGeoAnimatable.registerSyncedAnimatable(this);
 	}

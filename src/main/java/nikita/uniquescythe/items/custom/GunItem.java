@@ -90,15 +90,19 @@ public abstract class GunItem extends Item implements GeoItem {
 		ItemStack offhand_stack = user.getStackInHand(Hand.OFF_HAND);
 		ItemStack itemStack = user.getStackInHand(hand);
 
+
+
 		if (!user.getItemCooldownManager().isCoolingDown(this)) {
 			if (!world.isClient) {
 				tryToReloadGun(world, user, itemStack, mainhand_stack, offhand_stack);
 			}
-
 			if (!user.getAbilities().creativeMode) {
 				itemStack.damage(1, user, e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
 			}
 		}
+
+
+
 
 
 		return TypedActionResult.pass(itemStack);
@@ -154,14 +158,14 @@ public abstract class GunItem extends Item implements GeoItem {
 				if(mainhand_stack.getItem() == getAmmoItem()){
 
 					int howMuchAmmoIsPresent = mainhand_stack.getCount();
-					consumeNeededAmountOfAmmoAndPutItInTheGun(stackWithGun, mainhand_stack, howMuchAmmoItNeeds, howMuchAmmoIsPresent);
+					consumeNeededAmountOfAmmoAndPutItInTheGun(shooter,stackWithGun, mainhand_stack, howMuchAmmoItNeeds, howMuchAmmoIsPresent);
 					SoundsManager.playPlayersSoundFromPlayer(shooter, getReloadSound(), 1f);
 					triggerAnim(shooter, GeoItem.getOrAssignId(stackWithGun, (ServerWorld) world), "shooting_controller", "reload");
 					shooter.getItemCooldownManager().set(this, this.reloadTime);
 				} else if (offhand_stack.getItem() == getAmmoItem()) {
 
 					int howMuchAmmoIsPresent = offhand_stack.getCount();
-					consumeNeededAmountOfAmmoAndPutItInTheGun(stackWithGun, offhand_stack, howMuchAmmoItNeeds, howMuchAmmoIsPresent);
+					consumeNeededAmountOfAmmoAndPutItInTheGun(shooter,stackWithGun, offhand_stack, howMuchAmmoItNeeds, howMuchAmmoIsPresent);
 					SoundsManager.playPlayersSoundFromPlayer(shooter, getReloadSound(), 1f);
 					triggerAnim(shooter, GeoItem.getOrAssignId(stackWithGun, (ServerWorld) world), "shooting_controller", "reload");
 					shooter.getItemCooldownManager().set(this, this.reloadTime);
@@ -236,12 +240,16 @@ public abstract class GunItem extends Item implements GeoItem {
 		else return false;
 	}
 
-	private void consumeNeededAmountOfAmmoAndPutItInTheGun(ItemStack stackWithGunItem,ItemStack stackWithAmmo, int neededAmount, int amountPresent){
+	private void consumeNeededAmountOfAmmoAndPutItInTheGun(PlayerEntity shooter, ItemStack stackWithGunItem,ItemStack stackWithAmmo, int neededAmount, int amountPresent){
 		if (amountPresent <= neededAmount) {
-			stackWithAmmo.decrement(amountPresent);
+			if (!shooter.getAbilities().creativeMode) {
+				stackWithAmmo.decrement(amountPresent);
+			}
 			setAmmoAmount(stackWithGunItem, getAmmoAmount(stackWithGunItem) + amountPresent);
 		}else {
-			stackWithAmmo.decrement(neededAmount);
+			if (!shooter.getAbilities().creativeMode) {
+				stackWithAmmo.decrement(neededAmount);
+			}
 			setAmmoAmount(stackWithGunItem, getAmmoAmount(stackWithGunItem) + neededAmount);
 		}
 

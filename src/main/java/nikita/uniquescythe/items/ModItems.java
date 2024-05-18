@@ -66,6 +66,8 @@ public class ModItems {
 
 	public static final Item DUPLICATE_MIRROR = registerItem("duplicate_mirror", new DuplicateMirrorItem(new Item.Settings()));
 
+	public static final Item STAR_TRINKET = registerItem("star_trinket", new Item( new Item.Settings()));
+
 	public static final Item LOW_HONEY_APPLE = registerItem(
 		"low_honey_apple",
 		new HoneyAppleItem(new Item.Settings().food(ModFoodComponents.LOW_HONEY_APPLE), "§9Mildly Honeyed"));//§5 - Dark Purple. §9 - Blue. §1 - Dark Blue
