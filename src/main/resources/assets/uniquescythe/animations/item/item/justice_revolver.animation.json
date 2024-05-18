@@ -149,7 +149,7 @@
 			}
 		},
 		"reload": {
-			"animation_length": 3,
+			"animation_length": 2.7083,
 			"bones": {
 				"bone": {
 					"rotation": {
