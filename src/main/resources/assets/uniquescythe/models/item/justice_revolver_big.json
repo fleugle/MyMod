@@ -43,11 +43,11 @@
     "firstperson_righthand": {
       "rotation": [
         5,
-        95,
+        90,
         0
       ],
       "translation": [
-        -3,
+        -4,
         0,
         4
       ],
