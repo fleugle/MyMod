@@ -5,6 +5,9 @@
     "uniquescythe:exposed_copper_grate",
     "uniquescythe:oxidized_copper_grate",
     "uniquescythe:copper_grate",
+    "uniquescythe:waxed_exposed_copper_grate",
+    "uniquescythe:waxed_oxidized_copper_grate",
+    "uniquescythe:waxed_copper_grate",
     "uniquescythe:tuff_bricks"
   ]
 }

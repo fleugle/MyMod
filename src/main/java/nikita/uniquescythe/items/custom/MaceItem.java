@@ -4,6 +4,7 @@ package nikita.uniquescythe.items.custom;
 import com.google.common.collect.ImmutableMultimap;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.client.item.TooltipContext;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
@@ -16,10 +17,13 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
+import net.minecraft.text.Text;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import nikita.uniquescythe.enchantments.ModEnchantments;
 import nikita.uniquescythe.sounds.ModSoundEvents;
+
+import java.util.List;
 
 
 public class MaceItem
@@ -121,6 +125,15 @@ public class MaceItem
 	@Override
 	public boolean isSuitableFor(BlockState state) {
 		return state.isOf(Blocks.COBWEB);
+	}
+
+
+	@Override
+	public void appendTooltip(ItemStack stack, World world, List<Text> tooltip, TooltipContext context) {
+
+		tooltip.add(Text.literal(""));
+		tooltip.add(Text.literal(""));
+		super.appendTooltip(stack, world, tooltip, context);
 	}
 
 }

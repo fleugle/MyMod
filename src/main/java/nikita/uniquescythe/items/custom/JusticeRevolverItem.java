@@ -9,6 +9,7 @@ import net.minecraft.client.render.item.BuiltinModelItemRenderer;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
@@ -26,6 +27,7 @@ import java.util.function.Supplier;
 public class JusticeRevolverItem extends GunItem {
 
 
+	//CONSTRUCTOR\\
 	public JusticeRevolverItem(Settings properties) {
 		super(
 			6,
@@ -38,6 +40,9 @@ public class JusticeRevolverItem extends GunItem {
 
 
 
+
+
+	//GUN ITEM CLASS OVERRIDES\\
 	@Override
 	public Item getAmmoItem(){
 		return ModItems.JUSTICE_BULLET;
@@ -83,7 +88,21 @@ public class JusticeRevolverItem extends GunItem {
 
 
 
-	//AZURELIB PART
+	//DEFAULT ITEM CLASSES OVERRIDES\\
+	@Override
+	public boolean isEnchantable(ItemStack stack) {
+		return true;
+	}
+
+	@Override
+	public boolean canRepair(ItemStack stack, ItemStack ingredient) {
+		return ingredient.isOf(ModItems.JUSTICE_FRAGMENT);
+	}
+
+
+
+
+	//AZURELIB PART\\
 
 	private final Supplier<Object> renderProvider = GeoItem.makeRenderer(this);
 

@@ -205,64 +205,14 @@
 // Miscellaneous
 	"sleep.skipping_night": "Sleeping through this night \uDB80\uDC47",
 
-// Attributes
-	"attribute.name.generic.max_health":			"§f\uDB80\uDCFD §rMax Health",
-	"attribute.name.generic.attack_damage":			"§f\uDB80\uDCFE §rAttack Damage",
-
-	"attribute.name.generic.armor":					"§f\uDB80\uDD00 §rArmor",
-	"attribute.name.generic.armor_toughness":		"§f\uDB80\uDD01 §rArmor Toughness",
-	"attribute.name.generic.knockback_resistance":	"§f\uDB80\uDD02 §rKnockback Resistance",
-	"attribute.name.generic.attack_speed":			"§f\uDB80\uDD03 §rAttack Speed",
-	"item.durability":								"\uDB80\uDD04 Durability: %s / %s",
-	"attribute.name.generic.movement_speed":		"§f\uDB80\uDD05 §rSpeed",
-	"attribute.name.generic.luck":					"§f\uDB80\uDD06 §rLuck",
-	"attribute.name.generic.flying_speed":			"§f\uDB80\uDD07 §rFlying Speed",
-	"attribute.name.horse.jump_strength":			"§f\uDB80\uDD08 §rHorse Jump Strength",
-	"attribute.name.zombie.spawn_reinforcements":	"§f\uDB80\uDD09 §rZombie Reinforcements",
-	"attribute.name.generic.follow_range": 			"§f\uDB80\uDD0A §rMob Follow Range",
-	"attribute.name.generic.attack_knockback":		"§f\uDB80\uDD0B §rAttack Knockback",
-
-	"attribute.modifier.plus.0":	"§f\uDB80\uDD10§r+%s %s",
-	"attribute.modifier.plus.1":	"§f\uDB80\uDD10§r+%s%% %s",
-	"attribute.modifier.plus.2":	"§f\uDB80\uDD10§r+%s%% %s",
-	"attribute.modifier.take.0":	"§f\uDB80\uDD0F§r-%s %s",
-	"attribute.modifier.take.1":	"§f\uDB80\uDD0F§r-%s%% %s",
-	"attribute.modifier.take.2":	"§f\uDB80\uDD0F§r-%s%% %s",
-	"attribute.modifier.equals.0":	"%s %s",
-	"attribute.modifier.equals.1":	"%s%% %s",
-	"attribute.modifier.equals.2":	"%s%% %s",
 
 
 
-// Banner Pattern
-	"item.minecraft.flower_banner_pattern.desc":	"§f\uDB80\uDD45 §rFlower Charge",
-	"item.minecraft.creeper_banner_pattern.desc":	"§f\uDB80\uDD46 §rCreeper Charge",
-	"item.minecraft.skull_banner_pattern.desc":		"§f\uDB80\uDD47 §rSkull Charge",
-	"item.minecraft.mojang_banner_pattern.desc":	"§f\uDB80\uDD48 §rThing",
-	"item.minecraft.globe_banner_pattern.desc":		"§f\uDB80\uDD49 §rGlobe",
-	"item.minecraft.piglin_banner_pattern.desc":	"§f\uDB80\uDD4A §rSnout",
 
 
 
-// Music Discs
-	"item.minecraft.music_disc_13.desc":		"C418 - 13 §f\uDB80\uDDB1 \uDBDA\uDF51",
-	"item.minecraft.music_disc_cat.desc":		"C418 - cat §f\uDB80\uDDB2 \uDBDA\uDF52",
-	"item.minecraft.music_disc_blocks.desc":	"C418 - blocks §f\uDB80\uDDB3 \uDBDA\uDF53",
-	"item.minecraft.music_disc_chirp.desc":		"C418 - chirp §f\uDB80\uDDB4 \uDBDA\uDF54",
-	"item.minecraft.music_disc_far.desc":		"C418 - far §f\uDB80\uDDB5 \uDBDA\uDF55",
-	"item.minecraft.music_disc_mall.desc":		"C418 - mall §f\uDB80\uDDB6 \uDBDA\uDF56",
-	"item.minecraft.music_disc_mellohi.desc":	"C418 - mellohi §f\uDB80\uDDB7 \uDBDA\uDF57",
-	"item.minecraft.music_disc_stal.desc":		"C418 - stal §f\uDB80\uDDB8 \uDBDA\uDF58",
-	"item.minecraft.music_disc_strad.desc":		"C418 - strad §f\uDB80\uDDB9 \uDBDA\uDF59",
-	"item.minecraft.music_disc_ward.desc":		"C418 - ward §f\uDB80\uDDBA \uDBDA\uDF5A",
-	"item.minecraft.music_disc_11.desc":		"C418 - 11 §f\uDB80\uDDBB \uDBDA\uDF5B",
-	"item.minecraft.music_disc_wait.desc":		"C418 - wait §f\uDB80\uDDBC \uDBDA\uDF5C",
-	"item.minecraft.music_disc_otherside.desc":	"Lena Raine - otherside §f\uDB80\uDDBD \uDBDA\uDF5D",
-	"item.minecraft.music_disc_5.desc":			"Samuel Åberg - 5 §f\uDB80\uDDBE \uDBDA\uDF5E",
-	"item.minecraft.music_disc_pigstep.desc":	"Lena Raine - Pigstep §f\uDB80\uDDBF \uDBDA\uDF5F",
-	"item.minecraft.music_disc_relic.desc":		"Aaron Cherof - Relic §f\uDB80\uDDC0 \uDBDA\uDF61",
 
-	"item.minecraft.disc_fragment_5.desc":		"Music Disc - 5 §f\uDB80\uDDBE",
+
 
 
 // Container

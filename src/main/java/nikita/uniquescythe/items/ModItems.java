@@ -22,6 +22,10 @@ public class ModItems {
 
 	public static final Item CHAOS_WILL = registerItem("chaos_will", new Item(new Item.Settings()));
 
+	public static final Item CHAOS_SHARD = registerItem("chaos_shard", new SimplyDescribedItem(new Item.Settings(),"§9Infused with Chaos"));
+
+	public static final Item JUSTICE_SHARD = registerItem("justice_shard", new SimplyDescribedItem(new Item.Settings(),"§9Infused with Justice"));
+
 	public static final Item AIR_BOTTLE = registerItem("air_bottle", new Item(new Item.Settings().maxCount(16)));
 
 	public static final Item FLUGELS_IMMORTALITY_DECLARATION = registerItem("flugels_immortality_declaration", new Item(new Item.Settings().maxCount(1).rarity(Rarity.EPIC).maxDamage(20)));
@@ -68,17 +72,9 @@ public class ModItems {
 
 	public static final Item STAR_TRINKET = registerItem("star_trinket", new Item( new Item.Settings()));
 
-	public static final Item LOW_HONEY_APPLE = registerItem(
-		"low_honey_apple",
-		new HoneyAppleItem(new Item.Settings().food(ModFoodComponents.LOW_HONEY_APPLE), "§9Mildly Honeyed"));//§5 - Dark Purple. §9 - Blue. §1 - Dark Blue
-
-	public static final Item MID_HONEY_APPLE = registerItem(
-		"mid_honey_apple",
-		new HoneyAppleItem(new Item.Settings().food(ModFoodComponents.MID_HONEY_APPLE), "§9Honeyed"));
-
-	public static final Item HIGH_HONEY_APPLE = registerItem(
-		"high_honey_apple",
-		new HoneyAppleItem(new Item.Settings().food(ModFoodComponents.HIGH_HONEY_APPLE), "§9Strongly Honeyed"));
+	public static final Item HONEY_APPLE = registerItem(
+		"honey_apple",
+		new HoneyAppleItem(new Item.Settings().food(ModFoodComponents.HONEY_APPLE)));
 
 
 
@@ -112,7 +108,7 @@ public class ModItems {
 		});
 
 		ItemGroupEvents.modifyEntriesEvent(ItemGroups.FOOD_AND_DRINKS).register(entries -> {
-			entries.addAfter(Items.APPLE, LOW_HONEY_APPLE);
+			entries.addAfter(Items.APPLE, HONEY_APPLE);
 		});
 
 		//COMBAT TAB ITEMS REGISTRY

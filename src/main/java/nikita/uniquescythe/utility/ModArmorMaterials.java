@@ -18,11 +18,11 @@ public enum ModArmorMaterials implements  ArmorMaterial {
 	//enums for armor materials
 	JUSTICE(
 		"justice",
-		1,
+		7,
 		new int[]{3,3,3,3},
 		0,
 		SoundEvents.ITEM_ARMOR_EQUIP_LEATHER,
-		20f,
+		0f,
 		20f,
 		() -> Ingredient.ofItems(ModItems.JUSTICE_FRAGMENT)
 	)
@@ -34,7 +34,7 @@ public enum ModArmorMaterials implements  ArmorMaterial {
 		0,
 		ModSoundEvents.INNOCENCE_APPROVED,
 		0f,
-		1000f,
+		20f,
 		Ingredient::empty
 	)
 

@@ -114,7 +114,7 @@ public abstract class GunItem extends Item implements GeoItem {
 
 		if (!world.isClient) {
 
-			if (hasEnoughAmmoInWeapon(stackWithGun)){
+			if (hasEnoughAmmoInWeapon(stackWithGun) || shooter.getAbilities().creativeMode){
 				createProjectile(world, shooter, stackWithGun);
 				shooter.getItemCooldownManager().set(this, this.shootingDelay);
 
