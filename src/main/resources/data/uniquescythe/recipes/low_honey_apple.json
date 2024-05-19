@@ -10,7 +10,10 @@
     }
   ],
   "result": {
-    "item": "uniquescythe:low_honey_apple",
+    "item": "uniquescythe:honey_apple",
+    "data": {
+      "HoneyLevel": 0
+    },
     "count": 1
   }
 }

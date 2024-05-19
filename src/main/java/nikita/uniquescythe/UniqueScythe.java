@@ -25,6 +25,7 @@ import nikita.uniquescythe.particles.ModParticleTypes;
 import nikita.uniquescythe.sounds.ModSoundEvents;
 import nikita.uniquescythe.status_effects.ModStatusEffects;
 import nikita.uniquescythe.utility.GuiltyLevelSystem;
+import nikita.uniquescythe.utility.ModLootTablesModifiers;
 import org.quiltmc.qsl.block.content.registry.api.BlockContentRegistries;
 import org.quiltmc.qsl.block.content.registry.api.ReversibleBlockEntry;
 import org.quiltmc.qsl.networking.api.PacketSender;
@@ -40,6 +41,7 @@ import java.util.Optional;
 public class UniqueScythe implements ModInitializer {
 
 	public static final String MOD_ID = "uniquescythe";//mod id for further usage
+	public static final String GAME_ID = "minecraft";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
 	public static Identifier id(String path) {
@@ -72,6 +74,9 @@ public class UniqueScythe implements ModInitializer {
 
 		//status effects
 		ModStatusEffects.initialiseStatusEffects();
+
+		//loot tables modifiers
+		ModLootTablesModifiers.modifyLootTables();
 
 
 
@@ -119,7 +124,7 @@ public class UniqueScythe implements ModInitializer {
 		GuiltyLevelSystem.createIntScoreboadIfMissing(scoreboard, ScoreboardCriterion.TOTAL_KILL_COUNT, "GeneralKillsGuiltyLevel");
 		GuiltyLevelSystem.createIntScoreboadIfMissing(scoreboard, ScoreboardCriterion.PLAYER_KILL_COUNT, "PlayersKillGuiltyAddition");
 	}
-	
+
 
 }
 

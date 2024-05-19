@@ -1,15 +1,19 @@
 {
   "type": "minecraft:crafting_shapeless",
+  "category": "misc",
   "ingredients": [
     {
-      "item": "uniquescythe:mid_honey_apple"
+      "item": "minecraft:apple"
     },
     {
       "item": "minecraft:honeycomb"
     }
   ],
   "result": {
-    "item": "uniquescythe:high_honey_apple",
+    "item": "uniquescythe:honey_apple",
+    "data": {
+      "HoneyLevel": 2
+    },
     "count": 1
   }
 }

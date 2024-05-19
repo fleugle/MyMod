@@ -17,9 +17,13 @@ project.configurations.configureEach {
 repositories {
 
 	// The Maven with the mods source
-	maven {url 'https://libs.azuredoom.com:4443/mods'}
+	maven {
+		url 'https://libs.azuredoom.com:4443/mods'
+	}
 	// Needed for Fabric only at the moment
-	maven { url "https://maven.terraformersmc.com/releases" }
+	maven {
+		url "https://maven.terraformersmc.com/releases"
+	}
 
 
 
