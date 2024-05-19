@@ -20,7 +20,6 @@ public class ModItems {
 
     public static final Item FROSTY_STEEL = registerItem("frosty_steel", new Item(new Item.Settings())); //ingridient needed to create the scythe
 
-	public static final Item CHAOS_WILL = registerItem("chaos_will", new Item(new Item.Settings()));
 
 	public static final Item CHAOS_SHARD = registerItem("chaos_shard", new SimplyDescribedItem(new Item.Settings(),"§9Infused with Chaos"));
 
@@ -54,7 +53,6 @@ public class ModItems {
 
 	public static final Item JUSTICE_REVOLVER = registerItem("justice_revolver", new JusticeRevolverItem(new Item.Settings().maxCount(1).rarity(Rarity.UNCOMMON).maxDamageIfAbsent(500)));
 
-	public static final Item JUSTICE_FRAGMENT = registerItem("justice_fragment", new Item(new Item.Settings().fireproof().maxCount(16).rarity(Rarity.UNCOMMON)));
 
 	public static final Item BULLET = registerItem("bullet", new Item(new Item.Settings().maxCount(16)));
 
@@ -101,10 +99,10 @@ public class ModItems {
 		ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(entries -> {
 			entries.addBefore(Items.SHULKER_SHELL, HEAVY_CORE);
 			entries.addAfter(Items.GOLD_INGOT, FROSTY_STEEL);
-			entries.addBefore(Items.FIRE_CHARGE, CHAOS_WILL);
 			entries.addAfter(Items.BLAZE_ROD, BREEZE_ROD);
 			entries.addBefore(Items.DRAGON_BREATH, AIR_BOTTLE);
-			entries.addBefore(Items.FIRE_CHARGE, JUSTICE_FRAGMENT);
+			entries.addAfter(Items.AMETHYST_SHARD, JUSTICE_SHARD);
+			entries.addBefore(JUSTICE_SHARD, CHAOS_SHARD);
 		});
 
 		ItemGroupEvents.modifyEntriesEvent(ItemGroups.FOOD_AND_DRINKS).register(entries -> {

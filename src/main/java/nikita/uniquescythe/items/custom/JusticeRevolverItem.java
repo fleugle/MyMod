@@ -96,7 +96,7 @@ public class JusticeRevolverItem extends GunItem {
 
 	@Override
 	public boolean canRepair(ItemStack stack, ItemStack ingredient) {
-		return ingredient.isOf(ModItems.JUSTICE_FRAGMENT);
+		return ingredient.isOf(ModItems.JUSTICE_SHARD);
 	}
 
 

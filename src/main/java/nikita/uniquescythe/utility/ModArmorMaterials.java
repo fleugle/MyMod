@@ -24,7 +24,7 @@ public enum ModArmorMaterials implements  ArmorMaterial {
 		SoundEvents.ITEM_ARMOR_EQUIP_LEATHER,
 		0f,
 		20f,
-		() -> Ingredient.ofItems(ModItems.JUSTICE_FRAGMENT)
+		() -> Ingredient.ofItems(ModItems.JUSTICE_SHARD)
 	)
 	,
 	INNOCENCE(

@@ -3,7 +3,7 @@
   "category": "misc",
   "ingredients": [
     {
-      "item": "minecraft:apple"
+      "item": "uniquescythe:honey_apple"
     },
     {
       "item": "minecraft:honeycomb"
@@ -12,7 +12,7 @@
   "result": {
     "item": "uniquescythe:honey_apple",
     "data": {
-      "HoneyLevel": 2
+      "HoneyLevel": 1
     },
     "count": 1
   }
