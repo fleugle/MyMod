@@ -40,6 +40,7 @@ public abstract class GunItem extends Item implements GeoItem {
 	public int shootingDelay;//not less than 10, 'cause in minecraft there is invulnerability timer for 10 ticks.
 	public int reloadTime;
 	public String notificationAboutAmmo;
+	public String damageDescription;
 
 
 
@@ -67,6 +68,7 @@ public abstract class GunItem extends Item implements GeoItem {
 		int shootingDelay,
 		int reloadTime,
 		String notificationAboutAmmo,
+		String damageDescription,
 		Settings settings)
 	{
 
@@ -76,6 +78,7 @@ public abstract class GunItem extends Item implements GeoItem {
 		this.shootingDelay = shootingDelay;
 		this.reloadTime = reloadTime;
 		this.notificationAboutAmmo = notificationAboutAmmo;
+		this.damageDescription = damageDescription;
 
 
 	}
@@ -184,7 +187,10 @@ public abstract class GunItem extends Item implements GeoItem {
 	@Override
 	public void appendTooltip(ItemStack stack, World world, List<Text> tooltip, TooltipContext context) {
 		super.appendTooltip(stack, world, tooltip, context);
-		tooltip.add(Text.translatable("Ammo: " + getAmmoAmount(stack) + " / " + this.maxAmmo));
+		tooltip.add(Text.literal(""));
+		tooltip.add(Text.literal("§7" + "Ammo: " + getAmmoAmount(stack) + " / " + this.maxAmmo));
+		tooltip.add(Text.literal("§7On shoot:"));
+		tooltip.add(Text.literal(damageDescription));
 	}
 
 	private int getAmmoAmount(ItemStack stack) {

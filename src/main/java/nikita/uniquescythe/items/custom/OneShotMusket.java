@@ -4,13 +4,10 @@ package nikita.uniquescythe.items.custom;
 import mod.azure.azurelib.animatable.GeoItem;
 import mod.azure.azurelib.animatable.SingletonGeoAnimatable;
 import mod.azure.azurelib.animatable.client.RenderProvider;
-
 import net.minecraft.client.render.item.BuiltinModelItemRenderer;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.item.ToolMaterial;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvent;
@@ -24,17 +21,55 @@ import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 
-public class JusticeRevolverItem extends GunItem {
+public class OneShotMusket extends GunItem {
 
+	/*
+	Color
+(Minecraft Name)	Chat Code	MOTD Code	Decimal	Hexadecimal
+Dark Red
+(dark_red)	§4	\u00A74	11141120	AA0000
+Red
+(red)	§c	\u00A7c	16733525	FF5555
+Gold
+(gold)	§6	\u00A76	16755200	FFAA00
+Yellow
+(yellow)	§e	\u00A7e	16777045	FFFF55
+Dark Green
+(dark_green)	§2	\u00A72	43520	00AA00
+Green
+(green)	§a	\u00A7a	5635925	55FF55
+Aqua
+(aqua)	§b	\u00A7b	5636095	55FFFF
+Dark Aqua
+(dark_aqua)	§3	\u00A73	43690	00AAAA
+Dark Blue
+(dark_blue)	§1	\u00A71	170	0000AA
+Blue
+(blue)	§9	\u00A79	5592575	5555FF
+Light Purple
+(light_purple)	§d	\u00A7d	16733695	FF55FF
+Dark Purple
+(dark_purple)	§5	\u00A75	11141290	AA00AA
+White
+(white)	§f	\u00A7f	16777215	FFFFFF
+Gray
+(gray)	§7	\u00A77	11184810	AAAAAA
+Dark Gray
+(dark_gray)	§8	\u00A78	5592405	555555
+Black
+(black)	§0	\u00A70	0	000000
+	 */
+
+	//https://www.digminecraft.com/lists/color_list_pc.php
 
 	//CONSTRUCTOR\\
-	public JusticeRevolverItem(Settings properties) {
+	public OneShotMusket(Settings properties) {
 		super(
-			6,
+			1,
 			10,
-			60,
-			"§6Hey, partner! Don't forget to charge it next time, Okay?",
-			"§2 - Judges target",
+			40,
+			"§4Give me MORE BULLETS",
+			"§4 - Kills.",
 			properties);
 		SingletonGeoAnimatable.registerSyncedAnimatable(this);
 	}
@@ -42,7 +77,7 @@ public class JusticeRevolverItem extends GunItem {
 
 
 
-
+//change
 	//GUN ITEM CLASS OVERRIDES\\
 	@Override
 	public Item getAmmoItem(){
@@ -77,6 +112,7 @@ public class JusticeRevolverItem extends GunItem {
 		}
 	}
 
+	//change
 	@Override
 	public void createProjectile(World world, PlayerEntity shooter, ItemStack stackWithGun){
 		JusticeBulletEntity justiceBulletEntity = new JusticeBulletEntity(shooter, world);
@@ -92,12 +128,12 @@ public class JusticeRevolverItem extends GunItem {
 	//DEFAULT ITEM CLASSES OVERRIDES\\
 	@Override
 	public boolean isEnchantable(ItemStack stack) {
-		return true;
+		return false;
 	}
 
 	@Override
 	public boolean canRepair(ItemStack stack, ItemStack ingredient) {
-		return ingredient.isOf(ModItems.JUSTICE_SHARD);
+		return false;
 	}
 
 
