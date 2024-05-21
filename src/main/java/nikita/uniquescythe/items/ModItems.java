@@ -62,7 +62,7 @@ public class ModItems {
 
 	public static final Item COWBOYS_CLOAK = registerItem("cowboys_cloak", new JusticeArmorItem(ModArmorMaterials.JUSTICE, ArmorItem.ArmorSlot.CHESTPLATE,new Item.Settings().maxCount(1).rarity(Rarity.UNCOMMON)));
 
-	public static final Item EYE_PATCH = registerItem("eye_patch", new EyePatchItem(ModArmorMaterials.INNOCENCE, ArmorItem.ArmorSlot.HELMET,new Item.Settings().maxCount(1).rarity(Rarity.RARE)));
+	public static final Item SIMPLE_HAT = registerItem("simple_hat", new SimpleHatItem(ModArmorMaterials.INNOCENCE, ArmorItem.ArmorSlot.HELMET,new Item.Settings().maxCount(1).rarity(Rarity.RARE)));
 
 	public static final Item SORRY_STONE = registerItem("sorry_stone", new SorryStoneItem(new Item.Settings().maxCount(16).fireproof().rarity(Rarity.RARE)));
 
@@ -92,6 +92,7 @@ public class ModItems {
 			entries.addAfter(Items.FIRE_CHARGE, WIND_CHARGE);
 			entries.addAfter(Items.NETHERITE_HOE, CHAOS_MULTITOOL);
 			entries.addItem(SORRY_STONE);
+			entries.addItem(Items.BUNDLE);
 		});
 
 
@@ -112,7 +113,7 @@ public class ModItems {
 		//COMBAT TAB ITEMS REGISTRY
 		ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT).register(entries -> {
 			//armor & equipment
-			entries.addBefore(Items.LEATHER_HORSE_ARMOR, EYE_PATCH);
+			entries.addBefore(Items.LEATHER_HORSE_ARMOR, SIMPLE_HAT);
 			entries.addBefore(Items.LEATHER_HORSE_ARMOR, JUSTICE_HAT);
 			entries.addBefore(Items.LEATHER_HORSE_ARMOR ,COWBOYS_CLOAK);
 

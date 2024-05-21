@@ -32,7 +32,7 @@ public enum ModArmorMaterials implements  ArmorMaterial {
 		0,
 		new int[]{0,0,0,0},
 		0,
-		ModSoundEvents.INNOCENCE_APPROVED,
+		SoundEvents.ITEM_ARMOR_EQUIP_LEATHER,
 		0f,
 		20f,
 		Ingredient::empty

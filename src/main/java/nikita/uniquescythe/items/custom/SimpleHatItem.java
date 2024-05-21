@@ -19,7 +19,7 @@ import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.world.World;
-import nikita.uniquescythe.geo.renderers.EyePatchRenderer;
+import nikita.uniquescythe.geo.renderers.SimpleHatRenderer;
 import nikita.uniquescythe.utility.GuiltyLevelSystem;
 import nikita.uniquescythe.utility.ModArmorMaterials;
 import org.jetbrains.annotations.NotNull;
@@ -27,7 +27,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
-public class EyePatchItem extends ArmorItem implements GeoItem {
+public class SimpleHatItem extends ArmorItem implements GeoItem {
 
 	private final AnimatableInstanceCache cache = AzureLibUtil.createInstanceCache(this);
 	private final Supplier<Object> renderProvider = GeoItem.makeRenderer(this);
@@ -37,7 +37,7 @@ public class EyePatchItem extends ArmorItem implements GeoItem {
 
 
 
-	public EyePatchItem(ArmorMaterial armorMaterial, ArmorSlot type, Settings properties) {
+	public SimpleHatItem(ArmorMaterial armorMaterial, ArmorSlot type, Settings properties) {
 		super(armorMaterial, type, properties);
 	}
 
@@ -123,7 +123,7 @@ public class EyePatchItem extends ArmorItem implements GeoItem {
 			@Override
 			public @NotNull BipedEntityModel<LivingEntity> getHumanoidArmorModel(LivingEntity livingEntity, ItemStack itemStack, EquipmentSlot equipmentSlot, BipedEntityModel<LivingEntity> original) {
 				if (this.renderer == null)
-					this.renderer = new EyePatchRenderer();
+					this.renderer = new SimpleHatRenderer();
 
 				// This prepares our GeoArmorRenderer for the current render frame.
 				// These parameters may be null however, so we don't do anything further with them

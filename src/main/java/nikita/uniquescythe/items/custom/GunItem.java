@@ -41,6 +41,7 @@ public abstract class GunItem extends Item implements GeoItem {
 	public int reloadTime;
 	public String notificationAboutAmmo;
 	public String damageDescription;
+	public String requiresBullet;
 
 
 
@@ -69,6 +70,7 @@ public abstract class GunItem extends Item implements GeoItem {
 		int reloadTime,
 		String notificationAboutAmmo,
 		String damageDescription,
+		String requiresBullet,
 		Settings settings)
 	{
 
@@ -79,6 +81,7 @@ public abstract class GunItem extends Item implements GeoItem {
 		this.reloadTime = reloadTime;
 		this.notificationAboutAmmo = notificationAboutAmmo;
 		this.damageDescription = damageDescription;
+		this.requiresBullet = requiresBullet;
 
 
 	}
@@ -98,9 +101,6 @@ public abstract class GunItem extends Item implements GeoItem {
 		if (!user.getItemCooldownManager().isCoolingDown(this)) {
 			if (!world.isClient) {
 				tryToReloadGun(world, user, itemStack, mainhand_stack, offhand_stack);
-			}
-			if (!user.getAbilities().creativeMode) {
-				itemStack.damage(1, user, e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
 			}
 		}
 
@@ -128,6 +128,10 @@ public abstract class GunItem extends Item implements GeoItem {
 				}
 				triggerAnim(shooter, GeoItem.getOrAssignId(stackWithGun, (ServerWorld) world), "shooting_controller", "shoot");
 				SoundsManager.playPlayersSoundFromPlayer(shooter, getShootingSound(), 1f);
+
+				if (!shooter.getAbilities().creativeMode) {
+					stackWithGun.damage(1, shooter, e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
+				}
 			}
 			else {
 				notifyShooterAboutAmmo(shooter);
@@ -144,9 +148,7 @@ public abstract class GunItem extends Item implements GeoItem {
 		}
 
 		shooter.incrementStat(Stats.USED.getOrCreateStat(this));
-		if (!shooter.getAbilities().creativeMode) {
-			stackWithGun.damage(1, shooter, e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
-		}
+
 
 	}
 
@@ -191,6 +193,8 @@ public abstract class GunItem extends Item implements GeoItem {
 		tooltip.add(Text.literal("§7" + "Ammo: " + getAmmoAmount(stack) + " / " + this.maxAmmo));
 		tooltip.add(Text.literal("§7On shoot:"));
 		tooltip.add(Text.literal(damageDescription));
+		tooltip.add(Text.literal("§7Requires:"));
+		tooltip.add(Text.literal(requiresBullet));
 	}
 
 	private int getAmmoAmount(ItemStack stack) {

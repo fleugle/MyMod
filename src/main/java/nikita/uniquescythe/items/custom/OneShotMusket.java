@@ -66,10 +66,11 @@ Black
 	public OneShotMusket(Settings properties) {
 		super(
 			1,
-			10,
+			20,
 			40,
 			"§4Give me MORE BULLETS",
 			"§4 - Kills.",
+			"§4 - Forbidden Bullet",
 			properties);
 		SingletonGeoAnimatable.registerSyncedAnimatable(this);
 	}
