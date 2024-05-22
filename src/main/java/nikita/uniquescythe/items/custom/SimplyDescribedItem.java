@@ -22,9 +22,8 @@ public class SimplyDescribedItem extends Item {
 	//§2 - Dark Green. §a - Green
 	@Override
 	public void appendTooltip(ItemStack stack, World world, List<Text> tooltip, TooltipContext context) {
-		if (stack.getItem().isFood()) {
-			tooltip.add(Text.literal(""));
-		}
+		tooltip.add(Text.literal(""));
+
 		tooltip.add(Text.literal(description));
 		super.appendTooltip(stack, world, tooltip, context);
 	}
