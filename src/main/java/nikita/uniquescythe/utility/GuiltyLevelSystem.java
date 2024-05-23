@@ -11,23 +11,23 @@ import org.jetbrains.annotations.NotNull;
 
 public class GuiltyLevelSystem {
 
-	public static void addGuiltyLevelsToPlayer(ServerPlayerEntity player, String playerName, int amount, int multiplier){
+	public static void addGuiltyLevelsToPlayer(ServerPlayerEntity player, String playerName, int amount){
 
 
 		CommandsExecuter.executeCommand(player, "scoreboard players add "+ playerName +" PersistentGuiltyLevel "+ amount);
-		updateGuiltyLevelPerEachEntityKill(player, playerName, multiplier);
+		updateGuiltyLevelPerEachEntityKill(player, playerName);
 
 	}
 
 
-	public static void updateGuiltyLevelPerEachEntityKill(ServerPlayerEntity player, String playerName, int multiplier){
+	public static void updateGuiltyLevelPerEachEntityKill(ServerPlayerEntity player, String playerName){
 
 
 
 		if ((getGuiltyLevel(player, playerName, "GeneralKillsGuiltyLevel") > 0) || (getGuiltyLevel(player, playerName, "PlayersKillGuiltyAddition") > 0)){
 			//get values and write all of them as
 			int amount = (getGuiltyLevel(player, playerName, "GeneralKillsGuiltyLevel"))
-				+ (getGuiltyLevel(player, playerName, "PlayersKillGuiltyAddition") * multiplier)
+				+ (getGuiltyLevel(player, playerName, "PlayersKillGuiltyAddition") * 5)
 				+ (getGuiltyLevel(player, playerName, "PersistentGuiltyLevel")) ;
 
 
@@ -52,9 +52,9 @@ public class GuiltyLevelSystem {
 
 	}
 
-	public static void subtractGuiltyLevel(ServerPlayerEntity player, String playerName, int amount, int multiplier){
+	public static void subtractGuiltyLevel(ServerPlayerEntity player, String playerName, int amount){
 
-		updateGuiltyLevelPerEachEntityKill( player, playerName, multiplier);
+		updateGuiltyLevelPerEachEntityKill( player, playerName);
 		//applies new values
 		CommandsExecuter.executeCommand(player, "scoreboard players remove "+ playerName +" PersistentGuiltyLevel "+ amount);
 
