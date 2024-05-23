@@ -24,6 +24,7 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import nikita.uniquescythe.items.ModItems;
 import nikita.uniquescythe.items.custom.GunItem;
+import nikita.uniquescythe.items.custom.SimpleTalismanItem;
 import nikita.uniquescythe.status_effects.ModStatusEffects;
 import nikita.uniquescythe.utility.GuiltyLevelSystem;
 import org.jetbrains.annotations.Nullable;
@@ -74,7 +75,7 @@ public abstract class LivingEntityMixin  extends Entity{
 
 	@SuppressWarnings("UnreachableCode")
 	@Inject(at = @At("HEAD"), method = "tryUseTotem", cancellable = true)
-	public void useFlugelsImmortalityTotem(DamageSource damageSource_1, CallbackInfoReturnable<Boolean> callback) {
+	public void tryUseFlugelsImmortalityTotem(DamageSource damageSource_1, CallbackInfoReturnable<Boolean> callback) {
 		/*inits PlayerEntity entity, which is a copy of this casted to Living Entity and then PlayerEntity*/
 		Entity entity =  this;
 
@@ -97,7 +98,7 @@ public abstract class LivingEntityMixin  extends Entity{
 				callback.setReturnValue(false);
 			}
 			else {
-				GuiltyLevelSystem.addGuiltyLevelsToPlayer((ServerPlayerEntity) entity, entity.getDisplayName().getString(), 200000, 500);
+				GuiltyLevelSystem.addGuiltyLevelsToPlayer((ServerPlayerEntity) entity, entity.getDisplayName().getString(), 200000);
 
 				if (mainhand_stack.getItem() == ModItems.FLUGELS_IMMORTALITY_DECLARATION) {
 					// Damage the item in the main hand
@@ -121,6 +122,80 @@ public abstract class LivingEntityMixin  extends Entity{
 				this.setHealth(20.0F);
 				this.clearStatusEffects();
 				this.addStatusEffect(new StatusEffectInstance(StatusEffects.SATURATION, 500, 8));
+				this.addStatusEffect(new StatusEffectInstance(ModStatusEffects.DELAYED_SATISFACTION, 1400, 2));
+				this.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 900, 1));
+				this.addStatusEffect(new StatusEffectInstance(StatusEffects.ABSORPTION, 2400, 1));
+				this.addStatusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 800, 0));
+
+
+
+
+				this.getWorld().sendEntityStatus(this, EntityStatuses.USE_TOTEM_OF_UNDYING);//ClientPlayNetworkHandler has a switch, that renders totem of undiying and its sound.
+				//this.getWorld().sendEntityStatus(this, (byte)35);
+				callback.setReturnValue(true);
+
+			}
+
+		}
+
+
+	}
+
+
+	@SuppressWarnings("UnreachableCode")
+	@Inject(at = @At("HEAD"), method = "tryUseTotem", cancellable = true)
+	public void tryUseTalisman(DamageSource damageSource_1, CallbackInfoReturnable<Boolean> callback) {
+		/*inits PlayerEntity entity, which is a copy of this casted to Living Entity and then PlayerEntity*/
+		Entity entity =  this;
+
+
+
+
+		/*ItemStack object that is set to the offhand item that entity is carrying*/
+
+
+		ItemStack mainhand_stack = ((LivingEntityMixin) entity).getStackInHand(Hand.MAIN_HAND);
+
+		ItemStack offhand_stack = ((LivingEntityMixin) entity).getStackInHand(Hand.OFF_HAND);
+
+
+		if ( (mainhand_stack.getItem() instanceof SimpleTalismanItem) || (offhand_stack.getItem() instanceof SimpleTalismanItem )) {
+
+			/*If the damagesource is something that could kill a player in creative mode, the totem does not work*/
+			if (damageSource_1.getType().equals(DamageTypes.OUT_OF_WORLD)) {
+
+				callback.setReturnValue(false);
+			}
+			else {
+				GuiltyLevelSystem.addGuiltyLevelsToPlayer((ServerPlayerEntity) entity, entity.getDisplayName().getString(), 25);
+
+				if (mainhand_stack.getItem() instanceof SimpleTalismanItem) {
+					// Damage the item in the main hand
+					mainhand_stack.decrement(1);
+				}
+
+				else if (offhand_stack.getItem() instanceof SimpleTalismanItem) {
+					// Damage the item in the off hand
+					offhand_stack.decrement(1);
+				}
+
+				else if ((mainhand_stack.getItem() instanceof SimpleTalismanItem) && (offhand_stack.getItem() instanceof SimpleTalismanItem)) {
+					// Damage the item in the main hand
+					mainhand_stack.decrement(1);
+				}
+
+
+
+
+				/*totem saves player from an untimely death*/
+				this.setHealth(4.0F);
+				this.clearStatusEffects();
+				this.addStatusEffect(new StatusEffectInstance(StatusEffects.SATURATION, 500, 8));
+				this.addStatusEffect(new StatusEffectInstance(ModStatusEffects.DELAYED_SATISFACTION, 1400, 2));
+				this.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 900, 1));
+				this.addStatusEffect(new StatusEffectInstance(StatusEffects.ABSORPTION, 2400, 1));
+				this.addStatusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 800, 0));
+
 
 
 
@@ -137,7 +212,7 @@ public abstract class LivingEntityMixin  extends Entity{
 
 	@SuppressWarnings("UnreachableCode")
 	@Inject(at = @At("HEAD"), method = "tryUseTotem", cancellable = true)
-	public void giveGuiltyPointsPerTotem(DamageSource damageSource_1,CallbackInfoReturnable<Boolean> callback){
+	public void tryUseTotem(DamageSource damageSource_1,CallbackInfoReturnable<Boolean> callback){
 
 		Entity entity =  this;
 
@@ -160,7 +235,7 @@ public abstract class LivingEntityMixin  extends Entity{
 				callback.setReturnValue(false);
 			}
 			else {
-				GuiltyLevelSystem.addGuiltyLevelsToPlayer((ServerPlayerEntity) entity, entity.getDisplayName().getString(), 25, 500);
+				GuiltyLevelSystem.addGuiltyLevelsToPlayer((ServerPlayerEntity) entity, entity.getDisplayName().getString(), 5);
 
 				if (mainhand_stack.getItem() == Items.TOTEM_OF_UNDYING) {
 					// Damage the item in the main hand

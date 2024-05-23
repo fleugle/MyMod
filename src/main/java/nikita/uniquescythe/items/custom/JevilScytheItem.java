@@ -26,7 +26,7 @@ public class JevilScytheItem extends SwordItem {
 
 
 		String playerName = attacker.getDisplayName().getString();
-		GuiltyLevelSystem.addGuiltyLevelsToPlayer((ServerPlayerEntity) attacker, playerName, 5, 5);
+		GuiltyLevelSystem.addGuiltyLevelsToPlayer((ServerPlayerEntity) attacker, playerName, 5);
 
 		return super.postHit(stack, target, attacker);
     }

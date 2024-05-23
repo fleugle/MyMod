@@ -70,7 +70,7 @@ public class SimpleHatItem extends ArmorItem implements GeoItem {
 
 	private void addStatusEffectForMaterial(@NotNull ServerPlayerEntity player, ArmorMaterial ArmorMaterial, @NotNull StatusEffectInstance StatusEffect) {
 
-		GuiltyLevelSystem.updateGuiltyLevelPerEachEntityKill(player, player.getDisplayName().getString(), 5);
+		GuiltyLevelSystem.updateGuiltyLevelPerEachEntityKill(player, player.getDisplayName().getString());
 		if(hasCorrectArmorOn(ArmorMaterial, player) && isInnocent(player)) {
 			player.addStatusEffect(new StatusEffectInstance(StatusEffect));
 		}

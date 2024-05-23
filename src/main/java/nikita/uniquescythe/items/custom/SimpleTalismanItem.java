@@ -2,8 +2,10 @@ package nikita.uniquescythe.items.custom;
 
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
+import net.minecraft.client.gui.screen.world.EditWorldScreen;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
@@ -11,6 +13,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.UUID;
@@ -20,8 +23,8 @@ public class SimpleTalismanItem extends Item {
 	public final float attackDamage;
 	public final float attackSpeed;
 	public final float movementSpeed;
-	public final float resistance;
-	public final float maxHealth;
+	public final float armor;
+	public final float addHealth;
 
 	public static final UUID TALISMAN_DAMAGE_MODIFIER_ID = UUID.fromString("3C0E2920-1886-11EF-9814-3B8F3FC9398A");
 	public static final UUID TALISMAN_RESISTANCE_MODIFIER_ID = UUID.fromString("EC0002D0-1887-11EF-9814-3B8F3FC9398A");
@@ -36,82 +39,80 @@ public class SimpleTalismanItem extends Item {
 		float attackDamage,
 		float attackSpeed,
 		float movementSpeed,
-		float resistance,
-		float maxHealth,
+		float armor,
+		float addHealth,
 		Settings settings
 	) {
 		super(settings);
 		this.attackDamage = attackDamage;
-		this.attackSpeed = attackSpeed;
+		this.attackSpeed = 	attackSpeed;
 		this.movementSpeed = movementSpeed;
-		this.resistance = resistance;
-		this.maxHealth = maxHealth;
+		this.armor = armor;
+		this.addHealth = addHealth;
 
 
 
 		ImmutableMultimap.Builder<EntityAttribute, EntityAttributeModifier> builder = ImmutableMultimap.builder();
 		builder.put(
 			EntityAttributes.GENERIC_ATTACK_DAMAGE,
-			new EntityAttributeModifier(TALISMAN_DAMAGE_MODIFIER_ID, "Talisman modifier", (double)this.attackDamage, EntityAttributeModifier.Operation.ADDITION)
+			new EntityAttributeModifier(TALISMAN_DAMAGE_MODIFIER_ID, "Talisman modifier", this.attackDamage, EntityAttributeModifier.Operation.ADDITION)
 		);
 		builder.put(
 			EntityAttributes.GENERIC_ATTACK_SPEED,
-			new EntityAttributeModifier(TALISMAN_ATTACK_SPEED_MODIFIER_ID, "Talisman modifier", (double)this.attackSpeed, EntityAttributeModifier.Operation.ADDITION)
+			new EntityAttributeModifier(TALISMAN_ATTACK_SPEED_MODIFIER_ID, "Talisman modifier", this.attackSpeed, EntityAttributeModifier.Operation.ADDITION)
 		);
 		builder.put(
 			EntityAttributes.GENERIC_MAX_HEALTH,
-			new EntityAttributeModifier(TALISMAN_MAX_HEALTH_MODIFIER_ID, "Talisman modifier", (double)this.maxHealth, EntityAttributeModifier.Operation.ADDITION)
+			new EntityAttributeModifier(TALISMAN_MAX_HEALTH_MODIFIER_ID, "Talisman modifier", this.addHealth, EntityAttributeModifier.Operation.ADDITION)
 		);
 		builder.put(
 			EntityAttributes.GENERIC_ARMOR,
-			new EntityAttributeModifier(TALISMAN_RESISTANCE_MODIFIER_ID, "Talisman modifier", (double)this.resistance, EntityAttributeModifier.Operation.ADDITION)
+			new EntityAttributeModifier(TALISMAN_RESISTANCE_MODIFIER_ID, "Talisman modifier", this.armor, EntityAttributeModifier.Operation.ADDITION)
 		);
 		builder.put(
 			EntityAttributes.GENERIC_MOVEMENT_SPEED,
-			new EntityAttributeModifier(TALISMAN_MOVEMENT_SPEED_MODIFIER_ID, "Talisman modifier", (double)this.movementSpeed, EntityAttributeModifier.Operation.ADDITION)
+			new EntityAttributeModifier(TALISMAN_MOVEMENT_SPEED_MODIFIER_ID, "Talisman modifier", this.movementSpeed, EntityAttributeModifier.Operation.ADDITION)
 		);
 		this.attributeModifiers = builder.build();
-	}
-
-
-	@Override
-	public void appendTooltip(ItemStack stack, World world, List<Text> tooltip, TooltipContext context) {
-		tooltip.add(Text.literal(""));
-
-		tooltip.add(Text.literal("Talisman"));
-		if (this.attackDamage != 0
-			|| this.attackSpeed != 0
-			|| this.movementSpeed != 0
-			|| this.maxHealth != 0
-			|| this.resistance != 0
-		) {
-			tooltip.add(Text.literal("§7Grants buffs:"));
-			if (this.attackDamage != 0) {
-				tooltip.add(Text.literal("§5 + "+this.attackDamage+" attack damage"));
-			}
-			if (this.attackSpeed != 0) {
-				tooltip.add(Text.literal("§5 + "+this.attackSpeed+" attack speed"));
-			}
-			if (this.movementSpeed != 0) {
-				tooltip.add(Text.literal("§5 + "+this.movementSpeed+" movement speed"));
-			}
-			if (this.maxHealth != 0) {
-				tooltip.add(Text.literal("§5 + "+this.maxHealth+" maximum health"));
-			}
-			if (this.resistance != 0) {
-				tooltip.add(Text.literal("§5 + "+this.resistance+" damage resistance"));
-			}
-		}
-
-
-		super.appendTooltip(stack, world, tooltip, context);
 	}
 
 
 
 	@Override
 	public Multimap<EntityAttribute, EntityAttributeModifier> getAttributeModifiers(EquipmentSlot slot) {
-		return slot == EquipmentSlot.MAINHAND || slot == EquipmentSlot.OFFHAND ? this.attributeModifiers : super.getAttributeModifiers(slot);
+		return slot == EquipmentSlot.OFFHAND ? this.attributeModifiers : super.getAttributeModifiers(slot);
 	}
+
+	/*@Override
+	public void inventoryTick(ItemStack stack, World world, net.minecraft.entity.Entity entity, int slot, boolean selected) {
+		super.inventoryTick(stack, world, entity, slot, selected);
+
+		if (!world.isClient && entity instanceof LivingEntity) {
+			LivingEntity livingEntity = (LivingEntity) entity;
+
+			if (selected || livingEntity.getOffHandStack() == stack) {
+				addAttributesModifiers(livingEntity, EquipmentSlot.MAINHAND);
+			} else {
+				removeAttributesModifiers(livingEntity, EquipmentSlot.MAINHAND);
+				removeAttributesModifiers(livingEntity, EquipmentSlot.OFFHAND);
+			}
+		}
+	}
+
+	private void addAttributesModifiers(LivingEntity entity, EquipmentSlot slot) {
+		entity.getAttributes().addTemporaryModifiers(this.getAttributeModifiers(slot));
+	}
+
+	private void removeAttributesModifiers(LivingEntity entity, EquipmentSlot slot) {
+		entity.getAttributes().removeModifiers(this.getAttributeModifiers(slot));
+	}*/
+
+	/*@Override
+	public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
+		// Remove default attributes tooltip
+		List<Text> originalTooltip = tooltip;
+		tooltip.clear();
+	}*/
+
 
 }

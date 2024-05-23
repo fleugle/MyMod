@@ -70,6 +70,10 @@ public class ModItems {
 
 	public static final Item STAR_TRINKET = registerItem("star_trinket", new Item( new Item.Settings()));
 
+	public static final Item TETOS_TALISMAN = registerItem("tetos_talisman", new SimpleTalismanItem(
+		3f, 0f, 0.1f,-3f, 4, new Item.Settings().maxCount(1))
+	);
+
 	public static final Item HONEY_APPLE = registerItem(
 		"honey_apple",
 		new HoneyAppleItem(new Item.Settings().food(ModFoodComponents.HONEY_APPLE)));
