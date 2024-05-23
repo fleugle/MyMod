@@ -82,36 +82,6 @@ public class SimpleTalismanItem extends Item {
 		return slot == EquipmentSlot.OFFHAND ? this.attributeModifiers : super.getAttributeModifiers(slot);
 	}
 
-	/*@Override
-	public void inventoryTick(ItemStack stack, World world, net.minecraft.entity.Entity entity, int slot, boolean selected) {
-		super.inventoryTick(stack, world, entity, slot, selected);
-
-		if (!world.isClient && entity instanceof LivingEntity) {
-			LivingEntity livingEntity = (LivingEntity) entity;
-
-			if (selected || livingEntity.getOffHandStack() == stack) {
-				addAttributesModifiers(livingEntity, EquipmentSlot.MAINHAND);
-			} else {
-				removeAttributesModifiers(livingEntity, EquipmentSlot.MAINHAND);
-				removeAttributesModifiers(livingEntity, EquipmentSlot.OFFHAND);
-			}
-		}
-	}
-
-	private void addAttributesModifiers(LivingEntity entity, EquipmentSlot slot) {
-		entity.getAttributes().addTemporaryModifiers(this.getAttributeModifiers(slot));
-	}
-
-	private void removeAttributesModifiers(LivingEntity entity, EquipmentSlot slot) {
-		entity.getAttributes().removeModifiers(this.getAttributeModifiers(slot));
-	}*/
-
-	/*@Override
-	public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
-		// Remove default attributes tooltip
-		List<Text> originalTooltip = tooltip;
-		tooltip.clear();
-	}*/
 
 
 }
