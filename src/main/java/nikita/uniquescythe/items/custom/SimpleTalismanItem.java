@@ -15,8 +15,7 @@ import net.minecraft.text.Text;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 public class SimpleTalismanItem extends Item {
 
@@ -52,27 +51,27 @@ public class SimpleTalismanItem extends Item {
 
 
 
+		List<Map.Entry<EntityAttribute, EntityAttributeModifier>> attributes = new ArrayList<>();
+		attributes.add(new AbstractMap.SimpleEntry<>(EntityAttributes.GENERIC_ATTACK_DAMAGE,
+			new EntityAttributeModifier(TALISMAN_DAMAGE_MODIFIER_ID, "Talisman modifier", this.attackDamage, EntityAttributeModifier.Operation.ADDITION)));
+		attributes.add(new AbstractMap.SimpleEntry<>(EntityAttributes.GENERIC_ATTACK_SPEED,
+			new EntityAttributeModifier(TALISMAN_ATTACK_SPEED_MODIFIER_ID, "Talisman modifier", this.attackSpeed, EntityAttributeModifier.Operation.ADDITION)));
+		attributes.add(new AbstractMap.SimpleEntry<>(EntityAttributes.GENERIC_MAX_HEALTH,
+			new EntityAttributeModifier(TALISMAN_MAX_HEALTH_MODIFIER_ID, "Talisman modifier", this.addHealth, EntityAttributeModifier.Operation.ADDITION)));
+		attributes.add(new AbstractMap.SimpleEntry<>(EntityAttributes.GENERIC_ARMOR,
+			new EntityAttributeModifier(TALISMAN_RESISTANCE_MODIFIER_ID, "Talisman modifier", this.armor, EntityAttributeModifier.Operation.ADDITION)));
+		attributes.add(new AbstractMap.SimpleEntry<>(EntityAttributes.GENERIC_MOVEMENT_SPEED,
+			new EntityAttributeModifier(TALISMAN_MOVEMENT_SPEED_MODIFIER_ID, "Talisman modifier", this.movementSpeed, EntityAttributeModifier.Operation.ADDITION)));
+
+		// Sort the attributes by their value in descending order
+		attributes.sort((a, b) -> Double.compare(b.getValue().getValue(), a.getValue().getValue()));
+
+		// Build the attributeModifiers map
 		ImmutableMultimap.Builder<EntityAttribute, EntityAttributeModifier> builder = ImmutableMultimap.builder();
-		builder.put(
-			EntityAttributes.GENERIC_ATTACK_DAMAGE,
-			new EntityAttributeModifier(TALISMAN_DAMAGE_MODIFIER_ID, "Talisman modifier", this.attackDamage, EntityAttributeModifier.Operation.ADDITION)
-		);
-		builder.put(
-			EntityAttributes.GENERIC_ATTACK_SPEED,
-			new EntityAttributeModifier(TALISMAN_ATTACK_SPEED_MODIFIER_ID, "Talisman modifier", this.attackSpeed, EntityAttributeModifier.Operation.ADDITION)
-		);
-		builder.put(
-			EntityAttributes.GENERIC_MAX_HEALTH,
-			new EntityAttributeModifier(TALISMAN_MAX_HEALTH_MODIFIER_ID, "Talisman modifier", this.addHealth, EntityAttributeModifier.Operation.ADDITION)
-		);
-		builder.put(
-			EntityAttributes.GENERIC_ARMOR,
-			new EntityAttributeModifier(TALISMAN_RESISTANCE_MODIFIER_ID, "Talisman modifier", this.armor, EntityAttributeModifier.Operation.ADDITION)
-		);
-		builder.put(
-			EntityAttributes.GENERIC_MOVEMENT_SPEED,
-			new EntityAttributeModifier(TALISMAN_MOVEMENT_SPEED_MODIFIER_ID, "Talisman modifier", this.movementSpeed, EntityAttributeModifier.Operation.ADDITION)
-		);
+		for (Map.Entry<EntityAttribute, EntityAttributeModifier> entry : attributes) {
+			builder.put(entry.getKey(), entry.getValue());
+		}
+
 		this.attributeModifiers = builder.build();
 	}
 
