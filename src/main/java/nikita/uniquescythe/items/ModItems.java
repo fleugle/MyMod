@@ -53,8 +53,9 @@ public class ModItems {
 
 	public static final Item JUSTICE_REVOLVER = registerItem("justice_revolver", new JusticeRevolverItem(new Item.Settings().maxCount(1).rarity(Rarity.UNCOMMON).maxDamageIfAbsent(500)));
 
-
 	public static final Item BULLET = registerItem("bullet", new Item(new Item.Settings().maxCount(16)));
+
+	public static final Item SACRED_BULLET = registerItem("sacred_bullet", new Item(new Item.Settings().maxCount(16).rarity(Rarity.EPIC)));
 
 	public static final Item JUSTICE_BULLET = registerItem("justice_bullet", new Item(new Item.Settings().maxCount(16).rarity(Rarity.UNCOMMON)));
 
@@ -71,7 +72,7 @@ public class ModItems {
 	public static final Item STAR_TRINKET = registerItem("star_trinket", new Item( new Item.Settings()));
 
 	public static final Item TETOS_TALISMAN = registerItem("tetos_talisman", new SimpleTalismanItem(
-		3f, 0f, 0.1f,-3f, 4, new Item.Settings().maxCount(1))
+		3f, 0.3f, 0.3f,-3f, 4, new Item.Settings().maxCount(1))
 	);
 
 	public static final Item HONEY_APPLE = registerItem(
@@ -108,6 +109,7 @@ public class ModItems {
 			entries.addBefore(Items.DRAGON_BREATH, AIR_BOTTLE);
 			entries.addAfter(Items.AMETHYST_SHARD, JUSTICE_SHARD);
 			entries.addBefore(JUSTICE_SHARD, CHAOS_SHARD);
+			entries.addItem(STAR_TRINKET);
 		});
 
 		ItemGroupEvents.modifyEntriesEvent(ItemGroups.FOOD_AND_DRINKS).register(entries -> {

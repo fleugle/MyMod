@@ -55,13 +55,13 @@ public class SimpleTalismanItem extends Item {
 		attributes.add(new AbstractMap.SimpleEntry<>(EntityAttributes.GENERIC_ATTACK_DAMAGE,
 			new EntityAttributeModifier(TALISMAN_DAMAGE_MODIFIER_ID, "Talisman modifier", this.attackDamage, EntityAttributeModifier.Operation.ADDITION)));
 		attributes.add(new AbstractMap.SimpleEntry<>(EntityAttributes.GENERIC_ATTACK_SPEED,
-			new EntityAttributeModifier(TALISMAN_ATTACK_SPEED_MODIFIER_ID, "Talisman modifier", this.attackSpeed, EntityAttributeModifier.Operation.ADDITION)));
+			new EntityAttributeModifier(TALISMAN_ATTACK_SPEED_MODIFIER_ID, "Talisman modifier", this.attackSpeed, EntityAttributeModifier.Operation.MULTIPLY_TOTAL)));
 		attributes.add(new AbstractMap.SimpleEntry<>(EntityAttributes.GENERIC_MAX_HEALTH,
 			new EntityAttributeModifier(TALISMAN_MAX_HEALTH_MODIFIER_ID, "Talisman modifier", this.addHealth, EntityAttributeModifier.Operation.ADDITION)));
 		attributes.add(new AbstractMap.SimpleEntry<>(EntityAttributes.GENERIC_ARMOR,
 			new EntityAttributeModifier(TALISMAN_RESISTANCE_MODIFIER_ID, "Talisman modifier", this.armor, EntityAttributeModifier.Operation.ADDITION)));
 		attributes.add(new AbstractMap.SimpleEntry<>(EntityAttributes.GENERIC_MOVEMENT_SPEED,
-			new EntityAttributeModifier(TALISMAN_MOVEMENT_SPEED_MODIFIER_ID, "Talisman modifier", this.movementSpeed, EntityAttributeModifier.Operation.ADDITION)));
+			new EntityAttributeModifier(TALISMAN_MOVEMENT_SPEED_MODIFIER_ID, "Talisman modifier", this.movementSpeed, EntityAttributeModifier.Operation.MULTIPLY_TOTAL)));
 
 		// Sort the attributes by their value in descending order
 		attributes.sort((a, b) -> Double.compare(b.getValue().getValue(), a.getValue().getValue()));

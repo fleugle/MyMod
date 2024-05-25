@@ -68,9 +68,9 @@ Black
 			1,
 			20,
 			40,
-			"§4Give me MORE BULLETS",
+			"§4Give me MORE bullets!",
 			"§4 - Kills.",
-			"§4 - Forbidden Bullet",
+			"§4 - Sacred Bullet",
 			properties);
 		SingletonGeoAnimatable.registerSyncedAnimatable(this);
 	}
@@ -82,7 +82,7 @@ Black
 	//GUN ITEM CLASS OVERRIDES\\
 	@Override
 	public Item getAmmoItem(){
-		return ModItems.JUSTICE_BULLET;
+		return ModItems.SACRED_BULLET;
 	}
 
 	@Override

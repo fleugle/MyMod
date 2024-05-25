@@ -123,7 +123,8 @@ public class MaceItem
 	public void appendTooltip(ItemStack stack, World world, List<Text> tooltip, TooltipContext context) {
 
 		tooltip.add(Text.literal(""));
-		tooltip.add(Text.literal(""));
+		tooltip.add(Text.literal("§7When in main hand:"));
+		tooltip.add(Text.literal("§9 "));
 		super.appendTooltip(stack, world, tooltip, context);
 	}
 
