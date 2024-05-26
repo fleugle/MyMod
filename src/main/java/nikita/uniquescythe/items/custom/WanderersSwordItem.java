@@ -50,8 +50,7 @@ public class WanderersSwordItem extends SwordItem {
 	//to do something if right-clicked too
 	@Override
 	public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
-		if (user.getWorld() != null && !world.isClient() && hand == Hand.MAIN_HAND) {//IMPORTANT!! FOR use method it is needed to specify, where action is performed. (server or client)
-			//I've also code it work only if in main hand
+		if (user.getWorld() != null && !world.isClient()) {
 
 			user.addStatusEffect(new StatusEffectInstance(StatusEffects.SATURATION, 2400, 3));
 			user.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 900, 2));
