@@ -2,11 +2,13 @@ package nikita.uniquescythe;
 
 import com.chocohead.mm.api.ClassTinkerers;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerEntityEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.enchantment.EnchantmentTarget;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.registry.Registries;
 import net.minecraft.scoreboard.Scoreboard;
@@ -24,10 +26,12 @@ import nikita.uniquescythe.items.ModItems;
 import nikita.uniquescythe.particles.ModParticleTypes;
 import nikita.uniquescythe.sounds.ModSoundEvents;
 import nikita.uniquescythe.status_effects.ModStatusEffects;
+import nikita.uniquescythe.utility.CommandsExecuter;
 import nikita.uniquescythe.utility.GuiltyLevelSystem;
 import nikita.uniquescythe.utility.ModLootTablesModifiers;
 import org.quiltmc.qsl.block.content.registry.api.BlockContentRegistries;
 import org.quiltmc.qsl.block.content.registry.api.ReversibleBlockEntry;
+import org.quiltmc.qsl.entity.event.api.ServerEntityLoadEvents;
 import org.quiltmc.qsl.networking.api.PacketSender;
 import org.quiltmc.qsl.networking.api.ServerPlayConnectionEvents;
 import org.quiltmc.qsl.registry.attachment.api.RegistryEntryAttachment;
@@ -53,6 +57,7 @@ public class UniqueScythe implements ModInitializer {
 		// This code runs as soon as Minecraft is in a mod-load-ready state.
 		// However, some things (like resources) may still be uninitialized.
 		// Proceed with mild caution.
+
 
 
 
@@ -120,9 +125,11 @@ public class UniqueScythe implements ModInitializer {
 		Scoreboard scoreboard = player.getWorld().getScoreboard();
 
 
-		GuiltyLevelSystem.createIntScoreboadIfMissing(scoreboard, ScoreboardCriterion.DUMMY, "PersistentGuiltyLevel");
-		GuiltyLevelSystem.createIntScoreboadIfMissing(scoreboard, ScoreboardCriterion.TOTAL_KILL_COUNT, "GeneralKillsGuiltyLevel");
-		GuiltyLevelSystem.createIntScoreboadIfMissing(scoreboard, ScoreboardCriterion.PLAYER_KILL_COUNT, "PlayersKillGuiltyAddition");
+		CommandsExecuter.createIntScoreboadIfMissing(scoreboard, ScoreboardCriterion.DUMMY, "PersistentGuiltyLevel");
+		CommandsExecuter.createIntScoreboadIfMissing(scoreboard, ScoreboardCriterion.TOTAL_KILL_COUNT, "GeneralKillsGuiltyLevel");
+		CommandsExecuter.createIntScoreboadIfMissing(scoreboard, ScoreboardCriterion.PLAYER_KILL_COUNT, "PlayersKillGuiltyAddition");
+		CommandsExecuter.createIntScoreboadIfMissing(scoreboard, ScoreboardCriterion.DUMMY, "EntityHealth");
+		CommandsExecuter.createIntScoreboadIfMissing(scoreboard, ScoreboardCriterion.DUMMY, "Karma");
 	}
 
 

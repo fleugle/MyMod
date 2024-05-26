@@ -61,20 +61,7 @@ public class GuiltyLevelSystem {
 	}
 
 
-	public static void createIntScoreboadIfMissing(@NotNull Scoreboard scoreboard, ScoreboardCriterion criteria, String objectiveName){
 
-		ScoreboardObjective objective = scoreboard.getObjective(objectiveName);
-
-		if (objective == null) {
-			// Create a new scoreboard named "GuiltyLevel"
-			scoreboard.addObjective(objectiveName, criteria, Text.of(objectiveName), ScoreboardCriterion.RenderType.INTEGER);
-
-			//additional check
-			if (scoreboard.getObjective(objectiveName) != null){
-				UniqueScythe.LOGGER.info("objective {} with criteria {} has been created", objectiveName, criteria);
-			}else UniqueScythe.LOGGER.info("failed objective {} with criteria {} creation", objectiveName, criteria);
-		}else UniqueScythe.LOGGER.info("{} objective  with criteria {} already exists", objectiveName, criteria);
-	}
 
 
 	public static int getGuiltyLevel(ServerPlayerEntity player, String playerName, String objectiveName){

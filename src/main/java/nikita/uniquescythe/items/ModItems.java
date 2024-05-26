@@ -109,7 +109,7 @@ public class ModItems {
 			entries.addBefore(Items.DRAGON_BREATH, AIR_BOTTLE);
 			entries.addAfter(Items.AMETHYST_SHARD, JUSTICE_SHARD);
 			entries.addBefore(JUSTICE_SHARD, CHAOS_SHARD);
-			entries.addItem(STAR_TRINKET);
+			entries.addAfter(Items.GOLDEN_CARROT, STAR_TRINKET);
 		});
 
 		ItemGroupEvents.modifyEntriesEvent(ItemGroups.FOOD_AND_DRINKS).register(entries -> {
@@ -136,6 +136,7 @@ public class ModItems {
 
 			//utility items
 			entries.addBefore(Items.TNT, FLUGELS_IMMORTALITY_DECLARATION);
+			entries.addAfter(FLUGELS_IMMORTALITY_DECLARATION, TETOS_TALISMAN);
 
 
 

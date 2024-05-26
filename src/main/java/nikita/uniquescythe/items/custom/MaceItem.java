@@ -124,7 +124,10 @@ public class MaceItem
 
 		tooltip.add(Text.literal(""));
 		tooltip.add(Text.literal("§7When in main hand:"));
-		tooltip.add(Text.literal("§9 "));
+		tooltip.add(Text.literal("§2 7 attack damage"));
+		tooltip.add(Text.literal("§2 also damages, depending"));
+		tooltip.add(Text.literal("§2 on falling distance"));
+
 		super.appendTooltip(stack, world, tooltip, context);
 	}
 
