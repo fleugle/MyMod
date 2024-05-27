@@ -1,5 +1,6 @@
 package nikita.uniquescythe.entities.custom;
 
+import dev.architectury.platform.Mod;
 import mod.azure.azurelib.animatable.GeoEntity;
 import mod.azure.azurelib.core.animatable.instance.AnimatableInstanceCache;
 import mod.azure.azurelib.core.animatable.instance.SingletonAnimatableInstanceCache;
@@ -25,6 +26,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import nikita.uniquescythe.sounds.ModSoundEvents;
+import nikita.uniquescythe.utility.SoundsManager;
 import nikita.uniquescythe.utility.WindExplosion;
 import nikita.uniquescythe.entities.ModEntities;
 import nikita.uniquescythe.items.ModItems;
@@ -175,16 +177,7 @@ public class WindChargeProjectileEntity extends ThrownItemEntity implements GeoE
 				explosion.collectBlocksAndDamageEntities();
 
 				//sound on block collision
-				getWorld().playSound(
-					null,
-					getPos().getX(),
-					getPos().getY(),
-					getPos().getZ(),
-					ModSoundEvents.WIND_CHARGE_BURST,
-					SoundCategory.NEUTRAL,
-					1F,
-					0.4F / (getWorld().getRandom().nextFloat() * 0.4F + 0.8F)
-				);
+				SoundsManager.playNeutralSoundOnSpot(this, ModSoundEvents.WIND_CHARGE_BURST, 1, 1);
 			}
 			this.discard();
 		}

@@ -11,6 +11,7 @@ import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 import nikita.uniquescythe.entities.custom.WindChargeProjectileEntity;
 import nikita.uniquescythe.sounds.ModSoundEvents;
+import nikita.uniquescythe.utility.SoundsManager;
 
 public class WindChargeItem extends Item {
 	public WindChargeItem(Settings settings) {
@@ -23,16 +24,7 @@ public class WindChargeItem extends Item {
 	@Override
 	public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
 		ItemStack itemStack = user.getStackInHand(hand);
-		world.playSound(
-			null,
-			user.getX(),
-			user.getY(),
-			user.getZ(),
-			ModSoundEvents.WIND_CHARGE_THROW,
-			SoundCategory.NEUTRAL,
-			2F,
-			0.4F / (world.getRandom().nextFloat() * 0.4F + 0.8F)
-		);
+		SoundsManager.playNeutralSoundFromPlayer(user, ModSoundEvents.WIND_CHARGE_THROW,1f);
 		if (!world.isClient) {
 			WindChargeProjectileEntity windChargeProjectileEntity = new WindChargeProjectileEntity(user, world);
 			windChargeProjectileEntity.setItem(itemStack);

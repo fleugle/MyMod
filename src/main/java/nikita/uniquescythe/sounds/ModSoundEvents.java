@@ -9,12 +9,12 @@ import nikita.uniquescythe.UniqueScythe;
 
 public class ModSoundEvents {
     public static SoundEvent SCYTHE_CHARGED = registerSound("sc_ch");
+
     public static SoundEvent SCYTHE_HIT = registerSound("sc_ht");
 
 	public static SoundEvent EASTER_EGG = registerSound("e_g");
 
 	public static SoundEvent WIND_CHARGE_BURST = registerSound("w_b");
-
 
 	public static SoundEvent WIND_CHARGE_THROW = registerSound("w_th");
 
@@ -33,6 +33,14 @@ public class ModSoundEvents {
 	public static SoundEvent EMPTY_GUN_SHOT = registerSound("empty_gun_shot");
 
 	public static SoundEvent REVOLVER_RELOAD = registerSound("revolver_reload");
+
+	public static SoundEvent DUPLICATE_SUCCESS = registerSound("duplicate_success");
+
+	public static SoundEvent DUPLICATE_FAIL = registerSound("duplicate_fail");
+
+
+
+
 
 	//armor sounds
 	public static SoundEvent INNOCENCE_APPROVED = registerSound("innc_apr");

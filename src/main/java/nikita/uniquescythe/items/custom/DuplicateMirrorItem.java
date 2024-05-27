@@ -7,6 +7,7 @@ import net.minecraft.item.Items;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
+import nikita.uniquescythe.items.ModItems;
 
 public class DuplicateMirrorItem extends Item {
 
@@ -25,6 +26,7 @@ public class DuplicateMirrorItem extends Item {
 
 
 		copyItemInOppositeHand(user, hand);
+		user.getItemCooldownManager().set(this, 25);
 
 		return TypedActionResult.success(user.getStackInHand(hand));
 
@@ -33,37 +35,22 @@ public class DuplicateMirrorItem extends Item {
 	public void copyItemInOppositeHand(PlayerEntity user,Hand hand){
 
 		Hand oppositeHand = hand == Hand.MAIN_HAND ? this.offHand : this.mainHand;
-		ItemStack amethystStack = new ItemStack(Items.AMETHYST_SHARD);
+		ItemStack chaosShardStack = new ItemStack(ModItems.CHAOS_SHARD);
 
-		 if (!user.getStackInHand(oppositeHand).isEmpty() && user.getInventory().contains(amethystStack)){
+		 if (!user.getStackInHand(oppositeHand).isEmpty() && !user.getWorld().isClient){
 
-			ItemStack stackInOppositeHand = user.getStackInHand(oppositeHand);
+			 ItemStack stackInOppositeHand = user.getStackInHand(oppositeHand);
+			 ItemStack stackGiven = new ItemStack(stackInOppositeHand.getItem().asItem(), stackInOppositeHand.getCount());
 
-			 // Check if the item stack in the opposite hand is less than the max stack size
-			 if (stackInOppositeHand.getCount() < stackInOppositeHand.getMaxCount()/2) {
-				 // Increase the amount by 1
-				 stackInOppositeHand.increment(stackInOppositeHand.getCount());
-			 } else {
-				 // Find the first empty slot in the inventory
-				 boolean addedToInventory = false;
-				 for (int i = 0; i < user.getInventory().size(); i++) {
-					 if (user.getInventory().getStack(i).isEmpty()) {
-						 user.giveItemStack(stackInOppositeHand);
-						 addedToInventory = true;
-						 break;
-					 }
+			 if (user.getInventory().contains(chaosShardStack) || user.getAbilities().creativeMode ) {
+				 if (user.getStackInHand(oppositeHand).getItem() != ModItems.CHAOS_SHARD) {
+					 user.giveItemStack(stackGiven);
 				 }
-
-				 // If there's no empty slot, you might want to handle this case (e.g., drop the item)
-				 if (!addedToInventory) {
-
-					 // Optional: drop the item if no empty slot is found
-					 user.dropItem(stackInOppositeHand, false);
+				 if (!user.getAbilities().creativeMode) {
+					 chaosShardStack.decrement(1);
 				 }
 			 }
-			 if (!user.getAbilities().creativeMode) {
-				 amethystStack.decrement(1);
-			 }
+
 		 }
 
 	}
