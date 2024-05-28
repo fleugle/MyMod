@@ -43,6 +43,10 @@ public class AbstractCopperGrateBlock extends OxidizableBlock implements Waterlo
 		boolean bl = fluidState.getFluid() == Fluids.WATER;
 		return super.getPlacementState(ctx).with(WATERLOGGED, Boolean.valueOf(bl));
 	}
+	@Override
+	public boolean hasRandomTicks(BlockState state) {
+		return Oxidizable.getIncreasedOxidationBlock(state.getBlock()).isPresent();
+	}
 
 	@Override
 	public BlockState getStateForNeighborUpdate(
@@ -64,5 +68,7 @@ public class AbstractCopperGrateBlock extends OxidizableBlock implements Waterlo
 	protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
 		builder.add(WATERLOGGED);
 	}
+
+
 
 }

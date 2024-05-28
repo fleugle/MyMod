@@ -7,6 +7,7 @@ import net.minecraft.scoreboard.ScoreboardPlayerScore;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
 import nikita.uniquescythe.UniqueScythe;
+import nikita.uniquescythe.items.custom.JusticeArmorItem;
 import org.jetbrains.annotations.NotNull;
 
 public class GuiltyLevelSystem {
@@ -26,10 +27,19 @@ public class GuiltyLevelSystem {
 
 		if ((getGuiltyLevel(player, playerName, "GeneralKillsGuiltyLevel") > 0) || (getGuiltyLevel(player, playerName, "PlayersKillGuiltyAddition") > 0)){
 			//get values and write all of them as
-			int amount = (getGuiltyLevel(player, playerName, "GeneralKillsGuiltyLevel"))
-				+ (getGuiltyLevel(player, playerName, "PlayersKillGuiltyAddition") * 5)
-				+ (getGuiltyLevel(player, playerName, "PersistentGuiltyLevel")) ;
 
+
+			int amount = 0;
+			if (player.getArmorItems() instanceof JusticeArmorItem) {
+				amount = (getGuiltyLevel(player, playerName, "GeneralKillsGuiltyLevel") - 1)
+					+ (getGuiltyLevel(player, playerName, "PlayersKillGuiltyAddition"))
+					+ (getGuiltyLevel(player, playerName, "PersistentGuiltyLevel"));
+			}
+			else {
+				amount = (getGuiltyLevel(player, playerName, "GeneralKillsGuiltyLevel"))
+					+ (getGuiltyLevel(player, playerName, "PlayersKillGuiltyAddition") * 5)
+					+ (getGuiltyLevel(player, playerName, "PersistentGuiltyLevel"));
+			}
 
 
 			//resets values for goods

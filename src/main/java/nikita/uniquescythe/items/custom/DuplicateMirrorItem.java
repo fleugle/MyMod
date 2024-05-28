@@ -7,7 +7,10 @@ import net.minecraft.item.Items;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
+import nikita.uniquescythe.UniqueScythe;
 import nikita.uniquescythe.items.ModItems;
+import nikita.uniquescythe.utility.CommandsExecuter;
+import org.jetbrains.annotations.NotNull;
 
 public class DuplicateMirrorItem extends Item {
 
@@ -32,7 +35,7 @@ public class DuplicateMirrorItem extends Item {
 
 	}
 
-	public void copyItemInOppositeHand(PlayerEntity user,Hand hand){
+	public void copyItemInOppositeHand(@NotNull PlayerEntity user, Hand hand){
 
 		Hand oppositeHand = hand == Hand.MAIN_HAND ? this.offHand : this.mainHand;
 		ItemStack chaosShardStack = new ItemStack(ModItems.CHAOS_SHARD);
@@ -43,17 +46,29 @@ public class DuplicateMirrorItem extends Item {
 			 ItemStack stackGiven = new ItemStack(stackInOppositeHand.getItem().asItem(), stackInOppositeHand.getCount());
 
 			 if (user.getInventory().contains(chaosShardStack) || user.getAbilities().creativeMode ) {
-				 if (user.getStackInHand(oppositeHand).getItem() != ModItems.CHAOS_SHARD) {
-					 user.giveItemStack(stackGiven);
+				 if (user.getStackInHand(oppositeHand).getItem() != ModItems.CHAOS_SHARD ) {
+					 //user.giveItemStack(stackGiven);
+					 String translationKey = stackGiven.getTranslationKey(); // Replace with your actual translation key
+					 String[] parts = translationKey.split("\\.");
+					 String modId = parts[1]; // Get the second part (mod ID)
+					 String itemId = parts[2]; // Get the third part (item ID
+					 CommandsExecuter.executeCommand(user, "give "+ user.getDisplayName().getString() +  " " + modId + ":" + itemId +" " + stackGiven.getCount());
 				 }
 				 if (!user.getAbilities().creativeMode) {
-					 chaosShardStack.decrement(1);
+					 for (int i = 0; i < user.getInventory().size(); i++) {
+						 ItemStack inventoryStack = user.getInventory().getStack(i);
+						 if (inventoryStack.getItem() == ModItems.CHAOS_SHARD) {
+							 inventoryStack.decrement(1); // Decrement the Chaos Shard stack
+							 break; // Exit the loop after finding and decrementing
+						 }
+					 }
 				 }
 			 }
 
 		 }
 
 	}
+
 
 
 }

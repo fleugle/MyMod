@@ -3,6 +3,7 @@ package nikita.uniquescythe.sounds;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.sound.SoundEvent;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 import nikita.uniquescythe.UniqueScythe;
 
@@ -59,6 +60,20 @@ public class ModSoundEvents {
 	public static SoundEvent BLOCK_HEAVY_CORE_HIT = registerSound("block.heavy_core.hit");
 
 	public static SoundEvent BLOCK_HEAVY_CORE_FALL = registerSound("block.heavy_core.fall");
+
+	public static SoundEvent BLOCK_COPPER_BULB_TURN_ON = registerSound("block.copper_bulb.turn_on");
+
+	public static SoundEvent BLOCK_COPPER_BULB_TURN_OFF = registerSound("block.copper_bulb.turn_off");
+
+	public static final SoundEvent BLOCK_COPPER_BULB_BREAK = registerSound("block.copper_bulb.break");
+
+	public static final SoundEvent BLOCK_COPPER_BULB_STEP = registerSound("block.copper_bulb.step");
+
+	public static final SoundEvent BLOCK_COPPER_BULB_PLACE = registerSound("block.copper_bulb.place");
+
+	public static final SoundEvent BLOCK_COPPER_BULB_HIT = registerSound("block.copper_bulb.hit");
+
+	public static final SoundEvent BLOCK_COPPER_BULB_FALL = registerSound("block.copper_bulb.fall");
 
 
 

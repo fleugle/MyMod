@@ -15,6 +15,7 @@ import nikita.uniquescythe.UniqueScythe;
 import nikita.uniquescythe.blocks.custom.AbstractCopperGrateBlock;
 import nikita.uniquescythe.blocks.custom.AbstractHeavyCoreBlock;
 import nikita.uniquescythe.blocks.custom.AbstractWaxedCopperGrateBlock;
+import nikita.uniquescythe.blocks.custom.OxidizableBulbBlock;
 import nikita.uniquescythe.sounds.ModBlockSoundGroup;
 
 public class ModBlocks {
@@ -82,6 +83,16 @@ public class ModBlocks {
 				.strength(3.0F, 6.0F)
 				.sounds(BlockSoundGroup.COPPER)));//exposed copper grate
 
+	public static final Block COPPER_BULB = Blocks.register("copper_bulb",
+		(Block)new OxidizableBulbBlock(
+			Oxidizable.OxidizationLevel.UNAFFECTED,
+			AbstractBlock.Settings.create()
+				.mapColor(MapColor.ORANGE)
+				.strength(3.0f, 6.0f)
+				.sounds(ModBlockSoundGroup.COPPER_BULB)
+				.requiresTool()
+				.solidBlock(Blocks::never)
+				.luminance(Blocks.createLightLevelFromLitBlockState(15))));
 
 
 	//HELPER METHODS

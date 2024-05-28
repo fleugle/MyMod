@@ -27,7 +27,7 @@ public class ModItems {
 
 	public static final Item AIR_BOTTLE = registerItem("air_bottle", new Item(new Item.Settings().maxCount(16)));
 
-	public static final Item FLUGELS_IMMORTALITY_DECLARATION = registerItem("flugels_immortality_declaration", new Item(new Item.Settings().maxCount(1).rarity(Rarity.EPIC).maxDamage(20)));
+	public static final Item FLUGELS_IMMORTALITY_DECLARATION = registerItem("flugels_immortality_declaration", new Item(new Item.Settings().maxCount(1).rarity(Rarity.EPIC).maxDamage(50)));
 
     public static final Item FROSTY_SCYTHE = registerItem("frosty_scythe", new FrostyScytheItem(ModToolMaterial.FROSTY_STEEL,12, -3f, new Item.Settings().rarity(Rarity.RARE))); //The scythe
 
@@ -45,7 +45,7 @@ public class ModItems {
 
 	public static final Item WIND_CHARGE = registerItem("wind_charge", new WindChargeItem(new Item.Settings().maxCount(64)));
 
-    public static final Item WANDERERS_SWORD = registerItem("wanderers_sword", new WanderersSwordItem(ModToolMaterial.FROSTY_STEEL,1, 100f, new Item.Settings()));
+    public static final Item WANDERERS_SWORD = registerItem("wanderers_sword", new WanderersSwordItem(ModToolMaterial.FROSTY_STEEL,1, 96f, new Item.Settings()));
 
 	public static final Item BREEZE_ROD = registerItem("breeze_rod", new Item(new Item.Settings().maxCount(64)));
 
@@ -67,12 +67,12 @@ public class ModItems {
 
 	public static final Item SORRY_STONE = registerItem("sorry_stone", new SorryStoneItem(new Item.Settings().maxCount(16).fireproof().rarity(Rarity.RARE)));
 
-	public static final Item DUPLICATE_MIRROR = registerItem("duplicate_mirror", new DuplicateMirrorItem(new Item.Settings()));
+	public static final Item DUPLICATE_MIRROR = registerItem("duplicate_mirror", new DuplicateMirrorItem(new Item.Settings().rarity(Rarity.EPIC)));
 
 	public static final Item STAR_TRINKET = registerItem("star_trinket", new Item( new Item.Settings()));
 
 	public static final Item TETOS_TALISMAN = registerItem("tetos_talisman", new SimpleTalismanItem(
-		3f, 0.3f, 0.3f,-3f, 4, new Item.Settings().maxCount(1))
+		3f, 0.5f, 0.3f,-3f, 4, new Item.Settings().maxCount(1).rarity(Rarity.RARE))
 	);
 
 	public static final Item HONEY_APPLE = registerItem(
@@ -98,6 +98,7 @@ public class ModItems {
 			entries.addAfter(Items.NETHERITE_HOE, CHAOS_MULTITOOL);
 			entries.addItem(SORRY_STONE);
 			entries.addItem(Items.BUNDLE);
+			entries.addAfter(Items.SPYGLASS, DUPLICATE_MIRROR);
 		});
 
 
