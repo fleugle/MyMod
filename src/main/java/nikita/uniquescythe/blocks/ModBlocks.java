@@ -83,6 +83,8 @@ public class ModBlocks {
 				.strength(3.0F, 6.0F)
 				.sounds(BlockSoundGroup.COPPER)));//exposed copper grate
 
+
+
 	public static final Block COPPER_BULB = registerBlock("copper_bulb",
 		(Block)new OxidizableBulbBlock(
 			Oxidizable.OxidizationLevel.UNAFFECTED,
@@ -183,10 +185,6 @@ public class ModBlocks {
 
 		ItemGroupEvents.modifyEntriesEvent(ItemGroups.REDSTONE_BLOCKS).register(entries -> {
 
-			entries.addItem(COPPER_BULB);
-			entries.addItem(EXPOSED_COPPER_BULB);
-			entries.addItem(WEATHERED_COPPER_BULB);
-			entries.addItem(OXIDIZED_COPPER_BULB);
 			entries.addItem(WAXED_COPPER_BULB);
 			entries.addItem(WAXED_EXPOSED_COPPER_BULB);
 			entries.addItem(WAXED_WEATHERED_COPPER_BULB);

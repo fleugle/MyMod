@@ -5,9 +5,21 @@
     "uniquescythe:exposed_copper_grate",
     "uniquescythe:oxidized_copper_grate",
     "uniquescythe:copper_grate",
+
     "uniquescythe:waxed_exposed_copper_grate",
     "uniquescythe:waxed_oxidized_copper_grate",
     "uniquescythe:waxed_copper_grate",
-    "uniquescythe:tuff_bricks"
+
+    "uniquescythe:tuff_bricks",
+
+    "uniquescythe:copper_bulb",
+    "uniquescythe:exposed_copper_bulb",
+    "uniquescythe:weathered_copper_bulb",
+    "uniquescythe:oxidized_copper_bulb",
+
+    "uniquescythe:waxed_copper_bulb",
+    "uniquescythe:waxed_exposed_copper_bulb",
+    "uniquescythe:waxed_weathered_copper_bulb",
+    "uniquescythe:waxed_oxidized_copper_bulb"
   ]
 }
