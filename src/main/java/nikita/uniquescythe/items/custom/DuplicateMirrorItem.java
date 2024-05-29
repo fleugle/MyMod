@@ -13,26 +13,38 @@ import nikita.uniquescythe.items.ModItems;
 import nikita.uniquescythe.utility.CommandsExecuter;
 import org.jetbrains.annotations.NotNull;
 
-public class DuplicateMirrorItem extends Item {
+public class DuplicateMirrorItem extends SimplyDescribedItem {
 
 	private final Hand mainHand = Hand.MAIN_HAND;
 	private final Hand offHand = Hand.OFF_HAND;
 
 
+	public static boolean isUsable(ItemStack stack) {
+		return stack.getDamage() < stack.getMaxDamage() - 1;
+	}
 
 	public DuplicateMirrorItem(Settings settings) {
-		super(settings);
+		super(settings, "§9Has 10 charges");
 	}
+
+	@Override
+	public boolean canRepair(ItemStack stack, ItemStack ingredient) {
+		return ingredient.isOf(ModItems.CHAOS_SHARD);
+	}
+
 
 
 	@Override
 	public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
 
 
-		copyItemInOppositeHand(user, hand);
-		user.getItemCooldownManager().set(this, 25);
+		if (isUsable(user.getStackInHand(hand))) {
+			copyItemInOppositeHand(user, hand);
+			user.getItemCooldownManager().set(this, 25);
 
-		return TypedActionResult.success(user.getStackInHand(hand));
+			return TypedActionResult.success(user.getStackInHand(hand));
+		}
+		else return TypedActionResult.fail(user.getStackInHand(hand));
 
 	}
 
