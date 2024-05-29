@@ -9,6 +9,8 @@ import nikita.uniquescythe.UniqueScythe;
 
 
 public class ModSoundEvents {
+
+	//items and just essential sounds
     public static SoundEvent SCYTHE_CHARGED = registerSound("sc_ch");
 
     public static SoundEvent SCYTHE_HIT = registerSound("sc_ht");
@@ -38,6 +40,12 @@ public class ModSoundEvents {
 	public static SoundEvent DUPLICATE_SUCCESS = registerSound("duplicate_success");
 
 	public static SoundEvent DUPLICATE_FAIL = registerSound("duplicate_fail");
+
+	public static SoundEvent KARMA_CHARGE = registerSound("karma_charge");
+
+	public static SoundEvent KARMA_RELEASE = registerSound("karma_release");
+
+
 
 
 

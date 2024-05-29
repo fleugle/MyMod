@@ -1,7 +1,6 @@
 package nikita.uniquescythe.blocks;
 
 
-import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.block.*;
 import net.minecraft.item.BlockItem;
@@ -17,6 +16,7 @@ import nikita.uniquescythe.blocks.custom.AbstractHeavyCoreBlock;
 import nikita.uniquescythe.blocks.custom.AbstractWaxedCopperGrateBlock;
 import nikita.uniquescythe.blocks.custom.OxidizableBulbBlock;
 import nikita.uniquescythe.sounds.ModBlockSoundGroup;
+import nikita.uniquescythe.blocks.custom.BulbBlock;
 
 public class ModBlocks {
 
@@ -93,6 +93,51 @@ public class ModBlocks {
 				.requiresTool()
 				.solidBlock(Blocks::never)
 				.luminance(Blocks.createLightLevelFromLitBlockState(15))));
+
+	public static final Block EXPOSED_COPPER_BULB = Blocks.register("copper_bulb",
+		(Block)new OxidizableBulbBlock(
+			Oxidizable.OxidizationLevel.UNAFFECTED,
+			AbstractBlock.Settings.create()
+				.mapColor(MapColor.LIGHT_GRAY_TERRACOTTA)
+				.strength(3.0f, 6.0f)
+				.sounds(ModBlockSoundGroup.COPPER_BULB)
+				.requiresTool()
+				.solidBlock(Blocks::never)
+				.luminance(Blocks.createLightLevelFromLitBlockState(15))));
+
+	public static final Block WEATHERED_COPPER_BULB = Blocks.register("copper_bulb",
+		(Block)new OxidizableBulbBlock(
+			Oxidizable.OxidizationLevel.UNAFFECTED,
+			AbstractBlock.Settings.create()
+				.mapColor(MapColor.WARPED_STEM)
+				.strength(3.0f, 6.0f)
+				.sounds(ModBlockSoundGroup.COPPER_BULB)
+				.requiresTool()
+				.solidBlock(Blocks::never)
+				.luminance(Blocks.createLightLevelFromLitBlockState(15))));
+
+	public static final Block OXIDIZED_COPPER_BULB = Blocks.register("copper_bulb",
+		(Block)new OxidizableBulbBlock(
+			Oxidizable.OxidizationLevel.UNAFFECTED,
+			AbstractBlock.Settings.create()
+				.mapColor(MapColor.WARPED_NYLIUM)
+				.strength(3.0f, 6.0f)
+				.sounds(ModBlockSoundGroup.COPPER_BULB)
+				.requiresTool()
+				.solidBlock(Blocks::never)
+				.luminance(Blocks.createLightLevelFromLitBlockState(15))));
+
+	public static final Block WAXED_COPPER_BULB = Blocks.register("waxed_copper_bulb",
+		(Block)new BulbBlock(AbstractBlock.Settings.copy(COPPER_BULB)));
+
+	public static final Block WAXED_EXPOSED_COPPER_BULB = Blocks.register("waxed_exposed_copper_bulb",
+		(Block)new BulbBlock(AbstractBlock.Settings.copy(EXPOSED_COPPER_BULB)));
+
+	public static final Block WAXED_WEATHERED_COPPER_BULB = Blocks.register("waxed_weathered_copper_bulb",
+		(Block)new BulbBlock(AbstractBlock.Settings.copy(WEATHERED_COPPER_BULB)));
+
+	public static final Block WAXED_OXIDIZED_COPPER_BULB = Blocks.register("waxed_oxidized_copper_bulb",
+		(Block)new BulbBlock(AbstractBlock.Settings.copy(OXIDIZED_COPPER_BULB)));
 
 
 	//HELPER METHODS

@@ -16,7 +16,9 @@ import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import nikita.uniquescythe.UniqueScythe;
+import nikita.uniquescythe.sounds.ModSoundEvents;
 import nikita.uniquescythe.utility.KarmaSystem;
+import nikita.uniquescythe.utility.SoundsManager;
 
 
 public class WanderersSwordItem extends SwordItem {
@@ -26,6 +28,7 @@ public class WanderersSwordItem extends SwordItem {
 		super(toolMaterial, attackDamage, attackSpeed, settings);
 		AttackEntityCallback.EVENT.register((player, world, hand, entity, entityHitResult) -> {
 			if (player.getMainHandStack().getItem() == this && !player.isSpectator() && !world.isClient) {
+				SoundsManager.playPlayersSoundFromPlayer(player, ModSoundEvents.KARMA_CHARGE, 1f);
 				KarmaSystem.addKarmaToPlayer((ServerPlayerEntity) player, player.getDisplayName().getString(), 6);
 			}
 			return ActionResult.PASS;
@@ -39,6 +42,7 @@ public class WanderersSwordItem extends SwordItem {
 	}
 
 	public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
+		SoundsManager.playPlayersSoundFromPlayer(attacker, ModSoundEvents.KARMA_RELEASE, 1f);
 		target.addStatusEffect(new StatusEffectInstance(StatusEffects.DARKNESS, 80, 1));
 		target.addStatusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 100, 1));
 		target.damage(target.getDamageSources().generic(), (float) KarmaSystem.getKarma((ServerPlayerEntity)attacker, attacker.getDisplayName().getString()));
