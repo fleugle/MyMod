@@ -94,7 +94,7 @@ public class ModBlocks {
 				.solidBlock(Blocks::never)
 				.luminance(Blocks.createLightLevelFromLitBlockState(15))));
 
-	public static final Block EXPOSED_COPPER_BULB = Blocks.register("copper_bulb",
+	public static final Block EXPOSED_COPPER_BULB = Blocks.register("exposed_copper_bulb",
 		(Block)new OxidizableBulbBlock(
 			Oxidizable.OxidizationLevel.UNAFFECTED,
 			AbstractBlock.Settings.create()
@@ -105,7 +105,7 @@ public class ModBlocks {
 				.solidBlock(Blocks::never)
 				.luminance(Blocks.createLightLevelFromLitBlockState(15))));
 
-	public static final Block WEATHERED_COPPER_BULB = Blocks.register("copper_bulb",
+	public static final Block WEATHERED_COPPER_BULB = Blocks.register("weathered_copper_bulb",
 		(Block)new OxidizableBulbBlock(
 			Oxidizable.OxidizationLevel.UNAFFECTED,
 			AbstractBlock.Settings.create()
@@ -116,7 +116,7 @@ public class ModBlocks {
 				.solidBlock(Blocks::never)
 				.luminance(Blocks.createLightLevelFromLitBlockState(15))));
 
-	public static final Block OXIDIZED_COPPER_BULB = Blocks.register("copper_bulb",
+	public static final Block OXIDIZED_COPPER_BULB = Blocks.register("oxidized_copper_bulb",
 		(Block)new OxidizableBulbBlock(
 			Oxidizable.OxidizationLevel.UNAFFECTED,
 			AbstractBlock.Settings.create()

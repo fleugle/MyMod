@@ -22,6 +22,6 @@ public class TranslucentLayer<T extends WindChargeProjectileEntity> extends GeoR
 
 	public void render(MatrixStack poseStack, T animatable, BakedGeoModel bakedModel, RenderLayer renderType, VertexConsumerProvider bufferSource, VertexConsumer buffer, float partialTick, int packedLight, int packedOverlay) {
 		RenderLayer translucentRenderType = this.getRenderType(animatable);
-		this.getRenderer().reRender(bakedModel, poseStack, bufferSource, animatable, translucentRenderType, bufferSource.getBuffer(translucentRenderType), partialTick, 0, OverlayTexture.DEFAULT_UV, 1.0F, 1.0F, 1.0F, 1F);
+		this.getRenderer().reRender(bakedModel, poseStack, bufferSource, animatable, translucentRenderType, bufferSource.getBuffer(translucentRenderType), partialTick, -100, OverlayTexture.DEFAULT_UV, 1.0F, 1.0F, 1.0F, 1F);
 	}
 }

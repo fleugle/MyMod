@@ -30,6 +30,8 @@ import java.util.List;
 
 
 public abstract class GunItem extends Item implements GeoItem {
+	private final Hand mainHand = Hand.MAIN_HAND;
+	private final Hand offHand = Hand.OFF_HAND;
 	public AnimatableInstanceCache getAnimatableInstanceCache() {
 		return this.cache;
 	}
@@ -100,7 +102,7 @@ public abstract class GunItem extends Item implements GeoItem {
 
 		if (!user.getItemCooldownManager().isCoolingDown(this)) {
 			if (!world.isClient) {
-				tryToReloadGun(world, user, itemStack, mainhand_stack, offhand_stack);
+				tryToReloadGun(world, user, itemStack, mainhand_stack, offhand_stack, hand);
 			}
 		}
 
@@ -112,7 +114,7 @@ public abstract class GunItem extends Item implements GeoItem {
 
 	}
 
-	public void projectileShoot(World world, PlayerEntity shooter, ItemStack stackWithGun){
+	public void projectileShoot(World world, PlayerEntity shooter, ItemStack stackWithGun, Hand hand){
 
 
 		if (!world.isClient) {
@@ -129,8 +131,14 @@ public abstract class GunItem extends Item implements GeoItem {
 				triggerAnim(shooter, GeoItem.getOrAssignId(stackWithGun, (ServerWorld) world), "shooting_controller", "shoot");
 				SoundsManager.playPlayersSoundFromPlayer(shooter, getShootingSound(), 1f);
 
+
+
+				Hand currentHand = hand == Hand.MAIN_HAND ? this.mainHand : this.offHand;
+				ItemStack stackInCurrentHand = shooter.getStackInHand(currentHand);
 				if (!shooter.getAbilities().creativeMode) {
-					stackWithGun.damage(1, shooter, e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
+					stackWithGun.damage(1, shooter, e -> e.sendEquipmentBreakStatus(
+						currentHand == Hand.MAIN_HAND ? EquipmentSlot.MAINHAND : EquipmentSlot.OFFHAND
+					));
 				}
 			}
 			else {
@@ -152,7 +160,7 @@ public abstract class GunItem extends Item implements GeoItem {
 
 	}
 
-	public void tryToReloadGun(World world, PlayerEntity shooter, ItemStack stackWithGun, ItemStack mainhand_stack, ItemStack offhand_stack){
+	public void tryToReloadGun(World world, PlayerEntity shooter, ItemStack stackWithGun, ItemStack mainhand_stack, ItemStack offhand_stack, Hand hand){
 
 		int ammoAmount = getAmmoAmount(stackWithGun);
 
@@ -176,11 +184,11 @@ public abstract class GunItem extends Item implements GeoItem {
 					shooter.getItemCooldownManager().set(this, this.reloadTime);
 				}
 				else {
-					projectileShoot(world, shooter, stackWithGun);
+					projectileShoot(world, shooter, stackWithGun, hand);
 				}
 
 			}
-			else projectileShoot(world, shooter, stackWithGun);
+			else projectileShoot(world, shooter, stackWithGun, hand);
 		}
 
 	}
