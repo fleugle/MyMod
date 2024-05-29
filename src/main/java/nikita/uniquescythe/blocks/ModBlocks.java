@@ -83,7 +83,7 @@ public class ModBlocks {
 				.strength(3.0F, 6.0F)
 				.sounds(BlockSoundGroup.COPPER)));//exposed copper grate
 
-	public static final Block COPPER_BULB = Blocks.register("copper_bulb",
+	public static final Block COPPER_BULB = registerBlock("copper_bulb",
 		(Block)new OxidizableBulbBlock(
 			Oxidizable.OxidizationLevel.UNAFFECTED,
 			AbstractBlock.Settings.create()
@@ -94,7 +94,7 @@ public class ModBlocks {
 				.solidBlock(Blocks::never)
 				.luminance(Blocks.createLightLevelFromLitBlockState(15))));
 
-	public static final Block EXPOSED_COPPER_BULB = Blocks.register("exposed_copper_bulb",
+	public static final Block EXPOSED_COPPER_BULB = registerBlock("exposed_copper_bulb",
 		(Block)new OxidizableBulbBlock(
 			Oxidizable.OxidizationLevel.UNAFFECTED,
 			AbstractBlock.Settings.create()
@@ -103,9 +103,9 @@ public class ModBlocks {
 				.sounds(ModBlockSoundGroup.COPPER_BULB)
 				.requiresTool()
 				.solidBlock(Blocks::never)
-				.luminance(Blocks.createLightLevelFromLitBlockState(15))));
+				.luminance(Blocks.createLightLevelFromLitBlockState(12))));
 
-	public static final Block WEATHERED_COPPER_BULB = Blocks.register("weathered_copper_bulb",
+	public static final Block WEATHERED_COPPER_BULB = registerBlock("weathered_copper_bulb",
 		(Block)new OxidizableBulbBlock(
 			Oxidizable.OxidizationLevel.UNAFFECTED,
 			AbstractBlock.Settings.create()
@@ -114,9 +114,9 @@ public class ModBlocks {
 				.sounds(ModBlockSoundGroup.COPPER_BULB)
 				.requiresTool()
 				.solidBlock(Blocks::never)
-				.luminance(Blocks.createLightLevelFromLitBlockState(15))));
+				.luminance(Blocks.createLightLevelFromLitBlockState(8))));
 
-	public static final Block OXIDIZED_COPPER_BULB = Blocks.register("oxidized_copper_bulb",
+	public static final Block OXIDIZED_COPPER_BULB = registerBlock("oxidized_copper_bulb",
 		(Block)new OxidizableBulbBlock(
 			Oxidizable.OxidizationLevel.UNAFFECTED,
 			AbstractBlock.Settings.create()
@@ -125,18 +125,18 @@ public class ModBlocks {
 				.sounds(ModBlockSoundGroup.COPPER_BULB)
 				.requiresTool()
 				.solidBlock(Blocks::never)
-				.luminance(Blocks.createLightLevelFromLitBlockState(15))));
+				.luminance(Blocks.createLightLevelFromLitBlockState(4))));
 
-	public static final Block WAXED_COPPER_BULB = Blocks.register("waxed_copper_bulb",
+	public static final Block WAXED_COPPER_BULB = registerBlock("waxed_copper_bulb",
 		(Block)new BulbBlock(AbstractBlock.Settings.copy(COPPER_BULB)));
 
-	public static final Block WAXED_EXPOSED_COPPER_BULB = Blocks.register("waxed_exposed_copper_bulb",
+	public static final Block WAXED_EXPOSED_COPPER_BULB = registerBlock("waxed_exposed_copper_bulb",
 		(Block)new BulbBlock(AbstractBlock.Settings.copy(EXPOSED_COPPER_BULB)));
 
-	public static final Block WAXED_WEATHERED_COPPER_BULB = Blocks.register("waxed_weathered_copper_bulb",
+	public static final Block WAXED_WEATHERED_COPPER_BULB = registerBlock("waxed_weathered_copper_bulb",
 		(Block)new BulbBlock(AbstractBlock.Settings.copy(WEATHERED_COPPER_BULB)));
 
-	public static final Block WAXED_OXIDIZED_COPPER_BULB = Blocks.register("waxed_oxidized_copper_bulb",
+	public static final Block WAXED_OXIDIZED_COPPER_BULB = registerBlock("waxed_oxidized_copper_bulb",
 		(Block)new BulbBlock(AbstractBlock.Settings.copy(OXIDIZED_COPPER_BULB)));
 
 
@@ -168,8 +168,32 @@ public class ModBlocks {
 			entries.addItem(WAXED_COPPER_GRATE);
 			entries.addItem(WAXED_EXPOSED_COPPER_GRATE);
 			entries.addItem(WAXED_OXIDIZED_COPPER_GRATE);
+
+			entries.addItem(COPPER_BULB);
+			entries.addItem(EXPOSED_COPPER_BULB);
+			entries.addItem(WEATHERED_COPPER_BULB);
+			entries.addItem(OXIDIZED_COPPER_BULB);
+			entries.addItem(WAXED_COPPER_BULB);
+			entries.addItem(WAXED_EXPOSED_COPPER_GRATE);
+			entries.addItem(WAXED_WEATHERED_COPPER_BULB);
+			entries.addItem(WAXED_OXIDIZED_COPPER_BULB);
+
 			entries.addItem(HEAVY_CORE);
 		});
+
+		ItemGroupEvents.modifyEntriesEvent(ItemGroups.REDSTONE_BLOCKS).register(entries -> {
+
+			entries.addItem(COPPER_BULB);
+			entries.addItem(EXPOSED_COPPER_BULB);
+			entries.addItem(WEATHERED_COPPER_BULB);
+			entries.addItem(OXIDIZED_COPPER_BULB);
+			entries.addItem(WAXED_COPPER_BULB);
+			entries.addItem(WAXED_EXPOSED_COPPER_BULB);
+			entries.addItem(WAXED_WEATHERED_COPPER_BULB);
+			entries.addItem(WAXED_OXIDIZED_COPPER_BULB);
+
+		});
+
 
 
 

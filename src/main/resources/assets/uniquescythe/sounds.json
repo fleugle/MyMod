@@ -139,5 +139,70 @@
       "uniquescythe:block/heavy_core/step3",
       "uniquescythe:block/heavy_core/step4"
     ]
+  },
+
+
+  "block.copper_bulb.break": {
+    "sounds": [
+      "uniquescythe:block/copper_bulb/break1",
+      "uniquescythe:block/copper_bulb/break2",
+      "uniquescythe:block/copper_bulb/break3",
+      "uniquescythe:block/copper_bulb/break4"
+    ]
+  },
+  "block.copper_bulb.fall": {
+    "sounds": [
+      "uniquescythe:block/copper_bulb/step1",
+      "uniquescythe:block/copper_bulb/step2",
+      "uniquescythe:block/copper_bulb/step3",
+      "uniquescythe:block/copper_bulb/step4",
+      "uniquescythe:block/copper_bulb/step5",
+      "uniquescythe:block/copper_bulb/step6"
+    ]
+  },
+  "block.copper_bulb.hit": {
+    "sounds": [
+      "uniquescythe:block/copper_bulb/step1",
+      "uniquescythe:block/copper_bulb/step2",
+      "uniquescythe:block/copper_bulb/step3",
+      "uniquescythe:block/copper_bulb/step4",
+      "uniquescythe:block/copper_bulb/step5",
+      "uniquescythe:block/copper_bulb/step6"
+    ]
+  },
+  "block.copper_bulb.place": {
+    "sounds": [
+      "uniquescythe:block/copper_bulb/place1",
+      "uniquescythe:block/copper_bulb/place2",
+      "uniquescythe:block/copper_bulb/place3",
+      "uniquescythe:block/copper_bulb/place4"
+    ]
+  },
+  "block.copper_bulb.step": {
+    "sounds": [
+      "uniquescythe:block/copper_bulb/step1",
+      "uniquescythe:block/copper_bulb/step2",
+      "uniquescythe:block/copper_bulb/step3",
+      "uniquescythe:block/copper_bulb/step4",
+      "uniquescythe:block/copper_bulb/step5",
+      "uniquescythe:block/copper_bulb/step6"
+    ]
+  },
+  "block.copper_bulb.turn_off": {
+    "sounds": [
+      {
+        "attenuation_distance": 6,
+        "name": "uniquescythe:block/copper_bulb/toggle",
+        "pitch": 0.75
+      }
+    ]
+  },
+  "block.copper_bulb.turn_on": {
+    "sounds": [
+      {
+        "attenuation_distance": 6,
+        "name": "uniquescythe:block/copper_bulb/toggle"
+      }
+    ]
   }
 }

@@ -1,16 +1,15 @@
 package nikita.uniquescythe.blocks.custom;
 
-import com.mojang.serialization.MapCodec;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
-import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.random.RandomGenerator;
 import net.minecraft.world.World;
 import nikita.uniquescythe.sounds.ModSoundEvents;
 
@@ -19,6 +18,7 @@ public class BulbBlock
 	//public static final MapCodec<BulbBlock> CODEC = BulbBlock.createCodec(BulbBlock::new);
 	public static final BooleanProperty POWERED = Properties.POWERED;
 	public static final BooleanProperty LIT = Properties.LIT;
+
 
 
 
@@ -38,6 +38,16 @@ public class BulbBlock
 	@Override
 	public void neighborUpdate(BlockState state, World world, BlockPos pos, Block sourceBlock, BlockPos sourcePos, boolean notify) {
 		if (world instanceof ServerWorld) {
+
+			ServerWorld serverWorld = (ServerWorld)world;
+			world.scheduleBlockTick(pos, this, 1);
+		}
+	}
+
+	@Override
+	public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, RandomGenerator random) {
+		if (world instanceof ServerWorld) {
+
 			ServerWorld serverWorld = (ServerWorld)world;
 			this.update(state, serverWorld, pos);
 		}
@@ -45,10 +55,11 @@ public class BulbBlock
 
 	public void update(BlockState state, ServerWorld world, BlockPos pos) {
 		boolean bl = world.isReceivingRedstonePower(pos);
+		BlockState blockState = state;
+
 		if (bl == state.get(POWERED)) {
 			return;
 		}
-		BlockState blockState = state;
 		if (!state.get(POWERED).booleanValue()) {
 			world.playSound(null, pos, (blockState = (BlockState)blockState.cycle(LIT)).get(LIT) != false ? ModSoundEvents.BLOCK_COPPER_BULB_TURN_ON : ModSoundEvents.BLOCK_COPPER_BULB_TURN_OFF, SoundCategory.BLOCKS);
 		}
