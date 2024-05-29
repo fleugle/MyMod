@@ -30,6 +30,9 @@
 			],
 			"client": [
 				"nikita.uniquescythe.UniqueScytheClient"
+			],
+			"fabric-datagen": [
+				"nikita.uniquescythe.UniqueScytheDataGenerator"
 			]
 		},
 		"depends": [
@@ -45,6 +48,22 @@
 			{
 				"id": "minecraft",
 				"versions": ">=1.20"
+			},
+			{
+				"id":"azurelib",
+				"versions":">=2.0.19"
+			},
+			{
+				"id":"terrablender",
+				"versions":">=3.0.1.5"
+			},
+			{
+				"id": "architectury",
+				"versions": ">=9.2.14"
+			},
+			{
+				"id": "aaa_particles",
+				"versions": "*"
 			}
 		]
 	},
