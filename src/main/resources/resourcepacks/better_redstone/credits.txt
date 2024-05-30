@@ -1,0 +1,324 @@
+
+  ██████╗ ███████╗██████╗ ███████╗████████╗ ██████╗ ███╗   ██╗███████╗    ████████╗██╗    ██╗███████╗ █████╗ ██╗  ██╗███████╗
+  ██╔══██╗██╔════╝██╔══██╗██╔════╝╚══██╔══╝██╔═══██╗████╗  ██║██╔════╝    ╚══██╔══╝██║    ██║██╔════╝██╔══██╗██║ ██╔╝██╔════╝
+  ██████╔╝█████╗  ██║  ██║███████╗   ██║   ██║   ██║██╔██╗ ██║█████╗         ██║   ██║ █╗ ██║█████╗  ███████║█████╔╝ ███████╗
+  ██╔══██╗██╔══╝  ██║  ██║╚════██║   ██║   ██║   ██║██║╚██╗██║██╔══╝         ██║   ██║███╗██║██╔══╝  ██╔══██║██╔═██╗ ╚════██║
+  ██║  ██║███████╗██████╔╝███████║   ██║   ╚██████╔╝██║ ╚████║███████╗       ██║   ╚███╔███╔╝███████╗██║  ██║██║  ██╗███████║
+  ╚═╝  ╚═╝╚══════╝╚═════╝ ╚══════╝   ╚═╝    ╚═════╝ ╚═╝  ╚═══╝╚══════╝       ╚═╝    ╚══╝╚══╝ ╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝
+   _           _____                 _____  _                                                  Version 2.3 - Minecraft 1.20.x
+  | |_  _ _   | __  | ___  _ _  _ _ |   __|| |_  ___  ___  ___
+  | . || | |  |    -|| -_||_'_||_'_||__   ||  _|| . ||   || -_|
+  |___||_  |  |__|__||___||_,_||_,_||_____||_|  |___||_|_||___|
+       |___|
+
+---------------------------------------------------------- THANK YOU ----------------------------------------------------------
+
+  ...for downloading my Resource Pack!
+
+  I really poured my heart and soul into this one, so if you're using Redstone Tweaks in your own online content (e.g. YouTube
+  videos & Twitch streams), I'd really appreciate proper credit.
+  If you want to support me, copy the following text into your description:
+
+  Resource Pack: Redstone Tweaks by RexxStone
+  https://www.youtube.com/RexxStone
+  https://youtu.be/jMhlv0AnTmg
+  
+
+----------------------------------------------------------- CREDITS -----------------------------------------------------------
+
+  With a massive project like Redstone Tweaks, of course I didn't create everything completely by myself. Some of the textures,
+  models and blockstate files were originally created or are inspired by the following creators.
+  Go check them all out!
+
+  > Vanilla Tweaks:
+    > https://vanillatweaks.net/
+
+  > Beatso ("Little Improvements: Redstone"):
+    > https://www.planetminecraft.com/member/beatso/
+    > https://www.planetminecraft.com/texture-pack/little-improvements-redstone/
+
+  > CreativityShark ("Visual Sensors"):
+    > https://www.planetminecraft.com/member/creativity_shark/
+    > https://www.planetminecraft.com/texture-pack/visual-sensors/
+
+  > metamilo:
+    > https://www.youtube.com/metamilo
+
+  > Based on original textures by JAPPA at Mojang Studios
+    > https://twitter.com/JasperBoerstra
+
+  > Special thanks to my Discord moderator Junq for helping out with some of the textures!
+
+
+--------------------------------------------------------- FEATURE LIST --------------------------------------------------------
+
+  CHANGES TO BLOCKS
+
+  > Beehive & Bee nest
+    > Displays current honey stage (front) & comparator output signal strength (top)
+    > Front texture from Vanilla Tweaks - 'Visual Honey Stages':
+      https://vanillatweaks.net/share#IVlYRU
+
+  > Bell
+    > Shows if currently powered
+    
+  > Cake
+    > Displays current comparator output signal strength (inside)
+
+  > Cauldron
+    > Displays current comparator output signal strength (sides)
+    > Different texture for water, lava & powder snow cauldron
+    > Model based on Vanilla Tweaks - 'Visual Cauldron Stages':
+      https://vanillatweaks.net/share#1PkWty
+
+  > Comparator
+    > Displays a 'C' for comparison mode and an 'S' for subtraction mode
+    > Added bottom texture
+      > Based on an idea by metamilo:
+        https://www.youtube.com/metamilo
+
+  > Composter
+    > Displays current comparator output signal strength (sides)
+    > Model based on Vanilla Tweaks - 'Visual Composter Stages':
+      https://vanillatweaks.net/share#bOVyoP
+
+  > Concrete
+    > Has a slight outline to make counting blocks easier
+  
+  > Daylight Detector
+    > Displays current output signal strength (sides & top)
+    > Inspired by Creativity Shark - 'Visual Sensors':
+      https://www.planetminecraft.com/texture-pack/visual-sensors/
+  
+  > Detector Rail
+    > Now visible even with minecart on top (extended center 'powered' section to sides)
+  
+  > Dispenser & Dropper
+    > Easily distinguishable
+    > Orientation easily recognizable from all sides
+    > Taken from Beatso - 'Little Improvements: Redstone':
+      https://www.planetminecraft.com/texture-pack/little-improvements-redstone/
+  
+  > Heavy & Light Weighted Pressure Plate
+    > Displays current output signal strength (top)
+  
+  > Hopper
+    > Orientation easily recognizable from all sides
+    > Inspired by Vanilla Tweaks - 'Directional Hoppers':
+      https://vanillatweaks.net/share#yOs5l5
+  
+  > Iron Door
+    > Shows if currently powered (front & back)
+  
+  > Jukebox
+    > Shows if a music disc is currently inserted (sides & top)
+  
+  > Leaves
+    > Display current distance to the nearest log block when persistent
+
+  > Lectern
+    > Shows if currently powered (front)
+  
+  > Lever
+    > Shows if currently activated (front & back)
+    > Inspired by Vanilla Tweaks - 'Groovy Levers':
+      https://vanillatweaks.net/share#IuDbJq
+  
+  > Note Block
+    > Displays current note (number & musical)
+      > Inspired by Vanilla Tweaks - 'Note Block Banners':
+        (older version, no longer available for download)
+    > Shows if currently powered
+    > Displays different block outline depending on current instrument
+  
+  > Observer
+    > Orientation easily recognizable
+    > Shows if currently activated
+    > Model and back texture based on Vanilla Tweaks - 'Directional Observers':
+      https://vanillatweaks.net/share#8fTBuk
+  
+  > Piston & Sticky Piston
+    > 'Sticky' texture visible from sides
+      > Model based on Vanilla Tweaks - 'Sticky Piston Sides':
+        https://vanillatweaks.net/share#IqH92q
+    > Shows if currently extended (back)
+  
+  > Redstone Dust
+    > Displays current signal strength (top & bottom)
+      > Model based on Vanilla Tweaks - 'Redstone Power Levels':
+        https://vanillatweaks.net/share#jwIvYo
+  
+  > Redstone Ore & Deepslate Redstone Ore
+    > Shows if currently lit
+    > Taken from Vanilla Tweaks - 'Unlit Redstone Ore':
+      https://vanillatweaks.net/share#7W2Rkt
+  
+  > Repeater
+    > Displays current delay setting (redstone ticks)
+    > Added bottom texture
+      > Based on an idea by metamilo:
+        https://www.youtube.com/metamilo
+  
+  > Respawn Anchor
+    > Displays current comparator output signal strength (top)
+
+  > Scaffolding
+    > Displays current distance
+  
+  > Sculk Sensor & Calibrated Sculk Sensor
+    > Displays current output signal strength & cooldown phase (sides & top)
+  
+  > Target
+    > Displays current score (output signal strength)
+    > Model and texture based on Beatso - 'Little Improvements: Redstone':
+      https://www.planetminecraft.com/texture-pack/little-improvements-redstone/
+  
+  > Trapped Chest
+    > More distinguishable from regular chest (sides)
+  
+  > Tripwire
+    > Different texture when connected
+    > Turns red when activated
+  
+  > Wool
+    > Has a slight outline to make counting blocks easier
+
+
+  DISABLED BY DEFAULT
+
+  > Concrete Powder
+    > Has a slight outline to make counting blocks easier
+
+  > Furnace, Blast Furnace & Smoker
+    > Shows if currently lit (all sides)
+
+  > Redstone Lamp
+    > Clean and less noisy
+
+  > Terracotta
+    > Has a slight outline to make counting blocks easier
+
+
+  ALTERNATIVE/OPTIONAL TEXTURES
+
+  > Additional (comparator output) info (e.g. cauldron displays '0' when empty)
+    > Bee Nest & Beehive
+    > Cake
+    > Cauldron
+    > Composter
+    > Heavy & Light Weighted Pressure Plate
+    > Leaves
+    > Redstone Dust
+    > Respawn Anchor
+    > Scaffolding
+    > Sculk Sensor & Calibrated Sculk Sensor
+    > Target
+
+  > Different looks
+    > Cauldron (non-animated water/lava side texture, Redstone Tweaks 1.0 texture)
+    > Comparator ("C"/"S" remain white when powered)
+    > Composter (Redstone Tweaks 1.0 texture)
+    > Dispenser & Dropper (slightly different textures for directional indicators)
+    > Piston & Sticky Piston (different back textures, also indicate if sticky)
+    > Redstone Dust (cleaner looking redstone dust)
+      > Texture based on Vanilla Tweaks - 'Clean Redstone Dust':
+        https://vanillatweaks.net/share#o6frBb
+    > Repeater (red signal strength numbers when powered)
+
+
+  UI CHANGES (ONLY APPLIED WHEN MINECRAFT LANGUAGE SET TO ENGLISH)
+
+  > Brewing Stand
+    > Inventory shows effects for different ingredients
+      > Based on Vanilla Tweaks - 'Brewing Guide':
+        https://vanillatweaks.net/share#1UIXIt
+
+  > Comparator output signal strength chart displayed in inventory of supported containers
+    > Barrel
+    > Blast Furnace
+    > Brewing Stand
+    > Chest
+    > Chest Minecart
+    > Dispenser
+    > Dropper
+    > Furnace
+    > Hopper
+    > Hopper Minecart
+    > Large Chest
+    > Shulker Box
+    > Smoker
+
+  > Certain redstone components' item names display their redstone activation duration
+    > Buttons
+    > Detector Rail
+    > Lectern
+    > Lightning Rod
+    > Pressure Plates
+    > Sculk Sensor & Calibrated Sculk Sensor
+    > Target
+    > Trapped Chest
+    > Tripwire Hook
+
+  > Jukebox & Music Discs
+    > Discs show their unique comparator signal strength output and length in the song title
+    > Jukebox displays comparator outputs for music discs in inventories
+
+  > (Calibrated) Sculk Sensor
+    > Displays a comparator signal strength chart for different frequencies
+
+
+---------------------------------------------------------- CHANGELOG ----------------------------------------------------------
+
+  > [2.0.1] - 29.11.2021
+    > Fixed redstone dust signal strength numbers not being displayed correctly when directly below another block
+    > Added this changelog
+
+  > [2.0.2] - 02.12.2021
+    > Changed the pack format to support Minecraft 1.18
+    > Adjusted the look of iron doors to match the updated 1.18 texture
+
+  > [2.0.3] - 18.12.2021
+    > Fixed a tripwire 'missing texture' error for specific orientations
+
+  > [2.1] - 11.01.2022
+    > Comparator bottom texture letters now become red when powered
+    > Added clean redstone lamps (disabled by default)
+    > Added alternative textures for the following blocks:
+      > Cauldron (Redstone Tweaks 1.0 sides)
+      > Comparator (previous powered bottom texture)
+      > Composter (Redstone Tweaks 1.0 sides)
+      > Repeater (red signal strength numbers when powered)
+    > Fixed an issue with the comparator bottom texture
+      > Special thanks to battle420 on Planet Minecraft:
+        https://www.planetminecraft.com/member/battle420/
+
+  > [2.2] - 27.04.2022
+    > Leaves now only display distance numbers when persistent
+    > Furnaces, Blast Furnaces and Smokers now have 'lit' indicators on all sides (disabled by default)
+
+  > [2.2.1] - 09.06.2022
+    > Changed the pack format to support Minecraft 1.19
+    > Adjusted the model of iron doors to work in 1.19
+    > Updated the inventory jukebox signal strength indicators to include the new music disc
+
+  > [2.3] - 12.06.2023
+    > Changed the pack format to support Minecraft 1.20
+    > Scaffolding now displays the current distance
+    > Lecterns now show if currently powered
+    > Added calibrated sculk sensors and updated regular sculk sensors
+      > Now show cooldown phase
+      > Added a frequency signal strength chart in the inventory
+    > Updated the note block model to work with mob heads
+    > Updated jukeboxes and music discs
+      > Disc length now shown in the inventory
+      > Added Relic to the inventory jukebox signal strength chart
+    > Cherry and mangrove leaves now also show the distance to the nearest log block
+    > Added and updated various inventory tooltips
+
+
+--------------------------------------------------- WHY ARE YOU STILL HERE? ---------------------------------------------------
+
+  Oh wow, you really made it this far down the list. Hats off to you! Now go and check out all these features in game!
+
+  Thanks for all the support!
+  - RexxStone

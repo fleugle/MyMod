@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "ingredients": [
+    {
+      "item": "uniquescythe:exposed_copper_bulb"
+    },
+    {
+      "item": "minecraft:honeycomb"
+    }
+  ],
+  "result": {
+    "item": "uniquescythe:waxed_exposed_copper_bulb",
+    "count": 1
+  }
+}

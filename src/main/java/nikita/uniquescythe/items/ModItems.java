@@ -20,6 +20,7 @@ public class ModItems {
 
     public static final Item FROSTY_STEEL = registerItem("frosty_steel", new Item(new Item.Settings())); //ingridient needed to create the scythe
 
+	public static final Item COPPER_NUGGET = registerItem("copper_nugget", new Item(new Item.Settings()));
 
 	public static final Item CHAOS_SHARD = registerItem("chaos_shard", new SimplyDescribedItem(new Item.Settings(),"§9Infused with Chaos"));
 

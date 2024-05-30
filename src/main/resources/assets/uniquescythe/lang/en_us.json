@@ -26,6 +26,7 @@
   "item.uniquescythe.justice_shard":"Amethyst Shard",
   "item.uniquescythe.duplicate_mirror":"Mirror",
   "item.uniquescythe.tetos_talisman":"Teto's Talisman",
+  "item.uniquescythe.copper_nugget": "Copper Nugget",
 
 
   "effect.uniquescythe.delayed_satisfaction": "Ripening Pleasure",
@@ -33,6 +34,7 @@
 
 
   "block.uniquescythe.tuff_bricks": "Tuff Bricks",
+  "block.uniquescythe.polished_tuff": "Polished Tuff",
   "block.uniquescythe.copper_grate": "Copper Grate",
   "block.uniquescythe.oxidized_copper_grate": "Oxidized Copper Grate",
   "block.uniquescythe.exposed_copper_grate": "Exposed Copper Grate",

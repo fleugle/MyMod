@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "persistent=false": {
+      "model": "minecraft:block/leaves/oak/not_persistent"
+    },
+    "distance=1,persistent=true": {
+      "model": "minecraft:block/leaves/oak/1"
+    },
+    "distance=2,persistent=true": {
+      "model": "minecraft:block/leaves/oak/2"
+    },
+    "distance=3,persistent=true": {
+      "model": "minecraft:block/leaves/oak/3"
+    },
+    "distance=4,persistent=true": {
+      "model": "minecraft:block/leaves/oak/4"
+    },
+    "distance=5,persistent=true": {
+      "model": "minecraft:block/leaves/oak/5"
+    },
+    "distance=6,persistent=true": {
+      "model": "minecraft:block/leaves/oak/6"
+    },
+    "distance=7,persistent=true": {
+      "model": "minecraft:block/leaves/oak/7"
+    }
+  }
+}

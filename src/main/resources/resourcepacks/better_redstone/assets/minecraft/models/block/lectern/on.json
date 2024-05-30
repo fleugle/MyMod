@@ -1,0 +1,7 @@
+{
+    "parent": "block/lectern/template",
+    "textures": {
+        "sides": "block/lectern/sides_on"
+    }
+}
+

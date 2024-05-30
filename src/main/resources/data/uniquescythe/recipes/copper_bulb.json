@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "blocks",
+  "pattern": [
+    " 1 ",
+    "121",
+    " 3 "
+  ],
+  "key": {
+    "1": {
+      "item": "minecraft:copper_block"
+
+    },
+    "2": {
+      "item": "minecraft:blaze_rod"
+
+    },
+    "3": {
+      "item": "minecraft:redstone"
+
+    }
+  },
+  "result": {
+    "item": "uniquescythe:copper_bulb",
+    "count": 1
+  }
+}

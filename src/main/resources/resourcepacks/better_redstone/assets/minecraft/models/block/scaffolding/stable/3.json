@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/scaffolding/stable",
+  "textures": {
+    "top": "minecraft:block/scaffolding/top/3"
+  }
+}

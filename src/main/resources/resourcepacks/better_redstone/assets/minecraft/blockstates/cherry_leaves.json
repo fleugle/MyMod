@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "persistent=false": {
+      "model": "minecraft:block/leaves/cherry/not_persistent"
+    },
+    "distance=1,persistent=true": {
+      "model": "minecraft:block/leaves/cherry/1"
+    },
+    "distance=2,persistent=true": {
+      "model": "minecraft:block/leaves/cherry/2"
+    },
+    "distance=3,persistent=true": {
+      "model": "minecraft:block/leaves/cherry/3"
+    },
+    "distance=4,persistent=true": {
+      "model": "minecraft:block/leaves/cherry/4"
+    },
+    "distance=5,persistent=true": {
+      "model": "minecraft:block/leaves/cherry/5"
+    },
+    "distance=6,persistent=true": {
+      "model": "minecraft:block/leaves/cherry/6"
+    },
+    "distance=7,persistent=true": {
+      "model": "minecraft:block/leaves/cherry/7"
+    }
+  }
+}

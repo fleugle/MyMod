@@ -26,6 +26,8 @@ public class ModBlocks {
 	public static final Block  TUFF_BRICKS = registerBlock("tuff_bricks",
 		new Block(AbstractBlock.Settings.copy(Blocks.BRICKS)));//tuff bricks
 
+	public static final Block POLISHED_TUFF = registerBlock("polished_tuff",
+		new Block(AbstractBlock.Settings.copy(Blocks.POLISHED_GRANITE)));
 
 	public static final Block  HEAVY_CORE = registerBlock("heavy_core",
 		new AbstractHeavyCoreBlock(AbstractBlock.Settings.copy(Blocks.OBSIDIAN).mapColor(MapColor.DEEPSLATE).sounds(ModBlockSoundGroup.HEAVY_CORE)));//heavy core
@@ -163,6 +165,7 @@ public class ModBlocks {
 	public static void registerModBlocks() {
 
 		ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register(entries -> {
+			entries.addItem(POLISHED_TUFF);
 			entries.addItem(TUFF_BRICKS);
 			entries.addItem(COPPER_GRATE);
 			entries.addItem(EXPOSED_COPPER_GRATE);

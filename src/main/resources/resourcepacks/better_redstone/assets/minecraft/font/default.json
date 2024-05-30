@@ -1,0 +1,278 @@
+{
+	"providers": [
+		{
+			"type": "bitmap",
+			"file": "minecraft:font/empty.png",
+			"ascent": -32768,
+			"height": -3,
+			"chars": [
+				"\uF701"
+			]
+		},
+		{
+			"type": "bitmap",
+			"file": "minecraft:font/empty.png",
+			"ascent": -32768,
+			"height": -4,
+			"chars": [
+				"\uF702"
+			]
+		},
+		{
+			"type": "bitmap",
+			"file": "minecraft:font/empty.png",
+			"ascent": -32768,
+			"height": -6,
+			"chars": [
+				"\uF704"
+			]
+		},
+		{
+			"type": "bitmap",
+			"file": "minecraft:font/empty.png",
+			"ascent": -32768,
+			"height": -10,
+			"chars": [
+				"\uF708"
+			]
+		},
+		{
+			"type": "bitmap",
+			"file": "minecraft:font/empty.png",
+			"ascent": -32768,
+			"height": -18,
+			"chars": [
+				"\uF716"
+			]
+		},
+		{
+			"type": "bitmap",
+			"file": "minecraft:font/empty.png",
+			"ascent": -32768,
+			"height": -34,
+			"chars": [
+				"\uF732"
+			]
+		},
+		{
+			"type": "bitmap",
+			"file": "minecraft:font/empty.png",
+			"ascent": -32768,
+			"height": -66,
+			"chars": [
+				"\uF764"
+			]
+		},
+		{
+			"type": "bitmap",
+			"file": "minecraft:font/empty.png",
+			"ascent": -32768,
+			"height": 0,
+			"chars": [
+				"\uF801"
+			]
+		},
+		{
+			"type": "bitmap",
+			"file": "minecraft:font/empty.png",
+			"ascent": -32768,
+			"height": 1,
+			"chars": [
+				"\uF802"
+			]
+		},
+		{
+			"type": "bitmap",
+			"file": "minecraft:font/empty.png",
+			"ascent": -32768,
+			"height": 3,
+			"chars": [
+				"\uF804"
+			]
+		},
+		{
+			"type": "bitmap",
+			"file": "minecraft:font/empty.png",
+			"ascent": -32768,
+			"height": 7,
+			"chars": [
+				"\uF808"
+			]
+		},
+		{
+			"type": "bitmap",
+			"file": "minecraft:font/empty.png",
+			"ascent": -32768,
+			"height": 15,
+			"chars": [
+				"\uF816"
+			]
+		},
+		{
+			"type": "bitmap",
+			"file": "minecraft:font/empty.png",
+			"ascent": -32768,
+			"height": 31,
+			"chars": [
+				"\uF832"
+			]
+		},
+		{
+			"type": "bitmap",
+			"file": "minecraft:font/empty.png",
+			"ascent": -32768,
+			"height": 63,
+			"chars": [
+				"\uF864"
+			]
+		},
+
+
+
+		{
+			"type": "bitmap",
+			"file": "minecraft:gui/container/brewing_stand_guide_left.png",
+			"ascent": 13,
+			"height": 142,
+			"chars": [
+				"\uE001"
+			]
+		},
+		{
+			"type": "bitmap",
+			"file": "minecraft:gui/container/brewing_stand_guide_right.png",
+			"ascent": 13,
+			"height": 161,
+			"chars": [
+				"\uE002"
+			]
+		},
+		{
+			"type": "bitmap",
+			"file": "minecraft:gui/container/furnace_guide.png",
+			"ascent": 13,
+			"height": 103,
+			"chars": [
+				"\uE003"
+			]
+		},
+		{
+			"type": "bitmap",
+			"file": "minecraft:gui/container/smoker_guide.png",
+			"ascent": 13,
+			"height": 103,
+			"chars": [
+				"\uE004"
+			]
+		},
+		{
+			"type": "bitmap",
+			"file": "minecraft:gui/container/blast_furnace_guide.png",
+			"ascent": 13,
+			"height": 103,
+			"chars": [
+				"\uE005"
+			]
+		},
+		{
+			"type": "bitmap",
+			"file": "minecraft:gui/container/hopper_guide.png",
+			"ascent": 13,
+			"height": 103,
+			"chars": [
+				"\uE006"
+			]
+		},
+		{
+			"type": "bitmap",
+			"file": "minecraft:gui/container/dropper_guide.png",
+			"ascent": 13,
+			"height": 103,
+			"chars": [
+				"\uE007"
+			]
+		},
+		{
+			"type": "bitmap",
+			"file": "minecraft:gui/container/dispenser_guide.png",
+			"ascent": 13,
+			"height": 103,
+			"chars": [
+				"\uE008"
+			]
+		},
+		{
+			"type": "bitmap",
+			"file": "minecraft:gui/container/chest_guide.png",
+			"ascent": 13,
+			"height": 103,
+			"chars": [
+				"\uE009"
+			]
+		},
+		{
+			"type": "bitmap",
+			"file": "minecraft:gui/container/barrel_guide.png",
+			"ascent": 13,
+			"height": 103,
+			"chars": [
+				"\uE010"
+			]
+		},
+		{
+			"type": "bitmap",
+			"file": "minecraft:gui/container/shulker_box_guide.png",
+			"ascent": 13,
+			"height": 103,
+			"chars": [
+				"\uE011"
+			]
+		},
+		{
+			"type": "bitmap",
+			"file": "minecraft:gui/container/large_chest_guide.png",
+			"ascent": 13,
+			"height": 103,
+			"chars": [
+				"\uE012"
+			]
+		},
+		{
+			"type": "bitmap",
+			"file": "minecraft:gui/container/jukebox_guide.png",
+			"ascent": -52,
+			"height": 58,
+			"chars": [
+				"\uE013"
+			]
+		},
+		{
+			"type": "bitmap",
+			"file": "minecraft:gui/container/sculk_sensor_guide.png",
+			"ascent": -52,
+			"height": 80,
+			"chars": [
+				"\uE014"
+			]
+		},
+
+		{
+			"type": "bitmap",
+			"file": "minecraft:font/comparator.png",
+			"ascent": 7,
+			"height": 7,
+			"chars": [
+				"\uE101"
+			]
+		},
+		{
+			"type": "bitmap",
+			"file": "minecraft:font/clock.png",
+			"ascent": 7,
+			"height": 7,
+			"chars": [
+				"\uE102"
+			]
+		}
+	]
+}

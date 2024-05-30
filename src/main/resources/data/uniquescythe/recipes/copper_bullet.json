@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    " 14",
+    "121",
+    "31 "
+  ],
+  "key": {
+
+    "1": {
+      "item": "minecraft:gold_ingot"
+    },
+    "2": {
+      "item": "minecraft:copper_ingot"
+    },
+    "3": {
+      "item": "minecraft:rabbit_hide"
+    },
+    "4": {
+      "item": "uniquescythe:copper_nugget"
+    }
+  },
+  "result": {
+    "item": "minecraft:bundle",
+    "count": 1
+  }
+}

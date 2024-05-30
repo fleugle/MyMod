@@ -54,16 +54,16 @@ public class BulbBlock
 	}
 
 	public void update(BlockState state, ServerWorld world, BlockPos pos) {
-		boolean bl = world.isReceivingRedstonePower(pos);
+		boolean isReceivingRedstonePower = world.isReceivingRedstonePower(pos);
 		BlockState blockState = state;
 
-		if (bl == state.get(POWERED)) {
+		if (isReceivingRedstonePower == state.get(POWERED)) {
 			return;
 		}
 		if (!state.get(POWERED).booleanValue()) {
 			world.playSound(null, pos, (blockState = (BlockState)blockState.cycle(LIT)).get(LIT) != false ? ModSoundEvents.BLOCK_COPPER_BULB_TURN_ON : ModSoundEvents.BLOCK_COPPER_BULB_TURN_OFF, SoundCategory.BLOCKS);
 		}
-		world.setBlockState(pos, (BlockState)blockState.with(POWERED, bl), Block.NOTIFY_ALL);
+		world.setBlockState(pos, (BlockState)blockState.with(POWERED, isReceivingRedstonePower), Block.NOTIFY_ALL);
 	}
 
 	@Override

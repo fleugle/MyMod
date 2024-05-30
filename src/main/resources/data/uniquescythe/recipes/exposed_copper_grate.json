@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "blocks",
+  "pattern": [
+    " 1 ",
+    "1 1",
+    " 1 "
+  ],
+  "key": {
+    "1": {
+      "item": "minecraft:exposed_copper"
+
+    }
+  },
+  "result": {
+    "item": "uniquescythe:exposed_copper_grate",
+    "count": 1
+  }
+}
