@@ -72,9 +72,17 @@ public class ModItems {
 
 	public static final Item STAR_TRINKET = registerItem("star_trinket", new Item( new Item.Settings()));
 
+
+
 	public static final Item TETOS_TALISMAN = registerItem("tetos_talisman", new SimpleTalismanItem(
 		3f, 0.5f, 0.3f,-3f, 4, new Item.Settings().maxCount(1).rarity(Rarity.RARE))
 	);
+
+	public static final Item LEONS_TALISMAN = registerItem("leons_talisman", new SneakyTalismanItem(
+		-3f, 0f, 0.5f,-10f, -8, new Item.Settings().maxCount(1).rarity(Rarity.RARE))
+	);
+
+
 
 	public static final Item HONEY_APPLE = registerItem(
 		"honey_apple",
@@ -105,6 +113,7 @@ public class ModItems {
 
 		//INGREDIENTS TAB ITEMS REGISTRY
 		ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(entries -> {
+			entries.addAfter(Items.IRON_NUGGET, COPPER_NUGGET);
 			entries.addBefore(Items.SHULKER_SHELL, HEAVY_CORE);
 			entries.addAfter(Items.GOLD_INGOT, FROSTY_STEEL);
 			entries.addAfter(Items.BLAZE_ROD, BREEZE_ROD);

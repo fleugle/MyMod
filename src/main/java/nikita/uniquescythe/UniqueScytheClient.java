@@ -38,12 +38,12 @@ public class UniqueScytheClient implements ClientModInitializer {
 		QuiltLoader.getModContainer(UniqueScythe.MOD_ID)
 			.ifPresent(modContainer -> ResourceLoader
 				.registerBuiltinResourcePack(UniqueScythe.id("better_redstone"),
-					modContainer, ResourcePackActivationType.ALWAYS_ENABLED, Text.of("§bBetter Redstone")));
+					modContainer, ResourcePackActivationType.NORMAL, Text.of("§bBetter Redstone")));
 
 		QuiltLoader.getModContainer(UniqueScythe.MOD_ID)
 			.ifPresent(modContainer -> ResourceLoader
 				.registerBuiltinResourcePack(UniqueScythe.id("legacy_copper"),
-					modContainer, ResourcePackActivationType.ALWAYS_ENABLED, Text.of("§bBetter Copper Textures")));
+					modContainer, ResourcePackActivationType.NORMAL, Text.of("§bBetter Copper Textures")));
 
 
 

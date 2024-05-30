@@ -41,8 +41,7 @@
   
     "REDSTONE COMPONENT ACTIVATION TIME": "(change identifier names to disable)",
   
-        "block.minecraft.sculk_sensor": "Sculk Sensor \ue1021.5s\uf764\uf732\uf704\uf702\u00a7f\ue014\uf732\uf716\uf702\uf701",
-        "block.minecraft.calibrated_sculk_sensor": "Calibrated Sculk Sensor \ue1020.5s\uf764\uf764\uf716\uf708\uf704\uf701\u00a7f\ue014\uf804",
+        
         "block.minecraft.trapped_chest": "Trapped Chest \ue102≥0.05s",
         "block.minecraft.detector_rail": "Detector Rail \ue102≥1s",
         "block.minecraft.tripwire_hook": "Tripwire Hook \ue102≥0.5s",
