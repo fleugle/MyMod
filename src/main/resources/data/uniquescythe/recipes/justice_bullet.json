@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "uniquescythe:copper_nugget"
+    },{
+      "item": "uniquescythe:copper_nugget"
+    },{
+      "item": "uniquescythe:copper_nugget"
+    },{
+      "item": "uniquescythe:copper_nugget"
+    },{
+      "item": "uniquescythe:copper_nugget"
+    },{
+      "item": "uniquescythe:copper_nugget"
+    },{
+      "item": "uniquescythe:copper_nugget"
+    },{
+      "item": "uniquescythe:copper_nugget"
+    },{
+      "item": "uniquescythe:copper_nugget"
+    }
+  ],
+  "result": {
+    "item": "minecraft:copper_ingot",
+    "count": 1
+  }
+}
