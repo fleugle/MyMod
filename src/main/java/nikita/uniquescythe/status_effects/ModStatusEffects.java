@@ -6,6 +6,7 @@ import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import nikita.uniquescythe.UniqueScythe;
 import nikita.uniquescythe.status_effects.custom.DelayedSatisfactionStatusEffect;
+import nikita.uniquescythe.status_effects.custom.JusticeVengeanceStatusEffect;
 
 
 public class ModStatusEffects {
@@ -13,6 +14,9 @@ public class ModStatusEffects {
 
 	public static final StatusEffect DELAYED_SATISFACTION = new DelayedSatisfactionStatusEffect();
 
+	public static final StatusEffect JUSTICE_VENGEANCE	 = new JusticeVengeanceStatusEffect();
+
+	public static final StatusEffect CHAOS = new JusticeVengeanceStatusEffect();
 
 
 
@@ -24,6 +28,8 @@ public class ModStatusEffects {
 
 	public static void initialiseStatusEffects(){
 		registerStatusEffect("delayed_satisfaction", DELAYED_SATISFACTION);
+		registerStatusEffect("justice_vengeance", JUSTICE_VENGEANCE);
+		registerStatusEffect("chaos", CHAOS);
 
 	}
 }

@@ -24,7 +24,7 @@ public class DuplicateMirrorItem extends SimplyDescribedItem {
 	}
 
 	public DuplicateMirrorItem(Settings settings) {
-		super(settings, "§9Has 10 charges");
+		super(settings, "§9Needs repair after 10th use");
 	}
 
 	@Override
