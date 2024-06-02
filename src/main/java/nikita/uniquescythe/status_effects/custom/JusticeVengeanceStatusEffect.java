@@ -12,6 +12,7 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import nikita.uniquescythe.UniqueScythe;
 import nikita.uniquescythe.sounds.ModSoundEvents;
+import nikita.uniquescythe.status_effects.ModStatusEffects;
 import nikita.uniquescythe.utility.CommandsExecuter;
 import nikita.uniquescythe.utility.KarmaSystem;
 import nikita.uniquescythe.utility.SoundsManager;
@@ -69,7 +70,6 @@ public class JusticeVengeanceStatusEffect extends StatusEffect {
 					stackInMainHand.decrement(conversionAmount);
 					CommandsExecuter.executeCommand(entity, "give "+ player.getDisplayName().getString() +  " " + UniqueScythe.MOD_ID + ":" + "justice_shard" +" " + conversionAmount);
 
-					this.conversionAmount = 1;
 				}
 
 			}
@@ -87,10 +87,12 @@ public class JusticeVengeanceStatusEffect extends StatusEffect {
 	private void registerHitAttempt(){
 		if (this.hitNotDetected) {
 			AttackEntityCallback.EVENT.register((player, world, hand, entity, entityHitResult) -> {
-				if (this.hitNotDetected) {
-					this.conversionAmount += 1;
+				if (!world.isClient && player.hasStatusEffect(ModStatusEffects.JUSTICE_VENGEANCE)) {
+					if (this.hitNotDetected) {
+						this.conversionAmount += 1;
+					}
+					this.hitNotDetected = false;
 				}
-				this.hitNotDetected = false;
 
 				return ActionResult.PASS;
 			});

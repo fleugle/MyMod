@@ -72,6 +72,8 @@ public class ModItems {
 
 	public static final Item STAR_TRINKET = registerItem("star_trinket", new Item( new Item.Settings()));
 
+	public static final Item JOY_BELL = registerItem("joy_bell", new JoyBellItem( new Item.Settings()));
+
 
 
 	public static final Item TETOS_TALISMAN = registerItem("tetos_talisman", new SimpleTalismanItem(

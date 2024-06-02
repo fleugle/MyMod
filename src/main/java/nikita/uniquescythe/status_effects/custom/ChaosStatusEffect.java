@@ -7,10 +7,14 @@ import net.minecraft.entity.effect.StatusEffectType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import nikita.uniquescythe.UniqueScythe;
+import nikita.uniquescythe.status_effects.ModStatusEffects;
 import nikita.uniquescythe.utility.CommandsExecuter;
+import nikita.uniquescythe.utility.GuiltyLevelSystem;
+import nikita.uniquescythe.utility.RandomEffectUtil;
 
 public class ChaosStatusEffect extends StatusEffect {
 
@@ -42,7 +46,8 @@ public class ChaosStatusEffect extends StatusEffect {
 		if (entity instanceof PlayerEntity player && !player.getWorld().isClient) {
 			this.hitNotDetected = true;
 			registerHitAttempt();
-			player.addExperience((this.conversionAmount) << amplifier); // Higher amplifier gives you EXP faster
+			//player.addExperience((this.conversionAmount) << amplifier); // Higher amplifier gives you EXP faster
+
 		}
 	}
 
@@ -65,7 +70,6 @@ public class ChaosStatusEffect extends StatusEffect {
 					stackInMainHand.decrement(conversionAmount);
 					CommandsExecuter.executeCommand(entity, "give "+ player.getDisplayName().getString() +  " " + UniqueScythe.MOD_ID + ":" + "chaos_shard" +" " + conversionAmount);
 
-					this.conversionAmount = 1;
 				}
 
 			}
@@ -83,10 +87,14 @@ public class ChaosStatusEffect extends StatusEffect {
 	private void registerHitAttempt(){
 		if (this.hitNotDetected) {
 			AttackEntityCallback.EVENT.register((player, world, hand, entity, entityHitResult) -> {
-				if (this.hitNotDetected) {
-					this.conversionAmount += 1;
+				if (!world.isClient && player.hasStatusEffect(ModStatusEffects.CHAOS)) {
+					if (this.hitNotDetected) {
+						this.conversionAmount += 1;
+						GuiltyLevelSystem.addGuiltyLevelsToPlayer((ServerPlayerEntity) player, player.getDisplayName().getString(), 1);
+						RandomEffectUtil.applyRandomEffect((ServerPlayerEntity) player);
+					}
+					this.hitNotDetected = false;
 				}
-				this.hitNotDetected = false;
 
 				return ActionResult.PASS;
 			});
