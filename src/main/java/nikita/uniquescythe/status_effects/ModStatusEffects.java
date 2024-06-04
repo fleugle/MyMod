@@ -1,5 +1,7 @@
 package nikita.uniquescythe.status_effects;
 
+import net.minecraft.entity.attribute.EntityAttributeModifier;
+import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -20,7 +22,11 @@ public class ModStatusEffects {
 
 	public static final StatusEffect CHAOS = new ChaosStatusEffect();
 
-	public static final StatusEffect PHASE = new PhaseStatusEffect();
+	public static final StatusEffect PHASE = new PhaseStatusEffect()/*.addAttributeModifier(
+		EntityAttributes.GENERIC_MOVEMENT_SPEED,
+		"7107DE5E-7CE8-4030-940E-514C1F160890",
+		-9999F, EntityAttributeModifier.Operation.MULTIPLY_TOTAL
+	)*/;
 
 
 
