@@ -1,15 +1,18 @@
 package nikita.uniquescythe.mixin;
 
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.item.ItemRenderer;
 import net.minecraft.client.render.model.BakedModel;
 import net.minecraft.client.render.model.json.ModelTransformationMode;
 import net.minecraft.client.util.ModelIdentifier;
 import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import nikita.uniquescythe.UniqueScythe;
 import nikita.uniquescythe.items.ModItems;
+import nikita.uniquescythe.status_effects.ModStatusEffects;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
@@ -194,4 +197,21 @@ public abstract class ItemRendererMixin {
 		}
 		return value;
 	}
+
+	@ModifyVariable(method = "renderItem", at = @At(value = "HEAD"), argsOnly = true)
+	public BakedModel hideModels(BakedModel value, ItemStack stack, ModelTransformationMode renderMode, boolean leftHanded, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay/*, PlayerEntity player*/) {
+		MinecraftClient client = MinecraftClient.getInstance();
+
+
+		if (client.player!= null && client.player.hasStatusEffect(ModStatusEffects.PHASE) ){
+
+			if (renderMode == (ModelTransformationMode.THIRD_PERSON_LEFT_HAND)
+			|| renderMode == (ModelTransformationMode.THIRD_PERSON_RIGHT_HAND)) {
+				return ((ItemRendererAccessor) this).customModels$getModels().getModelManager().getModel(new ModelIdentifier(UniqueScythe.MOD_ID, "empty_model", "inventory"));
+			}
+		}
+		return value;
+	}
+
+
 }

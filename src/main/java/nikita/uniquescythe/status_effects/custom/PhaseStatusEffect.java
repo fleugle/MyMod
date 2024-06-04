@@ -37,6 +37,8 @@ public class PhaseStatusEffect extends StatusEffect {
 
 
 
+
+
 			//player.addExperience((this.conversionAmount) << amplifier); // Higher amplifier gives you EXP faster
 
 		}
