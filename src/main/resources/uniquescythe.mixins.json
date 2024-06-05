@@ -10,8 +10,7 @@
     "ModifyCritParticle",
     "ShapedRecipeMixin",
     "ArmorFeatureRendererMixin",
-    "PlayerInputMixin",
-    "MovementPreventionMixin"
+    "PlayerInputMixin"
   ],
   "client": [
     "ItemRendererAccessor",

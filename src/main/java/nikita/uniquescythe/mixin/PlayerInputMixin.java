@@ -24,36 +24,16 @@ public class PlayerInputMixin {
 	private void onHandleInputEvents(CallbackInfo ci) {
 		ClientPlayerEntity player = MinecraftClient.getInstance().player;
 
-		//KeyBind useKey = MinecraftClient.getInstance().options.useKey;
 		KeyBind attackKey = MinecraftClient.getInstance().options.attackKey;
-
-		/*KeyBind forwardKey = MinecraftClient.getInstance().options.forwardKey;
-		KeyBind backKey = MinecraftClient.getInstance().options.backKey;
-		KeyBind rightKey = MinecraftClient.getInstance().options.rightKey;
-		KeyBind leftKey = MinecraftClient.getInstance().options.leftKey;*/
+		KeyBind swapHandsKey = MinecraftClient.getInstance().options.swapHandsKey;
 
 
 
 		if (player != null && player.hasStatusEffect(ModStatusEffects.PHASE)) {
-			/*if (useKey.wasPressed() || useKey.isPressed()){
-				ci.cancel();
-			}*/
 
-			if (attackKey.wasPressed() || attackKey.isPressed()){
+			if (attackKey.isPressed() || swapHandsKey.isPressed() ){
 				ci.cancel();
 			}
-
-			/*if (forwardKey.wasPressed() || forwardKey.isPressed()
-				|| backKey.wasPressed() || backKey.isPressed()){
-				player.input.forwardMovement = 0;
-				ci.cancel();
-			}
-
-			if (rightKey.wasPressed() || rightKey.isPressed()
-				|| leftKey.wasPressed() || leftKey.isPressed()){
-				player.input.sidewaysMovement = 0;
-				ci.cancel();
-			}*/
 
 		}
 

@@ -21,7 +21,7 @@ public class JoyBellItem extends SimplyDescribedItem{
 			ItemStack stack = user.getStackInHand(hand);
 
 			if (user.getStackInHand(Hand.MAIN_HAND) == stack) {
-				CommandsExecuter.executeCommand(user, "tp "+ user.getDisplayName().getString() + " ^ ^ ^10");
+				CommandsExecuter.executeCommand(user, "tp "+ user.getDisplayName().getString() + " ^ ^ ^5");
 
 			}
 			else if (user.getStackInHand(Hand.OFF_HAND) == stack) {

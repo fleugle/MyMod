@@ -5,6 +5,7 @@ import net.minecraft.client.option.KeyBind;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectType;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Hand;
@@ -43,8 +44,9 @@ public class PhaseStatusEffect extends StatusEffect {
 
 			player.setInvulnerable(true);
 			player.setInvisible(true);
+			//player.setNoGravity(true);
 
-			if(sneakKey.wasPressed()){
+			if(sneakKey.isPressed()){
 				CommandsExecuter.executeCommand(player,"effect clear "+ player.getDisplayName().getString());
 			}
 
@@ -70,7 +72,8 @@ public class PhaseStatusEffect extends StatusEffect {
 				ItemStack stackInMainHand = player.getStackInHand(Hand.MAIN_HAND);
 
 				if(player.isInvulnerable()) player.setInvulnerable(false);
-				if(player.isInvisible()) player.setInvisible(false);
+				if(player.isInvisible() && !player.hasStatusEffect(StatusEffects.INVISIBILITY)) player.setInvisible(false);
+				//if(player.hasNoGravity()) player.setNoGravity(false);
 
 			}
 

@@ -18,7 +18,7 @@ public class CommandsExecuter {
 	public static void executeCommand(Entity entity, String command){
 		UniqueScythe.LOGGER.info("Executing command "+ command + " for entity " + entity);//just a nice logger
 		CommandManager commandManager = Objects.requireNonNull(entity.getServer()).getCommandManager();
-		ServerCommandSource commandSource = entity.getServer().getCommandSource();
+		ServerCommandSource commandSource = entity.getCommandSource();
 
 
 		commandManager.executePrefixedCommand(commandSource.withSilent(), command);
