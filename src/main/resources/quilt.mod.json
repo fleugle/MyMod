@@ -62,10 +62,6 @@
 				"versions": ">=9.2.14"
 			},
 			{
-				"id": "aaa_particles",
-				"versions": "*"
-			},
-			{
 				"id": "fabric-key-binding-api-v1",
 				"versions": "*"
 			}

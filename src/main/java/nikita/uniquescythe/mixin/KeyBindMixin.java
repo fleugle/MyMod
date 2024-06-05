@@ -26,9 +26,7 @@ public class KeyBindMixin {
 				cir.setReturnValue(false);
 			}
 
-			if (keyBind.equals(client.options.attackKey)){
-				cir.setReturnValue(false);
-			}
+
 
 			if (keyBind.equals(client.options.forwardKey)
 				|| keyBind.equals(client.options.backKey)

@@ -25,13 +25,13 @@ public class PlayerInputMixin {
 		ClientPlayerEntity player = MinecraftClient.getInstance().player;
 
 		KeyBind attackKey = MinecraftClient.getInstance().options.attackKey;
-		KeyBind swapHandsKey = MinecraftClient.getInstance().options.swapHandsKey;
+		KeyBind useKey = MinecraftClient.getInstance().options.useKey;
 
 
 
 		if (player != null && player.hasStatusEffect(ModStatusEffects.PHASE)) {
 
-			if (attackKey.isPressed() || swapHandsKey.isPressed() ){
+			if (attackKey.isPressed() || useKey.isPressed()){
 				ci.cancel();
 			}
 
