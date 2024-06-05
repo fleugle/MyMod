@@ -18,7 +18,7 @@ public class ItemsPosing {
 
 
 
-			modelPart2.yaw = (rightArmed ? 1F : -1F) + head.yaw;
+			/*modelPart2.yaw = (rightArmed ? 1F : -1F) + head.yaw;
 
 			modelPart2.pitch = ((float) (-Math.PI / 2) ) + head.pitch;
 
@@ -28,10 +28,17 @@ public class ItemsPosing {
 
 			//this one seems to respond for a horizontal axis(is arm towards ceiling or floor)
 			modelPart.pitch = (float) (-Math.PI / 2) + head.pitch;
-
+*/
 
 			//head.pitch or head.yaw is to make arms follow the same as players head
 
+
+			//inn or away of the players body.
+			modelPart.yaw = (rightArmed ? -0.3F : 0.3F) + head.yaw;
+			modelPart2.yaw = (rightArmed ? 0.6F : -0.6F) + head.yaw;
+			//this one seems to respond for a horizontal axis(is arm towards ceiling or floor)
+			modelPart.pitch = (float) (-Math.PI / 2) + head.pitch /*+ 0.1F*/;
+			modelPart2.pitch = -1.5F + head.pitch;
 
 
 			callbackInfo.cancel();

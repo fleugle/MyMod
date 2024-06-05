@@ -1,13 +1,20 @@
 package nikita.uniquescythe.status_effects.custom;
 
+import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.option.KeyBind;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Hand;
+import nikita.uniquescythe.UniqueScythe;
+import nikita.uniquescythe.status_effects.ModStatusEffects;
+import nikita.uniquescythe.utility.CommandsExecuter;
 
 public class PhaseStatusEffect extends StatusEffect {
+
+
 
 
 
@@ -31,9 +38,15 @@ public class PhaseStatusEffect extends StatusEffect {
 	@Override
 	public void applyUpdateEffect(LivingEntity entity, int amplifier) {
 		if (entity instanceof PlayerEntity player && !player.getWorld().isClient) {
+			KeyBind sneakKey = MinecraftClient.getInstance().options.sneakKey;
+
 
 			player.setInvulnerable(true);
 			player.setInvisible(true);
+
+			if(sneakKey.wasPressed()){
+				CommandsExecuter.executeCommand(player,"effect clear "+ player.getDisplayName().getString());
+			}
 
 
 
