@@ -15,6 +15,8 @@ import nikita.uniquescythe.utility.CommandsExecuter;
 
 public class PhaseStatusEffect extends StatusEffect {
 
+	private boolean shouldStayOnADefinedHeight = false;
+
 
 
 
@@ -38,16 +40,22 @@ public class PhaseStatusEffect extends StatusEffect {
 	// This method is called when it applies the status effect. We implement custom functionality here.
 	@Override
 	public void applyUpdateEffect(LivingEntity entity, int amplifier) {
+		this.shouldStayOnADefinedHeight = true;
+
 		if (entity instanceof PlayerEntity player && !player.getWorld().isClient) {
 			KeyBind sneakKey = MinecraftClient.getInstance().options.sneakKey;
 
 
 			player.setInvulnerable(true);
 			player.setInvisible(true);
-			//player.setNoGravity(true);
+
+			keepHeight(player);
+
+
+
 
 			if(sneakKey.isPressed()){
-				CommandsExecuter.executeCommand(player,"effect clear "+ player.getDisplayName().getString());
+				CommandsExecuter.executeCommand(player,"effect clear "+ player.getDisplayName().getString() + " uniquescythe:phase");
 			}
 
 
@@ -66,6 +74,7 @@ public class PhaseStatusEffect extends StatusEffect {
 	@Override
 	public void onRemoved(LivingEntity entity, net.minecraft.entity.attribute.AttributeContainer attributes, int amplifier) {
 		super.onRemoved(entity, attributes, amplifier);
+		this.shouldStayOnADefinedHeight = false;
 
 		if (!entity.getWorld().isClient) {
 			if(entity instanceof PlayerEntity player){//I can actually just write it like that, defining new variable in check
@@ -74,15 +83,23 @@ public class PhaseStatusEffect extends StatusEffect {
 				if(player.isInvulnerable()) player.setInvulnerable(false);
 				if(player.isInvisible() && !player.hasStatusEffect(StatusEffects.INVISIBILITY)) player.setInvisible(false);
 				//if(player.hasNoGravity()) player.setNoGravity(false);
+				//if(player.hasNoDrag()) player.setNoDrag(false);
 
 			}
 
 		}
 
-
-
 	}
 
 
 
+
+	private void keepHeight(PlayerEntity player){
+
+		if (this.shouldStayOnADefinedHeight) {
+			double playerYpos = player.getY();
+
+			CommandsExecuter.executeCommand(player, "tp "+player.getDisplayName().getString() + " ~ "+ playerYpos + " ~");
+		}
+	}
 }
