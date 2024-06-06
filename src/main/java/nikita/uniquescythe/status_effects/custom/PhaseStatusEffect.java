@@ -9,8 +9,7 @@ import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Hand;
-import nikita.uniquescythe.UniqueScythe;
-import nikita.uniquescythe.status_effects.ModStatusEffects;
+import nikita.uniquescythe.items.ModItems;
 import nikita.uniquescythe.utility.CommandsExecuter;
 
 public class PhaseStatusEffect extends StatusEffect {
@@ -60,13 +59,6 @@ public class PhaseStatusEffect extends StatusEffect {
 
 
 
-
-
-
-
-
-			//player.addExperience((this.conversionAmount) << amplifier); // Higher amplifier gives you EXP faster
-
 		}
 	}
 
@@ -82,8 +74,7 @@ public class PhaseStatusEffect extends StatusEffect {
 
 				if(player.isInvulnerable()) player.setInvulnerable(false);
 				if(player.isInvisible() && !player.hasStatusEffect(StatusEffects.INVISIBILITY)) player.setInvisible(false);
-				//if(player.hasNoGravity()) player.setNoGravity(false);
-				//if(player.hasNoDrag()) player.setNoDrag(false);
+
 
 			}
 
@@ -92,14 +83,22 @@ public class PhaseStatusEffect extends StatusEffect {
 	}
 
 
-
-
 	private void keepHeight(PlayerEntity player){
 
+		double playerYpos;
 		if (this.shouldStayOnADefinedHeight) {
-			double playerYpos = player.getY();
+			if (player.getStackInHand(Hand.MAIN_HAND).getItem().equals(ModItems.JOY_BELL)
+				||player.getStackInHand(Hand.OFF_HAND).getItem().equals(ModItems.JOY_BELL)) {
+
+				ItemStack stack = player.getStackInHand(Hand.MAIN_HAND).getItem().equals(ModItems.JOY_BELL) ? player.getStackInHand(Hand.MAIN_HAND) : player.getStackInHand(Hand.OFF_HAND);
+
+				playerYpos = stack.getOrCreateNbt().contains("ConstHeight") ? stack.getOrCreateNbt().getInt("ConstHeight") : player.getY();
+
+			}
+			else playerYpos = player.getY();
 
 			CommandsExecuter.executeCommand(player, "tp "+player.getDisplayName().getString() + " ~ "+ playerYpos + " ~");
+			player.fallDistance = 0;
 		}
 	}
 }

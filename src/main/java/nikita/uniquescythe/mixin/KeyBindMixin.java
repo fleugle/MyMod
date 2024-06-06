@@ -13,10 +13,12 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(KeyBind.class)
 public class KeyBindMixin {
 
+	@SuppressWarnings("UnreachableCode")
 	@Inject(method = "isPressed", at = @At("HEAD"), cancellable = true)
 	private void MovementControlsSuppression(CallbackInfoReturnable<Boolean> cir) {
 		MinecraftClient client = MinecraftClient.getInstance();
 		ClientPlayerEntity player = client.player;
+
 
 		if (player != null && player.hasStatusEffect(ModStatusEffects.PHASE)) { // Replace with your custom status effect
 			KeyBind keyBind = (KeyBind) (Object) this;
@@ -25,6 +27,13 @@ public class KeyBindMixin {
 
 				cir.setReturnValue(false);
 			}
+
+			if (keyBind.equals(client.options.useKey) || keyBind.equals(client.options.attackKey)) {
+
+				cir.setReturnValue(false);
+			}
+
+
 
 
 
