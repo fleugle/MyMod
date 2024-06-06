@@ -42,7 +42,7 @@ public class PhaseStatusEffect extends StatusEffect {
 		this.shouldStayOnADefinedHeight = true;
 
 		if (entity instanceof PlayerEntity player && !player.getWorld().isClient) {
-			KeyBind sneakKey = MinecraftClient.getInstance().options.sneakKey;
+
 
 
 			player.setInvulnerable(true);
@@ -53,7 +53,7 @@ public class PhaseStatusEffect extends StatusEffect {
 
 
 
-			if(sneakKey.isPressed()){
+			if(entity.isSneaking()){
 				CommandsExecuter.executeCommand(player,"effect clear "+ player.getDisplayName().getString() + " uniquescythe:phase");
 			}
 

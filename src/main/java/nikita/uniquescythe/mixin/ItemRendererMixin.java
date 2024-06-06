@@ -10,10 +10,14 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.server.world.ServerWorld;
+import net.minecraft.world.World;
 import nikita.uniquescythe.UniqueScythe;
 import nikita.uniquescythe.items.ModItems;
 import nikita.uniquescythe.status_effects.ModStatusEffects;
+import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 
@@ -198,9 +202,13 @@ public abstract class ItemRendererMixin {
 		return value;
 	}
 
+	@Final
+	@Shadow
+	private MinecraftClient client;
+
 	@ModifyVariable(method = "renderItem", at = @At(value = "HEAD"), argsOnly = true)
 	public BakedModel hideModels(BakedModel value, ItemStack stack, ModelTransformationMode renderMode, boolean leftHanded, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay/*, PlayerEntity player*/) {
-		MinecraftClient client = MinecraftClient.getInstance();
+
 
 
 		if (client.player!= null && client.player.hasStatusEffect(ModStatusEffects.PHASE) ){

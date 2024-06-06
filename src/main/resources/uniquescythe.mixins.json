@@ -5,13 +5,7 @@
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "LivingEntityMixin",
-    "ExampleMixin",
-    "ModifySweepingParticle",
-    "ModifyCritParticle",
-    "ShapedRecipeMixin",
-    "ArmorFeatureRendererMixin",
-    "ClientPlayerInteractionManagerMixin",
-    "KeyBindMixin"
+    "ShapedRecipeMixin"
   ],
   "client": [
     "ItemRendererAccessor",
@@ -19,7 +13,11 @@
     "ModelLoaderMixin",
     "ClientPlayNetworkHandlerMixin",
     "BipedEntityModelMixin",
-    "PlayerEntityRendererMixin"
+    "PlayerEntityRendererMixin",
+    "ModifySweepingParticle",
+    "ModifyCritParticle",
+    "ClientPlayerInteractionManagerMixin",
+    "KeyBindMixin"
   ],
   "injectors": {
     "defaultRequire": 1
