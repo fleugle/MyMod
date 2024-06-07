@@ -17,6 +17,7 @@
     "ModifySweepingParticle",
     "ModifyCritParticle",
     "ClientPlayerInteractionManagerMixin",
+    "EntityRenderDispatcherMixin",
     "KeyBindMixin"
   ],
   "injectors": {

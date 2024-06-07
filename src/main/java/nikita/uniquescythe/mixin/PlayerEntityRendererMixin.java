@@ -12,6 +12,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Hand;
 
+import nikita.uniquescythe.datatracker.UltraInvisibilityClientHandler;
 import nikita.uniquescythe.items.custom.GunItem;
 import nikita.uniquescythe.items.custom.JusticeRevolverItem;
 import nikita.uniquescythe.status_effects.ModStatusEffects;
@@ -45,7 +46,7 @@ public class PlayerEntityRendererMixin {
 	private void onRender(
 		AbstractClientPlayerEntity abstractClientPlayerEntity, float f, float g, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i, CallbackInfo ci
 	) {
-		if (abstractClientPlayerEntity.hasStatusEffect(ModStatusEffects.PHASE)) {  // Replace with your custom status effect
+		if (UltraInvisibilityClientHandler.isPlayerUltraInvisible(abstractClientPlayerEntity.getUuid())) {
 			ci.cancel();
 		}
 	}

@@ -8,7 +8,9 @@ import net.minecraft.entity.effect.StatusEffectType;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Hand;
+import nikita.uniquescythe.datatracker.UltraInvisibilityTracker;
 import nikita.uniquescythe.items.ModItems;
 import nikita.uniquescythe.utility.CommandsExecuter;
 
@@ -44,9 +46,10 @@ public class PhaseStatusEffect extends StatusEffect {
 		if (entity instanceof PlayerEntity player && !player.getWorld().isClient) {
 
 
+			UltraInvisibilityTracker.updateUltraInvisibilityStatus((ServerPlayerEntity) player, true);
 
 			player.setInvulnerable(true);
-			player.setInvisible(true);
+			//player.setInvisible(true);
 
 			keepHeight(player);
 
@@ -72,8 +75,9 @@ public class PhaseStatusEffect extends StatusEffect {
 			if(entity instanceof PlayerEntity player){//I can actually just write it like that, defining new variable in check
 				ItemStack stackInMainHand = player.getStackInHand(Hand.MAIN_HAND);
 
+				UltraInvisibilityTracker.updateUltraInvisibilityStatus((ServerPlayerEntity) player, false);
 				if(player.isInvulnerable()) player.setInvulnerable(false);
-				if(player.isInvisible() && !player.hasStatusEffect(StatusEffects.INVISIBILITY)) player.setInvisible(false);
+				//if(player.isInvisible() && !player.hasStatusEffect(StatusEffects.INVISIBILITY)) player.setInvisible(false);
 
 
 			}

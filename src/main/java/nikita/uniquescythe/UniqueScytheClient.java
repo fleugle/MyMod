@@ -2,6 +2,7 @@ package nikita.uniquescythe;
 
 import net.fabricmc.api.ClientModInitializer;
 
+import nikita.uniquescythe.datatracker.UltraInvisibilityClientHandler;
 import org. quiltmc. qsl. block. extensions. api. client.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
@@ -47,6 +48,7 @@ public class UniqueScytheClient implements ClientModInitializer {
 
 
 
+		UltraInvisibilityClientHandler.register();
 
 
 

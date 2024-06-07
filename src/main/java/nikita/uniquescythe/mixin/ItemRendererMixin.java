@@ -206,20 +206,7 @@ public abstract class ItemRendererMixin {
 	@Shadow
 	private MinecraftClient client;
 
-	@ModifyVariable(method = "renderItem", at = @At(value = "HEAD"), argsOnly = true)
-	public BakedModel hideModels(BakedModel value, ItemStack stack, ModelTransformationMode renderMode, boolean leftHanded, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay/*, PlayerEntity player*/) {
 
-
-
-		if (client.player!= null && client.player.hasStatusEffect(ModStatusEffects.PHASE) ){
-
-			if (renderMode == (ModelTransformationMode.THIRD_PERSON_LEFT_HAND)
-			|| renderMode == (ModelTransformationMode.THIRD_PERSON_RIGHT_HAND)) {
-				return ((ItemRendererAccessor) this).customModels$getModels().getModelManager().getModel(new ModelIdentifier(UniqueScythe.MOD_ID, "empty_model", "inventory"));
-			}
-		}
-		return value;
-	}
 
 
 }
