@@ -3,6 +3,10 @@ package nikita.uniquescythe.status_effects.custom;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.option.KeyBind;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.attribute.AttributeContainer;
+import net.minecraft.entity.attribute.EntityAttribute;
+import net.minecraft.entity.attribute.EntityAttributeInstance;
+import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectType;
 import net.minecraft.entity.effect.StatusEffects;
@@ -13,6 +17,8 @@ import net.minecraft.util.Hand;
 import nikita.uniquescythe.datatracker.UltraInvisibilityTracker;
 import nikita.uniquescythe.items.ModItems;
 import nikita.uniquescythe.utility.CommandsExecuter;
+
+import java.util.Map;
 
 public class PhaseStatusEffect extends StatusEffect {
 
@@ -45,22 +51,12 @@ public class PhaseStatusEffect extends StatusEffect {
 
 		if (entity instanceof PlayerEntity player && !player.getWorld().isClient) {
 
-
 			UltraInvisibilityTracker.updateUltraInvisibilityStatus((ServerPlayerEntity) player, true);
-
 			player.setInvulnerable(true);
-			//player.setInvisible(true);
-
 			keepHeight(player);
-
-
-
-
 			if(entity.isSneaking()){
 				CommandsExecuter.executeCommand(player,"effect clear "+ player.getDisplayName().getString() + " uniquescythe:phase");
 			}
-
-
 
 		}
 	}
@@ -73,18 +69,16 @@ public class PhaseStatusEffect extends StatusEffect {
 
 		if (!entity.getWorld().isClient) {
 			if(entity instanceof PlayerEntity player){//I can actually just write it like that, defining new variable in check
-				ItemStack stackInMainHand = player.getStackInHand(Hand.MAIN_HAND);
 
 				UltraInvisibilityTracker.updateUltraInvisibilityStatus((ServerPlayerEntity) player, false);
 				if(player.isInvulnerable()) player.setInvulnerable(false);
-				//if(player.isInvisible() && !player.hasStatusEffect(StatusEffects.INVISIBILITY)) player.setInvisible(false);
-
 
 			}
 
 		}
 
 	}
+
 
 
 	private void keepHeight(PlayerEntity player){
@@ -100,6 +94,7 @@ public class PhaseStatusEffect extends StatusEffect {
 
 			}
 			else playerYpos = player.getY();
+
 
 			CommandsExecuter.executeCommand(player, "tp "+player.getDisplayName().getString() + " ~ "+ playerYpos + " ~");
 			player.fallDistance = 0;

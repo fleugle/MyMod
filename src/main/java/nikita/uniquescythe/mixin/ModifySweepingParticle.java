@@ -8,8 +8,11 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
 
+@SuppressWarnings("UnreachableCode")
 @Mixin(PlayerEntity.class)
 public abstract class ModifySweepingParticle {
+
+
 	@ModifyArg(
 		at = @At(
 			value = "INVOKE",
@@ -22,12 +25,7 @@ public abstract class ModifySweepingParticle {
 		PlayerEntity player = (PlayerEntity)(Object)this;
 		//i guess this if statements do the work here. to be experimented with in advance
 		if (player.getMainHandStack().isOf(ModItems.FROSTY_SCYTHE)) return (T) ModParticleTypes.FROSTY_SWEEP_ATTACK;
-
-
 		if (player.getMainHandStack().isOf(ModItems.WANDERERS_SWORD)) return (T) ModParticleTypes.VOID_SWEEP_ATTACK;
-
-
-
 		return particle;
 	}
 }

@@ -24,7 +24,7 @@ public class DuplicateMirrorItem extends SimplyDescribedItem {
 	}
 
 	public DuplicateMirrorItem(Settings settings) {
-		super(settings, "§9Needs repair after 10th use");
+		super(settings, "§9Needs repair after 5th use");
 	}
 
 	@Override
@@ -52,7 +52,7 @@ public class DuplicateMirrorItem extends SimplyDescribedItem {
 
 		Hand oppositeHand = hand == Hand.MAIN_HAND ? this.offHand : this.mainHand;
 		Hand currentHand = hand == Hand.MAIN_HAND ? this.mainHand : this.offHand;
-		ItemStack chaosShardStack = new ItemStack(ModItems.CHAOS_SHARD);
+		ItemStack chaosShardStack = new ItemStack(Items.AMETHYST_SHARD);
 
 		 if (!user.getStackInHand(oppositeHand).isEmpty() && !user.getWorld().isClient){
 
@@ -61,7 +61,7 @@ public class DuplicateMirrorItem extends SimplyDescribedItem {
 			 ItemStack stackGiven = new ItemStack(stackInOppositeHand.getItem().asItem(), stackInOppositeHand.getCount());
 
 			 if (user.getInventory().contains(chaosShardStack) || user.getAbilities().creativeMode ) {
-				 if (user.getStackInHand(oppositeHand).getItem() != ModItems.CHAOS_SHARD ) {
+				 if (user.getStackInHand(oppositeHand).getItem() != Items.AMETHYST_SHARD ) {
 					 //user.giveItemStack(stackGiven);
 					 String translationKey = stackGiven.getTranslationKey(); // Replace with your actual translation key
 					 String[] parts = translationKey.split("\\.");
@@ -74,7 +74,7 @@ public class DuplicateMirrorItem extends SimplyDescribedItem {
 						 ));
 						 for (int i = 0; i < user.getInventory().size(); i++) {
 							 ItemStack inventoryStack = user.getInventory().getStack(i);
-							 if (inventoryStack.getItem() == ModItems.CHAOS_SHARD) {
+							 if (inventoryStack.getItem() == Items.AMETHYST_SHARD) {
 								 inventoryStack.decrement(1); // Decrement the Chaos Shard stack
 								 break; // Exit the loop after finding and decrementing
 							 }

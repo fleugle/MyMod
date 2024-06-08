@@ -17,7 +17,15 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public abstract class EntityRenderDispatcherMixin {
 
 	@Inject(method = "renderShadow", at = @At("HEAD"), cancellable = true)
-	private static void onRenderShadow(MatrixStack matrices, VertexConsumerProvider vertexConsumers, Entity entity, float opacity, float tickDelta, WorldView world, float radius, CallbackInfo ci) {
+	private static void onRenderShadow(
+		MatrixStack matrices,
+		VertexConsumerProvider vertexConsumers,
+		Entity entity,
+		float opacity,
+		float tickDelta,
+		WorldView world,
+		float radius,
+		CallbackInfo ci) {
 		if (entity instanceof PlayerEntity) {
 			PlayerEntity playerEntity = (PlayerEntity) entity;
 			if (UltraInvisibilityClientHandler.isPlayerUltraInvisible(playerEntity.getUuid())) {

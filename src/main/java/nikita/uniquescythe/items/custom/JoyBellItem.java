@@ -13,7 +13,7 @@ import nikita.uniquescythe.utility.CommandsExecuter;
 public class JoyBellItem extends SimplyDescribedItem{
 
 	public JoyBellItem(Settings settings) {
-		super(settings, "Brings Joy & Chaos :)");
+		super(settings, "§9Brings Joy & Chaos :)");
 	}
 
 	@Override
@@ -39,7 +39,7 @@ public class JoyBellItem extends SimplyDescribedItem{
 		}
 
 
-		return TypedActionResult.pass(user.getStackInHand(hand));
+		return TypedActionResult.success(user.getStackInHand(hand));
 	}
 
 

@@ -202,9 +202,6 @@ public abstract class ItemRendererMixin {
 		return value;
 	}
 
-	@Final
-	@Shadow
-	private MinecraftClient client;
 
 
 
