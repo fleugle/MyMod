@@ -7,6 +7,7 @@ import net.minecraft.entity.attribute.AttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectType;
+import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -54,7 +55,7 @@ public class JusticeVengeanceStatusEffect extends StatusEffect {
 		if (entity instanceof PlayerEntity player && !player.getWorld().isClient) {
 			this.hitNotDetected = true;
 			registerHitAttempt();
-			player.addExperience((this.conversionAmount) << amplifier); // Higher amplifier gives you EXP faster
+			player.addExperience((this.conversionAmount - 1) << amplifier); // Higher amplifier gives you EXP faster
 		}
 	}
 
@@ -98,11 +99,10 @@ public class JusticeVengeanceStatusEffect extends StatusEffect {
 					if (this.hitNotDetected) {
 						this.conversionAmount += 1;
 
-						Entity target = null;
-						if (entityHitResult != null ){
+						Entity target = entity;
 
-							target =  entityHitResult.getEntity();
 
+						if (target instanceof LivingEntity livingEntityTarget && !livingEntityTarget.hasStatusEffect(ModStatusEffects.JUSTICE_VENGEANCE)) {
 							if(target instanceof ServerPlayerEntity serverTarget
 								&& player instanceof ServerPlayerEntity serverPlayerEntity){
 								int targetsGuilty = GuiltyLevelSystem.getGuiltyLevel(serverTarget, serverTarget.getDisplayName().getString(), GuiltyLevelSystem.PERSISTENT_GUILTY_LEVEL);
@@ -111,17 +111,50 @@ public class JusticeVengeanceStatusEffect extends StatusEffect {
 
 								int result = attackersGuilty - targetsGuilty;
 
-								//lifesteal needs change.
+								//lifesteal needs change. ?or not?
 								if(result >= 0 ){
 									this.lifestealAmount = 0;
 								}
 								else {
 									this.lifestealAmount = serverPlayerEntity.getAttributeValue(EntityAttributes.GENERIC_ATTACK_DAMAGE);
+									if(serverPlayerEntity.isAlive()
+										&& !serverPlayerEntity.isSpectator()
+										&& !serverTarget.isSpectator()
+										&& serverTarget.isAlive()
+										&& serverTarget.isAttackable()
+									) serverPlayerEntity.heal( (float) this.lifestealAmount * 0.12f * (float) -(result));
 								}
 
 							}
+							else if (player instanceof ServerPlayerEntity serverPlayerEntity) {
+								if(target instanceof HostileEntity) {
+									int attackersGuilty = GuiltyLevelSystem.getGuiltyLevel(serverPlayerEntity, serverPlayerEntity.getDisplayName().getString(), GuiltyLevelSystem.PERSISTENT_GUILTY_LEVEL);
 
+									int result = attackersGuilty - 50;
+									this.lifestealAmount = result >= 0 ? 0 : serverPlayerEntity.getAttributeValue(EntityAttributes.GENERIC_ATTACK_DAMAGE);
+									if(serverPlayerEntity.isAlive()
+										&& !serverPlayerEntity.isSpectator()
+										&& !target.isSpectator()
+										&& target.isAlive()
+										&& target.isAttackable()
+									) serverPlayerEntity.heal( (float) this.lifestealAmount * 0.12f * (float) -(result));
+								}
+								else {
+									int attackersGuilty = GuiltyLevelSystem.getGuiltyLevel(serverPlayerEntity, serverPlayerEntity.getDisplayName().getString(), GuiltyLevelSystem.PERSISTENT_GUILTY_LEVEL);
+
+									int result = attackersGuilty - 8;
+									this.lifestealAmount = result >= 0 ? 0 : serverPlayerEntity.getAttributeValue(EntityAttributes.GENERIC_ATTACK_DAMAGE);
+									if(serverPlayerEntity.isAlive()
+										&& !serverPlayerEntity.isSpectator()
+										&& !target.isSpectator()
+										&& target.isAlive()
+										&& target.isAttackable()
+									) serverPlayerEntity.heal( (float) this.lifestealAmount * 0.12f * (float) -(result));
+								}
+							}
 						}
+
+
 
 
 					}
@@ -133,5 +166,7 @@ public class JusticeVengeanceStatusEffect extends StatusEffect {
 		}
 
 	}
+
+
 
 }
