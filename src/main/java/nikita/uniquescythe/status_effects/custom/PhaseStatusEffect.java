@@ -24,6 +24,10 @@ public class PhaseStatusEffect extends StatusEffect {
 
 	private boolean shouldStayOnADefinedHeight = false;
 
+	private double xPos = 0;
+	private double zPos = 0;
+	private double yPos = 0;
+
 
 
 
@@ -64,6 +68,11 @@ public class PhaseStatusEffect extends StatusEffect {
 
 	@Override
 	public void onRemoved(LivingEntity entity, net.minecraft.entity.attribute.AttributeContainer attributes, int amplifier) {
+		this.xPos = 0;
+		this.yPos = 0;
+		this.zPos = 0;
+
+
 		super.onRemoved(entity, attributes, amplifier);
 		this.shouldStayOnADefinedHeight = false;
 
@@ -79,24 +88,22 @@ public class PhaseStatusEffect extends StatusEffect {
 
 	}
 
+	@Override
+	public void onApplied(LivingEntity entity, AttributeContainer attributes, int amplifier){
+		super.onApplied(entity, attributes, amplifier);
+
+		this.xPos = entity.getX();
+		this.zPos = entity.getZ();
+		this.yPos = entity.getY();
+	}
+
 
 
 	private void keepHeight(PlayerEntity player){
 
-		double playerYpos;
-		if (this.shouldStayOnADefinedHeight) {
-			if (player.getStackInHand(Hand.MAIN_HAND).getItem().equals(ModItems.JOY_BELL)
-				||player.getStackInHand(Hand.OFF_HAND).getItem().equals(ModItems.JOY_BELL)) {
+		if (this.shouldStayOnADefinedHeight && !player.getWorld().isClient) {
 
-				ItemStack stack = player.getStackInHand(Hand.MAIN_HAND).getItem().equals(ModItems.JOY_BELL) ? player.getStackInHand(Hand.MAIN_HAND) : player.getStackInHand(Hand.OFF_HAND);
-
-				playerYpos = stack.getOrCreateNbt().contains("ConstHeight") ? stack.getOrCreateNbt().getInt("ConstHeight") : player.getY();
-
-			}
-			else playerYpos = player.getY();
-
-
-			CommandsExecuter.executeCommand(player, "tp "+player.getDisplayName().getString() + " ~ "+ playerYpos + " ~");
+			CommandsExecuter.executeCommandOnServer(player.getWorld(), "tp "+player.getDisplayName().getString() + " "+ xPos + " "+ yPos + " " + this.zPos);
 			player.fallDistance = 0;
 		}
 	}

@@ -11,6 +11,10 @@ import nikita.uniquescythe.items.custom.JusticeArmorItem;
 import org.jetbrains.annotations.NotNull;
 
 public class GuiltyLevelSystem {
+	public static String PERSISTENT_GUILTY_LEVEL = "PersistentGuiltyLevel";
+	public static String GENERAL_KILLS_GUILTY_LEVEL = "GeneralKillsGuiltyLevel";
+	public static String PLAYERS_KILL_GUILTY_ADDITION = "PlayersKillGuiltyAddition";
+
 
 	public static void addGuiltyLevelsToPlayer(ServerPlayerEntity player, String playerName, int amount){
 
@@ -25,20 +29,20 @@ public class GuiltyLevelSystem {
 
 
 
-		if ((getGuiltyLevel(player, playerName, "GeneralKillsGuiltyLevel") > 0) || (getGuiltyLevel(player, playerName, "PlayersKillGuiltyAddition") > 0)){
+		if ((getGuiltyLevel(player, playerName, GENERAL_KILLS_GUILTY_LEVEL) > 0) || (getGuiltyLevel(player, playerName, PLAYERS_KILL_GUILTY_ADDITION) > 0)){
 			//get values and write all of them as
 
 
 			int amount = 0;
 			if (player.getArmorItems() instanceof JusticeArmorItem) {
-				amount = (getGuiltyLevel(player, playerName, "GeneralKillsGuiltyLevel") - 1)
-					+ (getGuiltyLevel(player, playerName, "PlayersKillGuiltyAddition"))
-					+ (getGuiltyLevel(player, playerName, "PersistentGuiltyLevel"));
+				amount = (getGuiltyLevel(player, playerName, GENERAL_KILLS_GUILTY_LEVEL) - 1)
+					+ (getGuiltyLevel(player, playerName, PLAYERS_KILL_GUILTY_ADDITION))
+					+ (getGuiltyLevel(player, playerName, PERSISTENT_GUILTY_LEVEL));
 			}
 			else {
-				amount = (getGuiltyLevel(player, playerName, "GeneralKillsGuiltyLevel"))
-					+ (getGuiltyLevel(player, playerName, "PlayersKillGuiltyAddition") * 5)
-					+ (getGuiltyLevel(player, playerName, "PersistentGuiltyLevel"));
+				amount = (getGuiltyLevel(player, playerName, GENERAL_KILLS_GUILTY_LEVEL))
+					+ (getGuiltyLevel(player, playerName, PLAYERS_KILL_GUILTY_ADDITION) * 5)
+					+ (getGuiltyLevel(player, playerName, PERSISTENT_GUILTY_LEVEL));
 			}
 
 

@@ -1,7 +1,10 @@
 package nikita.uniquescythe.status_effects.custom;
 
 import net.fabricmc.fabric.api.event.player.AttackEntityCallback;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.attribute.AttributeContainer;
+import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectType;
 import net.minecraft.entity.player.PlayerEntity;
@@ -14,6 +17,7 @@ import nikita.uniquescythe.UniqueScythe;
 import nikita.uniquescythe.sounds.ModSoundEvents;
 import nikita.uniquescythe.status_effects.ModStatusEffects;
 import nikita.uniquescythe.utility.CommandsExecuter;
+import nikita.uniquescythe.utility.GuiltyLevelSystem;
 import nikita.uniquescythe.utility.KarmaSystem;
 import nikita.uniquescythe.utility.SoundsManager;
 
@@ -25,6 +29,9 @@ public class JusticeVengeanceStatusEffect extends StatusEffect {
 
 	public int maxAmount = 1;
 
+	public double lifestealAmount = 0;
+
+	int tickCounter;
 
 	public JusticeVengeanceStatusEffect() {
 		super(
@@ -53,7 +60,7 @@ public class JusticeVengeanceStatusEffect extends StatusEffect {
 
 
 	@Override
-	public void onRemoved(LivingEntity entity, net.minecraft.entity.attribute.AttributeContainer attributes, int amplifier) {
+	public void onRemoved(LivingEntity entity, AttributeContainer attributes, int amplifier) {
 		super.onRemoved(entity, attributes, amplifier);
 
 		if (!entity.getWorld().isClient) {
@@ -90,6 +97,33 @@ public class JusticeVengeanceStatusEffect extends StatusEffect {
 				if (!world.isClient && player.hasStatusEffect(ModStatusEffects.JUSTICE_VENGEANCE)) {
 					if (this.hitNotDetected) {
 						this.conversionAmount += 1;
+
+						Entity target = null;
+						if (entityHitResult != null ){
+
+							target =  entityHitResult.getEntity();
+
+							if(target instanceof ServerPlayerEntity serverTarget
+								&& player instanceof ServerPlayerEntity serverPlayerEntity){
+								int targetsGuilty = GuiltyLevelSystem.getGuiltyLevel(serverTarget, serverTarget.getDisplayName().getString(), GuiltyLevelSystem.PERSISTENT_GUILTY_LEVEL);
+
+								int attackersGuilty = GuiltyLevelSystem.getGuiltyLevel(serverPlayerEntity, serverPlayerEntity.getDisplayName().getString(), GuiltyLevelSystem.PERSISTENT_GUILTY_LEVEL);
+
+								int result = attackersGuilty - targetsGuilty;
+
+								//lifesteal needs change.
+								if(result >= 0 ){
+									this.lifestealAmount = 0;
+								}
+								else {
+									this.lifestealAmount = serverPlayerEntity.getAttributeValue(EntityAttributes.GENERIC_ATTACK_DAMAGE);
+								}
+
+							}
+
+						}
+
+
 					}
 					this.hitNotDetected = false;
 				}

@@ -29,12 +29,16 @@ public class JoyBellItem extends SimplyDescribedItem{
 
 			}
 			else if (user.getStackInHand(Hand.OFF_HAND) == stack) {
-				user.setStatusEffect(new StatusEffectInstance(ModStatusEffects.PHASE, 300, 0,false,false,true), user);
+				user.setStatusEffect(new StatusEffectInstance(
+					ModStatusEffects.PHASE,
+					300,
+					0,
+					false,
+					false,
+					true
+				), user);
 				user.getItemCooldownManager().set(this, 335);
 			}
-
-			tag.putInt("ConstHeight", (int) user.getY());
-
 
 		}
 
