@@ -21,6 +21,9 @@ public class JoyBellItem extends SimplyDescribedItem{
 		if(!world.isClient){
 			ItemStack stack = user.getStackInHand(hand);
 			NbtCompound tag = stack.getOrCreateNbt();
+			tag.putDouble("Y", user.getY());
+			tag.putDouble("X", user.getX());
+			tag.putDouble("Z", user.getZ());
 
 
 			if (user.getStackInHand(Hand.MAIN_HAND) == stack) {

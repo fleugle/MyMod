@@ -12,6 +12,7 @@ import net.minecraft.entity.effect.StatusEffectType;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Hand;
 import nikita.uniquescythe.datatracker.UltraInvisibilityTracker;
@@ -24,9 +25,11 @@ public class PhaseStatusEffect extends StatusEffect {
 
 	private boolean shouldStayOnADefinedHeight = false;
 
-	private double xPos = 0;
-	private double zPos = 0;
-	private double yPos = 0;
+
+
+	private int cooldown = 10;
+	private int tick = 0;
+
 
 
 
@@ -57,6 +60,7 @@ public class PhaseStatusEffect extends StatusEffect {
 
 			UltraInvisibilityTracker.updateUltraInvisibilityStatus((ServerPlayerEntity) player, true);
 			player.setInvulnerable(true);
+			player.setNoGravity(true);
 			keepHeight(player);
 			if(entity.isSneaking()){
 				CommandsExecuter.executeCommand(player,"effect clear "+ player.getDisplayName().getString() + " uniquescythe:phase");
@@ -68,9 +72,7 @@ public class PhaseStatusEffect extends StatusEffect {
 
 	@Override
 	public void onRemoved(LivingEntity entity, net.minecraft.entity.attribute.AttributeContainer attributes, int amplifier) {
-		this.xPos = 0;
-		this.yPos = 0;
-		this.zPos = 0;
+
 
 
 		super.onRemoved(entity, attributes, amplifier);
@@ -81,6 +83,7 @@ public class PhaseStatusEffect extends StatusEffect {
 
 				UltraInvisibilityTracker.updateUltraInvisibilityStatus((ServerPlayerEntity) player, false);
 				if(player.isInvulnerable()) player.setInvulnerable(false);
+				if(player.hasNoGravity()) player.setNoGravity(false);
 
 			}
 
@@ -92,18 +95,38 @@ public class PhaseStatusEffect extends StatusEffect {
 	public void onApplied(LivingEntity entity, AttributeContainer attributes, int amplifier){
 		super.onApplied(entity, attributes, amplifier);
 
-		this.xPos = entity.getX();
-		this.zPos = entity.getZ();
-		this.yPos = entity.getY();
+
 	}
 
 
 
 	private void keepHeight(PlayerEntity player){
 
-		if (this.shouldStayOnADefinedHeight && !player.getWorld().isClient) {
 
-			CommandsExecuter.executeCommandOnServer(player.getWorld(), "tp "+player.getDisplayName().getString() + " "+ xPos + " "+ yPos + " " + this.zPos);
+		if (this.shouldStayOnADefinedHeight && !player.getWorld().isClient) {
+			//double yPos = player.getY();
+			double zPos = player.getZ();
+			double xPos = player.getX();
+
+
+
+				if (this.shouldStayOnADefinedHeight) {
+					if (player.getStackInHand(Hand.MAIN_HAND).getItem().equals(ModItems.JOY_BELL)
+						|| player.getStackInHand(Hand.OFF_HAND).getItem().equals(ModItems.JOY_BELL)) {
+						ItemStack stack = player.getStackInHand(Hand.MAIN_HAND).getItem().equals(ModItems.JOY_BELL) ? player.getStackInHand(Hand.MAIN_HAND) : player.getStackInHand(Hand.OFF_HAND);
+						//yPos = stack.getOrCreateNbt().contains("Y") ? stack.getOrCreateNbt().getDouble("Y") : player.getY();
+						xPos = stack.getOrCreateNbt().contains("X") ? stack.getOrCreateNbt().getDouble("X") : player.getX();
+						zPos = stack.getOrCreateNbt().contains("Z") ? stack.getOrCreateNbt().getDouble("Z") : player.getZ();
+
+
+					}
+				}
+
+			else this.tick++;
+
+			player.teleport(xPos, player.getY(), zPos);
+
+			//CommandsExecuter.executeCommandOnServer(player.getWorld(), "tp "+player.getDisplayName().getString() + " "+ xPos + " "+ player.getY()+" " + zPos);
 			player.fallDistance = 0;
 		}
 	}

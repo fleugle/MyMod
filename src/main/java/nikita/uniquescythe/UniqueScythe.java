@@ -19,6 +19,7 @@ import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import nikita.uniquescythe.blocks.ModBlocks;
+import nikita.uniquescythe.datatracker.UltraInvisibilityTracker;
 import nikita.uniquescythe.enchantments.ModEnchantments;
 import nikita.uniquescythe.entities.ModEntities;
 import nikita.uniquescythe.entities.custom.BreezeEntity;
@@ -100,10 +101,12 @@ public class UniqueScythe implements ModInitializer {
 		EnchantmentTarget target = ClassTinkerers.getEnum(EnchantmentTarget.class, "MACE");
 		LOGGER.info("Can enchant mace? " + target.isAcceptableItem(ModItems.MACE));
 
+		UltraInvisibilityTracker.register();
 
 
 
 		ServerPlayConnectionEvents.JOIN.register(this::onPlayerJoin);
+
 
 		ServerTickEvents.END_SERVER_TICK.register(server -> {
 			for (ServerPlayerEntity player : server.getPlayerManager().getPlayerList()) {

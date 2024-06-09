@@ -1,5 +1,6 @@
 package nikita.uniquescythe.mixin;
 
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.particle.ParticleEffect;
 import nikita.uniquescythe.items.ModItems;
@@ -22,10 +23,13 @@ public abstract class ModifySweepingParticle {
 		method = "spawnSweepAttackParticles"
 	)
 	private <T extends ParticleEffect> T changeSweepAttackParticle(T particle) {//idk how to name it properly for now
-		PlayerEntity player = (PlayerEntity)(Object)this;
+		PlayerEntity player = MinecraftClient.getInstance().player;
+
 		//i guess this if statements do the work here. to be experimented with in advance
-		if (player.getMainHandStack().isOf(ModItems.FROSTY_SCYTHE)) return (T) ModParticleTypes.FROSTY_SWEEP_ATTACK;
-		if (player.getMainHandStack().isOf(ModItems.WANDERERS_SWORD)) return (T) ModParticleTypes.VOID_SWEEP_ATTACK;
+		if (player != null) {
+			if (player.getMainHandStack().isOf(ModItems.FROSTY_SCYTHE)) return (T) ModParticleTypes.FROSTY_SWEEP_ATTACK;
+			if (player.getMainHandStack().isOf(ModItems.WANDERERS_SWORD)) return (T) ModParticleTypes.VOID_SWEEP_ATTACK;
+		}
 		return particle;
 	}
 }
