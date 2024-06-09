@@ -1,34 +1,21 @@
 package nikita.uniquescythe.status_effects.custom;
 
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.option.KeyBind;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.AttributeContainer;
-import net.minecraft.entity.attribute.EntityAttribute;
-import net.minecraft.entity.attribute.EntityAttributeInstance;
-import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectType;
-import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Hand;
 import nikita.uniquescythe.datatracker.UltraInvisibilityTracker;
 import nikita.uniquescythe.items.ModItems;
 import nikita.uniquescythe.utility.CommandsExecuter;
 
-import java.util.Map;
-
 public class PhaseStatusEffect extends StatusEffect {
 
 	private boolean shouldStayOnADefinedHeight = false;
 
-
-
-	private int cooldown = 10;
-	private int tick = 0;
 
 
 
@@ -107,6 +94,7 @@ public class PhaseStatusEffect extends StatusEffect {
 			//double yPos = player.getY();
 			double zPos = player.getZ();
 			double xPos = player.getX();
+			double yPos = player.getY();
 
 
 
@@ -114,7 +102,7 @@ public class PhaseStatusEffect extends StatusEffect {
 					if (player.getStackInHand(Hand.MAIN_HAND).getItem().equals(ModItems.JOY_BELL)
 						|| player.getStackInHand(Hand.OFF_HAND).getItem().equals(ModItems.JOY_BELL)) {
 						ItemStack stack = player.getStackInHand(Hand.MAIN_HAND).getItem().equals(ModItems.JOY_BELL) ? player.getStackInHand(Hand.MAIN_HAND) : player.getStackInHand(Hand.OFF_HAND);
-						//yPos = stack.getOrCreateNbt().contains("Y") ? stack.getOrCreateNbt().getDouble("Y") : player.getY();
+						yPos = stack.getOrCreateNbt().contains("Y") ? stack.getOrCreateNbt().getDouble("Y") : player.getY();
 						xPos = stack.getOrCreateNbt().contains("X") ? stack.getOrCreateNbt().getDouble("X") : player.getX();
 						zPos = stack.getOrCreateNbt().contains("Z") ? stack.getOrCreateNbt().getDouble("Z") : player.getZ();
 
@@ -122,9 +110,8 @@ public class PhaseStatusEffect extends StatusEffect {
 					}
 				}
 
-			else this.tick++;
 
-			player.teleport(xPos, player.getY(), zPos);
+			player.teleport(xPos, yPos, zPos);
 
 			//CommandsExecuter.executeCommandOnServer(player.getWorld(), "tp "+player.getDisplayName().getString() + " "+ xPos + " "+ player.getY()+" " + zPos);
 			player.fallDistance = 0;

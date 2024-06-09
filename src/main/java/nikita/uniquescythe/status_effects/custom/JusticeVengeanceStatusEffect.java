@@ -1,7 +1,6 @@
 package nikita.uniquescythe.status_effects.custom;
 
 import net.fabricmc.fabric.api.event.player.AttackEntityCallback;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.AttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
@@ -15,12 +14,9 @@ import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import nikita.uniquescythe.UniqueScythe;
-import nikita.uniquescythe.sounds.ModSoundEvents;
 import nikita.uniquescythe.status_effects.ModStatusEffects;
 import nikita.uniquescythe.utility.CommandsExecuter;
 import nikita.uniquescythe.utility.GuiltyLevelSystem;
-import nikita.uniquescythe.utility.KarmaSystem;
-import nikita.uniquescythe.utility.SoundsManager;
 
 public class JusticeVengeanceStatusEffect extends StatusEffect {
 
@@ -32,7 +28,7 @@ public class JusticeVengeanceStatusEffect extends StatusEffect {
 
 	public double lifestealAmount = 0;
 
-	int tickCounter;
+
 
 	public JusticeVengeanceStatusEffect() {
 		super(
@@ -99,11 +95,9 @@ public class JusticeVengeanceStatusEffect extends StatusEffect {
 					if (this.hitNotDetected) {
 						this.conversionAmount += 1;
 
-						Entity target = entity;
 
-
-						if (target instanceof LivingEntity livingEntityTarget && !livingEntityTarget.hasStatusEffect(ModStatusEffects.JUSTICE_VENGEANCE)) {
-							if(target instanceof ServerPlayerEntity serverTarget
+						if (entity instanceof LivingEntity livingEntityTarget && !livingEntityTarget.hasStatusEffect(ModStatusEffects.JUSTICE_VENGEANCE)) {
+							if(entity instanceof ServerPlayerEntity serverTarget
 								&& player instanceof ServerPlayerEntity serverPlayerEntity){
 								int targetsGuilty = GuiltyLevelSystem.getGuiltyLevel(serverTarget, serverTarget.getDisplayName().getString(), GuiltyLevelSystem.PERSISTENT_GUILTY_LEVEL);
 
@@ -127,30 +121,23 @@ public class JusticeVengeanceStatusEffect extends StatusEffect {
 
 							}
 							else if (player instanceof ServerPlayerEntity serverPlayerEntity) {
-								if(target instanceof HostileEntity) {
-									int attackersGuilty = GuiltyLevelSystem.getGuiltyLevel(serverPlayerEntity, serverPlayerEntity.getDisplayName().getString(), GuiltyLevelSystem.PERSISTENT_GUILTY_LEVEL);
+								int attackersGuilty = GuiltyLevelSystem.getGuiltyLevel(serverPlayerEntity, serverPlayerEntity.getDisplayName().getString(), GuiltyLevelSystem.PERSISTENT_GUILTY_LEVEL);
+								int result;
+								if(entity instanceof HostileEntity) {
 
-									int result = attackersGuilty - 50;
-									this.lifestealAmount = result >= 0 ? 0 : serverPlayerEntity.getAttributeValue(EntityAttributes.GENERIC_ATTACK_DAMAGE);
-									if(serverPlayerEntity.isAlive()
-										&& !serverPlayerEntity.isSpectator()
-										&& !target.isSpectator()
-										&& target.isAlive()
-										&& target.isAttackable()
-									) serverPlayerEntity.heal( (float) this.lifestealAmount * 0.12f * (float) -(result));
+									result = attackersGuilty - 50;
 								}
 								else {
-									int attackersGuilty = GuiltyLevelSystem.getGuiltyLevel(serverPlayerEntity, serverPlayerEntity.getDisplayName().getString(), GuiltyLevelSystem.PERSISTENT_GUILTY_LEVEL);
 
-									int result = attackersGuilty - 8;
-									this.lifestealAmount = result >= 0 ? 0 : serverPlayerEntity.getAttributeValue(EntityAttributes.GENERIC_ATTACK_DAMAGE);
-									if(serverPlayerEntity.isAlive()
-										&& !serverPlayerEntity.isSpectator()
-										&& !target.isSpectator()
-										&& target.isAlive()
-										&& target.isAttackable()
-									) serverPlayerEntity.heal( (float) this.lifestealAmount * 0.12f * (float) -(result));
+									result = attackersGuilty - 8;
 								}
+								this.lifestealAmount = result >= 0 ? 0 : serverPlayerEntity.getAttributeValue(EntityAttributes.GENERIC_ATTACK_DAMAGE);
+								if(serverPlayerEntity.isAlive()
+									&& !serverPlayerEntity.isSpectator()
+									&& !entity.isSpectator()
+									&& entity.isAlive()
+									&& entity.isAttackable()
+								) serverPlayerEntity.heal( (float) this.lifestealAmount * 0.12f * (float) -(result));
 							}
 						}
 
