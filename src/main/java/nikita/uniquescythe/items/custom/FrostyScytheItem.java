@@ -8,12 +8,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.SwordItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ToolMaterial;
-import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.Hand;
 import net.minecraft.world.World;
-import nikita.uniquescythe.items.ModItems;
-import nikita.uniquescythe.networking.FrostyScytheTracker;
 import nikita.uniquescythe.sounds.ModSoundEvents;
 import net.minecraft.nbt.NbtCompound;
 import nikita.uniquescythe.utility.SoundsManager;
@@ -70,11 +65,7 @@ public class FrostyScytheItem extends SwordItem {
 	@Override
 	public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
 		if(!world.isClient && entity instanceof LivingEntity livingEntity){
-			if (livingEntity.getStackInHand(Hand.MAIN_HAND).getItem().equals(ModItems.FROSTY_SCYTHE)
-			&& livingEntity instanceof ServerPlayerEntity serverPlayerEntity){
-				FrostyScytheTracker.updateFrostyScytheStatus(serverPlayerEntity, true);
-			}
-			else FrostyScytheTracker.updateFrostyScytheStatus((ServerPlayerEntity) entity, false);
+
 		}
 	}
 

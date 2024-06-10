@@ -1,17 +1,16 @@
 package nikita.uniquescythe.mixin;
 
-import com.mojang.authlib.GameProfile;
-import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.particle.ParticleEffect;
+import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.stat.Stat;
-import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import nikita.uniquescythe.items.ModItems;
-import nikita.uniquescythe.networking.FrostyScytheClientHandler;
-import nikita.uniquescythe.networking.FrostyScytheTracker;
+import nikita.uniquescythe.networking.SweepingParticlesPacket;
 import nikita.uniquescythe.particles.ModParticleTypes;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -45,10 +44,18 @@ public abstract class ModifySweepingParticle extends LivingEntity {
 		//previously was getting a client
 		LivingEntity livingEntity = this;
 
-		//i guess this if statements do the work here. to be experimented with in advance
-		if(livingEntity instanceof PlayerEntity player){
-			if (player.getMainHandStack().isOf(ModItems.FROSTY_SCYTHE) && FrostyScytheClientHandler.isPlayerHoldingFrostyScythe(player.getUuid())) return (T) ModParticleTypes.FROSTY_SWEEP_ATTACK;
-			if (player.getMainHandStack().isOf(ModItems.WANDERERS_SWORD)) return (T) ModParticleTypes.VOID_SWEEP_ATTACK;
+		if (this.getWorld() instanceof ServerWorld serverWorld) {
+			if (livingEntity instanceof PlayerEntity player) {
+				Vec3d pos = player.getPos();
+				if (player.getMainHandStack().isOf(ModItems.FROSTY_SCYTHE)) {
+					SweepingParticlesPacket.sendParticlePacket((ServerPlayerEntity) player, ModParticleTypes.FROSTY_SWEEP_ATTACK, pos);
+					return (T) ModParticleTypes.FROSTY_SWEEP_ATTACK;
+				}
+				if (player.getMainHandStack().isOf(ModItems.WANDERERS_SWORD)) {
+					SweepingParticlesPacket.sendParticlePacket((ServerPlayerEntity) player, ModParticleTypes.VOID_SWEEP_ATTACK, pos);
+					return (T) ModParticleTypes.VOID_SWEEP_ATTACK;
+				}
+			}
 		}
 		return particle;
 	}

@@ -90,6 +90,11 @@ public class ModItems {
 		"honey_apple",
 		new HoneyAppleItem(new Item.Settings().food(ModFoodComponents.HONEY_APPLE)));
 
+	public static final Item GOLDEN_BERRIES = registerItem(
+		"golden_berries",
+		new Item(new Item.Settings().food(ModFoodComponents.GOLDEN_BERRIES))
+	);
+
 
 
 
@@ -127,6 +132,7 @@ public class ModItems {
 
 		ItemGroupEvents.modifyEntriesEvent(ItemGroups.FOOD_AND_DRINKS).register(entries -> {
 			entries.addAfter(Items.APPLE, HONEY_APPLE);
+			entries.addAfter(Items.GOLDEN_CARROT,GOLDEN_BERRIES);
 		});
 
 		//COMBAT TAB ITEMS REGISTRY

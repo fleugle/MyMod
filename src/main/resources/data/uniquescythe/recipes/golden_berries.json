@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "###",
+    "#X#",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:gold_ingot"
+    },
+    "X": {
+      "item": "minecraft:sweet_berries"
+    }
+  },
+
+  "result": {
+    "item": "uniquescythe:golden_berries",
+    "count": 1
+  }
+}

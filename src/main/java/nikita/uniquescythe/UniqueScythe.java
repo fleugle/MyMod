@@ -13,6 +13,7 @@ import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import nikita.uniquescythe.blocks.ModBlocks;
+import nikita.uniquescythe.networking.SweepingParticlesPacket;
 import nikita.uniquescythe.networking.UltraInvisibilityTracker;
 import nikita.uniquescythe.enchantments.ModEnchantments;
 import nikita.uniquescythe.entities.ModEntities;
@@ -92,6 +93,8 @@ public class UniqueScythe implements ModInitializer {
 		LOGGER.info("Can enchant mace? " + target.isAcceptableItem(ModItems.MACE));
 
 		UltraInvisibilityTracker.register();
+		SweepingParticlesPacket.register();
+
 
 
 
