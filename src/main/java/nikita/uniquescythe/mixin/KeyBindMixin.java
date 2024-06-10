@@ -30,7 +30,7 @@ public class KeyBindMixin {
 
 			if (keyBind.equals(client.options.useKey) || keyBind.equals(client.options.attackKey)) {
 
-				cir.setReturnValue(false);
+ 				cir.setReturnValue(false);
 			}
 
 
