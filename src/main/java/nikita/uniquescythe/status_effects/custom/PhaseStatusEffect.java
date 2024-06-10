@@ -8,7 +8,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Hand;
-import nikita.uniquescythe.datatracker.UltraInvisibilityTracker;
+import nikita.uniquescythe.networking.UltraInvisibilityTracker;
 import nikita.uniquescythe.items.ModItems;
 import nikita.uniquescythe.utility.CommandsExecuter;
 

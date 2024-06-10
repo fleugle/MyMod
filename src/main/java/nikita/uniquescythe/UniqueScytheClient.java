@@ -1,8 +1,8 @@
 package nikita.uniquescythe;
 
-import net.fabricmc.api.ClientModInitializer;
-
-import nikita.uniquescythe.datatracker.UltraInvisibilityClientHandler;
+import nikita.uniquescythe.networking.UltraInvisibilityClientHandler;
+import org.quiltmc.loader.api.ModContainer;
+import org.quiltmc.qsl.base.api.entrypoint.client.ClientModInitializer;
 import org. quiltmc. qsl. block. extensions. api. client.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
@@ -23,7 +23,7 @@ import org.quiltmc.qsl.resource.loader.api.ResourcePackActivationType;
 
 public class UniqueScytheClient implements ClientModInitializer {
     @Override
-    public void onInitializeClient() {
+    public void onInitializeClient(ModContainer mod) {
 
 		//build-in texture packs
 		QuiltLoader.getModContainer(UniqueScythe.MOD_ID)

@@ -150,6 +150,7 @@ public class ModItems {
 			//utility items
 			entries.addBefore(Items.TNT, FLUGELS_IMMORTALITY_DECLARATION);
 			entries.addAfter(FLUGELS_IMMORTALITY_DECLARATION, TETOS_TALISMAN);
+			entries.addAfter(TETOS_TALISMAN, LEONS_TALISMAN);
 
 
 

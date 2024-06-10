@@ -2,20 +2,15 @@ package nikita.uniquescythe.mixin;
 
 import net.minecraft.client.network.AbstractClientPlayerEntity;
 import net.minecraft.client.render.VertexConsumerProvider;
-import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.PlayerEntityRenderer;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.client.render.entity.model.BipedEntityModel.ArmPose;
-import net.minecraft.client.render.entity.model.PlayerEntityModel;
 import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Hand;
 
-import nikita.uniquescythe.datatracker.UltraInvisibilityClientHandler;
+import nikita.uniquescythe.networking.UltraInvisibilityClientHandler;
 import nikita.uniquescythe.items.custom.GunItem;
-import nikita.uniquescythe.items.custom.JusticeRevolverItem;
-import nikita.uniquescythe.status_effects.ModStatusEffects;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;

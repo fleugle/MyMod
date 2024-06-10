@@ -1,5 +1,6 @@
 package nikita.uniquescythe.items.custom;
 
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
@@ -7,8 +8,12 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.SwordItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ToolMaterial;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
+import net.minecraft.world.World;
+import nikita.uniquescythe.items.ModItems;
+import nikita.uniquescythe.networking.FrostyScytheTracker;
 import nikita.uniquescythe.sounds.ModSoundEvents;
 import net.minecraft.nbt.NbtCompound;
 import nikita.uniquescythe.utility.SoundsManager;
@@ -61,11 +66,18 @@ public class FrostyScytheItem extends SwordItem {
         return super.postHit(stack, target, attacker);
     }
 
-    @Override
-    public ActionResult useOnEntity(ItemStack stack, PlayerEntity user, LivingEntity entity, Hand hand) {
 
-        return ActionResult.FAIL;
-    }
+	@Override
+	public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
+		if(!world.isClient && entity instanceof LivingEntity livingEntity){
+			if (livingEntity.getStackInHand(Hand.MAIN_HAND).getItem().equals(ModItems.FROSTY_SCYTHE)
+			&& livingEntity instanceof ServerPlayerEntity serverPlayerEntity){
+				FrostyScytheTracker.updateFrostyScytheStatus(serverPlayerEntity, true);
+			}
+			else FrostyScytheTracker.updateFrostyScytheStatus((ServerPlayerEntity) entity, false);
+		}
+	}
+
 
     @Override
     public boolean hasGlint(ItemStack stack) {

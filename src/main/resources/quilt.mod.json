@@ -19,7 +19,7 @@
 		},
 		"intermediate_mappings": "net.fabricmc:intermediary",
 		"entrypoints": {
-			"main": [
+			"init": [
 				"nikita.uniquescythe.UniqueScythe"
 			],
 			"mm:early_risers":[
@@ -28,7 +28,7 @@
 			"terrablender": [
 				"nikita.uniquescythe.world.biomes.UniqueScytheTerrablender"
 			],
-			"client": [
+			"client_init": [
 				"nikita.uniquescythe.UniqueScytheClient"
 			],
 			"fabric-datagen": [
