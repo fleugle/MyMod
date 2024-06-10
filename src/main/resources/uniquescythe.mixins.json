@@ -6,7 +6,7 @@
   "mixins": [
     "LivingEntityMixin",
     "ShapedRecipeMixin",
-    "ModifySweepingParticle",
+    "ModifySweepingParticle"
 
   ],
   "client": [
