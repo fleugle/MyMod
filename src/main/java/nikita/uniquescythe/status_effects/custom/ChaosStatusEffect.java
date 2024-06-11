@@ -28,7 +28,7 @@ public class ChaosStatusEffect extends StatusEffect {
 	public ChaosStatusEffect() {
 		super(
 			StatusEffectType.BENEFICIAL,
-			0xEC8C06);// 0x is the same as # for rgb color
+			0x20245E);// 0x is the same as # for rgb color
 	}
 
 	// This method is called every tick to check whether it should apply the status effect or not

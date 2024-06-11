@@ -10,6 +10,8 @@ import net.minecraft.loot.provider.number.UniformLootNumberProvider;
 import net.minecraft.util.Identifier;
 import nikita.uniquescythe.UniqueScythe;
 import nikita.uniquescythe.blocks.ModBlocks;
+import nikita.uniquescythe.items.ModItems;
+import nikita.uniquescythe.potions.ModPotions;
 
 public class ModLootTablesModifiers {
 
@@ -18,6 +20,12 @@ public class ModLootTablesModifiers {
 
 	public static final Identifier BASTION_TREASURE_CHEST_ID =
 		new Identifier(UniqueScythe.GAME_ID, "chests/bastion_treasure");
+
+	public static final Identifier RUINED_PORTAL_CHEST_ID =
+		new Identifier(UniqueScythe.GAME_ID, "chests/ruined_portal");
+
+	public static final Identifier DESERT_PYRAMID_CHEST_ID =
+		new Identifier(UniqueScythe.GAME_ID, "chests/desert_pyramid");
 
 
 
@@ -36,6 +44,25 @@ public class ModLootTablesModifiers {
 				tableBuilder.pool(poolBuilder.build());
 			}
 
+			if(DESERT_PYRAMID_CHEST_ID.equals(id)){
+				UniqueScythe.LOGGER.info("DESERT_PYRAMID_CHEST_ID items were modified!");
+				LootPool.Builder poolBuilder = LootPool.builder()
+					.rolls(ConstantLootNumberProvider.create(1))
+					.conditionally(RandomChanceLootCondition.builder(0.55f))
+					.with(ItemEntry.builder(ModItems.JUSTICE_SHARD))
+					.apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 4f)).build());
+				tableBuilder.pool(poolBuilder.build());
+			}
+
+			if(RUINED_PORTAL_CHEST_ID.equals(id)){
+				UniqueScythe.LOGGER.info("RUINED_PORTAL_CHEST_ID items were modified!");
+				LootPool.Builder poolBuilder = LootPool.builder()
+					.rolls(ConstantLootNumberProvider.create(1))
+					.conditionally(RandomChanceLootCondition.builder(0.55f))
+					.with(ItemEntry.builder(ModItems.CHAOS_SHARD))
+					.apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 4f)).build());
+				tableBuilder.pool(poolBuilder.build());
+			}
 
 		});
 	}

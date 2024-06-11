@@ -1,5 +1,6 @@
 package nikita.uniquescythe;
 
+import net.minecraft.client.particle.SonicBoomParticle;
 import nikita.uniquescythe.networking.UltraInvisibilityClientHandler;
 import org.quiltmc.loader.api.ModContainer;
 import org.quiltmc.qsl.base.api.entrypoint.client.ClientModInitializer;
@@ -59,6 +60,8 @@ public class UniqueScytheClient implements ClientModInitializer {
 		ParticleFactoryRegistry.getInstance().register(ModParticleTypes.VOID_CRIT, VoidDamageParticle.Factory ::new);
 
 		ParticleFactoryRegistry.getInstance().register(ModParticleTypes.FROSTY_CRIT, FrostyDamageParticle.Factory ::new);
+
+		ParticleFactoryRegistry.getInstance().register(ModParticleTypes.BELL_USE, BellUseParticle.Factory ::new);
 
 		//ParticleFactoryRegistry.getInstance().register(ModParticleTypes.JUSTICE_HIT, JusticeHitParticle.Factory ::new);
 

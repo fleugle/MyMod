@@ -4,6 +4,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.AttributeContainer;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectType;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -47,7 +48,8 @@ public class PhaseStatusEffect extends StatusEffect {
 
 			UltraInvisibilityTracker.updateUltraInvisibilityStatus((ServerPlayerEntity) player, true);
 			player.setInvulnerable(true);
-			player.setNoGravity(true);
+			player.setInvisible(true);
+			//player.setNoGravity(true);
 			keepHeight(player);
 			if(entity.isSneaking()){
 				CommandsExecuter.executeCommand(player,"effect clear "+ player.getDisplayName().getString() + " uniquescythe:phase");
@@ -70,7 +72,8 @@ public class PhaseStatusEffect extends StatusEffect {
 
 				UltraInvisibilityTracker.updateUltraInvisibilityStatus((ServerPlayerEntity) player, false);
 				if(player.isInvulnerable()) player.setInvulnerable(false);
-				if(player.hasNoGravity()) player.setNoGravity(false);
+				if(player.isInvisible() && !player.hasStatusEffect(StatusEffects.INVISIBILITY)) player.setInvisible(false);
+				//if(player.hasNoGravity()) player.setNoGravity(false);
 
 			}
 

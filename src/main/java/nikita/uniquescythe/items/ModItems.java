@@ -68,7 +68,7 @@ public class ModItems {
 
 	public static final Item SORRY_STONE = registerItem("sorry_stone", new SorryStoneItem(new Item.Settings().maxCount(16).fireproof().rarity(Rarity.RARE)));
 
-	public static final Item DUPLICATE_MIRROR = registerItem("duplicate_mirror", new DuplicateMirrorItem(new Item.Settings().rarity(Rarity.EPIC).maxDamageIfAbsent(6)));
+	public static final Item DUPLICATE_MIRROR = registerItem("duplicate_mirror", new DuplicateMirrorItem(new Item.Settings().rarity(Rarity.EPIC).maxDamageIfAbsent(11)));
 
 	public static final Item STAR_TRINKET = registerItem("star_trinket", new Item( new Item.Settings()));
 

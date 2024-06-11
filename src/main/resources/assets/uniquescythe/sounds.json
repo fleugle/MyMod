@@ -77,6 +77,30 @@
       "uniquescythe:revolver_reload"
     ]
   },
+  "ding1": {
+    "subtitle": "sounds.uniquescythe.ding1",
+    "sounds": [
+      "uniquescythe:ding1"
+    ]
+  },
+  "ding2": {
+    "subtitle": "sounds.uniquescythe.ding2",
+    "sounds": [
+      "uniquescythe:ding2"
+    ]
+  },
+  "duplicate_success": {
+    "subtitle": "sounds.uniquescythe.duplicate_success",
+    "sounds": [
+      "uniquescythe:duplicate_success"
+    ]
+  },
+  "duplicate_fail": {
+    "subtitle": "sounds.uniquescythe.duplicate_fail",
+    "sounds": [
+      "uniquescythe:duplicate_fail"
+    ]
+  },
 
 
 

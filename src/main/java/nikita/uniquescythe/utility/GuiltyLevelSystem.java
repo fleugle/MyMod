@@ -1,5 +1,6 @@
 package nikita.uniquescythe.utility;
 
+import net.minecraft.item.ItemStack;
 import net.minecraft.scoreboard.Scoreboard;
 import net.minecraft.scoreboard.ScoreboardCriterion;
 import net.minecraft.scoreboard.ScoreboardObjective;
@@ -15,6 +16,7 @@ public class GuiltyLevelSystem {
 	public static String GENERAL_KILLS_GUILTY_LEVEL = "GeneralKillsGuiltyLevel";
 	public static String PLAYERS_KILL_GUILTY_ADDITION = "PlayersKillGuiltyAddition";
 
+	private static boolean hasJusticeArmor = false;
 
 	public static void addGuiltyLevelsToPlayer(ServerPlayerEntity player, String playerName, int amount){
 
@@ -33,8 +35,17 @@ public class GuiltyLevelSystem {
 			//get values and write all of them as
 
 
+
+			for (ItemStack itemStack : player.getArmorItems()) {
+				if (itemStack.getItem() instanceof JusticeArmorItem) {
+					hasJusticeArmor = true;
+					break;
+				}
+			}
+
 			int amount = 0;
-			if (player.getArmorItems() instanceof JusticeArmorItem) {
+
+			if (hasJusticeArmor) {
 				amount = (getGuiltyLevel(player, playerName, GENERAL_KILLS_GUILTY_LEVEL) - 1)
 					+ (getGuiltyLevel(player, playerName, PLAYERS_KILL_GUILTY_ADDITION))
 					+ (getGuiltyLevel(player, playerName, PERSISTENT_GUILTY_LEVEL));

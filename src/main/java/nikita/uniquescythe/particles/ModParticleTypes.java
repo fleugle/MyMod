@@ -15,6 +15,7 @@ public class ModParticleTypes {
 	public static final DefaultParticleType VOID_SWEEP_ATTACK = FabricParticleTypes.simple();
 	public static final DefaultParticleType VOID_CRIT = FabricParticleTypes.simple();
 	public static final DefaultParticleType FROSTY_CRIT = FabricParticleTypes.simple();
+	public static final DefaultParticleType BELL_USE = FabricParticleTypes.simple();
 	//public static final DefaultParticleType JUSTICE_HIT = FabricParticleTypes.simple();
 
 	static DefaultParticleType modParticleTypesRegistry(String name, DefaultParticleType particleType){
@@ -33,6 +34,7 @@ public class ModParticleTypes {
 		modParticleTypesRegistry("void_sweep_attack", VOID_SWEEP_ATTACK);
 		modParticleTypesRegistry("void_crit", VOID_CRIT);
 		modParticleTypesRegistry("frosty_crit", FROSTY_CRIT);
+		modParticleTypesRegistry("bell_use", BELL_USE);
 		//modParticleTypesRegistry("justice_hit", JUSTICE_HIT);
 
 	}

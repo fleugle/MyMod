@@ -41,6 +41,10 @@ public class ModSoundEvents {
 
 	public static SoundEvent DUPLICATE_FAIL = registerSound("duplicate_fail");
 
+	public static SoundEvent DING1 = registerSound("ding1");
+
+	public static SoundEvent DING2 = registerSound("ding2");
+
 	public static SoundEvent KARMA_CHARGE = registerSound("karma_charge");
 
 	public static SoundEvent KARMA_RELEASE = registerSound("karma_release");

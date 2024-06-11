@@ -39,6 +39,18 @@
 
 
 
+  "item.minecraft.potion.effect.justice_potion": "Potion of Justice",
+  "item.minecraft.splash_potion.effect.justice_potion": "Splash Potion of Justice",
+  "item.minecraft.lingering_potion.effect.justice_potion": "Lingering Potion of Justice",
+  "item.minecraft.tipped_arrow.effect.justice_potion": "Arrow of Justice",
+
+  "item.minecraft.potion.effect.chaos_potion": "Potion of Chaos",
+  "item.minecraft.splash_potion.effect.chaos_potion": "Splash Potion of Chaos",
+  "item.minecraft.lingering_potion.effect.chaos_potion": "Lingering Potion of Chaos",
+  "item.minecraft.tipped_arrow.effect.chaos_potion": "Arrow of Chaos",
+
+
+
   "block.uniquescythe.tuff_bricks": "Tuff Bricks",
   "block.uniquescythe.polished_tuff": "Polished Tuff",
   "block.uniquescythe.copper_grate": "Copper Grate",

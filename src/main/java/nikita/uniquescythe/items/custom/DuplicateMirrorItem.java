@@ -5,12 +5,15 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 import nikita.uniquescythe.UniqueScythe;
 import nikita.uniquescythe.items.ModItems;
+import nikita.uniquescythe.sounds.ModSoundEvents;
 import nikita.uniquescythe.utility.CommandsExecuter;
+import nikita.uniquescythe.utility.SoundsManager;
 import org.jetbrains.annotations.NotNull;
 
 public class DuplicateMirrorItem extends SimplyDescribedItem {
@@ -24,7 +27,7 @@ public class DuplicateMirrorItem extends SimplyDescribedItem {
 	}
 
 	public DuplicateMirrorItem(Settings settings) {
-		super(settings, "§9Needs repair after 5th use");
+		super(settings, "§9Needs recharge after 10th use");
 	}
 
 	@Override
@@ -37,10 +40,13 @@ public class DuplicateMirrorItem extends SimplyDescribedItem {
 	@Override
 	public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
 
+		NbtCompound tag = user.getStackInHand(hand).getOrCreateNbt();
+
 
 		if (isUsable(user.getStackInHand(hand))) {
 			copyItemInOppositeHand(user, hand);
 			user.getItemCooldownManager().set(this, 25);
+			playDuplicateSound(tag.getBoolean("success"), user);
 
 			return TypedActionResult.success(user.getStackInHand(hand));
 		}
@@ -50,20 +56,24 @@ public class DuplicateMirrorItem extends SimplyDescribedItem {
 
 	public void copyItemInOppositeHand(@NotNull PlayerEntity user, Hand hand){
 
+
 		Hand oppositeHand = hand == Hand.MAIN_HAND ? this.offHand : this.mainHand;
 		Hand currentHand = hand == Hand.MAIN_HAND ? this.mainHand : this.offHand;
-		ItemStack chaosShardStack = new ItemStack(Items.AMETHYST_SHARD);
+		ItemStack fuelStack = new ItemStack(Items.AMETHYST_SHARD);
 
-		 if (!user.getStackInHand(oppositeHand).isEmpty() && !user.getWorld().isClient){
+		ItemStack stackInCurrentHand = user.getStackInHand(currentHand);
+		NbtCompound tag = stackInCurrentHand.getOrCreateNbt();
+		ItemStack stackInOppositeHand = user.getStackInHand(oppositeHand);
+		ItemStack stackGiven = new ItemStack(stackInOppositeHand.getItem().asItem(), stackInOppositeHand.getCount());
 
-			 ItemStack stackInCurrentHand = user.getStackInHand(currentHand);
-			 ItemStack stackInOppositeHand = user.getStackInHand(oppositeHand);
-			 ItemStack stackGiven = new ItemStack(stackInOppositeHand.getItem().asItem(), stackInOppositeHand.getCount());
+		if (!user.getStackInHand(oppositeHand).isEmpty() && !user.getWorld().isClient){
 
-			 if (user.getInventory().contains(chaosShardStack) || user.getAbilities().creativeMode ) {
-				 if (user.getStackInHand(oppositeHand).getItem() != Items.AMETHYST_SHARD ) {
+
+
+			 if (user.getInventory().contains(fuelStack) || user.getAbilities().creativeMode ) {
+				 if (user.getStackInHand(oppositeHand).getItem() != Items.AMETHYST_SHARD){
 					 //user.giveItemStack(stackGiven);
-					 String translationKey = stackGiven.getTranslationKey(); // Replace with your actual translation key
+					 String translationKey = stackGiven.getTranslationKey();
 					 String[] parts = translationKey.split("\\.");
 					 String modId = parts[1]; // Get the second part (mod ID)
 					 String itemId = parts[2]; // Get the third part (item ID
@@ -75,19 +85,36 @@ public class DuplicateMirrorItem extends SimplyDescribedItem {
 						 for (int i = 0; i < user.getInventory().size(); i++) {
 							 ItemStack inventoryStack = user.getInventory().getStack(i);
 							 if (inventoryStack.getItem() == Items.AMETHYST_SHARD) {
-								 inventoryStack.decrement(1); // Decrement the Chaos Shard stack
+								 inventoryStack.decrement(1);
 								 break; // Exit the loop after finding and decrementing
 							 }
+
 						 }
 					 }
+					 tag.putBoolean("success", true);
 				 }
+				 else tag.putBoolean("success", false);
 
 			 }
 
-		 }
 
+		}
+		else {
+
+			tag.putBoolean("success", false);
+
+		}
 	}
 
+
+	private void playDuplicateSound(boolean shouldPlaySound, PlayerEntity player){
+		if(shouldPlaySound){
+			SoundsManager.playPlayersSoundFromPlayer(player, ModSoundEvents.DUPLICATE_SUCCESS, 1);
+		}
+		else {
+			SoundsManager.playPlayersSoundFromPlayer(player, ModSoundEvents.DUPLICATE_FAIL, 1, 0.5f);
+		}
+	}
 
 
 }

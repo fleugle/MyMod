@@ -20,6 +20,7 @@ import nikita.uniquescythe.entities.ModEntities;
 import nikita.uniquescythe.entities.custom.BreezeEntity;
 import nikita.uniquescythe.items.ModItems;
 import nikita.uniquescythe.particles.ModParticleTypes;
+import nikita.uniquescythe.potions.ModPotions;
 import nikita.uniquescythe.sounds.ModSoundEvents;
 import nikita.uniquescythe.status_effects.ModStatusEffects;
 import nikita.uniquescythe.utility.CommandsExecuter;
@@ -75,6 +76,8 @@ public class UniqueScythe implements ModInitializer {
 		//loot tables modifiers
 		ModLootTablesModifiers.modifyLootTables();
 
+		//potions
+		ModPotions.registerPotionsRecipes();
 
 
 
