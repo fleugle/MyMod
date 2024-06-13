@@ -68,6 +68,7 @@ public class ModLootTablesModifiers {
 				tableBuilder.pool(poolBuilder.build());
 			}
 
+			//actually very very rare chests.
 			if(WOODLAND_MANSION_CHEST_ID.equals(id)){
 				UniqueScythe.LOGGER.info("WOODLAND_MANSION_CHEST_ID items were modified!");
 				LootPool.Builder poolBuilder = LootPool.builder()
