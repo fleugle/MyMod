@@ -115,6 +115,7 @@ public class ModItems {
 			entries.addItem(SORRY_STONE);
 			entries.addItem(Items.BUNDLE);
 			entries.addAfter(Items.SPYGLASS, DUPLICATE_MIRROR);
+			entries.addAfter(DUPLICATE_MIRROR, JOY_BELL);
 		});
 
 

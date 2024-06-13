@@ -27,7 +27,11 @@ public class ModLootTablesModifiers {
 	public static final Identifier DESERT_PYRAMID_CHEST_ID =
 		new Identifier(UniqueScythe.GAME_ID, "chests/desert_pyramid");
 
+	public static final Identifier WOODLAND_MANSION_CHEST_ID =
+		new Identifier(UniqueScythe.GAME_ID, "chests/woodland_mansion");
 
+	public static final Identifier ABANDONED_MINESHAFT_CHEST_ID =
+		new Identifier(UniqueScythe.GAME_ID, "chests/abandoned_mineshaft");
 
 
 	public static void modifyLootTables(){
@@ -61,6 +65,26 @@ public class ModLootTablesModifiers {
 					.conditionally(RandomChanceLootCondition.builder(0.55f))
 					.with(ItemEntry.builder(ModItems.CHAOS_SHARD))
 					.apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 4f)).build());
+				tableBuilder.pool(poolBuilder.build());
+			}
+
+			if(WOODLAND_MANSION_CHEST_ID.equals(id)){
+				UniqueScythe.LOGGER.info("WOODLAND_MANSION_CHEST_ID items were modified!");
+				LootPool.Builder poolBuilder = LootPool.builder()
+					.rolls(ConstantLootNumberProvider.create(1))
+					.conditionally(RandomChanceLootCondition.builder(0.25f))
+					.with(ItemEntry.builder(ModItems.LEONS_TALISMAN))
+					.apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1f)).build());
+				tableBuilder.pool(poolBuilder.build());
+			}
+
+			if(ABANDONED_MINESHAFT_CHEST_ID.equals(id)){
+				UniqueScythe.LOGGER.info("ABANDONED_MINESHAFT_CHEST_ID items were modified!");
+				LootPool.Builder poolBuilder = LootPool.builder()
+					.rolls(ConstantLootNumberProvider.create(1))
+					.conditionally(RandomChanceLootCondition.builder(0.15f))
+					.with(ItemEntry.builder(ModItems.TETOS_TALISMAN))
+					.apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1f)).build());
 				tableBuilder.pool(poolBuilder.build());
 			}
 

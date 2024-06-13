@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:totem_of_undying"
+    },
+    {
+      "item": "uniquescythe:leons_talisman"
+    }
+  ],
+  "result": {
+    "item": "uniquescythe:leons_talisman",
+    "count": 1
+  }
+}
