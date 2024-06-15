@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "uniquescythe:block/miner",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "uniquescythe:block/miner"
+    },
+    "facing=south": {
+      "model": "uniquescythe:block/miner",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "uniquescythe:block/miner",
+      "y": 270
+    }
+  }
+}

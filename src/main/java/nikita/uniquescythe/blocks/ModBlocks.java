@@ -3,6 +3,7 @@ package nikita.uniquescythe.blocks;
 
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.block.*;
+import net.minecraft.block.enums.NoteBlockInstrument;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
@@ -11,12 +12,8 @@ import net.minecraft.registry.Registry;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import nikita.uniquescythe.UniqueScythe;
-import nikita.uniquescythe.blocks.custom.AbstractCopperGrateBlock;
-import nikita.uniquescythe.blocks.custom.AbstractHeavyCoreBlock;
-import nikita.uniquescythe.blocks.custom.AbstractWaxedCopperGrateBlock;
-import nikita.uniquescythe.blocks.custom.OxidizableBulbBlock;
+import nikita.uniquescythe.blocks.custom.*;
 import nikita.uniquescythe.sounds.ModBlockSoundGroup;
-import nikita.uniquescythe.blocks.custom.BulbBlock;
 
 public class ModBlocks {
 
@@ -30,12 +27,12 @@ public class ModBlocks {
 		new Block(AbstractBlock.Settings.copy(Blocks.POLISHED_GRANITE)));
 
 	public static final Block  HEAVY_CORE = registerBlock("heavy_core",
-		new AbstractHeavyCoreBlock(AbstractBlock.Settings.copy(Blocks.OBSIDIAN).mapColor(MapColor.DEEPSLATE).sounds(ModBlockSoundGroup.HEAVY_CORE)));//heavy core
+		new HeavyCoreBlock(AbstractBlock.Settings.copy(Blocks.OBSIDIAN).mapColor(MapColor.DEEPSLATE).sounds(ModBlockSoundGroup.HEAVY_CORE)));//heavy core
 
 
 
 	public static final Block  COPPER_GRATE = registerBlock("copper_grate",
-		new AbstractCopperGrateBlock(Oxidizable.OxidizationLevel.UNAFFECTED,
+		new CopperGrateBlock(Oxidizable.OxidizationLevel.UNAFFECTED,
 			AbstractBlock.Settings.create()
 				.mapColor(MapColor.ORANGE)
 				.nonOpaque().strength(4.0f)
@@ -44,7 +41,7 @@ public class ModBlocks {
 
 
 	public static final Block  OXIDIZED_COPPER_GRATE = registerBlock("oxidized_copper_grate",
-		new AbstractCopperGrateBlock(Oxidizable.OxidizationLevel.OXIDIZED,
+		new CopperGrateBlock(Oxidizable.OxidizationLevel.OXIDIZED,
 			AbstractBlock.Settings.create().mapColor(MapColor.WARPED_NYLIUM)
 				.requiresTool()
 				.nonOpaque().strength(4.0f)
@@ -52,7 +49,7 @@ public class ModBlocks {
 				.sounds(BlockSoundGroup.COPPER)));//oxidized copper grate
 
 	public static final Block  EXPOSED_COPPER_GRATE = registerBlock("exposed_copper_grate",
-		new AbstractCopperGrateBlock(Oxidizable.OxidizationLevel.EXPOSED,
+		new CopperGrateBlock(Oxidizable.OxidizationLevel.EXPOSED,
 			AbstractBlock.Settings.create().mapColor(MapColor.LIGHT_GRAY_TERRACOTTA)
 				.requiresTool()
 				.nonOpaque().strength(4.0f)
@@ -61,7 +58,7 @@ public class ModBlocks {
 
 
 	public static final Block  WAXED_COPPER_GRATE = registerBlock("waxed_copper_grate",
-		new AbstractWaxedCopperGrateBlock(
+		new WaxedCopperGrateBlock(
 			AbstractBlock.Settings.create()
 				.mapColor(MapColor.ORANGE)
 				.nonOpaque().strength(4.0f)
@@ -70,7 +67,7 @@ public class ModBlocks {
 
 
 	public static final Block  WAXED_OXIDIZED_COPPER_GRATE = registerBlock("waxed_oxidized_copper_grate",
-		new AbstractWaxedCopperGrateBlock(
+		new WaxedCopperGrateBlock(
 			AbstractBlock.Settings.create().mapColor(MapColor.WARPED_NYLIUM)
 				.requiresTool()
 				.nonOpaque().strength(4.0f)
@@ -78,7 +75,7 @@ public class ModBlocks {
 				.sounds(BlockSoundGroup.COPPER)));//oxidized copper grate
 
 	public static final Block  WAXED_EXPOSED_COPPER_GRATE = registerBlock("waxed_exposed_copper_grate",
-		new AbstractWaxedCopperGrateBlock(
+		new WaxedCopperGrateBlock(
 			AbstractBlock.Settings.create().mapColor(MapColor.LIGHT_GRAY_TERRACOTTA)
 				.requiresTool()
 				.nonOpaque().strength(4.0f)
@@ -142,6 +139,13 @@ public class ModBlocks {
 
 	public static final Block WAXED_OXIDIZED_COPPER_BULB = registerBlock("waxed_oxidized_copper_bulb",
 		(Block)new BulbBlock(AbstractBlock.Settings.copy(OXIDIZED_COPPER_BULB)));
+
+	public static final Block MINER = registerBlock("miner",
+		(Block)new MinerBlock(AbstractBlock.Settings.create()
+			.mapColor(MapColor.STONE)
+			.instrument(NoteBlockInstrument.BASEDRUM)
+			.requiresTool()
+			.strength(3.5F)));
 
 
 	//HELPER METHODS

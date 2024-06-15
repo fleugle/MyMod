@@ -2,7 +2,6 @@ package nikita.uniquescythe.blocks.custom;
 
 import net.minecraft.block.*;
 import net.minecraft.block.enums.JigsawOrientation;
-import net.minecraft.entity.ai.pathing.NavigationType;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
@@ -15,19 +14,18 @@ import net.minecraft.util.BlockRotation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
-import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.WorldAccess;
 import org.jetbrains.annotations.Nullable;
 
-public class AbstractHeavyCoreBlock extends Block implements Waterloggable {
+public class HeavyCoreBlock extends Block implements Waterloggable {
 	private static final VoxelShape OUTLINE_SHAPE = Block.createCuboidShape(4.0, 0.0, 4.0, 12.0, 8.0, 12.0);
 	public static final EnumProperty<JigsawOrientation> ORIENTATION = Properties.ORIENTATION;
 
 
 
 	public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
-	public AbstractHeavyCoreBlock( Settings settings) {
+	public HeavyCoreBlock(Settings settings) {
 		super(settings);
 		this.setDefaultState((BlockState)((BlockState)this.stateManager.getDefaultState()
 			.with(WATERLOGGED, false))

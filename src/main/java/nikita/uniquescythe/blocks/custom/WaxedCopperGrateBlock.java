@@ -1,7 +1,8 @@
 package nikita.uniquescythe.blocks.custom;
 
-import net.fabricmc.fabric.api.registry.OxidizableBlocksRegistry;
-import net.minecraft.block.*;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.Waterloggable;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
@@ -12,13 +13,12 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.WorldAccess;
-import nikita.uniquescythe.blocks.ModBlocks;
 import org.jetbrains.annotations.Nullable;
 
-public class AbstractCopperGrateBlock extends OxidizableBlock implements Waterloggable {
+public class WaxedCopperGrateBlock extends Block implements Waterloggable {
 	public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
-	public AbstractCopperGrateBlock(OxidizationLevel oxidizationLevel, Settings settings) {
-		super(oxidizationLevel, settings);
+	public WaxedCopperGrateBlock(Settings settings) {
+		super(settings);
 		this.setDefaultState(this.stateManager.getDefaultState().with(WATERLOGGED, Boolean.valueOf(false)));
 	}
 
@@ -43,10 +43,6 @@ public class AbstractCopperGrateBlock extends OxidizableBlock implements Waterlo
 		boolean bl = fluidState.getFluid() == Fluids.WATER;
 		return super.getPlacementState(ctx).with(WATERLOGGED, Boolean.valueOf(bl));
 	}
-	@Override
-	public boolean hasRandomTicks(BlockState state) {
-		return Oxidizable.getIncreasedOxidationBlock(state.getBlock()).isPresent();
-	}
 
 	@Override
 	public BlockState getStateForNeighborUpdate(
@@ -68,7 +64,5 @@ public class AbstractCopperGrateBlock extends OxidizableBlock implements Waterlo
 	protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
 		builder.add(WATERLOGGED);
 	}
-
-
 
 }
