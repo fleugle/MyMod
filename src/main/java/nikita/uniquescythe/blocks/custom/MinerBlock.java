@@ -9,6 +9,10 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 public class MinerBlock extends HorizontallyDirectionalBlock{
 	public MinerBlock(Settings settings) {
 		super(settings);
@@ -19,12 +23,13 @@ public class MinerBlock extends HorizontallyDirectionalBlock{
 		if (!world.isClient) {
 			boolean isCharged = world.isReceivingRedstonePower(pos);
 			int blocksFound = 0;
-			boolean shouldDropIron;
-			boolean shouldDropRedstone;
-			boolean shouldDropDiamonds;
-			boolean shouldDropGold;
-			boolean shouldDropAmethyst;
-			ItemStack dropItem = new ItemStack(Items.DIAMOND); // Example item to drop
+			boolean shouldDropIron = false;
+			boolean shouldDropRedstone = false;
+			boolean shouldDropDiamonds = false;
+			boolean shouldDropGold = false;
+			boolean shouldDropAmethyst = false;
+
+
 
 			for (int i = 1; i <= 50; i++) {
 				BlockPos checkPos = pos.down(i);
@@ -33,11 +38,31 @@ public class MinerBlock extends HorizontallyDirectionalBlock{
 				// Check for a specific block, for example, an iron ore block
 				if (checkState.isOf(Blocks.IRON_ORE)) {
 					shouldDropIron = true;
-					blocksFound++;
-				}
+
+				} else shouldDropIron = false;
 				if (checkState.isOf(Blocks.GOLD_ORE)) {
-					shouldDropIron = true;
+					shouldDropGold= true;
+
+				}
+				if (checkState.isOf(Blocks.REDSTONE_ORE)) {
+					shouldDropRedstone= true;
+
+				}
+				if (checkState.isOf(Blocks.DIAMOND_ORE)) {
+					shouldDropDiamonds= true;
+
+				}
+				if (checkState.isOf(Blocks.AMETHYST_BLOCK)
+				|| checkState.isOf(Blocks.AMETHYST_CLUSTER)) {
+					shouldDropAmethyst= true;
+
+				}
+
+
+				if (!checkState.isAir() && checkState.isSolidBlock(world, checkPos)) {
+
 					blocksFound++;
+
 				}
 
 				if (checkState.isAir()) {
@@ -50,8 +75,35 @@ public class MinerBlock extends HorizontallyDirectionalBlock{
 			// If the block is charged and the specified block was found
 			if (isCharged && blocksFound > 0) {
 				// Drop the item
-				ItemEntity itemEntity = new ItemEntity((ServerWorld) world, pos.getX(), pos.getY(), pos.getZ(), dropItem);
-				world.spawnEntity(itemEntity);
+				ItemEntity itemEntity = null;
+				List<ItemStack> possibleItems = new ArrayList<>();
+
+				if (shouldDropDiamonds) {
+					possibleItems.add(new ItemStack(Items.DIAMOND));
+				}
+
+				if (shouldDropIron) {
+					possibleItems.add(new ItemStack(Items.IRON_INGOT));
+				}
+
+				if (shouldDropGold) {
+					possibleItems.add(new ItemStack(Items.GOLD_INGOT));
+				}
+
+				if (shouldDropRedstone) {
+					possibleItems.add(new ItemStack(Items.REDSTONE));
+				}
+
+				if (shouldDropAmethyst) {
+					possibleItems.add(new ItemStack(Items.AMETHYST_SHARD));
+				}
+
+				if (!possibleItems.isEmpty()) {
+					Random random = new Random();
+					ItemStack selectedItem = possibleItems.get(random.nextInt(possibleItems.size()));
+					itemEntity = new ItemEntity(world, pos.getX(), pos.getY(), pos.getZ(), selectedItem);
+					world.spawnEntity(itemEntity);
+				}
 
 				// Set the block on cooldown (example: 5 minutes)
 				// You'll need to handle the cooldown logic separately
