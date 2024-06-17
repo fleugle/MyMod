@@ -11,8 +11,6 @@ import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
-
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -24,7 +22,9 @@ public class MinerBlock extends HorizontallyDirectionalBlock{
 
 	public MinerBlock(Settings settings) {
 		super(settings);
-		setDefaultState(this.stateManager.getDefaultState().with(POWERED, false));
+		setDefaultState(this.stateManager.getDefaultState()
+			.with(POWERED, false)
+			.with(OPENED, false));
 	}
 
 	// Method to scan blocks underneath
@@ -133,10 +133,25 @@ public class MinerBlock extends HorizontallyDirectionalBlock{
 
 
 						if (!possibleItems.isEmpty()) {
+
+							world.setBlockState(pos, state.with(OPENED, true), Block.NOTIFY_ALL);
+
+							world.scheduleBlockTick(pos, this, 45);
+
 							Random random = new Random();
 							ItemStack selectedItem = possibleItems.get(random.nextInt(possibleItems.size()));
 							itemEntity = new ItemEntity(world, pos.getX(), pos.getY(), pos.getZ(), selectedItem);
 							world.spawnEntity(itemEntity);
+
+
+							//sounds here
+							world.scheduleBlockTick(pos, this, 45);
+
+							world.setBlockState(pos, (BlockState)state.with(OPENED, true), Block.NOTIFY_ALL);
+
+							world.scheduleBlockTick(pos, this, 45);
+
+
 						}
 
 					} else break;
