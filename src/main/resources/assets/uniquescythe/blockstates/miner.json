@@ -1,18 +1,48 @@
 {
   "variants": {
-    "facing=east": {
+    "facing=east,powered=false": {
       "model": "uniquescythe:block/miner",
       "y": 90
     },
-    "facing=north": {
+    "facing=north,powered=false": {
       "model": "uniquescythe:block/miner"
     },
-    "facing=south": {
+    "facing=south,powered=false": {
       "model": "uniquescythe:block/miner",
       "y": 180
     },
-    "facing=west": {
+    "facing=west,powered=false": {
       "model": "uniquescythe:block/miner",
+      "y": 270
+    },
+    "facing=east,powered=true,opened=false": {
+      "model": "uniquescythe:block/miner_powered",
+      "y": 90
+    },
+    "facing=north,powered=true,opened=false": {
+      "model": "uniquescythe:block/miner_powered"
+    },
+    "facing=south,powered=true,opened=false": {
+      "model": "uniquescythe:block/miner_powered",
+      "y": 180
+    },
+    "facing=west,powered=true,opened=false": {
+      "model": "uniquescythe:block/miner_powered",
+      "y": 270
+    },
+    "facing=east,powered=true,opened=true": {
+      "model": "uniquescythe:block/miner_powered_opened",
+      "y": 90
+    },
+    "facing=north,powered=true,opened=true": {
+      "model": "uniquescythe:block/miner_powered_opened"
+    },
+    "facing=south,powered=true,opened=true": {
+      "model": "uniquescythe:block/miner_powered_opened",
+      "y": 180
+    },
+    "facing=west,powered=true,opened=true": {
+      "model": "uniquescythe:block/miner_powered_opened",
       "y": 270
     }
   }

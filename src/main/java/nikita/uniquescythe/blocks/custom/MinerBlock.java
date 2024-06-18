@@ -1,5 +1,4 @@
 package nikita.uniquescythe.blocks.custom;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -14,18 +13,18 @@ import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.random.RandomGenerator;
+import net.minecraft.world.World;
 import net.minecraft.world.chunk.Chunk;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class MinerBlock extends HorizontallyDirectionalBlock{
+public class MinerBlock extends HorizontalFacingBlock {
 	public static final BooleanProperty POWERED = Properties.POWERED;
 	public static final BooleanProperty OPENED = BooleanProperty.of("opened");
 	public static final BooleanProperty DROPPED_ITEM = BooleanProperty.of("dropped_item");
 	public static final BooleanProperty READY = BooleanProperty.of("ready");
-
 
 	public MinerBlock(Settings settings) {
 		super(settings);
@@ -35,247 +34,146 @@ public class MinerBlock extends HorizontallyDirectionalBlock{
 			.with(DROPPED_ITEM, false)
 			.with(READY, false));
 	}
-
-	// Method to scan blocks underneath
-	public void scanBlocksBelow(BlockState state, ServerWorld world, BlockPos pos) {
-		if (!world.isClient) {
-			boolean isCharged = world.isReceivingRedstonePower(pos);
-
-			boolean shouldDropIron;
-			boolean shouldDropRedstone;
-			boolean shouldDropDiamonds;
-			boolean shouldDropGold;
-			boolean shouldDropAmethyst;
-			boolean shouldDropEmeralds;
-			boolean shouldDropCopper;
-			boolean shouldDropLapis;
-
-
-			world.setBlockState(pos, state.with(POWERED, isCharged), Block.NOTIFY_ALL);
-
-
-			if (isCharged) {
-
-				// Drop the item
-				ItemEntity itemEntity;
-				List<ItemStack> possibleItems = new ArrayList<>();
-				//STOP FUCKING BEING WORRIED ABOUT THIS PART YOU AUTISTIC ASS, IT IS FINE, EACH TIME IT CHECKS IT PICKS ONLY ONE AND ADDS ONLY ONE
-				for (int i = 1; i <= 50; i++) {
-					BlockState checkState = null;
-					BlockPos checkPos = pos.down(i);
-					checkState = world.getBlockState(checkPos);
-					shouldDropIron = false;
-					shouldDropRedstone = false;
-					shouldDropDiamonds = false;
-					shouldDropGold = false;
-					shouldDropAmethyst = false;
-					shouldDropEmeralds = false;
-					shouldDropCopper = false;
-					shouldDropLapis = false;
-					if (!checkState.isAir() && checkState.isSolidBlock(world, checkPos)) {
-
-
-						// Check for a specific block, for example, an iron ore block
-						if (checkState.isOf(Blocks.IRON_ORE)
-							|| checkState.isOf(Blocks.DEEPSLATE_IRON_ORE)) {
-							shouldDropIron = true;
-
-						}
-						if (checkState.isOf(Blocks.GOLD_ORE)
-							|| checkState.isOf(Blocks.DEEPSLATE_GOLD_ORE)) {
-							shouldDropGold= true;
-
-						}
-						if (checkState.isOf(Blocks.REDSTONE_ORE)
-							|| checkState.isOf(Blocks.DEEPSLATE_REDSTONE_ORE)) {
-							shouldDropRedstone= true;
-
-						}
-						if (checkState.isOf(Blocks.DIAMOND_ORE)
-							|| checkState.isOf(Blocks.DEEPSLATE_DIAMOND_ORE)) {
-							shouldDropDiamonds= true;
-
-						}
-						if (checkState.isOf(Blocks.AMETHYST_BLOCK)
-							|| checkState.isOf(Blocks.AMETHYST_CLUSTER)) {
-							shouldDropAmethyst= true;
-
-						}
-						if (checkState.isOf(Blocks.EMERALD_ORE)
-							|| checkState.isOf(Blocks.DEEPSLATE_EMERALD_ORE)) {
-							shouldDropEmeralds= true;
-
-						}
-						if (checkState.isOf(Blocks.COPPER_ORE)
-							|| checkState.isOf(Blocks.DEEPSLATE_COPPER_ORE)) {
-							shouldDropCopper= true;
-
-						}
-						if (checkState.isOf(Blocks.LAPIS_ORE)
-							|| checkState.isOf(Blocks.DEEPSLATE_LAPIS_ORE)) {
-							shouldDropLapis= true;
-
-						}
-
-
-
-						//Adding item to array
-						if (shouldDropDiamonds) {
-							possibleItems.add(new ItemStack(Items.DIAMOND));
-						}
-
-						if (shouldDropIron) {
-							possibleItems.add(new ItemStack(Items.RAW_IRON));
-						}
-
-						if (shouldDropGold) {
-							possibleItems.add(new ItemStack(Items.RAW_GOLD));
-						}
-
-						if (shouldDropRedstone) {
-							possibleItems.add(new ItemStack(Items.REDSTONE));
-						}
-
-						if (shouldDropAmethyst) {
-							possibleItems.add(new ItemStack(Items.AMETHYST_SHARD));
-						}
-
-						if (shouldDropEmeralds) {
-							possibleItems.add(new ItemStack(Items.EMERALD));
-						}
-
-						if (shouldDropCopper) {
-							possibleItems.add(new ItemStack(Items.RAW_COPPER));
-						}
-
-						if (shouldDropLapis) {
-							possibleItems.add(new ItemStack(Items.LAPIS_LAZULI));
-						}
-
-
-
-
-					} else break;
-
-
-				}
-				if (!possibleItems.isEmpty()) {
-
-					world.setBlockState(pos, state.with(OPENED, true), Block.NOTIFY_ALL);
-
-					world.scheduleBlockTick(pos, this, 45);
-
-							/*Random random = new Random();
-							ItemStack selectedItem = possibleItems.get(random.nextInt(possibleItems.size()));
-							itemEntity = new ItemEntity(world, pos.getX(), pos.getY(), pos.getZ(), selectedItem);
-							world.spawnEntity(itemEntity);*/
-					Random random = new Random();
-					ItemStack selectedItem = possibleItems.get(random.nextInt(possibleItems.size()));
-
-					// Determine the facing direction of the block
-					Direction facing = state.get(HorizontalFacingBlock.FACING);
-					double spawnX = pos.getX() + 0.5 + facing.getOffsetX() * 0.6;
-					double spawnY = pos.getY() + 0.25;// 'mouth' is located pretty low though
-					double spawnZ = pos.getZ() + 0.5 + facing.getOffsetZ() * 0.6;
-
-					itemEntity = new ItemEntity(world, spawnX, spawnY, spawnZ, selectedItem);
-
-					// Set the velocity to make the item move forward
-					double velocityX = facing.getOffsetX() * 0.2;
-					double velocityY = 0;
-					double velocityZ = facing.getOffsetZ() * 0.2;
-					itemEntity.setVelocity(velocityX, velocityY, velocityZ);
-
-					world.spawnEntity(itemEntity);
-
-
-					//sounds here
-					world.scheduleBlockTick(pos, this, 45);//not a delay. it's a shedular for sheduleTick method, so i need to override it for goods.
-
-					world.setBlockState(pos, (BlockState)state.with(OPENED, true), Block.NOTIFY_ALL);
-
-					world.scheduleBlockTick(pos, this, 45);
-
-
-				}
+	@Override
+	public void neighborUpdate(BlockState state, World world, BlockPos pos, Block sourceBlock, BlockPos sourcePos, boolean notify) {
+		boolean isPowered = world.isReceivingRedstonePower(pos);
+		if (isPowered != state.get(POWERED) && world instanceof ServerWorld) {
+			world.setBlockState(pos, state.with(POWERED, isPowered), Block.NOTIFY_ALL);
+			if (isPowered) {
+				scanBlocksBelow(state, (ServerWorld) world, pos);
+				world.scheduleBlockTick(pos, this, 1);
 			}
-
-			// If the block is charged and the specified block was found
-
 		}
 	}
 
 	@Override
 	public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, RandomGenerator random) {
+		if (state.get(POWERED)) {
+			scanBlocksBelow(state, world, pos);
 
-		while (state.get(POWERED)){
 
-			if(!state.get(DROPPED_ITEM)){
-				world.setBlockState(pos, state.with(OPENED, true), Block.NOTIFY_ALL);
-				world.scheduleBlockTick(pos, this, 45);
-			}
+			//logical error: it assigns OPENED even if SHOULD NOT
+			if (!state.get(DROPPED_ITEM)) {
+				if (!state.get(OPENED)) {
+					world.setBlockState(pos, state.with(OPENED, true), Block.NOTIFY_ALL);
+					// Add sound effects here if needed
+				}
 
-			if(state.get(OPENED)){
+				if (state.get(OPENED)) {
+					world.setBlockState(pos, state.with(READY, true), Block.NOTIFY_ALL);
+					// Add sound effects here if needed
+				}
+			} else {
 				world.setBlockState(pos, state.with(OPENED, false), Block.NOTIFY_ALL);
-				world.setBlockState(pos, state.with(READY, true), Block.NOTIFY_ALL);
+				world.setBlockState(pos, state.with(DROPPED_ITEM, false), Block.NOTIFY_ALL);
 			}
-			break;
 		}
 
-
-
-
-		/*
-		*
-		* I can actually add here a logic based on a new state "DROPPED_ITEM",
-		* so if it is true, assign false to it and then
-		* schedule this same method again in 45 ticks,
-		*  and  if false do nothing.
-		*
-		*
-		* I can put it before the OPENED check, so I can handle multiple actions.
-		*
-		 */
-
+		// Schedule the next tick
+		world.scheduleBlockTick(pos, this, 1);
 	}
 
-	// Method to calculate the final cooldown based on the number of MinerBlock instances and the initial cooldown
+	// Method to scan blocks underneath
+	public void scanBlocksBelow(BlockState state, ServerWorld world, BlockPos pos) {
+		if (!world.isClient) {
+			boolean isCharged = world.isReceivingRedstonePower(pos);
+			world.setBlockState(pos, state.with(POWERED, isCharged), Block.NOTIFY_ALL);
+
+			if (state.get(POWERED)) {
+				ItemEntity itemEntity;
+				List<ItemStack> possibleItems = new ArrayList<>();
+				for (int i = 1; i <= 50; i++) {
+					BlockState checkState = world.getBlockState(pos.down(i));
+
+					if (!checkState.isAir() && checkState.isSolidBlock(world, pos.down(i))) {
+						if (checkState.isOf(Blocks.IRON_ORE) || checkState.isOf(Blocks.DEEPSLATE_IRON_ORE)) {
+							possibleItems.add(new ItemStack(Items.RAW_IRON));
+						}
+						if (checkState.isOf(Blocks.GOLD_ORE) || checkState.isOf(Blocks.DEEPSLATE_GOLD_ORE)) {
+							possibleItems.add(new ItemStack(Items.RAW_GOLD));
+						}
+						if (checkState.isOf(Blocks.REDSTONE_ORE) || checkState.isOf(Blocks.DEEPSLATE_REDSTONE_ORE)) {
+							possibleItems.add(new ItemStack(Items.REDSTONE));
+						}
+						if (checkState.isOf(Blocks.DIAMOND_ORE) || checkState.isOf(Blocks.DEEPSLATE_DIAMOND_ORE)) {
+							possibleItems.add(new ItemStack(Items.DIAMOND));
+						}
+						if (checkState.isOf(Blocks.AMETHYST_BLOCK) || checkState.isOf(Blocks.AMETHYST_CLUSTER)) {
+							possibleItems.add(new ItemStack(Items.AMETHYST_SHARD));
+						}
+						if (checkState.isOf(Blocks.EMERALD_ORE) || checkState.isOf(Blocks.DEEPSLATE_EMERALD_ORE)) {
+							possibleItems.add(new ItemStack(Items.EMERALD));
+						}
+						if (checkState.isOf(Blocks.COPPER_ORE) || checkState.isOf(Blocks.DEEPSLATE_COPPER_ORE)) {
+							possibleItems.add(new ItemStack(Items.RAW_COPPER));
+						}
+						if (checkState.isOf(Blocks.LAPIS_ORE) || checkState.isOf(Blocks.DEEPSLATE_LAPIS_ORE)) {
+							possibleItems.add(new ItemStack(Items.LAPIS_LAZULI));
+						}
+					} else {
+						break;
+					}
+				}
+
+				if (!possibleItems.isEmpty()) {
+					int delay = calculateFinalCooldown(countMinerBlocksInChunk(world, pos), 800);
+
+					if (!state.get(DROPPED_ITEM)) {
+						world.scheduleBlockTick(pos, this, 45);
+					} else {
+						world.scheduleBlockTick(pos, this, delay);
+					}
+
+					if (state.get(READY)) {
+						Random random = new Random();
+						ItemStack selectedItem = possibleItems.get(random.nextInt(possibleItems.size()));
+
+						Direction facing = state.get(HorizontalFacingBlock.FACING);
+						double spawnX = pos.getX() + 0.5 + facing.getOffsetX() * 0.6;
+						double spawnY = pos.getY() + 0.25;
+						double spawnZ = pos.getZ() + 0.5 + facing.getOffsetZ() * 0.6;
+
+						itemEntity = new ItemEntity(world, spawnX, spawnY, spawnZ, selectedItem);
+
+						double velocityX = facing.getOffsetX() * 0.2;
+						double velocityY = 0;
+						double velocityZ = facing.getOffsetZ() * 0.2;
+						itemEntity.setVelocity(velocityX, velocityY, velocityZ);
+
+						world.spawnEntity(itemEntity);
+
+						world.setBlockState(pos, state.with(READY, false));
+						world.setBlockState(pos, state.with(DROPPED_ITEM, true));
+					}
+				}
+			}
+		}
+	}
+
 	private int calculateFinalCooldown(int minerBlockCount, int initialCooldown) {
-		return (int) (initialCooldown + (3 * Math.log(minerBlockCount +1) / Math.log(2)) + (double) minerBlockCount / 4);
+		return (int) (initialCooldown + (3 * Math.log(minerBlockCount + 1) / Math.log(2)) + (double) minerBlockCount / 4);
 	}
 
-	// Method to count the number of MinerBlock instances in the current chunk
 	private int countMinerBlocksInChunk(ServerWorld world, BlockPos pos) {
 		int count = 0;
-
-		// Get the chunk containing the given position
 		Chunk chunk = world.getChunk(pos);
 
-		// Define the vertical range to check (8 blocks above and below the current position)
-		int startY = Math.max(world.getBottomY(), pos.getY() - 8); // Ensure the startY is not below the world's minimum height
-		int endY = Math.min(world.getTopY() - 1, pos.getY() + 8); // Ensure the endY is within the world's maximum height
+		int startY = Math.max(world.getBottomY(), pos.getY() - 8);
+		int endY = Math.min(world.getTopY() - 1, pos.getY() + 8);
 
-		// Iterate over block positions within the chunk and the specified vertical range
 		for (BlockPos chunkPos : BlockPos.iterate(chunk.getPos().getStartX(), startY, chunk.getPos().getStartZ(),
 			chunk.getPos().getEndX(), endY, chunk.getPos().getEndZ())) {
-
-			// Check if the block at the current position is an instance of MinerBlock
 			if (world.getBlockState(chunkPos).getBlock() instanceof MinerBlock) {
-				count++; // Increment the counter if it is a MinerBlock
+				count++;
 			}
 		}
 
-		// Return the total count of MinerBlock instances in the chunk
 		return count;
 	}
 
-
-	//
 	@Override
 	protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
 		super.appendProperties(builder);
-		// Add the HORIZONTAL_FACING property
 		builder.add(POWERED, OPENED, DROPPED_ITEM, READY);
 	}
-
 }
