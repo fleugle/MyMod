@@ -224,7 +224,7 @@ public class MinerBlock extends HorizontallyDirectionalBlock{
 
 	}
 
-	// Method to count the number of MinerBlock instances in the current chunk
+	/*// Method to count the number of MinerBlock instances in the current chunk
 	private int countMinerBlocksInChunk(ServerWorld world, BlockPos pos) {
 		int count = 0;
 		Chunk chunk = world.getChunk(pos);
@@ -234,7 +234,33 @@ public class MinerBlock extends HorizontallyDirectionalBlock{
 			}
 		}
 		return count;
+	}*/
+
+	// Method to count the number of MinerBlock instances in the current chunk
+	private int countMinerBlocksInChunk(ServerWorld world, BlockPos pos) {
+		int count = 0;
+
+		// Get the chunk containing the given position
+		Chunk chunk = world.getChunk(pos);
+
+		// Define the vertical range to check (8 blocks above and below the current position)
+		int startY = Math.max(world.getBottomY(), pos.getY() - 8); // Ensure the startY is not below the world's minimum height
+		int endY = Math.min(world.getTopY() - 1, pos.getY() + 8); // Ensure the endY is within the world's maximum height
+
+		// Iterate over block positions within the chunk and the specified vertical range
+		for (BlockPos chunkPos : BlockPos.iterate(chunk.getPos().getStartX(), startY, chunk.getPos().getStartZ(),
+			chunk.getPos().getEndX(), endY, chunk.getPos().getEndZ())) {
+
+			// Check if the block at the current position is an instance of MinerBlock
+			if (world.getBlockState(chunkPos).getBlock() instanceof MinerBlock) {
+				count++; // Increment the counter if it is a MinerBlock
+			}
+		}
+
+		// Return the total count of MinerBlock instances in the chunk
+		return count;
 	}
+
 
 	@Override
 	protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
