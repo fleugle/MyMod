@@ -24,6 +24,7 @@ public class MinerBlock extends HorizontallyDirectionalBlock{
 	public static final BooleanProperty POWERED = Properties.POWERED;
 	public static final BooleanProperty OPENED = BooleanProperty.of("opened");
 	public static final BooleanProperty DROPPED_ITEM = BooleanProperty.of("dropped_item");
+	public static final BooleanProperty READY = BooleanProperty.of("ready");
 
 
 	public MinerBlock(Settings settings) {
@@ -31,7 +32,8 @@ public class MinerBlock extends HorizontallyDirectionalBlock{
 		setDefaultState(this.stateManager.getDefaultState()
 			.with(POWERED, false)
 			.with(OPENED, false)
-			.with(DROPPED_ITEM, false));
+			.with(DROPPED_ITEM, false)
+			.with(READY, false));
 	}
 
 	// Method to scan blocks underneath
@@ -206,9 +208,22 @@ public class MinerBlock extends HorizontallyDirectionalBlock{
 	@Override
 	public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, RandomGenerator random) {
 
-		if(state.get(OPENED)){
-			world.setBlockState(pos, state.with(OPENED, false), Block.NOTIFY_ALL);
+		while (state.get(POWERED)){
+
+			if(!state.get(DROPPED_ITEM)){
+				world.setBlockState(pos, state.with(OPENED, true), Block.NOTIFY_ALL);
+				world.scheduleBlockTick(pos, this, 45);
+			}
+
+			if(state.get(OPENED)){
+				world.setBlockState(pos, state.with(OPENED, false), Block.NOTIFY_ALL);
+				world.setBlockState(pos, state.with(READY, true), Block.NOTIFY_ALL);
+			}
+			break;
 		}
+
+
+
 
 		/*
 		*
@@ -224,17 +239,10 @@ public class MinerBlock extends HorizontallyDirectionalBlock{
 
 	}
 
-	/*// Method to count the number of MinerBlock instances in the current chunk
-	private int countMinerBlocksInChunk(ServerWorld world, BlockPos pos) {
-		int count = 0;
-		Chunk chunk = world.getChunk(pos);
-		for (BlockPos chunkPos : BlockPos.iterate(chunk.getPos().getStartX(), 0, chunk.getPos().getStartZ(), chunk.getPos().getEndX(), world.getHeight(), chunk.getPos().getEndZ())) {
-			if (world.getBlockState(chunkPos).getBlock() instanceof MinerBlock) {
-				count++;
-			}
-		}
-		return count;
-	}*/
+	// Method to calculate the final cooldown based on the number of MinerBlock instances and the initial cooldown
+	private int calculateFinalCooldown(int minerBlockCount, int initialCooldown) {
+		return (int) (initialCooldown + (3 * Math.log(minerBlockCount +1) / Math.log(2)) + (double) minerBlockCount / 4);
+	}
 
 	// Method to count the number of MinerBlock instances in the current chunk
 	private int countMinerBlocksInChunk(ServerWorld world, BlockPos pos) {
@@ -267,7 +275,7 @@ public class MinerBlock extends HorizontallyDirectionalBlock{
 	protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
 		super.appendProperties(builder);
 		// Add the HORIZONTAL_FACING property
-		builder.add(POWERED, OPENED, DROPPED_ITEM);
+		builder.add(POWERED, OPENED, DROPPED_ITEM, READY);
 	}
 
 }
