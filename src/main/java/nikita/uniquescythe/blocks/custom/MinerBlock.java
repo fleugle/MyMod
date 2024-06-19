@@ -1,4 +1,5 @@
 package nikita.uniquescythe.blocks.custom;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -20,11 +21,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class MinerBlock extends HorizontalFacingBlock {
+public class MinerBlock extends HorizontallyDirectionalBlock {
 	public static final BooleanProperty POWERED = Properties.POWERED;
 	public static final BooleanProperty OPENED = BooleanProperty.of("opened");
 	public static final BooleanProperty DROPPED_ITEM = BooleanProperty.of("dropped_item");
-	public static final BooleanProperty READY = BooleanProperty.of("ready");
+	/*public static final BooleanProperty READY = BooleanProperty.of("ready");*/
+	public static final BooleanProperty FOUND_RESOURCE = BooleanProperty.of("found_resource");
 
 	public MinerBlock(Settings settings) {
 		super(settings);
@@ -32,55 +34,64 @@ public class MinerBlock extends HorizontalFacingBlock {
 			.with(POWERED, false)
 			.with(OPENED, false)
 			.with(DROPPED_ITEM, false)
-			.with(READY, false));
+			/*.with(READY, false)*/
+			.with(FOUND_RESOURCE, false)
+			.with(FACING, Direction.NORTH));
 	}
+
+	@Override
+	public void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean notify) {
+		if (oldState.getBlock() != state.getBlock() && world instanceof ServerWorld) {
+			world.scheduleBlockTick(pos, this, 2);
+		}
+	}
+
 	@Override
 	public void neighborUpdate(BlockState state, World world, BlockPos pos, Block sourceBlock, BlockPos sourcePos, boolean notify) {
 		boolean isPowered = world.isReceivingRedstonePower(pos);
 		if (isPowered != state.get(POWERED) && world instanceof ServerWorld) {
 			world.setBlockState(pos, state.with(POWERED, isPowered), Block.NOTIFY_ALL);
 			if (isPowered) {
-				scanBlocksBelow(state, (ServerWorld) world, pos);
-				world.scheduleBlockTick(pos, this, 1);
+				world.scheduleBlockTick(pos, this, 2);
 			}
 		}
 	}
 
 	@Override
 	public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, RandomGenerator random) {
+		/*scanBlocksBelow(state, world, pos);
 		if (state.get(POWERED)) {
-			scanBlocksBelow(state, world, pos);
-
-
-			//logical error: it assigns OPENED even if SHOULD NOT
-			if (!state.get(DROPPED_ITEM)) {
+			if (!state.get(DROPPED_ITEM) && state.get(FOUND_RESOURCE)) {
 				if (!state.get(OPENED)) {
 					world.setBlockState(pos, state.with(OPENED, true), Block.NOTIFY_ALL);
-					// Add sound effects here if needed
+					scanBlocksBelow(state, world, pos);
 				}
 
 				if (state.get(OPENED)) {
 					world.setBlockState(pos, state.with(READY, true), Block.NOTIFY_ALL);
-					// Add sound effects here if needed
+					scanBlocksBelow(state, world, pos);
 				}
 			} else {
+				scanBlocksBelow(state, world, pos);
 				world.setBlockState(pos, state.with(OPENED, false), Block.NOTIFY_ALL);
 				world.setBlockState(pos, state.with(DROPPED_ITEM, false), Block.NOTIFY_ALL);
 			}
 		}
+		world.scheduleBlockTick(pos, this, 1);*/
 
-		// Schedule the next tick
-		world.scheduleBlockTick(pos, this, 1);
+
+		scanBlocksBelow( state, world, pos);
+
+
+
 	}
 
-	// Method to scan blocks underneath
 	public void scanBlocksBelow(BlockState state, ServerWorld world, BlockPos pos) {
 		if (!world.isClient) {
 			boolean isCharged = world.isReceivingRedstonePower(pos);
 			world.setBlockState(pos, state.with(POWERED, isCharged), Block.NOTIFY_ALL);
 
 			if (state.get(POWERED)) {
-				ItemEntity itemEntity;
 				List<ItemStack> possibleItems = new ArrayList<>();
 				for (int i = 1; i <= 50; i++) {
 					BlockState checkState = world.getBlockState(pos.down(i));
@@ -116,15 +127,26 @@ public class MinerBlock extends HorizontalFacingBlock {
 				}
 
 				if (!possibleItems.isEmpty()) {
+					// Set FOUND_RESOURCE to true
+					/*world.setBlockState(pos, state.with(FOUND_RESOURCE, true));*/
+
+					// Fetch the updated block state to ensure it has been applied
+
+
 					int delay = calculateFinalCooldown(countMinerBlocksInChunk(world, pos), 800);
+
 
 					if (!state.get(DROPPED_ITEM)) {
 						world.scheduleBlockTick(pos, this, 45);
-					} else {
+						world.setBlockState(pos, state.with(OPENED, true), NOTIFY_ALL);
+					}
+					else {
 						world.scheduleBlockTick(pos, this, delay);
+						world.setBlockState(pos, state.with(OPENED, false), NOTIFY_ALL);
 					}
 
-					if (state.get(READY)) {
+
+					if (state.get(OPENED) && !state.get(DROPPED_ITEM)) {
 						Random random = new Random();
 						ItemStack selectedItem = possibleItems.get(random.nextInt(possibleItems.size()));
 
@@ -133,17 +155,17 @@ public class MinerBlock extends HorizontalFacingBlock {
 						double spawnY = pos.getY() + 0.25;
 						double spawnZ = pos.getZ() + 0.5 + facing.getOffsetZ() * 0.6;
 
-						itemEntity = new ItemEntity(world, spawnX, spawnY, spawnZ, selectedItem);
+						ItemEntity itemEntity = new ItemEntity(world, spawnX, spawnY, spawnZ, selectedItem);
 
 						double velocityX = facing.getOffsetX() * 0.2;
 						double velocityY = 0;
-						double velocityZ = facing.getOffsetZ() * 0.2;
+						double velocityZ = 0;
 						itemEntity.setVelocity(velocityX, velocityY, velocityZ);
 
 						world.spawnEntity(itemEntity);
 
-						world.setBlockState(pos, state.with(READY, false));
 						world.setBlockState(pos, state.with(DROPPED_ITEM, true));
+						world.scheduleBlockTick(pos, this, 2);
 					}
 				}
 			}
@@ -174,6 +196,6 @@ public class MinerBlock extends HorizontalFacingBlock {
 	@Override
 	protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
 		super.appendProperties(builder);
-		builder.add(POWERED, OPENED, DROPPED_ITEM, READY);
+		builder.add(POWERED, OPENED, DROPPED_ITEM, /*READY,*/ FOUND_RESOURCE);
 	}
 }

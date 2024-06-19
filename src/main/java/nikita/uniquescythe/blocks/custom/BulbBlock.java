@@ -31,7 +31,7 @@ public class BulbBlock
 	public void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean notify) {
 		if (oldState.getBlock() != state.getBlock() && world instanceof ServerWorld) {
 			ServerWorld serverWorld = (ServerWorld)world;
-			this.update(state, serverWorld, pos);
+			world.scheduleBlockTick(pos, this, 1);
 		}
 	}
 
