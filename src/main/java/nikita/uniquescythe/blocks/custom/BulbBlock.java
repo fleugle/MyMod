@@ -30,7 +30,7 @@ public class BulbBlock
 	@Override
 	public void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean notify) {
 		if (oldState.getBlock() != state.getBlock() && world instanceof ServerWorld) {
-			ServerWorld serverWorld = (ServerWorld)world;
+			//ServerWorld serverWorld = (ServerWorld)world;
 			world.scheduleBlockTick(pos, this, 1);
 		}
 	}
@@ -39,7 +39,7 @@ public class BulbBlock
 	public void neighborUpdate(BlockState state, World world, BlockPos pos, Block sourceBlock, BlockPos sourcePos, boolean notify) {
 		if (world instanceof ServerWorld) {
 
-			ServerWorld serverWorld = (ServerWorld)world;
+			//ServerWorld serverWorld = (ServerWorld)world;
 			world.scheduleBlockTick(pos, this, 1);
 		}
 	}

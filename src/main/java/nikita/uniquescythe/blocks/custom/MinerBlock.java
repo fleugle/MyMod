@@ -41,8 +41,10 @@ public class MinerBlock extends HorizontallyDirectionalBlock {
 
 	@Override
 	public void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean notify) {
+		boolean isPowered = world.isReceivingRedstonePower(pos);
 		if (oldState.getBlock() != state.getBlock() && world instanceof ServerWorld) {
-			world.scheduleBlockTick(pos, this, 2);
+			if (isPowered != state.get(POWERED) && world instanceof ServerWorld) world.setBlockState(pos, state.with(POWERED, isPowered), Block.NOTIFY_ALL);
+			world.scheduleBlockTick(pos,this, 45);
 		}
 	}
 
@@ -52,46 +54,27 @@ public class MinerBlock extends HorizontallyDirectionalBlock {
 		if (isPowered != state.get(POWERED) && world instanceof ServerWorld) {
 			world.setBlockState(pos, state.with(POWERED, isPowered), Block.NOTIFY_ALL);
 			if (isPowered) {
-				world.scheduleBlockTick(pos, this, 2);
+				world.scheduleBlockTick(pos,this, 45);
 			}
 		}
 	}
 
 	@Override
 	public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, RandomGenerator random) {
-		/*scanBlocksBelow(state, world, pos);
-		if (state.get(POWERED)) {
-			if (!state.get(DROPPED_ITEM) && state.get(FOUND_RESOURCE)) {
-				if (!state.get(OPENED)) {
-					world.setBlockState(pos, state.with(OPENED, true), Block.NOTIFY_ALL);
-					scanBlocksBelow(state, world, pos);
-				}
-
-				if (state.get(OPENED)) {
-					world.setBlockState(pos, state.with(READY, true), Block.NOTIFY_ALL);
-					scanBlocksBelow(state, world, pos);
-				}
-			} else {
-				scanBlocksBelow(state, world, pos);
-				world.setBlockState(pos, state.with(OPENED, false), Block.NOTIFY_ALL);
-				world.setBlockState(pos, state.with(DROPPED_ITEM, false), Block.NOTIFY_ALL);
-			}
-		}
-		world.scheduleBlockTick(pos, this, 1);*/
-
 
 		scanBlocksBelow( state, world, pos);
 
-
-
 	}
 
-	public void scanBlocksBelow(BlockState state, ServerWorld world, BlockPos pos) {
+	public void scanBlocksBelow(BlockState oldState, ServerWorld world, BlockPos pos) {
+
+		BlockState state = oldState;
+
 		if (!world.isClient) {
 			boolean isCharged = world.isReceivingRedstonePower(pos);
 			world.setBlockState(pos, state.with(POWERED, isCharged), Block.NOTIFY_ALL);
 
-			if (state.get(POWERED)) {
+			if (oldState.get(POWERED)) {
 				List<ItemStack> possibleItems = new ArrayList<>();
 				for (int i = 1; i <= 50; i++) {
 					BlockState checkState = world.getBlockState(pos.down(i));
@@ -133,20 +116,22 @@ public class MinerBlock extends HorizontallyDirectionalBlock {
 					// Fetch the updated block state to ensure it has been applied
 
 
-					int delay = calculateFinalCooldown(countMinerBlocksInChunk(world, pos), 800);
+					int delay = calculateFinalCooldown(countMinerBlocksInChunk(world, pos), 45);
 
 
-					if (!state.get(DROPPED_ITEM)) {
+					if (!oldState.get(DROPPED_ITEM)) {
 						world.scheduleBlockTick(pos, this, 45);
-						world.setBlockState(pos, state.with(OPENED, true), NOTIFY_ALL);
+						if(!oldState.get(OPENED)) world.setBlockState(pos, state.with(OPENED, true), NOTIFY_ALL);
 					}
 					else {
 						world.scheduleBlockTick(pos, this, delay);
-						world.setBlockState(pos, state.with(OPENED, false), NOTIFY_ALL);
+						if(oldState.get(DROPPED_ITEM)) world.setBlockState(pos, state.with(DROPPED_ITEM, false), NOTIFY_ALL);
+						if(oldState.get(OPENED)) world.setBlockState(pos, state.with(OPENED, false), NOTIFY_ALL);
 					}
 
 
-					if (state.get(OPENED) && !state.get(DROPPED_ITEM)) {
+
+					if (oldState.get(OPENED) && !oldState.get(DROPPED_ITEM)) {
 						Random random = new Random();
 						ItemStack selectedItem = possibleItems.get(random.nextInt(possibleItems.size()));
 
@@ -164,9 +149,11 @@ public class MinerBlock extends HorizontallyDirectionalBlock {
 
 						world.spawnEntity(itemEntity);
 
-						world.setBlockState(pos, state.with(DROPPED_ITEM, true));
-						world.scheduleBlockTick(pos, this, 2);
+						if(!oldState.get(DROPPED_ITEM)) world.setBlockState(pos, state.with(DROPPED_ITEM, true));
+
+
 					}
+
 				}
 			}
 		}
