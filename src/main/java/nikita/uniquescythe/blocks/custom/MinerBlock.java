@@ -69,6 +69,7 @@ public class MinerBlock extends HorizontallyDirectionalBlock {
 	public void scanBlocksBelow(BlockState oldState, ServerWorld world, BlockPos pos) {
 
 		BlockState state = oldState;
+		int delay = calculateFinalCooldown(countMinerBlocksInChunk(world, pos), 800);
 
 		if (!world.isClient) {
 			boolean isCharged = world.isReceivingRedstonePower(pos);
@@ -110,24 +111,8 @@ public class MinerBlock extends HorizontallyDirectionalBlock {
 				}
 
 				if (!possibleItems.isEmpty()) {
-					// Set FOUND_RESOURCE to true
-					/*world.setBlockState(pos, state.with(FOUND_RESOURCE, true));*/
 
-					// Fetch the updated block state to ensure it has been applied
-
-
-					int delay = calculateFinalCooldown(countMinerBlocksInChunk(world, pos), 45);
-
-
-					if (!oldState.get(DROPPED_ITEM)) {
-						world.scheduleBlockTick(pos, this, 45);
-						if(!oldState.get(OPENED)) world.setBlockState(pos, state.with(OPENED, true), NOTIFY_ALL);
-					}
-					else {
-						world.scheduleBlockTick(pos, this, delay);
-						if(oldState.get(DROPPED_ITEM)) world.setBlockState(pos, state.with(DROPPED_ITEM, false), NOTIFY_ALL);
-						if(oldState.get(OPENED)) world.setBlockState(pos, state.with(OPENED, false), NOTIFY_ALL);
-					}
+					if (!oldState.get(FOUND_RESOURCE)) world.setBlockState(pos, oldState.with(FOUND_RESOURCE, true));
 
 
 
@@ -136,31 +121,72 @@ public class MinerBlock extends HorizontallyDirectionalBlock {
 						ItemStack selectedItem = possibleItems.get(random.nextInt(possibleItems.size()));
 
 						Direction facing = state.get(HorizontalFacingBlock.FACING);
-						double spawnX = pos.getX() + 0.5 + facing.getOffsetX() * 0.6;
+						double spawnX = pos.getX() + 0.5 /*+ facing.getOffsetX() * 0.6*/;
 						double spawnY = pos.getY() + 0.25;
-						double spawnZ = pos.getZ() + 0.5 + facing.getOffsetZ() * 0.6;
+						double spawnZ = pos.getZ() + 0.5 /*+ facing.getOffsetZ() * 0.6*/;
 
-						ItemEntity itemEntity = new ItemEntity(world, spawnX, spawnY, spawnZ, selectedItem);
+						double finalSpawnX = spawnX;
+						double finalSpawnY = spawnY;
+						double finalSpawnZ = spawnZ;
+						if (oldState.get(FACING)==Direction.NORTH) {
+							finalSpawnX = spawnX;
+							finalSpawnY = spawnY;
+							finalSpawnZ = spawnZ - 0.5;
+						}
+						if (oldState.get(FACING)==Direction.SOUTH) {
+							finalSpawnX = spawnX;
+							finalSpawnY = spawnY;
+							finalSpawnZ = spawnZ + 0.5;
+						}
+						if (oldState.get(FACING)==Direction.EAST) {
+							finalSpawnX = spawnX + 0.5;
+							finalSpawnY = spawnY;
+							finalSpawnZ = spawnZ;
+						}
+						if (oldState.get(FACING)==Direction.WEST) {
+							finalSpawnX = spawnX - 0.5;
+							finalSpawnY = spawnY;
+							finalSpawnZ = spawnZ;
+						}
 
-						double velocityX = facing.getOffsetX() * 0.2;
-						double velocityY = 0;
-						double velocityZ = 0;
-						itemEntity.setVelocity(velocityX, velocityY, velocityZ);
+						ItemEntity itemEntity = new ItemEntity(world, finalSpawnX, finalSpawnY, finalSpawnZ, selectedItem);
+
 
 						world.spawnEntity(itemEntity);
 
-						if(!oldState.get(DROPPED_ITEM)) world.setBlockState(pos, state.with(DROPPED_ITEM, true));
 
+						if(!oldState.get(DROPPED_ITEM)) world.setBlockState(pos, state.with(DROPPED_ITEM, true));
+						/*if(oldState.get(FOUND_RESOURCE)) world.setBlockState(pos, oldState.with(FOUND_RESOURCE, false));*/
 
 					}
 
+
+
+
 				}
+				else {
+					if (oldState.get(FOUND_RESOURCE)) world.setBlockState(pos, oldState.with(FOUND_RESOURCE, false));
+				}
+
+				if (!oldState.get(DROPPED_ITEM)) {
+
+					if(!oldState.get(OPENED) && oldState.get(FOUND_RESOURCE)) world.setBlockState(pos, state.with(OPENED, true), NOTIFY_ALL);
+					world.scheduleBlockTick(pos, this, 45);
+				}
+				else {
+
+					if(oldState.get(DROPPED_ITEM)) world.setBlockState(pos, state.with(DROPPED_ITEM, false), NOTIFY_ALL);
+					if(oldState.get(OPENED)) world.setBlockState(pos, state.with(OPENED, false), NOTIFY_ALL);
+					world.scheduleBlockTick(pos, this, delay);
+				}
+
 			}
 		}
 	}
 
 	private int calculateFinalCooldown(int minerBlockCount, int initialCooldown) {
-		return (int) (initialCooldown + (3 * Math.log(minerBlockCount + 1) / Math.log(2)) + (double) minerBlockCount / 4);
+		return (int) (initialCooldown + (8 * ((minerBlockCount - 1)*(minerBlockCount - 1))) );
+
 	}
 
 	private int countMinerBlocksInChunk(ServerWorld world, BlockPos pos) {
