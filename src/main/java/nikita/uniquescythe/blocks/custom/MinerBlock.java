@@ -4,24 +4,31 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.HorizontalFacingBlock;
+import net.minecraft.block.dispenser.DispenserBehavior;
+import net.minecraft.block.dispenser.ItemDispenserBehavior;
+import net.minecraft.block.entity.DispenserBlockEntity;
+import net.minecraft.block.entity.HopperBlockEntity;
 import net.minecraft.entity.ItemEntity;
+import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.Properties;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.*;
 import net.minecraft.util.random.RandomGenerator;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.Chunk;
+import nikita.uniquescythe.utility.MinerDispenseBehavior;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 public class MinerBlock extends HorizontallyDirectionalBlock {
+	private static final DispenserBehavior BEHAVIOR = new MinerDispenseBehavior();
 	public static final BooleanProperty POWERED = Properties.POWERED;
 	public static final BooleanProperty OPENED = BooleanProperty.of("opened");
 	public static final BooleanProperty DROPPED_ITEM = BooleanProperty.of("dropped_item");
@@ -37,6 +44,14 @@ public class MinerBlock extends HorizontallyDirectionalBlock {
 			/*.with(READY, false)*/
 			.with(FOUND_RESOURCE, false)
 			.with(FACING, Direction.NORTH));
+	}
+
+	public static Position getOutputLocation(BlockPointer pointer) {
+		Direction direction = (Direction)pointer.getBlockState().get(FACING);
+		double d = pointer.getX() + 0.7 * (double)direction.getOffsetX();
+		double e = pointer.getY() + 0.7 * (double)direction.getOffsetY();
+		double f = pointer.getZ() + 0.7 * (double)direction.getOffsetZ();
+		return new PositionImpl(d, e, f);
 	}
 
 	@Override
@@ -67,7 +82,7 @@ public class MinerBlock extends HorizontallyDirectionalBlock {
 	}
 
 	public void scanBlocksBelow(BlockState oldState, ServerWorld world, BlockPos pos) {
-
+		BlockPointerImpl blockPointerImpl = new BlockPointerImpl(world, pos);
 		BlockState state = oldState;
 		int delay = calculateFinalCooldown(countMinerBlocksInChunk(world, pos), 800);
 
@@ -120,10 +135,12 @@ public class MinerBlock extends HorizontallyDirectionalBlock {
 						Random random = new Random();
 						ItemStack selectedItem = possibleItems.get(random.nextInt(possibleItems.size()));
 
-						Direction facing = state.get(HorizontalFacingBlock.FACING);
-						double spawnX = pos.getX() + 0.5 /*+ facing.getOffsetX() * 0.6*/;
+						dispenseResource(world, pos, possibleItems.size(), selectedItem);
+
+						/*Direction facing = state.get(HorizontalFacingBlock.FACING);
+						double spawnX = pos.getX() *//*+ facing.getOffsetX() * 0.6*//*;
 						double spawnY = pos.getY() + 0.25;
-						double spawnZ = pos.getZ() + 0.5 /*+ facing.getOffsetZ() * 0.6*/;
+						double spawnZ = pos.getZ() *//*+ facing.getOffsetZ() * 0.6*//*;
 
 						double finalSpawnX = spawnX;
 						double finalSpawnY = spawnY;
@@ -131,20 +148,20 @@ public class MinerBlock extends HorizontallyDirectionalBlock {
 						if (oldState.get(FACING)==Direction.NORTH) {
 							finalSpawnX = spawnX;
 							finalSpawnY = spawnY;
-							finalSpawnZ = spawnZ - 0.5;
+							finalSpawnZ = spawnZ - 1;
 						}
 						if (oldState.get(FACING)==Direction.SOUTH) {
 							finalSpawnX = spawnX;
 							finalSpawnY = spawnY;
-							finalSpawnZ = spawnZ + 0.5;
+							finalSpawnZ = spawnZ + 1;
 						}
 						if (oldState.get(FACING)==Direction.EAST) {
-							finalSpawnX = spawnX + 0.5;
+							finalSpawnX = spawnX + 1;
 							finalSpawnY = spawnY;
 							finalSpawnZ = spawnZ;
 						}
 						if (oldState.get(FACING)==Direction.WEST) {
-							finalSpawnX = spawnX - 0.5;
+							finalSpawnX = spawnX - 1;
 							finalSpawnY = spawnY;
 							finalSpawnZ = spawnZ;
 						}
@@ -152,8 +169,16 @@ public class MinerBlock extends HorizontallyDirectionalBlock {
 						ItemEntity itemEntity = new ItemEntity(world, finalSpawnX, finalSpawnY, finalSpawnZ, selectedItem);
 
 
-						world.spawnEntity(itemEntity);
+						world.spawnEntity(itemEntity);*/
+						if (world instanceof ServerWorld ) {
 
+							// Spawn smoke particles in a radius of 2 blocks
+							((ServerWorld) world).spawnParticles(ParticleTypes.CAMPFIRE_COSY_SMOKE,
+								pos.getX()  + 0.5,
+								pos.getY()  + 1,
+								pos.getZ()  + 0.5,
+								1, 0, 0, 0, 0.1);
+						}
 
 						if(!oldState.get(DROPPED_ITEM)) world.setBlockState(pos, state.with(DROPPED_ITEM, true));
 						/*if(oldState.get(FOUND_RESOURCE)) world.setBlockState(pos, oldState.with(FOUND_RESOURCE, false));*/
@@ -205,6 +230,23 @@ public class MinerBlock extends HorizontallyDirectionalBlock {
 
 		return count;
 	}
+
+	protected void dispenseResource(ServerWorld world, BlockPos pos, int itemsAmount, ItemStack stack) {
+		BlockPointerImpl blockPointerImpl = new BlockPointerImpl(world, pos);
+
+		if (itemsAmount < 0) {
+			world.syncWorldEvent(1001, pos, 0);
+		} else {
+			ItemStack itemStack = stack;
+			if (!itemStack.isEmpty()) {
+				//Direction direction = (Direction)world.getBlockState(pos).get(FACING);
+
+				BEHAVIOR.dispense(blockPointerImpl, itemStack);
+
+			}
+		}
+	}
+
 
 	@Override
 	protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
