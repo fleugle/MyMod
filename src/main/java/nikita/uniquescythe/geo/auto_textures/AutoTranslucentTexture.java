@@ -32,20 +32,33 @@ import org.jetbrains.annotations.Nullable;
 
 public class AutoTranslucentTexture extends GeoAbstractTexture {
 
-	private static final RenderPhase.Shader SHADER_STATE = new RenderPhase.Shader(GameRenderer::getRenderTypeEntityTranslucentEmissiveShader);
+	private static final RenderPhase.Shader SHADER_STATE = new RenderPhase.Shader(GameRenderer::getRenderTypeEntityTranslucentShader);
 	private static final RenderPhase.Transparency TRANSPARENCY_STATE = new RenderPhase.Transparency("translucent_transparency", () -> {
-		RenderSystem.enableBlend();
+		//RenderSystem.enableBlend();
 		RenderSystem.disableCull();
+		//RenderSystem.defaultBlendFunc();
 		RenderSystem.blendFuncSeparate(SourceFactor.SRC_ALPHA, DestFactor.ONE_MINUS_SRC_ALPHA, SourceFactor.ONE, DestFactor.ONE_MINUS_SRC_ALPHA);
 	}, () -> {
-		RenderSystem.disableBlend();
+		//RenderSystem.disableBlend();
 		RenderSystem.defaultBlendFunc();
 		RenderSystem.enableCull();
 	});
 	private static final RenderPhase.WriteMaskState WRITE_MASK = new RenderPhase.WriteMaskState(true, true);
 	private static final Function<Identifier, RenderLayer> RENDER_TYPE_FUNCTION = Util.memoize((texture) -> {
 		RenderPhase.Texture textureState = new RenderPhase.Texture(texture, false, false);
-		return RenderLayer.of("geo_translucency_layer", VertexFormats.POSITION_COLOR_TEXTURE_OVERLAY_LIGHT_NORMAL, DrawMode.QUADS, 256, false, true, MultiPhaseParameters.builder().shader(SHADER_STATE).texture(textureState).transparency(TRANSPARENCY_STATE).writeMaskState(WRITE_MASK).build(false));
+		return RenderLayer.of("geo_translucency_layer",
+			VertexFormats.POSITION_COLOR_TEXTURE_OVERLAY_LIGHT_NORMAL,
+			DrawMode.QUADS,
+			256,
+			false,
+			true,
+			MultiPhaseParameters
+				.builder()
+				.shader(SHADER_STATE)
+				.texture(textureState)
+				.transparency(TRANSPARENCY_STATE)
+				.writeMaskState(WRITE_MASK)
+				.build(false));
 	});
 
 	protected final Identifier textureBase;
@@ -59,7 +72,7 @@ public class AutoTranslucentTexture extends GeoAbstractTexture {
 	protected static Identifier getTranslucencyResource(Identifier baseResource) {
 		Identifier path = appendToPath(baseResource, "_translucencymask");
 		generateTexture(path, (textureManager) -> {
-			textureManager.registerTexture(path, new mod.azure.azurelib.cache.texture.AutoGlowingTexture(baseResource, path));
+			textureManager.registerTexture(path, new AutoTranslucentTexture(baseResource, path));
 		});
 		return path;
 	}
@@ -128,6 +141,6 @@ public class AutoTranslucentTexture extends GeoAbstractTexture {
 	}
 
 	public static RenderLayer getRenderType(Identifier texture) {
-		return (RenderLayer)RENDER_TYPE_FUNCTION.apply(getTranslucencyResource(texture));
+		return RENDER_TYPE_FUNCTION.apply(getTranslucencyResource(texture));
 	}
 }
