@@ -137,39 +137,6 @@ public class MinerBlock extends HorizontallyDirectionalBlock {
 
 						dispenseResource(world, pos, possibleItems.size(), selectedItem);
 
-						/*Direction facing = state.get(HorizontalFacingBlock.FACING);
-						double spawnX = pos.getX() *//*+ facing.getOffsetX() * 0.6*//*;
-						double spawnY = pos.getY() + 0.25;
-						double spawnZ = pos.getZ() *//*+ facing.getOffsetZ() * 0.6*//*;
-
-						double finalSpawnX = spawnX;
-						double finalSpawnY = spawnY;
-						double finalSpawnZ = spawnZ;
-						if (oldState.get(FACING)==Direction.NORTH) {
-							finalSpawnX = spawnX;
-							finalSpawnY = spawnY;
-							finalSpawnZ = spawnZ - 1;
-						}
-						if (oldState.get(FACING)==Direction.SOUTH) {
-							finalSpawnX = spawnX;
-							finalSpawnY = spawnY;
-							finalSpawnZ = spawnZ + 1;
-						}
-						if (oldState.get(FACING)==Direction.EAST) {
-							finalSpawnX = spawnX + 1;
-							finalSpawnY = spawnY;
-							finalSpawnZ = spawnZ;
-						}
-						if (oldState.get(FACING)==Direction.WEST) {
-							finalSpawnX = spawnX - 1;
-							finalSpawnY = spawnY;
-							finalSpawnZ = spawnZ;
-						}
-
-						ItemEntity itemEntity = new ItemEntity(world, finalSpawnX, finalSpawnY, finalSpawnZ, selectedItem);
-
-
-						world.spawnEntity(itemEntity);*/
 						if (world instanceof ServerWorld ) {
 
 							// Spawn smoke particles in a radius of 2 blocks
