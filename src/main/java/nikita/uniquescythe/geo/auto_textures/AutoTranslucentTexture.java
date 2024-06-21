@@ -34,12 +34,11 @@ public class AutoTranslucentTexture extends GeoAbstractTexture {
 
 	private static final RenderPhase.Shader SHADER_STATE = new RenderPhase.Shader(GameRenderer::getRenderTypeEntityTranslucentShader);
 	private static final RenderPhase.Transparency TRANSPARENCY_STATE = new RenderPhase.Transparency("translucent_transparency", () -> {
-		//RenderSystem.enableBlend();
+		RenderSystem.enableBlend();
 		RenderSystem.disableCull();
-		//RenderSystem.defaultBlendFunc();
 		RenderSystem.blendFuncSeparate(SourceFactor.SRC_ALPHA, DestFactor.ONE_MINUS_SRC_ALPHA, SourceFactor.ONE, DestFactor.ONE_MINUS_SRC_ALPHA);
 	}, () -> {
-		//RenderSystem.disableBlend();
+		RenderSystem.disableBlend();
 		RenderSystem.defaultBlendFunc();
 		RenderSystem.enableCull();
 	});
@@ -103,10 +102,10 @@ public class AutoTranslucentTexture extends GeoAbstractTexture {
 		boolean clamp = textureBaseMeta.isPresent() && ((TextureResourceMetadata)textureBaseMeta.get()).shouldClamp();
 
 		try {
-			Optional<Resource> glowLayerResource = resourceManager.getResource(this.translucencyLayer);
+			Optional<Resource> translucentLayerResource = resourceManager.getResource(this.translucencyLayer);
 			GeoGlowingTextureMeta glowLayerMeta = null;
-			if (glowLayerResource.isPresent()) {
-				translucencyImage = NativeImage.read(((Resource)glowLayerResource.get()).open());
+			if (translucentLayerResource.isPresent()) {
+				translucencyImage = NativeImage.read(((Resource)translucentLayerResource.get()).open());
 				glowLayerMeta = GeoGlowingTextureMeta.fromExistingImage(translucencyImage);
 			} else {
 				Optional<GeoGlowingTextureMeta> meta = textureBaseResource.getMetadata().readMetadata(GeoGlowingTextureMeta.DESERIALIZER);
