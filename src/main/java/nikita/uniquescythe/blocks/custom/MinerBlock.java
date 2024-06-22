@@ -1,9 +1,6 @@
 package nikita.uniquescythe.blocks.custom;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.HorizontalFacingBlock;
+import net.minecraft.block.*;
 import net.minecraft.block.dispenser.DispenserBehavior;
 import net.minecraft.block.dispenser.ItemDispenserBehavior;
 import net.minecraft.block.entity.DispenserBlockEntity;
@@ -21,6 +18,7 @@ import net.minecraft.util.math.*;
 import net.minecraft.util.random.RandomGenerator;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.Chunk;
+import nikita.uniquescythe.particles.ModParticleTypes;
 import nikita.uniquescythe.utility.MinerDispenseBehavior;
 
 import java.util.ArrayList;
@@ -77,14 +75,15 @@ public class MinerBlock extends HorizontallyDirectionalBlock {
 	@Override
 	public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, RandomGenerator random) {
 
+
 		scanBlocksBelow( state, world, pos);
 
 	}
 
 	public void scanBlocksBelow(BlockState oldState, ServerWorld world, BlockPos pos) {
-		BlockPointerImpl blockPointerImpl = new BlockPointerImpl(world, pos);
 		BlockState state = oldState;
 		int delay = calculateFinalCooldown(countMinerBlocksInChunk(world, pos), 800);
+
 
 		if (!world.isClient) {
 			boolean isCharged = world.isReceivingRedstonePower(pos);
@@ -130,50 +129,49 @@ public class MinerBlock extends HorizontallyDirectionalBlock {
 					if (!oldState.get(FOUND_RESOURCE)) world.setBlockState(pos, oldState.with(FOUND_RESOURCE, true));
 
 
-
 					if (oldState.get(OPENED) && !oldState.get(DROPPED_ITEM)) {
 						Random random = new Random();
 						ItemStack selectedItem = possibleItems.get(random.nextInt(possibleItems.size()));
 
-						dispenseResource(world, pos, possibleItems.size(), selectedItem);
-
-						if (world instanceof ServerWorld ) {
+						if (world instanceof ServerWorld) {
 
 							// Spawn smoke particles in a radius of 2 blocks
-							((ServerWorld) world).spawnParticles(ParticleTypes.CAMPFIRE_COSY_SMOKE,
+							world.spawnParticles(ParticleTypes.SMOKE,
 								pos.getX()  + 0.5,
-								pos.getY()  + 1,
+								pos.getY()  + 1.1,
 								pos.getZ()  + 0.5,
-								1, 0, 0, 0, 0.1);
+								0, 0, 10, 0, 0);
 						}
+						dispenseResource(world, pos, possibleItems.size(), selectedItem);
 
-						if(!oldState.get(DROPPED_ITEM)) world.setBlockState(pos, state.with(DROPPED_ITEM, true));
+
+						if (!oldState.get(DROPPED_ITEM)) world.setBlockState(pos, state.with(DROPPED_ITEM, true));
 						/*if(oldState.get(FOUND_RESOURCE)) world.setBlockState(pos, oldState.with(FOUND_RESOURCE, false));*/
 
 					}
 
 
-
-
-				}
-				else {
+				} else {
 					if (oldState.get(FOUND_RESOURCE)) world.setBlockState(pos, oldState.with(FOUND_RESOURCE, false));
 				}
 
 				if (!oldState.get(DROPPED_ITEM)) {
 
-					if(!oldState.get(OPENED) && oldState.get(FOUND_RESOURCE)) world.setBlockState(pos, state.with(OPENED, true), NOTIFY_ALL);
+					if (!oldState.get(OPENED) && oldState.get(FOUND_RESOURCE))
+						world.setBlockState(pos, state.with(OPENED, true), NOTIFY_ALL);
 					world.scheduleBlockTick(pos, this, 45);
-				}
-				else {
+				} else {
 
-					if(oldState.get(DROPPED_ITEM)) world.setBlockState(pos, state.with(DROPPED_ITEM, false), NOTIFY_ALL);
-					if(oldState.get(OPENED)) world.setBlockState(pos, state.with(OPENED, false), NOTIFY_ALL);
+					if (oldState.get(DROPPED_ITEM))
+						world.setBlockState(pos, state.with(DROPPED_ITEM, false), NOTIFY_ALL);
+					if (oldState.get(OPENED)) world.setBlockState(pos, state.with(OPENED, false), NOTIFY_ALL);
 					world.scheduleBlockTick(pos, this, delay);
 				}
 
 			}
 		}
+
+
 	}
 
 	private int calculateFinalCooldown(int minerBlockCount, int initialCooldown) {
@@ -206,7 +204,7 @@ public class MinerBlock extends HorizontallyDirectionalBlock {
 		} else {
 			ItemStack itemStack = stack;
 			if (!itemStack.isEmpty()) {
-				//Direction direction = (Direction)world.getBlockState(pos).get(FACING);
+
 
 				BEHAVIOR.dispense(blockPointerImpl, itemStack);
 
