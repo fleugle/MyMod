@@ -1,145 +1,57 @@
 package nikita.uniquescythe.geo.auto_textures;
 
 
-import com.mojang.blaze3d.platform.GlStateManager.DestFactor;
-import com.mojang.blaze3d.platform.GlStateManager.SourceFactor;
 import com.mojang.blaze3d.systems.RenderCall;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.texture.NativeImage;
+import com.mojang.blaze3d.vertex.VertexFormat;
 import com.mojang.blaze3d.vertex.VertexFormats;
-import com.mojang.blaze3d.vertex.VertexFormat.DrawMode;
 import java.io.IOException;
 import java.util.Optional;
-import java.util.concurrent.ExecutionException;
-import java.util.function.Function;
-import mod.azure.azurelib.AzureLib;
+import java.util.function.BiFunction;
 import mod.azure.azurelib.cache.texture.GeoAbstractTexture;
-import mod.azure.azurelib.platform.Services;
-import mod.azure.azurelib.resource.GeoGlowingTextureMeta;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.render.GameRenderer;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.RenderPhase;
-import net.minecraft.client.render.RenderLayer.MultiPhaseParameters;
-import net.minecraft.client.resource.metadata.TextureResourceMetadata;
-import net.minecraft.client.texture.AbstractTexture;
-import net.minecraft.client.texture.NativeImageBackedTexture;
-import net.minecraft.resource.Resource;
 import net.minecraft.resource.ResourceManager;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Util;
 import org.jetbrains.annotations.Nullable;
 
+
+
+import static net.minecraft.client.render.RenderPhase.*;
+
+
 public class AutoTranslucentTexture extends GeoAbstractTexture {
 
-	private static final RenderPhase.Shader SHADER_STATE = new RenderPhase.Shader(GameRenderer::getRenderTypeEntityTranslucentShader);
-	private static final RenderPhase.Transparency TRANSPARENCY_STATE = new RenderPhase.Transparency("translucent_transparency", () -> {
-		RenderSystem.enableBlend();
-		RenderSystem.disableCull();
-		RenderSystem.blendFuncSeparate(SourceFactor.SRC_ALPHA, DestFactor.ONE_MINUS_SRC_ALPHA, SourceFactor.ONE, DestFactor.ONE_MINUS_SRC_ALPHA);
-	}, () -> {
-		RenderSystem.disableBlend();
-		RenderSystem.defaultBlendFunc();
-		RenderSystem.enableCull();
-	});
-	private static final RenderPhase.WriteMaskState WRITE_MASK = new RenderPhase.WriteMaskState(true, true);
-	private static final Function<Identifier, RenderLayer> RENDER_TYPE_FUNCTION = Util.memoize((texture) -> {
-		RenderPhase.Texture textureState = new RenderPhase.Texture(texture, false, false);
-		return RenderLayer.of("geo_translucency_layer",
-			VertexFormats.POSITION_COLOR_TEXTURE_OVERLAY_LIGHT_NORMAL,
-			DrawMode.QUADS,
-			256,
-			false,
-			true,
-			MultiPhaseParameters
-				.builder()
-				.shader(SHADER_STATE)
-				.texture(textureState)
-				.transparency(TRANSPARENCY_STATE)
-				.writeMaskState(WRITE_MASK)
-				.build(false));
-	});
 
-	protected final Identifier textureBase;
-	protected final Identifier translucencyLayer;
 
-	public AutoTranslucentTexture(Identifier originalLocation, Identifier location) {
-		this.textureBase = originalLocation;
-		this.translucencyLayer = location;
+
+	private static final BiFunction<Identifier, Boolean, RenderLayer> ENTITY_TRANSLUCENT = Util.memoize(
+		(BiFunction)((texture, affectsOutline) -> {
+			RenderLayer.MultiPhaseParameters multiPhaseParameters = RenderLayer.MultiPhaseParameters.builder()
+				.shader(ENTITY_TRANSLUCENT_SHADER)
+				.texture(new RenderPhase.Texture((Identifier) texture, false, false))
+				.transparency(TRANSLUCENT_TRANSPARENCY)
+				.cull(DISABLE_CULLING)
+				.lightmap(ENABLE_LIGHTMAP)
+				.overlay(ENABLE_OVERLAY_COLOR)
+				.build((Boolean) affectsOutline);
+			return RenderLayer.of(
+				"entity_translucent", VertexFormats.POSITION_COLOR_TEXTURE_OVERLAY_LIGHT_NORMAL, VertexFormat.DrawMode.QUADS, 256, true, true, multiPhaseParameters
+			);
+		})
+	);
+
+
+
+
+
+	public static RenderLayer getEntityTranslucent(Identifier texture, boolean affectsOutline) {
+		return ENTITY_TRANSLUCENT.apply(texture, affectsOutline);
 	}
 
-	protected static Identifier getTranslucencyResource(Identifier baseResource) {
-		Identifier path = appendToPath(baseResource, "_translucencymask");
-		generateTexture(path, (textureManager) -> {
-			textureManager.registerTexture(path, new AutoTranslucentTexture(baseResource, path));
-		});
-		return path;
-	}
-
-	protected @Nullable RenderCall loadTexture(ResourceManager resourceManager, MinecraftClient mc) throws IOException {
-		AbstractTexture originalTexture;
-		try {
-			originalTexture = (AbstractTexture)mc.submit(() -> {
-				return mc.getTextureManager().getTexture(this.textureBase);
-			}).get();
-		} catch (ExecutionException | InterruptedException var14) {
-			Exception e = var14;
-			throw new IOException("Failed to load original texture: " + this.textureBase, e);
-		}
-
-		Resource textureBaseResource = (Resource)resourceManager.getResource(this.textureBase).get();
-		NativeImage var10000;
-		if (originalTexture instanceof NativeImageBackedTexture dynamicTexture) {
-			var10000 = dynamicTexture.getImage();
-		} else {
-			var10000 = NativeImage.read(textureBaseResource.open());
-		}
-
-		NativeImage baseImage = var10000;
-		NativeImage translucencyImage = null;
-		Optional<TextureResourceMetadata> textureBaseMeta = textureBaseResource.getMetadata().readMetadata(TextureResourceMetadata.READER);
-		boolean blur = textureBaseMeta.isPresent() && ((TextureResourceMetadata)textureBaseMeta.get()).shouldBlur();
-		boolean clamp = textureBaseMeta.isPresent() && ((TextureResourceMetadata)textureBaseMeta.get()).shouldClamp();
-
-		try {
-			Optional<Resource> translucentLayerResource = resourceManager.getResource(this.translucencyLayer);
-			GeoGlowingTextureMeta glowLayerMeta = null;
-			if (translucentLayerResource.isPresent()) {
-				translucencyImage = NativeImage.read(((Resource)translucentLayerResource.get()).open());
-				glowLayerMeta = GeoGlowingTextureMeta.fromExistingImage(translucencyImage);
-			} else {
-				Optional<GeoGlowingTextureMeta> meta = textureBaseResource.getMetadata().readMetadata(GeoGlowingTextureMeta.DESERIALIZER);
-				if (meta.isPresent()) {
-					glowLayerMeta = (GeoGlowingTextureMeta)meta.get();
-					translucencyImage = new NativeImage(baseImage.getWidth(), baseImage.getHeight(), true);
-				}
-			}
-
-			if (glowLayerMeta != null) {
-				glowLayerMeta.createImageMask(baseImage, translucencyImage);
-				if (Services.PLATFORM.isDevelopmentEnvironment()) {
-					this.printDebugImageToDisk(this.textureBase, baseImage);
-					this.printDebugImageToDisk(this.translucencyLayer, translucencyImage);
-				}
-			}
-		} catch (IOException var13) {
-			IOException e = var13;
-			AzureLib.LOGGER.warn("Resource failed to open for translucencyLayer88 meta: {}", this.translucencyLayer, e);
-		}
-
-		NativeImage mask = translucencyImage;
-		return mask == null ? null : () -> {
-			uploadSimple(this.getGlId(), mask, blur, clamp);
-			if (originalTexture instanceof NativeImageBackedTexture dynamicTexture) {
-				dynamicTexture.upload();
-			} else {
-				uploadSimple(originalTexture.getGlId(), baseImage, blur, clamp);
-			}
-
-		};
-	}
-
-	public static RenderLayer getRenderType(Identifier texture) {
-		return RENDER_TYPE_FUNCTION.apply(getTranslucencyResource(texture));
+	@Override
+	protected @Nullable RenderCall loadTexture(ResourceManager resourceManager, MinecraftClient minecraftClient) throws IOException {
+		return null;
 	}
 }
