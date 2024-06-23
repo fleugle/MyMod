@@ -49,9 +49,7 @@ public class ModSoundEvents {
 
 	public static SoundEvent KARMA_RELEASE = registerSound("karma_release");
 
-	public static SoundEvent PREPARE_MINER = registerSound("prepare_miner");
 
-	public static SoundEvent CLOSE_MINER = registerSound("close_miner");
 
 
 
@@ -87,6 +85,10 @@ public class ModSoundEvents {
 	public static final SoundEvent BLOCK_COPPER_BULB_HIT = registerSound("block.copper_bulb.hit");
 
 	public static final SoundEvent BLOCK_COPPER_BULB_FALL = registerSound("block.copper_bulb.fall");
+
+	public static SoundEvent PREPARE_MINER = registerSound("block.miner.prepare");
+
+	public static SoundEvent CLOSE_MINER = registerSound("block.miner.close");
 
 
 

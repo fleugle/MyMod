@@ -228,5 +228,24 @@
         "name": "uniquescythe:block/copper_bulb/toggle"
       }
     ]
+  },
+
+
+  "block.miner.prepare": {
+    "sounds": [
+      {
+        "attenuation_distance": 6,
+        "name": "uniquescythe:block/miner/prepare"
+      }
+    ]
+  },
+  "block.miner.close": {
+    "sounds": [
+      {
+        "attenuation_distance": 6,
+        "name": "uniquescythe:block/miner/close",
+        "pitch": 0.75
+      }
+    ]
   }
 }

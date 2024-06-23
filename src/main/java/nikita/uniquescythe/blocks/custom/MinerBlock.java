@@ -165,8 +165,11 @@ public class MinerBlock extends HorizontallyDirectionalBlock {
 
 				if (!oldState.get(DROPPED_ITEM)) {
 
-					if (!oldState.get(OPENED) && oldState.get(FOUND_RESOURCE)) world.setBlockState(pos, state.with(OPENED, true), NOTIFY_ALL);
-					SoundsManager.playBlocksSoundOnSpot(world, pos, ModSoundEvents.PREPARE_MINER, 1f);
+					if (!oldState.get(OPENED) && oldState.get(FOUND_RESOURCE)) {
+						SoundsManager.playBlocksSoundOnSpot(world, pos, ModSoundEvents.PREPARE_MINER, 1f);
+						world.setBlockState(pos, state.with(OPENED, true), NOTIFY_ALL);
+					}
+
 					world.scheduleBlockTick(pos, this, 45);
 				} else {
 
