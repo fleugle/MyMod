@@ -2,13 +2,9 @@ package nikita.uniquescythe.blocks.custom;
 
 import net.minecraft.block.*;
 import net.minecraft.block.dispenser.DispenserBehavior;
-import net.minecraft.block.dispenser.ItemDispenserBehavior;
-import net.minecraft.block.entity.DispenserBlockEntity;
-import net.minecraft.block.entity.HopperBlockEntity;
-import net.minecraft.entity.ItemEntity;
-import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.particle.DustParticleEffect;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
@@ -18,8 +14,9 @@ import net.minecraft.util.math.*;
 import net.minecraft.util.random.RandomGenerator;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.Chunk;
-import nikita.uniquescythe.particles.ModParticleTypes;
+import nikita.uniquescythe.sounds.ModSoundEvents;
 import nikita.uniquescythe.utility.MinerDispenseBehavior;
+import nikita.uniquescythe.utility.SoundsManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -135,12 +132,23 @@ public class MinerBlock extends HorizontallyDirectionalBlock {
 
 						if (world instanceof ServerWorld) {
 
-							// Spawn smoke particles in a radius of 2 blocks
+							world.spawnParticles(DustParticleEffect.DEFAULT,
+								pos.getX()  + 0.5,
+								pos.getY()  + 0.5,
+								pos.getZ()  + 0.5,
+								5, 0.5, 0.5, 0.5, 0.2);
+
+							world.spawnParticles(ParticleTypes.LARGE_SMOKE,
+								pos.getX()  + 0.5,
+								pos.getY()  + 1.15,
+								pos.getZ()  + 0.5,
+								0, 0, 2, 0, 0);
+
 							world.spawnParticles(ParticleTypes.SMOKE,
 								pos.getX()  + 0.5,
-								pos.getY()  + 1.1,
+								pos.getY()  + 1.15,
 								pos.getZ()  + 0.5,
-								0, 0, 10, 0, 0);
+								8, 0.15, 0.25, 0.15, 0.05);
 						}
 						dispenseResource(world, pos, possibleItems.size(), selectedItem);
 
@@ -157,14 +165,15 @@ public class MinerBlock extends HorizontallyDirectionalBlock {
 
 				if (!oldState.get(DROPPED_ITEM)) {
 
-					if (!oldState.get(OPENED) && oldState.get(FOUND_RESOURCE))
-						world.setBlockState(pos, state.with(OPENED, true), NOTIFY_ALL);
+					if (!oldState.get(OPENED) && oldState.get(FOUND_RESOURCE)) world.setBlockState(pos, state.with(OPENED, true), NOTIFY_ALL);
+					SoundsManager.playBlocksSoundOnSpot(world, pos, ModSoundEvents.PREPARE_MINER, 1f);
 					world.scheduleBlockTick(pos, this, 45);
 				} else {
 
 					if (oldState.get(DROPPED_ITEM))
 						world.setBlockState(pos, state.with(DROPPED_ITEM, false), NOTIFY_ALL);
 					if (oldState.get(OPENED)) world.setBlockState(pos, state.with(OPENED, false), NOTIFY_ALL);
+					SoundsManager.playBlocksSoundOnSpot(world, pos, ModSoundEvents.CLOSE_MINER, 1f);
 					world.scheduleBlockTick(pos, this, delay);
 				}
 
@@ -211,6 +220,7 @@ public class MinerBlock extends HorizontallyDirectionalBlock {
 			}
 		}
 	}
+
 
 
 	@Override

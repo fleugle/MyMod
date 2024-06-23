@@ -49,8 +49,9 @@ public class ModSoundEvents {
 
 	public static SoundEvent KARMA_RELEASE = registerSound("karma_release");
 
+	public static SoundEvent PREPARE_MINER = registerSound("prepare_miner");
 
-
+	public static SoundEvent CLOSE_MINER = registerSound("close_miner");
 
 
 
