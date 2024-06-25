@@ -230,6 +230,7 @@ public class MinerBlock extends HorizontallyDirectionalBlock {
 
 
 				BEHAVIOR.dispense(blockPointerImpl, itemStack);
+				SoundsManager.playBlocksSoundOnSpot(world, pos, ModSoundEvents.DISPENSE_MINER, 4f);
 
 			}
 		}
@@ -240,6 +241,6 @@ public class MinerBlock extends HorizontallyDirectionalBlock {
 	@Override
 	protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
 		super.appendProperties(builder);
-		builder.add(POWERED, OPENED, DROPPED_ITEM, /*READY,*/ FOUND_RESOURCE);
+		builder.add(POWERED, OPENED, DROPPED_ITEM, FOUND_RESOURCE);
 	}
 }

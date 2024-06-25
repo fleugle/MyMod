@@ -86,9 +86,11 @@ public class ModSoundEvents {
 
 	public static final SoundEvent BLOCK_COPPER_BULB_FALL = registerSound("block.copper_bulb.fall");
 
-	public static SoundEvent PREPARE_MINER = registerSound("block.miner.prepare");
+	public static final SoundEvent PREPARE_MINER = registerSound("block.miner.prepare");
 
-	public static SoundEvent CLOSE_MINER = registerSound("block.miner.close");
+	public static final SoundEvent CLOSE_MINER = registerSound("block.miner.close");
+
+	public static final SoundEvent DISPENSE_MINER = registerSound("block.miner.dispense");
 
 
 
