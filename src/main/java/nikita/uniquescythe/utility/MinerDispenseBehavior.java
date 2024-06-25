@@ -17,7 +17,7 @@ public class MinerDispenseBehavior implements DispenserBehavior {
 
 	public final ItemStack dispense(BlockPointer blockPointer, ItemStack itemStack) {
 		ItemStack itemStack2 = this.dispenseSilently(blockPointer, itemStack);
-		this.playSound(blockPointer);
+		/*this.playSound(blockPointer);*/
 		this.spawnParticles(blockPointer, (Direction)blockPointer.getBlockState().get(MinerBlock.FACING));
 		return itemStack2;
 	}
@@ -46,9 +46,9 @@ public class MinerDispenseBehavior implements DispenserBehavior {
 		world.spawnEntity(itemEntity);
 	}
 
-	protected void playSound(BlockPointer pointer) {
+	/*protected void playSound(BlockPointer pointer) {
 		pointer.getWorld().syncWorldEvent(1000, pointer.getPos(), 0);
-	}
+	}*/
 
 	protected void spawnParticles(BlockPointer pointer, Direction side) {
 		pointer.getWorld().syncWorldEvent(2000, pointer.getPos(), side.getId());

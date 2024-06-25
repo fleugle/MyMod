@@ -14,6 +14,7 @@ import net.minecraft.util.math.*;
 import net.minecraft.util.random.RandomGenerator;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.Chunk;
+import nikita.uniquescythe.blocks.ModBlocks;
 import nikita.uniquescythe.sounds.ModSoundEvents;
 import nikita.uniquescythe.utility.MinerDispenseBehavior;
 import nikita.uniquescythe.utility.SoundsManager;
@@ -25,10 +26,10 @@ import java.util.Random;
 public class MinerBlock extends HorizontallyDirectionalBlock {
 	private static final DispenserBehavior BEHAVIOR = new MinerDispenseBehavior();
 	public static final BooleanProperty POWERED = Properties.POWERED;
-	public static final BooleanProperty OPENED = BooleanProperty.of("opened");
-	public static final BooleanProperty DROPPED_ITEM = BooleanProperty.of("dropped_item");
+	private static final BooleanProperty OPENED = BooleanProperty.of("opened");
+	private static final BooleanProperty DROPPED_ITEM = BooleanProperty.of("dropped_item");
 	/*public static final BooleanProperty READY = BooleanProperty.of("ready");*/
-	public static final BooleanProperty FOUND_RESOURCE = BooleanProperty.of("found_resource");
+	private static final BooleanProperty FOUND_RESOURCE = BooleanProperty.of("found_resource");
 
 	public MinerBlock(Settings settings) {
 		super(settings);
@@ -77,9 +78,17 @@ public class MinerBlock extends HorizontallyDirectionalBlock {
 
 	}
 
-	public void scanBlocksBelow(BlockState oldState, ServerWorld world, BlockPos pos) {
+	private void scanBlocksBelow(BlockState oldState, ServerWorld world, BlockPos pos) {
 		BlockState state = oldState;
-		int delay = calculateFinalCooldown(countMinerBlocksInChunk(world, pos), 800);
+
+		BlockPos posAbove = pos.up(1);
+		BlockState checkForTurbine = world.getBlockState(posAbove);
+
+		int delay;
+		if (checkForTurbine.isOf(ModBlocks.COPPER_PIPE) && checkForTurbine.get(CopperPipeBlock.POWERED)) {
+			delay = calculateFinalCooldown(countMinerBlocksInChunk(world, pos), 80);
+		}
+		else delay = calculateFinalCooldown(countMinerBlocksInChunk(world, pos), 800);
 
 
 		if (!world.isClient) {
@@ -173,10 +182,12 @@ public class MinerBlock extends HorizontallyDirectionalBlock {
 					world.scheduleBlockTick(pos, this, 45);
 				} else {
 
-					if (oldState.get(DROPPED_ITEM))
-						world.setBlockState(pos, state.with(DROPPED_ITEM, false), NOTIFY_ALL);
-					if (oldState.get(OPENED)) world.setBlockState(pos, state.with(OPENED, false), NOTIFY_ALL);
-					SoundsManager.playBlocksSoundOnSpot(world, pos, ModSoundEvents.CLOSE_MINER, 1f);
+					if (oldState.get(DROPPED_ITEM)) world.setBlockState(pos, state.with(DROPPED_ITEM, false), NOTIFY_ALL);
+					if (oldState.get(OPENED)) {
+						world.setBlockState(pos, state.with(OPENED, false), NOTIFY_ALL);
+						SoundsManager.playBlocksSoundOnSpot(world, pos, ModSoundEvents.CLOSE_MINER, 1f);
+					}
+
 					world.scheduleBlockTick(pos, this, delay);
 				}
 

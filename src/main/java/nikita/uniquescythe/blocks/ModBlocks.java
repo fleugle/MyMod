@@ -147,6 +147,9 @@ public class ModBlocks {
 			.requiresTool()
 			.strength(3.5F)));
 
+	public static final Block COPPER_PIPE = registerBlock("copper_pipe",
+		(Block)new CopperPipeBlock(AbstractBlock.Settings.copy(COPPER_GRATE)));
+
 
 	//HELPER METHODS
 	//

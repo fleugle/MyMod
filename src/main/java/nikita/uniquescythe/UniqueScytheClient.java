@@ -1,6 +1,5 @@
 package nikita.uniquescythe;
 
-import net.minecraft.client.particle.SonicBoomParticle;
 import nikita.uniquescythe.networking.UltraInvisibilityClientHandler;
 import org.quiltmc.loader.api.ModContainer;
 import org.quiltmc.qsl.base.api.entrypoint.client.ClientModInitializer;
@@ -90,7 +89,7 @@ public class UniqueScytheClient implements ClientModInitializer {
 		BlockRenderLayerMap.put(RenderLayer.getCutout(), ModBlocks.WAXED_COPPER_GRATE);
 		BlockRenderLayerMap.put(RenderLayer.getCutout(), ModBlocks.WAXED_EXPOSED_COPPER_GRATE);
 		BlockRenderLayerMap.put(RenderLayer.getCutout() ,ModBlocks.WAXED_OXIDIZED_COPPER_GRATE );
-
+		BlockRenderLayerMap.put(RenderLayer.getCutout() ,ModBlocks.COPPER_PIPE);
 
 
 

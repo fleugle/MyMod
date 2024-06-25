@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "powered=false": {
+      "model": "uniquescythe:block/copper_pipe"
+    },
+    "powered=true": {
+      "model": "uniquescythe:block/copper_pipe_powered"
+    }
+  }
+}
