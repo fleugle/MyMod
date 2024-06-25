@@ -1,0 +1,32 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "pattern": [
+    "353",
+    "404",
+    "121"
+  ],
+  "key": {
+    "0": {
+      "item": "minecraft:netherite_pickaxe"
+    },
+    "1": {
+      "item": "uniquescythe:polished_tuff"
+    },
+    "2": {
+      "item": "minecraft:redstone"
+    },
+    "3": {
+      "item": "minecraft:copper_ingot"
+    },
+    "4": {
+      "item": "uniquescythe:tuff_bricks"
+    },
+    "5": {
+      "item": "minecraft:polished_deepslate_slab"
+    }
+  },
+  "result": {
+    "id": "uniquescythe:miner"
+  }
+}

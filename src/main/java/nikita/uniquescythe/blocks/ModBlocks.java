@@ -196,6 +196,7 @@ public class ModBlocks {
 		ItemGroupEvents.modifyEntriesEvent(ItemGroups.REDSTONE_BLOCKS).register(entries -> {
 
 			entries.addAfter(Blocks.STICKY_PISTON, MINER);
+			entries.addAfter(Blocks.LIGHTNING_ROD, COPPER_PIPE);
 			entries.addItem(WAXED_COPPER_BULB);
 			entries.addItem(WAXED_EXPOSED_COPPER_BULB);
 			entries.addItem(WAXED_WEATHERED_COPPER_BULB);
