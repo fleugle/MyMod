@@ -11,7 +11,7 @@
       "item": "minecraft:netherite_pickaxe"
     },
     "1": {
-      "item": "uniquescythe:polished_tuff"
+      "item": "minecraft:stone_bricks"
     },
     "2": {
       "item": "minecraft:redstone"
@@ -20,13 +20,13 @@
       "item": "minecraft:copper_ingot"
     },
     "4": {
-      "item": "uniquescythe:tuff_bricks"
+      "item": "minecraft:polished_andesite"
     },
     "5": {
-      "item": "minecraft:polished_deepslate_slab"
+      "item": "minecraft:polished_andesite_slab"
     }
   },
   "result": {
-    "id": "uniquescythe:miner"
+    "item": "uniquescythe:miner"
   }
 }
