@@ -26,6 +26,7 @@ import nikita.uniquescythe.status_effects.ModStatusEffects;
 import nikita.uniquescythe.utility.CommandsExecuter;
 import nikita.uniquescythe.utility.GuiltyLevelSystem;
 import nikita.uniquescythe.utility.ModLootTablesModifiers;
+import nikita.uniquescythe.utility.SoulsSystem;
 import org.quiltmc.loader.api.ModContainer;
 import org.quiltmc.qsl.base.api.entrypoint.ModInitializer;
 import org.quiltmc.qsl.networking.api.PacketSender;
@@ -106,7 +107,11 @@ public class UniqueScythe implements ModInitializer {
 
 		ServerTickEvents.END_SERVER_TICK.register(server -> {
 			for (ServerPlayerEntity player : server.getPlayerManager().getPlayerList()) {
+
+				SoulsSystem.updateSouls(player, player.getDisplayName().getString());
+
 				GuiltyLevelSystem.updateGuiltyLevelPerEachEntityKill(player, player.getDisplayName().getString());
+
 			}
 		});
 
@@ -127,7 +132,7 @@ public class UniqueScythe implements ModInitializer {
 		CommandsExecuter.createIntScoreboadIfMissing(scoreboard, ScoreboardCriterion.DUMMY, GuiltyLevelSystem.PERSISTENT_GUILTY_LEVEL);
 		CommandsExecuter.createIntScoreboadIfMissing(scoreboard, ScoreboardCriterion.TOTAL_KILL_COUNT, GuiltyLevelSystem.GENERAL_KILLS_GUILTY_LEVEL);
 		CommandsExecuter.createIntScoreboadIfMissing(scoreboard, ScoreboardCriterion.PLAYER_KILL_COUNT, GuiltyLevelSystem.PLAYERS_KILL_GUILTY_ADDITION);
-		//CommandsExecuter.createIntScoreboadIfMissing(scoreboard, ScoreboardCriterion.DUMMY, "EntityHealth");
+		CommandsExecuter.createIntScoreboadIfMissing(scoreboard, ScoreboardCriterion.DUMMY, SoulsSystem.SOULS);
 		CommandsExecuter.createIntScoreboadIfMissing(scoreboard, ScoreboardCriterion.DUMMY, "Karma");
 	}
 
