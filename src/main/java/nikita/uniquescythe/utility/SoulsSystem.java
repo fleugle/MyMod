@@ -6,7 +6,7 @@ import net.minecraft.scoreboard.Scoreboard;
 import net.minecraft.scoreboard.ScoreboardObjective;
 import net.minecraft.scoreboard.ScoreboardPlayerScore;
 import net.minecraft.server.network.ServerPlayerEntity;
-import nikita.uniquescythe.items.custom.JusticeArmorItem;
+
 
 import static nikita.uniquescythe.utility.GuiltyLevelSystem.*;
 
@@ -68,7 +68,7 @@ public class SoulsSystem {
 		updateSouls( player, playerName);
 		NbtCompound tag = phylacteryBasedStack.getOrCreateNbt();
 		int soulsAmount = getSouls(player, playerName, SOULS);
-		if(tag.contains(SOULS)) {
+		if(phylacteryBasedStack.getNbt() != null && phylacteryBasedStack.getNbt().contains(SOULS)) {
 			tag.putInt(SOULS, soulsAmount);
 			resetSouls(player, playerName);
 		}

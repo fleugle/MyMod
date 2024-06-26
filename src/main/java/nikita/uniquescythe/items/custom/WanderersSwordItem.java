@@ -1,7 +1,5 @@
 package nikita.uniquescythe.items.custom;
 
-
-
 import net.fabricmc.fabric.api.event.player.AttackEntityCallback;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.LivingEntity;
@@ -15,14 +13,11 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import nikita.uniquescythe.UniqueScythe;
 import nikita.uniquescythe.sounds.ModSoundEvents;
 import nikita.uniquescythe.utility.KarmaSystem;
 import nikita.uniquescythe.utility.SoundsManager;
 
-
 public class WanderersSwordItem extends SwordItem {
-
 
 	public WanderersSwordItem(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Settings settings) {
 		super(toolMaterial, attackDamage, attackSpeed, settings);
@@ -35,7 +30,6 @@ public class WanderersSwordItem extends SwordItem {
 		});
 	}
 
-
 	@Override
 	public ActionResult useOnBlock(ItemUsageContext context) {
 		return ActionResult.FAIL;
@@ -45,13 +39,14 @@ public class WanderersSwordItem extends SwordItem {
 		SoundsManager.playPlayersSoundFromPlayer(attacker, ModSoundEvents.KARMA_RELEASE, 1f);
 		target.addStatusEffect(new StatusEffectInstance(StatusEffects.DARKNESS, 80, 1));
 		target.addStatusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 100, 1));
-		target.damage(target.getDamageSources().generic(), (float) KarmaSystem.getKarma((ServerPlayerEntity)attacker, attacker.getDisplayName().getString()));
+		target.damage(target.getDamageSources().generic(),
+				(float) KarmaSystem.getKarma((ServerPlayerEntity) attacker, attacker.getDisplayName().getString()));
 		KarmaSystem.setKarmaToPlayer((ServerPlayerEntity) attacker, attacker.getDisplayName().getString(), 0);
-
 
 		return super.postHit(stack, target, attacker);
 	}
-	//to do something if right-clicked too
+
+	// to do something if right-clicked too
 	@Override
 	public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
 		if (user.getWorld() != null && !world.isClient()) {
@@ -64,9 +59,9 @@ public class WanderersSwordItem extends SwordItem {
 		return TypedActionResult.pass(user.getStackInHand(hand));
 
 	}
+
 	@Override
 	public int getMaxUseTime(ItemStack stack) {
-
 
 		return 25;
 	}
