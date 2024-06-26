@@ -10,6 +10,7 @@
     "uniquescythe:waxed_copper_grate",
 
     "uniquescythe:tuff_bricks",
+    "uniquescythe:polished_tuff",
 
     "uniquescythe:copper_bulb",
     "uniquescythe:exposed_copper_bulb",
@@ -19,6 +20,9 @@
     "uniquescythe:waxed_copper_bulb",
     "uniquescythe:waxed_exposed_copper_bulb",
     "uniquescythe:waxed_weathered_copper_bulb",
-    "uniquescythe:waxed_oxidized_copper_bulb"
+    "uniquescythe:waxed_oxidized_copper_bulb",
+
+    "uniquescythe:miner",
+    "uniquescythe:copper_pipe"
   ]
 }
