@@ -28,8 +28,6 @@ public class SoulsSystem {
 
 
 
-
-
 			int amount = (getSouls(player, playerName, GENERAL_KILLS_GUILTY_LEVEL))
 					+ (getSouls(player, playerName, PLAYERS_KILL_GUILTY_ADDITION) * 5)
 					+ (getSouls(player, playerName, SOULS));
@@ -37,6 +35,7 @@ public class SoulsSystem {
 
 			//applies new values
 			CommandsExecuter.executeCommand(player, "scoreboard players add "+ playerName +" "+ SOULS +" "+ amount);
+
 
 			updateGuiltyLevelPerEachEntityKill(player, playerName);
 
@@ -54,7 +53,7 @@ public class SoulsSystem {
 
 		updateSouls( player, playerName);
 		//applies new values
-		CommandsExecuter.executeCommand(player, "scoreboard players reset "+ playerName +" "+ SOULS /*+" "+ amount*/);
+		CommandsExecuter.executeCommand(player, "scoreboard players set "+ playerName +" "+ SOULS +" 0");
 
 	}
 
@@ -68,13 +67,13 @@ public class SoulsSystem {
 
 
 
-	public static void addSoulsToPossibleItems(ServerPlayerEntity player, String playerName, ItemStack phylacteryBasedStack){
+	public static void addSoulsToPossibleItems(ServerPlayerEntity player, String playerName, ItemStack phylacteryBasedStack, int maxAmount){
 		World world = player.getWorld();
 		if (!world.isClient) {
 			updateSouls( player, playerName);
 			NbtCompound tag = phylacteryBasedStack.getOrCreateNbt();
 			int soulsAmount = getSouls(player, playerName, SOULS);
-			if(tag.contains(SoulsSystem.SOULS) && soulsAmount > 0) {
+			if(tag.contains(SoulsSystem.SOULS) && soulsAmount > 0 && soulsAmount < maxAmount) {
 				int currentSoulsOnStack = tag.getInt(SOULS);
 				int finalSoulsAmount = currentSoulsOnStack + soulsAmount;
 				tag.putInt(SOULS, finalSoulsAmount);
@@ -104,6 +103,7 @@ public class SoulsSystem {
 						15, 0.20, 0.20, 0.20, 0);
 				}
 			}
+
 		}
 
 	}

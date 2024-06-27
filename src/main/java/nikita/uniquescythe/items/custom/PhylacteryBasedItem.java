@@ -40,7 +40,7 @@ public abstract class PhylacteryBasedItem extends Item {
 			getSouls(stack);
 			if (entity instanceof ServerPlayerEntity serverPlayerEntity) {
 				if (this.maxCapacity > getSouls(stack)) {
-					SoulsSystem.addSoulsToPossibleItems(serverPlayerEntity, serverPlayerEntity.getDisplayName().getString(), stack);
+					SoulsSystem.addSoulsToPossibleItems(serverPlayerEntity, serverPlayerEntity.getDisplayName().getString(), stack, this.maxCapacity);
 					if (this.maxCapacity < getSouls(stack)) {
 						SoulsSystem.setSouls(serverPlayerEntity, serverPlayerEntity.getDisplayName().getString(), this.maxCapacity);
 					}
