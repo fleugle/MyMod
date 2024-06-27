@@ -8,6 +8,7 @@ import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import nikita.uniquescythe.UniqueScythe;
 import nikita.uniquescythe.entities.custom.BreezeEntity;
+import nikita.uniquescythe.entities.custom.ExplosiveFireballProjectileEntity;
 import nikita.uniquescythe.entities.custom.JusticeBulletEntity;
 import nikita.uniquescythe.entities.custom.WindChargeProjectileEntity;
 import org.quiltmc.qsl.entity.api.QuiltEntityTypeBuilder;
@@ -19,7 +20,6 @@ public class ModEntities {
 		QuiltEntityTypeBuilder.<WindChargeProjectileEntity>create(SpawnGroup.MISC, WindChargeProjectileEntity :: new)
 			.setDimensions(EntityDimensions.fixed(0.5f, 0.25f)).build());
 
-
 	public static final EntityType<BreezeEntity> BREEZE = Registry.register(Registries.ENTITY_TYPE,
 		new Identifier(UniqueScythe.MOD_ID, "breeze"),
 		QuiltEntityTypeBuilder.create(SpawnGroup.CREATURE, BreezeEntity :: new)
@@ -30,5 +30,8 @@ public class ModEntities {
 		QuiltEntityTypeBuilder.<JusticeBulletEntity>create(SpawnGroup.MISC, JusticeBulletEntity:: new)
 			.setDimensions(EntityDimensions.fixed(0.5f, 0.25f)).build());
 
-
+	public static final EntityType<ExplosiveFireballProjectileEntity> EXPLOSIVE_FIREBALL_PROJECTILE = Registry.register(Registries.ENTITY_TYPE,
+		new Identifier(UniqueScythe.MOD_ID, "explosive_fireball_projectile"),
+		QuiltEntityTypeBuilder.<ExplosiveFireballProjectileEntity>create(SpawnGroup.MISC, ExplosiveFireballProjectileEntity :: new)
+			.setDimensions(EntityDimensions.fixed(0.5f, 0.5f)).build());
 }

@@ -1,5 +1,6 @@
 package nikita.uniquescythe;
 
+import nikita.uniquescythe.geo.renderers.ExplosiveFireballRenderer;
 import nikita.uniquescythe.networking.UltraInvisibilityClientHandler;
 import org.quiltmc.loader.api.ModContainer;
 import org.quiltmc.qsl.base.api.entrypoint.client.ClientModInitializer;
@@ -72,6 +73,7 @@ public class UniqueScytheClient implements ClientModInitializer {
 
 
 		EntityRendererRegistry.register(ModEntities.WIND_CHARGE_PROJECTILE, WindChargeRenderer::new);
+		EntityRendererRegistry.register(ModEntities.EXPLOSIVE_FIREBALL_PROJECTILE, ExplosiveFireballRenderer::new);
 		EntityRendererRegistry.register(ModEntities.JUSTICE_BULLET_ENTITY, JusticeBulletRenderer::new);
 
 		EntityRendererRegistry.register(ModEntities.BREEZE, BreezeEntityRenderer::new );

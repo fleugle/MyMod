@@ -74,6 +74,8 @@ public class ModItems {
 
 	public static final Item JOY_BELL = registerItem("joy_bell", new JoyBellItem( new Item.Settings().maxCount(1).rarity(Rarity.EPIC)));
 
+	public static final Item EXPLOSIVE_PHYLACTERY = registerItem("explosive_phylactery", new ExplosivePhylacteryItem( new Item.Settings().maxCount(1).rarity(Rarity.EPIC)));
+
 
 
 	public static final Item TETOS_TALISMAN = registerItem("tetos_talisman", new SimpleTalismanItem(
