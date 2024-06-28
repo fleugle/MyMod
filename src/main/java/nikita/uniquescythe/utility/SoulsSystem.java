@@ -19,7 +19,7 @@ public class SoulsSystem {
 	public static String SOULS = "Souls";
 
 
-	public static boolean updateSouls(ServerPlayerEntity player, String playerName){
+	/*public static boolean updateSouls(ServerPlayerEntity player, String playerName){
 
 
 
@@ -36,16 +36,16 @@ public class SoulsSystem {
 
 
 
-	}
+	}*/
 
-	public static void resetSouls(ServerPlayerEntity player, String playerName/*, int amount*/){
+	/*public static void resetSouls(ServerPlayerEntity player, String playerName*//*, int amount*//*){
 
 		if (updateSouls( player, playerName)){
 
 		}
 		//applies new values
 
-	}
+	}*/
 
 	/*public static void setSouls(ServerPlayerEntity player, String playerName, int amount){
 
@@ -61,47 +61,51 @@ public class SoulsSystem {
 
 	public static void addSoulsToPossibleItems(ServerPlayerEntity player, String playerName, int maxAmount){
 		World world = player.getWorld();
-		if (!world.isClient  && updateSouls(player, playerName)) {
-			//updateSouls( player, playerName);
+		if (!world.isClient) {
+			if ((getScore(player, playerName, GENERAL_KILLS_GUILTY_LEVEL) > 0) || (getScore(player, playerName, PLAYERS_KILL_GUILTY_ADDITION) > 0)) {
+				//updateSouls( player, playerName);
 
-			NbtCompound tag = null;
-			if (getFirstAvaliablePhylacteryItemStack(player) != null) {
-				tag = getFirstAvaliablePhylacteryItemStack(player).getOrCreateNbt();
-			}
-			int soulsAmount = (getScore(player, playerName, GENERAL_KILLS_GUILTY_LEVEL))
-				+ (getScore(player, playerName, PLAYERS_KILL_GUILTY_ADDITION) * 5)
-				/*+ (getScore(player, playerName, SOULS))*/;
-			if(soulsAmount > 0 && soulsAmount < maxAmount && tag != null) {
-				int currentSoulsOnStack = tag.getInt(SOULS);
-				int finalSoulsAmount = currentSoulsOnStack + soulsAmount;
+				NbtCompound tag = null;
+				if (getFirstAvaliablePhylacteryItemStack(player) != null) {
+					tag = getFirstAvaliablePhylacteryItemStack(player).getOrCreateNbt();
+				}
+				int soulsAmount = (getScore(player, playerName, GENERAL_KILLS_GUILTY_LEVEL))
+					+ (getScore(player, playerName, PLAYERS_KILL_GUILTY_ADDITION) * 5)
+					/*+ (getScore(player, playerName, SOULS))*/;
+				if(soulsAmount > 0 && tag != null) {
+					int currentSoulsOnStack = tag.getInt(SOULS);
+					int finalSoulsAmount = currentSoulsOnStack + soulsAmount;
 
-				if (finalSoulsAmount >= maxAmount) finalSoulsAmount = maxAmount;
+					if (finalSoulsAmount >= maxAmount) finalSoulsAmount = maxAmount;
 
-				tag.putInt(SOULS, finalSoulsAmount);
-				resetSouls(player, playerName);
-				//sounds + souls particles here
-				//SoundsManager.playPlayersSoundFromPlayer(player, SoundEvents.BLOCK_SCULK_CHARGE, 1f);
-
-				if (world instanceof ServerWorld) {
+					tag.putInt(SOULS, finalSoulsAmount);
+					//resetSouls(player, playerName);
+					//sounds + souls particles here
+					//SoundsManager.playPlayersSoundFromPlayer(player, SoundEvents.BLOCK_SCULK_CHARGE, 1f);
 
 
-					((ServerWorld) world).spawnParticles(ParticleTypes.SCULK_SOUL,
-						player.getPos().getX()  + 0,
-						player.getPos().getY()  + 1,
-						player.getPos().getZ()  + 0,
-						15, 0.70, 0.55, 0.70, 0);
+					//particles
+					if (world instanceof ServerWorld) {
 
-					((ServerWorld) world).spawnParticles(ParticleTypes.SCULK_CHARGE_POP,
-						player.getPos().getX()  + 0,
-						player.getPos().getY()  + 1,
-						player.getPos().getZ()  + 0,
-						15, 0.80, 0.70, 0.80, 0);
 
-					((ServerWorld) world).spawnParticles(ParticleTypes.SOUL_FIRE_FLAME,
-						player.getPos().getX()  + 0,
-						player.getPos().getY()  + 1,
-						player.getPos().getZ()  + 0,
-						15, 0.20, 0.20, 0.20, 0);
+						((ServerWorld) world).spawnParticles(ParticleTypes.SCULK_SOUL,
+							player.getPos().getX()  + 0,
+							player.getPos().getY()  + 1,
+							player.getPos().getZ()  + 0,
+							15, 0.70, 0.55, 0.70, 0);
+
+						((ServerWorld) world).spawnParticles(ParticleTypes.SCULK_CHARGE_POP,
+							player.getPos().getX()  + 0,
+							player.getPos().getY()  + 1,
+							player.getPos().getZ()  + 0,
+							15, 0.80, 0.70, 0.80, 0);
+
+						((ServerWorld) world).spawnParticles(ParticleTypes.SOUL_FIRE_FLAME,
+							player.getPos().getX()  + 0,
+							player.getPos().getY()  + 1,
+							player.getPos().getZ()  + 0,
+							15, 0.20, 0.20, 0.20, 0);
+					}
 				}
 			}
 

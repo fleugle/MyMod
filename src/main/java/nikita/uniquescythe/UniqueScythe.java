@@ -108,7 +108,7 @@ public class UniqueScythe implements ModInitializer {
 		ServerTickEvents.END_SERVER_TICK.register(server -> {
 			for (ServerPlayerEntity player : server.getPlayerManager().getPlayerList()) {
 
-				SoulsSystem.updateSouls(player, player.getDisplayName().getString());
+				//SoulsSystem.updateSouls(player, player.getDisplayName().getString());
 
 				GuiltyLevelSystem.updateGuiltyLevelPerEachEntityKill(player, player.getDisplayName().getString());
 
