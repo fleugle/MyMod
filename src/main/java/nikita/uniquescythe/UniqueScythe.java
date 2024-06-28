@@ -132,7 +132,7 @@ public class UniqueScythe implements ModInitializer {
 		CommandsExecuter.createIntScoreboadIfMissing(scoreboard, ScoreboardCriterion.DUMMY, GuiltyLevelSystem.PERSISTENT_GUILTY_LEVEL);
 		CommandsExecuter.createIntScoreboadIfMissing(scoreboard, ScoreboardCriterion.TOTAL_KILL_COUNT, GuiltyLevelSystem.GENERAL_KILLS_GUILTY_LEVEL);
 		CommandsExecuter.createIntScoreboadIfMissing(scoreboard, ScoreboardCriterion.PLAYER_KILL_COUNT, GuiltyLevelSystem.PLAYERS_KILL_GUILTY_ADDITION);
-		CommandsExecuter.createIntScoreboadIfMissing(scoreboard, ScoreboardCriterion.DUMMY, SoulsSystem.SOULS);
+		//CommandsExecuter.createIntScoreboadIfMissing(scoreboard, ScoreboardCriterion.DUMMY, SoulsSystem.SOULS);
 		CommandsExecuter.createIntScoreboadIfMissing(scoreboard, ScoreboardCriterion.DUMMY, "Karma");
 	}
 

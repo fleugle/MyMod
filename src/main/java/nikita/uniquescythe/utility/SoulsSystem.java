@@ -1,16 +1,16 @@
 package nikita.uniquescythe.utility;
 
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.particle.DustParticleEffect;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.scoreboard.Scoreboard;
 import net.minecraft.scoreboard.ScoreboardObjective;
 import net.minecraft.scoreboard.ScoreboardPlayerScore;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.sound.SoundEvents;
 import net.minecraft.world.World;
+import nikita.uniquescythe.items.custom.PhylacteryBasedItem;
 
 
 import static nikita.uniquescythe.utility.GuiltyLevelSystem.*;
@@ -23,20 +23,9 @@ public class SoulsSystem {
 
 
 
-		if ((getSouls(player, playerName, GENERAL_KILLS_GUILTY_LEVEL) > 0) || (getSouls(player, playerName, PLAYERS_KILL_GUILTY_ADDITION) > 0)){
-			//get values and write all of them as
+		if ((getScore(player, playerName, GENERAL_KILLS_GUILTY_LEVEL) > 0) || (getScore(player, playerName, PLAYERS_KILL_GUILTY_ADDITION) > 0)){
 
-
-
-			int amount = (getSouls(player, playerName, GENERAL_KILLS_GUILTY_LEVEL))
-					+ (getSouls(player, playerName, PLAYERS_KILL_GUILTY_ADDITION) * 5)
-					+ (getSouls(player, playerName, SOULS));
-
-
-			//applies new values
-			CommandsExecuter.executeCommand(player, "scoreboard players add "+ playerName +" "+ SOULS +" "+ amount);
-
-
+			//updates guilty level and in the end returns true or false, that is needed for optimization
 			updateGuiltyLevelPerEachEntityKill(player, playerName);
 
 
@@ -51,31 +40,43 @@ public class SoulsSystem {
 
 	public static void resetSouls(ServerPlayerEntity player, String playerName/*, int amount*/){
 
-		updateSouls( player, playerName);
+		if (updateSouls( player, playerName)){
+
+		}
 		//applies new values
-		CommandsExecuter.executeCommand(player, "scoreboard players set "+ playerName +" "+ SOULS +" 0");
 
 	}
 
-	public static void setSouls(ServerPlayerEntity player, String playerName, int amount){
+	/*public static void setSouls(ServerPlayerEntity player, String playerName, int amount){
 
-		updateSouls( player, playerName);
+		if (updateSouls( player, playerName)){
+
+		}
 		//applies new values
-		CommandsExecuter.executeCommand(player, "scoreboard players set "+ playerName +" "+ SOULS +" "+ amount);
+		//CommandsExecuter.executeCommand(player, "scoreboard players set "+ playerName +" "+ SOULS +" "+ amount);
 
-	}
+	}*/
 
 
 
-	public static void addSoulsToPossibleItems(ServerPlayerEntity player, String playerName, ItemStack phylacteryBasedStack, int maxAmount){
+	public static void addSoulsToPossibleItems(ServerPlayerEntity player, String playerName, int maxAmount){
 		World world = player.getWorld();
-		if (!world.isClient) {
-			updateSouls( player, playerName);
-			NbtCompound tag = phylacteryBasedStack.getOrCreateNbt();
-			int soulsAmount = getSouls(player, playerName, SOULS);
-			if(tag.contains(SoulsSystem.SOULS) && soulsAmount > 0 && soulsAmount < maxAmount) {
+		if (!world.isClient  && updateSouls(player, playerName)) {
+			//updateSouls( player, playerName);
+
+			NbtCompound tag = null;
+			if (getFirstAvaliablePhylacteryItemStack(player) != null) {
+				tag = getFirstAvaliablePhylacteryItemStack(player).getOrCreateNbt();
+			}
+			int soulsAmount = (getScore(player, playerName, GENERAL_KILLS_GUILTY_LEVEL))
+				+ (getScore(player, playerName, PLAYERS_KILL_GUILTY_ADDITION) * 5)
+				/*+ (getScore(player, playerName, SOULS))*/;
+			if(soulsAmount > 0 && soulsAmount < maxAmount && tag != null) {
 				int currentSoulsOnStack = tag.getInt(SOULS);
 				int finalSoulsAmount = currentSoulsOnStack + soulsAmount;
+
+				if (finalSoulsAmount >= maxAmount) finalSoulsAmount = maxAmount;
+
 				tag.putInt(SOULS, finalSoulsAmount);
 				resetSouls(player, playerName);
 				//sounds + souls particles here
@@ -111,7 +112,7 @@ public class SoulsSystem {
 
 
 
-	public static int getSouls(ServerPlayerEntity player, String playerName, String objectiveName){
+	public static int getScore(ServerPlayerEntity player, String playerName, String objectiveName){
 
 		Scoreboard scoreboard = player.getWorld().getScoreboard();
 		ScoreboardObjective objective = scoreboard.getObjective(objectiveName);
@@ -122,6 +123,24 @@ public class SoulsSystem {
 
 
 		return score.getScore();
+	}
+
+	private static ItemStack getFirstAvaliablePhylacteryItemStack(ServerPlayerEntity player){
+		ItemStack phylacteryBasedItemStack = null;
+
+		for (int i = 0; i < player.getInventory().size(); i++) {
+			ItemStack inventoryStack = player.getInventory().getStack(i);
+			if (inventoryStack.getItem() instanceof PhylacteryBasedItem) {
+				phylacteryBasedItemStack = inventoryStack;
+
+				break; // Exit the loop after finding
+			}
+
+
+		}
+
+
+		return phylacteryBasedItemStack;
 	}
 
 

@@ -19,7 +19,7 @@ public class ExplosivePhylacteryItem extends PhylacteryBasedItem{
 
 		if (!world.isClient) {
 			ItemStack stack = user.getStackInHand(hand);
-			int soulsAmount = getSouls(stack);
+			int soulsAmount = getOrCreateSoulsOnStack(stack);
 
 			if(soulsAmount >= 10){
 				//sound of successful soul usage
