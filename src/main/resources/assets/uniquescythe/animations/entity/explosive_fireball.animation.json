@@ -5,6 +5,16 @@
 			"loop": true,
 			"animation_length": 2,
 			"bones": {
+				"inner_part": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"2.0": {
+							"vector": [0, -369, 0]
+						}
+					}
+				},
 				"explosivefireball": {
 					"rotation": {
 						"0.0": {

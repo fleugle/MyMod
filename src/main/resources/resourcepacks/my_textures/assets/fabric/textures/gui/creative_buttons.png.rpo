@@ -1,5 +1,0 @@
-{
-    "condition": "!dark_mode",
-    "fallback": "assets/fabric/textures/gui/creative_buttons_dark_mode.png"
-}
-
