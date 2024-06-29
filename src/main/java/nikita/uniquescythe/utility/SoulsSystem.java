@@ -18,46 +18,6 @@ public class SoulsSystem {
 	public static String SOULS = "Souls";
 
 
-	/*public static boolean updateSouls(ServerPlayerEntity player, String playerName){
-
-
-
-		if ((getScore(player, playerName, GENERAL_KILLS_GUILTY_LEVEL) > 0) || (getScore(player, playerName, PLAYERS_KILL_GUILTY_ADDITION) > 0)){
-
-			//updates guilty level and in the end returns true or false, that is needed for optimization
-			updateGuiltyLevelPerEachEntityKill(player, playerName);
-
-
-
-			return true;
-
-		} else return false;
-
-
-
-	}*/
-
-	/*public static void resetSouls(ServerPlayerEntity player, String playerName*//*, int amount*//*){
-
-		if (updateSouls( player, playerName)){
-
-		}
-		//applies new values
-
-	}*/
-
-	/*public static void setSouls(ServerPlayerEntity player, String playerName, int amount){
-
-		if (updateSouls( player, playerName)){
-
-		}
-		//applies new values
-		//CommandsExecuter.executeCommand(player, "scoreboard players set "+ playerName +" "+ SOULS +" "+ amount);
-
-	}*/
-
-
-
 	public static void addSoulsToPossibleItems(ServerPlayerEntity player, String playerName, int maxCapacity){
 		World world = player.getWorld();
 		if (!world.isClient) {
