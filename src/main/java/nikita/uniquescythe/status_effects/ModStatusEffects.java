@@ -7,10 +7,7 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import nikita.uniquescythe.UniqueScythe;
-import nikita.uniquescythe.status_effects.custom.ChaosStatusEffect;
-import nikita.uniquescythe.status_effects.custom.DelayedSatisfactionStatusEffect;
-import nikita.uniquescythe.status_effects.custom.JusticeVengeanceStatusEffect;
-import nikita.uniquescythe.status_effects.custom.PhaseStatusEffect;
+import nikita.uniquescythe.status_effects.custom.*;
 
 
 public class ModStatusEffects {
@@ -30,6 +27,13 @@ public class ModStatusEffects {
 
 
 
+	public static final StatusEffect SUPPRESSION = new SuppressionEffect().addAttributeModifier(
+		EntityAttributes.GENERIC_MOVEMENT_SPEED,
+		"7107DE5E-7CE8-4030-940E-514C1F160890",
+		-0.15F, EntityAttributeModifier.Operation.MULTIPLY_TOTAL
+	);
+
+
 
 
 	private static StatusEffect registerStatusEffect(String name, StatusEffect statusEffect){
@@ -41,6 +45,7 @@ public class ModStatusEffects {
 		registerStatusEffect("justice_vengeance", JUSTICE_VENGEANCE);
 		registerStatusEffect("chaos", CHAOS);
 		registerStatusEffect("phase", PHASE);
+		registerStatusEffect("suppression", SUPPRESSION);
 
 
 	}
