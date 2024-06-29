@@ -74,7 +74,7 @@ public class ModItems {
 
 	public static final Item JOY_BELL = registerItem("joy_bell", new JoyBellItem( new Item.Settings().maxCount(1).rarity(Rarity.EPIC)));
 
-	public static final Item EXPLOSIVE_PHYLACTERY = registerItem("explosive_phylactery", new ExplosivePhylacteryItem( new Item.Settings().maxCount(1).rarity(Rarity.EPIC)));
+	public static final Item EXPLOSIVE_PHYLACTERY = registerItem("explosive_phylactery", new ExplosivePhylacteryItem());
 
 
 
@@ -166,6 +166,9 @@ public class ModItems {
 			//ammo
 			entries.addItem(BULLET);
 			entries.addAfter(BULLET, JUSTICE_BULLET);
+
+			//phylactery
+			entries.addAfter(MACE,EXPLOSIVE_PHYLACTERY);
 
 
 		});//calling for the private method in order to  add item to the ingridient tab

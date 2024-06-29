@@ -160,38 +160,25 @@ public class ExplosiveFireballProjectileEntity extends ThrownItemEntity implemen
 
 					// Spawn smoke particles in a radius of 2 blocks
 					serverWorld.spawnParticles(ParticleTypes.EXPLOSION,
-						getPos().getX()  + 0.5,
-						getPos().getY()  + 0.5,
-						getPos().getZ()  + 0.5,
-						8, 2, 2, 2, 0);
+						getPos().getX(),
+						getPos().getY(),
+						getPos().getZ(),
+						3, 2, 2, 2, 0);
+					serverWorld.spawnParticles(ParticleTypes.FLASH,
+						getPos().getX(),
+						getPos().getY(),
+						getPos().getZ(),
+						1, 0, 0, 0, 0);
 
-					// Spawn smoke particles in a radius of 2 blocks
-					serverWorld.spawnParticles(ParticleTypes.FLAME,
-						getPos().getX()  + 0.5,
-						getPos().getY()  + 0.5,
-						getPos().getZ()  + 0.5,
-						8, 1, 1, 1, 0);
 				}
 
-				float explosionSize = 10f;
-				/*this.getWorld().sendEntityStatus(this, (byte) 3);
-				Explosion explosion = new Explosion(
-					getWorld(),
-					this ,
-					getPos().getX(),
-					getPos().getY(),
-					getPos().getZ(),
-					explosionSize,
-					false,
-					Explosion.DestructionType.DESTROY
+				float explosionSize = 5f;
 
-				);
-				explosion.collectBlocksAndDamageEntities();*/
 
 				this.getWorld().createExplosion(this, this.getX(), this.getY(), this.getZ(), (float)explosionSize, World.ExplosionSourceType.MOB);
 
 				//sound on block collision
-				SoundsManager.playNeutralSoundOnSpot(this, ModSoundEvents.WIND_CHARGE_BURST, 1, 1);
+				//SoundsManager.playNeutralSoundOnSpot(this, ModSoundEvents.WIND_CHARGE_BURST, 1, 1);
 			}
 			this.discard();
 		}

@@ -9,8 +9,8 @@ import nikita.uniquescythe.entities.custom.ExplosiveFireballProjectileEntity;
 
 public class ExplosivePhylacteryItem extends PhylacteryBasedItem{
 
-	public ExplosivePhylacteryItem(Settings settings) {
-		super(settings, 50);
+	public ExplosivePhylacteryItem() {
+		super(50);
 	}
 
 

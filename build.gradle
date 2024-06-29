@@ -77,7 +77,7 @@ dependencies {
 	include modImplementation('com.github.Chocohead:Fabric-ASM:2.3')
 
 
-	modImplementation "maven.modrinth:aaa-particles:mIOu49Wn"
+	//modImplementation "maven.modrinth:aaa-particles:mIOu49Wn"
 	modImplementation "maven.modrinth:architectury-api:9.2.14+fabric"
 
 

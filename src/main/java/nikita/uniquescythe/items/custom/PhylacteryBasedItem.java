@@ -7,6 +7,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
+import net.minecraft.util.Rarity;
 import net.minecraft.world.World;
 import nikita.uniquescythe.utility.SoulsSystem;
 
@@ -15,8 +16,8 @@ import java.util.List;
 public abstract class PhylacteryBasedItem extends Item {
 	private final int maxCapacity;
 
-	public PhylacteryBasedItem(Settings settings, int maxCapacity) {
-		super(settings);
+	public PhylacteryBasedItem(int maxCapacity) {
+		super(new Item.Settings().maxCount(1).rarity(Rarity.RARE));
 		this.maxCapacity = maxCapacity;
 	}
 
@@ -50,7 +51,7 @@ public abstract class PhylacteryBasedItem extends Item {
 		//tooltip.add(Text.literal(""));
 		assert world != null;
 
-		tooltip.add(Text.literal("§5Phylactery"));
+		tooltip.add(Text.literal("§bPhylactery"));
 		tooltip.add(Text.literal("§9Souls collected: " + getOrCreateSoulsOnStack(stack) + " / " + this.maxCapacity));
 
 		super.appendTooltip(stack, world, tooltip, context);
