@@ -49,7 +49,9 @@ public class ModSoundEvents {
 
 	public static SoundEvent KARMA_RELEASE = registerSound("karma_release");
 
+	public static SoundEvent SOUL_STEAL = registerSound("soul_steal");
 
+	public static SoundEvent SOUL_STEAL_FAIL = registerSound("soul_steal_fail");
 
 
 

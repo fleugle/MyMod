@@ -10,7 +10,6 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.EndGatewayBlockEntity;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.projectile.ProjectileUtil;
@@ -26,13 +25,7 @@ import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-import net.minecraft.world.explosion.Explosion;
 import nikita.uniquescythe.entities.ModEntities;
-import nikita.uniquescythe.items.ModItems;
-import nikita.uniquescythe.particles.ModParticleTypes;
-import nikita.uniquescythe.sounds.ModSoundEvents;
-import nikita.uniquescythe.utility.SoundsManager;
-import nikita.uniquescythe.utility.WindExplosion;
 
 
 public class ExplosiveFireballProjectileEntity extends ThrownItemEntity implements GeoEntity {
@@ -177,8 +170,7 @@ public class ExplosiveFireballProjectileEntity extends ThrownItemEntity implemen
 
 				this.getWorld().createExplosion(this, this.getX(), this.getY(), this.getZ(), (float)explosionSize, World.ExplosionSourceType.MOB);
 
-				//sound on block collision
-				//SoundsManager.playNeutralSoundOnSpot(this, ModSoundEvents.WIND_CHARGE_BURST, 1, 1);
+
 			}
 			this.discard();
 		}

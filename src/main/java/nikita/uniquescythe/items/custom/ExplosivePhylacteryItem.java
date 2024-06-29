@@ -2,10 +2,13 @@ package nikita.uniquescythe.items.custom;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 import nikita.uniquescythe.entities.custom.ExplosiveFireballProjectileEntity;
+import nikita.uniquescythe.sounds.ModSoundEvents;
+import nikita.uniquescythe.utility.SoundsManager;
 
 public class ExplosivePhylacteryItem extends PhylacteryBasedItem{
 
@@ -33,9 +36,17 @@ public class ExplosivePhylacteryItem extends PhylacteryBasedItem{
 
 				world.spawnEntity(explosiveFireballProjectileEntity);
 
+				SoundsManager.playPlayersSoundFromPlayer(user, SoundEvents.ENTITY_WITHER_SHOOT, 1);
+
 			}
 			else {
 				//sound of a failure (your voice)
+
+				SoundsManager.playPlayersSoundFromPlayer(user, ModSoundEvents.SOUL_STEAL_FAIL, 1);
+				SoundsManager.playPlayersSoundFromPlayer(user, ModSoundEvents.SOUL_STEAL_FAIL, 1);
+				SoundsManager.playPlayersSoundFromPlayer(user, ModSoundEvents.SOUL_STEAL_FAIL, 1);
+
+
 
 			}
 			user.getItemCooldownManager().set(this, 60);

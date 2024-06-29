@@ -101,6 +101,18 @@
       "uniquescythe:duplicate_fail"
     ]
   },
+  "soul_steal": {
+    "subtitle": "sounds.uniquescythe.soul_steal",
+    "sounds": [
+      "uniquescythe:soul_steal"
+    ]
+  },
+  "soul_steal_fail": {
+    "subtitle": "sounds.uniquescythe.soul_steal_fail",
+    "sounds": [
+      "uniquescythe:soul_steal_fail"
+    ]
+  },
 
 
 

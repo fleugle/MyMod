@@ -10,6 +10,7 @@ import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.world.World;
 import nikita.uniquescythe.items.custom.PhylacteryBasedItem;
+import nikita.uniquescythe.sounds.ModSoundEvents;
 
 
 import static nikita.uniquescythe.utility.GuiltyLevelSystem.*;
@@ -40,8 +41,8 @@ public class SoulsSystem {
 					tag.putInt(SOULS, finalSoulsAmount);
 					//resetSouls(player, playerName);
 					//sounds + souls particles here
-					//SoundsManager.playPlayersSoundFromPlayer(player, SoundEvents.BLOCK_SCULK_CHARGE, 1f);
-
+					SoundsManager.playPlayersSoundFromPlayer(player, ModSoundEvents.SOUL_STEAL, 3f);
+					SoundsManager.playPlayersSoundFromPlayer(player, ModSoundEvents.SOUL_STEAL, 3f);
 
 					//particles
 					if (world instanceof ServerWorld) {
