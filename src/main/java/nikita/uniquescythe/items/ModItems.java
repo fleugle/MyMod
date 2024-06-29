@@ -76,6 +76,9 @@ public class ModItems {
 
 	public static final Item EXPLOSIVE_PHYLACTERY = registerItem("explosive_phylactery", new ExplosivePhylacteryItem());
 
+	public static final Item EXPERIENCE_PHYLACTERY = registerItem("experience_phylactery", new ExperiencePhylactery());
+
+
 
 
 	public static final Item TETOS_TALISMAN = registerItem("tetos_talisman", new SimpleTalismanItem(

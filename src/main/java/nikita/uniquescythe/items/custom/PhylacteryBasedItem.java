@@ -2,11 +2,13 @@ package nikita.uniquescythe.items.custom;
 
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
+import net.minecraft.util.Hand;
 import net.minecraft.util.Rarity;
 import net.minecraft.world.World;
 import nikita.uniquescythe.utility.SoulsSystem;
@@ -55,6 +57,11 @@ public abstract class PhylacteryBasedItem extends Item {
 		tooltip.add(Text.literal("§9Souls collected: " + getOrCreateSoulsOnStack(stack) + " / " + this.maxCapacity));
 
 		super.appendTooltip(stack, world, tooltip, context);
+	}
+
+	@Override
+	public boolean allowNbtUpdateAnimation(PlayerEntity player, Hand hand, ItemStack oldStack, ItemStack newStack) {
+		return false;
 	}
 
 	public int getMaxCapacity(){

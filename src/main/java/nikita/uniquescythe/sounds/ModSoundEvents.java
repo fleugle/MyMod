@@ -3,7 +3,6 @@ package nikita.uniquescythe.sounds;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.sound.SoundEvent;
-import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 import nikita.uniquescythe.UniqueScythe;
 
@@ -56,6 +55,7 @@ public class ModSoundEvents {
 
 
 
+
 	//armor sounds
 	public static SoundEvent INNOCENCE_APPROVED = registerSound("innc_apr");
 
@@ -88,11 +88,11 @@ public class ModSoundEvents {
 
 	public static final SoundEvent BLOCK_COPPER_BULB_FALL = registerSound("block.copper_bulb.fall");
 
-	public static final SoundEvent PREPARE_MINER = registerSound("block.miner.prepare");
+	public static final SoundEvent BLOCK_PREPARE_MINER = registerSound("block.miner.prepare");
 
-	public static final SoundEvent CLOSE_MINER = registerSound("block.miner.close");
+	public static final SoundEvent BLOCK_CLOSE_MINER = registerSound("block.miner.close");
 
-	public static final SoundEvent DISPENSE_MINER = registerSound("block.miner.dispense");
+	public static final SoundEvent BLOCK_DISPENSE_MINER = registerSound("block.miner.dispense");
 
 
 

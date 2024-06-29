@@ -2,6 +2,7 @@ package nikita.uniquescythe;
 
 import nikita.uniquescythe.geo.renderers.ExplosiveFireballRenderer;
 import nikita.uniquescythe.networking.UltraInvisibilityClientHandler;
+import nikita.uniquescythe.utility.ModModelPredicates;
 import org.quiltmc.loader.api.ModContainer;
 import org.quiltmc.qsl.base.api.entrypoint.client.ClientModInitializer;
 import org. quiltmc. qsl. block. extensions. api. client.BlockRenderLayerMap;
@@ -47,6 +48,10 @@ public class UniqueScytheClient implements ClientModInitializer {
 
 
 		UltraInvisibilityClientHandler.register();
+
+
+
+		ModModelPredicates.registerModModelPredicates();
 
 
 

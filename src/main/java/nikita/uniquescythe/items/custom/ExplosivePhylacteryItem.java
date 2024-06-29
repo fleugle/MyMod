@@ -52,7 +52,7 @@ public class ExplosivePhylacteryItem extends PhylacteryBasedItem{
 			user.getItemCooldownManager().set(this, 60);
 		}
 
-		return TypedActionResult.pass(user.getStackInHand(hand));
+		return TypedActionResult.success(user.getStackInHand(hand));
 	}
 
 }

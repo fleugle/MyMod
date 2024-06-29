@@ -175,7 +175,7 @@ public class MinerBlock extends HorizontallyDirectionalBlock {
 				if (!oldState.get(DROPPED_ITEM)) {
 
 					if (!oldState.get(OPENED) && oldState.get(FOUND_RESOURCE)) {
-						SoundsManager.playBlocksSoundOnSpot(world, pos, ModSoundEvents.PREPARE_MINER, 1f);
+						SoundsManager.playBlocksSoundOnSpot(world, pos, ModSoundEvents.BLOCK_PREPARE_MINER, 1f);
 						world.setBlockState(pos, state.with(OPENED, true), NOTIFY_ALL);
 					}
 
@@ -185,7 +185,7 @@ public class MinerBlock extends HorizontallyDirectionalBlock {
 					if (oldState.get(DROPPED_ITEM)) world.setBlockState(pos, state.with(DROPPED_ITEM, false), NOTIFY_ALL);
 					if (oldState.get(OPENED)) {
 						world.setBlockState(pos, state.with(OPENED, false), NOTIFY_ALL);
-						SoundsManager.playBlocksSoundOnSpot(world, pos, ModSoundEvents.CLOSE_MINER, 1f);
+						SoundsManager.playBlocksSoundOnSpot(world, pos, ModSoundEvents.BLOCK_CLOSE_MINER, 1f);
 					}
 
 					world.scheduleBlockTick(pos, this, delay);
@@ -230,7 +230,7 @@ public class MinerBlock extends HorizontallyDirectionalBlock {
 
 
 				BEHAVIOR.dispense(blockPointerImpl, itemStack);
-				SoundsManager.playBlocksSoundOnSpot(world, pos, ModSoundEvents.DISPENSE_MINER, 4f);
+				SoundsManager.playBlocksSoundOnSpot(world, pos, ModSoundEvents.BLOCK_DISPENSE_MINER, 4f);
 
 			}
 		}

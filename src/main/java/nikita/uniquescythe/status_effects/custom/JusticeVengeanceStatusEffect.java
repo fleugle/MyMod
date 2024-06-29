@@ -51,7 +51,6 @@ public class JusticeVengeanceStatusEffect extends StatusEffect {
 		if (entity instanceof PlayerEntity player && !player.getWorld().isClient) {
 			this.hitNotDetected = true;
 			registerHitAttempt();
-			player.addExperience((this.conversionAmount - 1) << amplifier); // Higher amplifier gives you EXP faster
 		}
 	}
 

@@ -41,9 +41,10 @@ public class ModLootTablesModifiers {
 			if(ANCIENT_CITY_CHESTS_ID.equals(id)){
 				UniqueScythe.LOGGER.info("ANCIENT_CITY_CHESTS_ID items were modified!");
 				LootPool.Builder poolBuilder = LootPool.builder()
-					.rolls(ConstantLootNumberProvider.create(1))
+					.rolls(ConstantLootNumberProvider.create(2))
 					.conditionally(RandomChanceLootCondition.builder(0.25f))
 					.with(ItemEntry.builder(ModBlocks.HEAVY_CORE))
+					.with(ItemEntry.builder(ModItems.EXPERIENCE_PHYLACTERY))
 					.apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)).build());
 				tableBuilder.pool(poolBuilder.build());
 			}
