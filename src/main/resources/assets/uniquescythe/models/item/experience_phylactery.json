@@ -1,0 +1,68 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "uniquescythe:item/experience_phylactery"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "uniquescythe:percentage": 0.1
+      },
+      "model": "uniquescythe:item/experience_phylactery_01"
+    },
+    {
+      "predicate": {
+        "uniquescythe:percentage": 0.2
+      },
+      "model": "uniquescythe:item/experience_phylactery_02"
+    },
+    {
+      "predicate": {
+        "uniquescythe:percentage": 0.3
+      },
+      "model": "uniquescythe:item/experience_phylactery_03"
+    },
+    {
+      "predicate": {
+        "uniquescythe:percentage": 0.4
+      },
+      "model": "uniquescythe:item/experience_phylactery_04"
+    },
+    {
+      "predicate": {
+        "uniquescythe:percentage": 0.5
+      },
+      "model": "uniquescythe:item/experience_phylactery_05"
+    },
+    {
+      "predicate": {
+        "uniquescythe:percentage": 0.6
+      },
+      "model": "uniquescythe:item/experience_phylactery_06"
+    },
+    {
+      "predicate": {
+        "uniquescythe:percentage": 0.7
+      },
+      "model": "uniquescythe:item/experience_phylactery_07"
+    },
+    {
+      "predicate": {
+        "uniquescythe:percentage": 0.8
+      },
+      "model": "uniquescythe:item/experience_phylactery_08"
+    },
+    {
+      "predicate": {
+        "uniquescythe:percentage": 0.9
+      },
+      "model": "uniquescythe:item/experience_phylactery_09"
+    },
+    {
+      "predicate": {
+        "uniquescythe:percentage": 1.0
+      },
+      "model": "uniquescythe:item/experience_phylactery_10"
+    }
+  ]
+}

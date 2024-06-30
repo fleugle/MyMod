@@ -9,6 +9,7 @@ import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffectType;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -48,26 +49,34 @@ public class SuppressionEffect extends StatusEffect {
 	public void onApplied(LivingEntity entity, AttributeContainer attributes, int amplifier) {
 		super.onApplied(entity,attributes,amplifier);
 
+		if(entity instanceof PlayerEntity player){
+			if(!entity.getWorld().isClient && player instanceof ServerPlayerEntity serverPlayerEntity){
+				GuiltyLevelSystem.addGuiltyLevelsToPlayer(serverPlayerEntity, serverPlayerEntity.getDisplayName().getString(), 1);
+			}
+		}
+
 	}
 
 	// This method is called when it applies the status effect. We implement custom functionality here.
 	@Override
 	public void applyUpdateEffect(LivingEntity entity, int amplifier) {
-		if(!entity.getWorld().isClient){
-			// Iterate over all status effects and remove only beneficial ones
-			for (StatusEffectInstance effectInstance : entity.getStatusEffects()) {
-				StatusEffect effect = effectInstance.getEffectType();
-				if (effect.isBeneficial()) {
-					entity.removeStatusEffect(effect);
+		if (!entity.hasStatusEffect(StatusEffects.RESISTANCE)) {
+			if(!entity.getWorld().isClient){
+				// Iterate over all status effects and remove only beneficial ones
+				for (StatusEffectInstance effectInstance : entity.getStatusEffects()) {
+					StatusEffect effect = effectInstance.getEffectType();
+					if (effect.isBeneficial()) {
+						entity.removeStatusEffect(effect);
+					}
 				}
+
 			}
+			if (entity instanceof PlayerEntity player && !player.getWorld().isClient) {
 
-		}
-		if (entity instanceof PlayerEntity player && !player.getWorld().isClient) {
-
-			List<ItemStack> itemsList = itemStacksFromInventory(player);
-			for (ItemStack itemStack : itemsList) {
-				player.getItemCooldownManager().set(itemStack.getItem(), 500);
+				List<ItemStack> itemsList = itemStacksFromInventory(player);
+				for (ItemStack itemStack : itemsList) {
+					player.getItemCooldownManager().set(itemStack.getItem(), 500);
+				}
 			}
 		}
 	}
@@ -79,6 +88,9 @@ public class SuppressionEffect extends StatusEffect {
 		if (!entity.getWorld().isClient) {
 			if(entity instanceof PlayerEntity player){//I can actually just write it like that, defining new variable in check
 
+				if(player instanceof ServerPlayerEntity serverPlayerEntity){
+					GuiltyLevelSystem.subtractGuiltyLevel(serverPlayerEntity, serverPlayerEntity.getDisplayName().getString(), 1);
+				}
 
 			}
 
@@ -94,6 +106,14 @@ public class SuppressionEffect extends StatusEffect {
 		// Iterate over the main inventory
 		DefaultedList<ItemStack> mainInventory = player.getInventory().main;
 		for (ItemStack itemStack : mainInventory) {
+			if (!itemStack.isEmpty()) {
+				itemsList.add(itemStack);
+			}
+		}
+
+		// Iterate over the armor inventory
+		DefaultedList<ItemStack> armorInventory = player.getInventory().armor;
+		for (ItemStack itemStack : armorInventory) {
 			if (!itemStack.isEmpty()) {
 				itemsList.add(itemStack);
 			}

@@ -1,6 +1,14 @@
 {
-	"parent": "item/handheld",
-	"textures": {
-		"layer0": "uniquescythe:item/duplicate_mirror"
-	}
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "uniquescythe:item/duplicate_mirror"
+  },
+  "overrides": [
+       {
+      "predicate": {
+        "uniquescythe:active": 1.0
+      },
+      "model": "uniquescythe:item/duplicate_mirror_0"
+    }
+  ]
 }
