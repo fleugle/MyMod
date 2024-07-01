@@ -14,9 +14,7 @@ import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
-import net.minecraft.item.ArmorItem;
-import net.minecraft.item.ArmorMaterial;
-import net.minecraft.item.ItemStack;
+import net.minecraft.item.*;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.world.World;
 import nikita.uniquescythe.geo.renderers.SimpleHatRenderer;
@@ -87,9 +85,12 @@ public class SimpleHatItem extends ArmorItem implements GeoItem {
 
 
 
-		ArmorItem helmet = ((ArmorItem)player.getInventory().getArmorStack(3).getItem());
+		Item helmet = (player.getInventory().getArmorStack(3).getItem());
+		ArmorItem armorHelmet
+			= null;
+		if (helmet instanceof ArmorItem) armorHelmet = (ArmorItem) helmet;
 
-		return helmet.getMaterial() == material;
+		return armorHelmet != null && armorHelmet.getMaterial() == material;
 	}
 
 	private boolean isInnocent(ServerPlayerEntity player){

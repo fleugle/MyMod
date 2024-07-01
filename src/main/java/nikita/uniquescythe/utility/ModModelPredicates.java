@@ -4,7 +4,7 @@ import net.minecraft.client.item.ModelPredicateProviderRegistry;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.Identifier;
 import nikita.uniquescythe.items.ModItems;
-import nikita.uniquescythe.items.custom.ExperiencePhylactery;
+import nikita.uniquescythe.items.custom.ExperiencePhylacteryItem;
 
 public class ModModelPredicates {
 
@@ -20,8 +20,8 @@ public class ModModelPredicates {
 		ModelPredicateProviderRegistry.register(ModItems.EXPERIENCE_PHYLACTERY, new Identifier("uniquescythe", "percentage"),
 			(stack, world, entity, seed) -> {
 				NbtCompound tag = stack.getOrCreateNbt();
-				ExperiencePhylactery experiencePhylactery = (ExperiencePhylactery) stack.getItem();
-				float rawPercentage = (float) tag.getInt(SoulsSystem.SOULS) / experiencePhylactery.getMaxCapacity();
+				ExperiencePhylacteryItem experiencePhylacteryItem = (ExperiencePhylacteryItem) stack.getItem();
+				float rawPercentage = (float) tag.getInt(SoulsSystem.SOULS) / experiencePhylacteryItem.getMaxCapacity();
 
 				float finalValue = 0f;
 				if (rawPercentage >= 0.001) finalValue = 0.1f;

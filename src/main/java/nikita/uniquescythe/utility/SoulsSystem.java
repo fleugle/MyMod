@@ -17,23 +17,27 @@ import static nikita.uniquescythe.utility.GuiltyLevelSystem.*;
 
 public class SoulsSystem {
 	public static String SOULS = "Souls";
+	public static String MAX_SOULS = "MaxSouls";
 
 
-	public static void addSoulsToPossibleItems(ServerPlayerEntity player, String playerName, int maxCapacity){
+	public static void addSoulsToPossibleItems(ServerPlayerEntity player, String playerName){
 		World world = player.getWorld();
 		if (!world.isClient) {
 			if ((getScore(player, playerName, GENERAL_KILLS_GUILTY_LEVEL) > 0) || (getScore(player, playerName, PLAYERS_KILL_GUILTY_ADDITION) > 0)) {
 				//updateSouls( player, playerName);
 
 				NbtCompound tag = null;
-				if (getFirstAvaliablePhylacteryItemStack(player, maxCapacity) != null) {
-					tag = getFirstAvaliablePhylacteryItemStack(player, maxCapacity).getOrCreateNbt();
+				ItemStack phylacteryBasedItemStack = null;
+				if (getFirstAvaliablePhylacteryItemStack(player) != null) {
+					tag = getFirstAvaliablePhylacteryItemStack(player).getOrCreateNbt();
+					phylacteryBasedItemStack = getFirstAvaliablePhylacteryItemStack(player);
 				}
 				int soulsAmount = (getScore(player, playerName, GENERAL_KILLS_GUILTY_LEVEL))
 					/*+ (getScore(player, playerName, PLAYERS_KILL_GUILTY_ADDITION) * 5)*/
 					/*+ (getScore(player, playerName, SOULS))*/;
 				if(soulsAmount > 0 && tag != null) {
 					int currentSoulsOnStack = tag.getInt(SOULS);
+					int maxCapacity = getMaxSoulsAmount(phylacteryBasedItemStack);
 					int finalSoulsAmount = currentSoulsOnStack + soulsAmount;
 
 					if (finalSoulsAmount >= maxCapacity) finalSoulsAmount = maxCapacity;
@@ -99,21 +103,32 @@ public class SoulsSystem {
 		return tag.contains(SoulsSystem.SOULS);
 	}
 
-	private static ItemStack getFirstAvaliablePhylacteryItemStack(ServerPlayerEntity player, int maxCapacity){
+	private static ItemStack getFirstAvaliablePhylacteryItemStack(ServerPlayerEntity player){
 		ItemStack phylacteryBasedItemStack = null;
 
 		for (int i = 0; i < player.getInventory().size(); i++) {
 			ItemStack inventoryStack = player.getInventory().getStack(i);
 			if (inventoryStack.getItem() instanceof PhylacteryBasedItem) {
 				phylacteryBasedItemStack = inventoryStack;
+				int maxSoulsAmount = getMaxSoulsAmount(phylacteryBasedItemStack);
 
-				if (isPhylacteryStack(phylacteryBasedItemStack) && getSoulsOnStack(phylacteryBasedItemStack) < maxCapacity) {
+				if (isPhylacteryStack(phylacteryBasedItemStack) && getSoulsOnStack(phylacteryBasedItemStack) < maxSoulsAmount) {
 					break; // Exit the loop after finding
 				}
 			}
 		}
 
 		return phylacteryBasedItemStack;
+	}
+
+	private static int getMaxSoulsAmount(ItemStack stack){
+
+		if (isPhylacteryStack(stack) && stack.getItem() instanceof PhylacteryBasedItem phylacteryBasedItem){
+
+			return phylacteryBasedItem.getMaxCapacity();
+		}
+
+		return 0;
 	}
 
 

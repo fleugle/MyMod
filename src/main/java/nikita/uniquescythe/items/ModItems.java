@@ -76,8 +76,9 @@ public class ModItems {
 
 	public static final Item EXPLOSIVE_PHYLACTERY = registerItem("explosive_phylactery", new ExplosivePhylacteryItem());
 
-	public static final Item EXPERIENCE_PHYLACTERY = registerItem("experience_phylactery", new ExperiencePhylactery());
+	public static final Item EXPERIENCE_PHYLACTERY = registerItem("experience_phylactery", new ExperiencePhylacteryItem());
 
+	public static final Item GUILTY_CROWN_PHYLACTERY = registerItem("guilty_crown_phylactery", new GuiltyCrownPhylacteryItem());
 
 
 

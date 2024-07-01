@@ -59,6 +59,8 @@ public class ModSoundEvents {
 	//armor sounds
 	public static SoundEvent INNOCENCE_APPROVED = registerSound("innc_apr");
 
+	//equippable items sounds
+	public static SoundEvent SOULS_SOUNDS_LOW_PITCH = registerSound("souls_s_l_p");
 
 
 

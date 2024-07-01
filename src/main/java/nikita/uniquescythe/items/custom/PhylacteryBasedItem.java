@@ -32,6 +32,8 @@ public abstract class PhylacteryBasedItem extends Item {
 
 	}
 
+
+
 	public void subtractSouls(ItemStack stack, int amount) {
 		NbtCompound tag = stack.getOrCreateNbt();
 		tag.putInt(SoulsSystem.SOULS, getOrCreateSoulsOnStack(stack) - amount);
@@ -41,8 +43,9 @@ public abstract class PhylacteryBasedItem extends Item {
 	public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected){
 		if (!world.isClient) {
 			getOrCreateSoulsOnStack(stack);
+			/*getOrCreateMaxSoulsOnStack(stack);*/
 			if (entity instanceof ServerPlayerEntity serverPlayerEntity) {
-				SoulsSystem.addSoulsToPossibleItems(serverPlayerEntity, serverPlayerEntity.getDisplayName().getString(), this.maxCapacity);
+				SoulsSystem.addSoulsToPossibleItems(serverPlayerEntity, serverPlayerEntity.getDisplayName().getString());
 
 			}
 		}
@@ -54,7 +57,7 @@ public abstract class PhylacteryBasedItem extends Item {
 		assert world != null;
 
 		tooltip.add(Text.literal("§bPhylactery"));
-		tooltip.add(Text.literal("§9Souls collected: " + getOrCreateSoulsOnStack(stack) + " / " + this.maxCapacity));
+		tooltip.add(Text.literal("§9Souls collected: " + getOrCreateSoulsOnStack(stack) + " / " + getMaxCapacity()));
 
 		super.appendTooltip(stack, world, tooltip, context);
 	}

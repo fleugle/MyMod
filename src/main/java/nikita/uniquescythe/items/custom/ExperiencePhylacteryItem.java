@@ -5,16 +5,15 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 import nikita.uniquescythe.sounds.ModSoundEvents;
 import nikita.uniquescythe.utility.SoundsManager;
 
-public class ExperiencePhylactery extends PhylacteryBasedItem{
+public class ExperiencePhylacteryItem extends PhylacteryBasedItem{
 
-	public ExperiencePhylactery() {
+	public ExperiencePhylacteryItem() {
 		super(250);
 	}
 

@@ -130,6 +130,19 @@
 
 
 
+  "souls_s_l_p": {
+    "subtitle": "sounds.uniquescythe.souls_s_l_p",
+    "sounds": [
+      {
+        "name":"uniquescythe:soul_steal",
+        "pitch": 0.65
+      }
+
+    ]
+  },
+
+
+
 
 
 
